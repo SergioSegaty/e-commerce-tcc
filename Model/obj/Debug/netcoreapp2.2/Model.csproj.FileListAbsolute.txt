@@ -1,8 +1,0 @@
-C:\Users\65975\Desktop\e-commerce-tcc\Model\bin\Debug\netcoreapp2.2\Model.deps.json
-C:\Users\65975\Desktop\e-commerce-tcc\Model\bin\Debug\netcoreapp2.2\Model.dll
-C:\Users\65975\Desktop\e-commerce-tcc\Model\obj\Debug\netcoreapp2.2\Model.csproj.CoreCompileInputs.cache
-C:\Users\65975\Desktop\e-commerce-tcc\Model\obj\Debug\netcoreapp2.2\Model.AssemblyInfoInputs.cache
-C:\Users\65975\Desktop\e-commerce-tcc\Model\obj\Debug\netcoreapp2.2\Model.AssemblyInfo.cs
-C:\Users\65975\Desktop\e-commerce-tcc\Model\bin\Debug\netcoreapp2.2\Model.pdb
-C:\Users\65975\Desktop\e-commerce-tcc\Model\obj\Debug\netcoreapp2.2\Model.dll
-C:\Users\65975\Desktop\e-commerce-tcc\Model\obj\Debug\netcoreapp2.2\Model.pdb
