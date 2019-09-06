@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repository;
+using Repository.Interface;
+using Repository.Repositories;
 
 namespace View
 {
@@ -31,6 +35,19 @@ namespace View
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            #region Injeção de dependencia
+            services.AddTransient(typeof(IBaseRepositoryAsync<>), typeof(BaseRepositoryAsync<>));
+            services.AddTransient(typeof(ICidadeRepository), typeof(CidadeRepository));
+            services.AddTransient(typeof(IEnderecoRepository), typeof(EnderecoRepository));
+            services.AddTransient(typeof(IEstoqueRepository), typeof(EstoqueRepository));
+            services.AddTransient(typeof(IPedidoProdutoRepository), typeof(PedidoProdutoRepository));
+            services.AddTransient(typeof(IProdutoRepository), typeof(ProdutoRepository));
+            #endregion
+
+            services.AddDbContext<SistemaContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

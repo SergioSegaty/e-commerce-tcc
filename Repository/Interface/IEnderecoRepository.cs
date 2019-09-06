@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Repository.Interface
 {
-    interface IEnderecoRepository
+    public interface IEnderecoRepository
     {
         Endereco ObterPeloId(int id);
 

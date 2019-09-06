@@ -12,7 +12,6 @@ namespace e_commerce_ws.Controllers
     /// Controller de Categoria
     /// </summary>
     [Route("categoria")]
-    [ApiController]
     public class CategoriaController : Controller
     {
         private readonly IBaseRepositoryAsync<Categoria> _repository;
@@ -24,6 +23,12 @@ namespace e_commerce_ws.Controllers
         public CategoriaController(IBaseRepositoryAsync<Categoria> repository)
         {
             this._repository = repository;
+        }
+
+        [HttpGet, Route("")]
+        public ActionResult Index()
+        {
+            return View();
         }
 
         /// <summary>

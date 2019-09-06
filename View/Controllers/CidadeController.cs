@@ -9,7 +9,6 @@ namespace e_commerce_ws.Controllers
     /// Controller de Cidade
     /// </summary>
     [Route("cidade")]
-    [ApiController]
     public class CidadeController : Controller
     {
         private readonly IBaseRepositoryAsync<Cidade> _repository;

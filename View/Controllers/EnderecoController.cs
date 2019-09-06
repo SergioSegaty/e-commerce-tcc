@@ -9,7 +9,6 @@ namespace e_commerce_ws.Controllers
     /// Controller de Endereco
     /// </summary>
     [Route("endereco")]
-    [ApiController]
     public class EnderecoController : Controller
     {
         private readonly IBaseRepositoryAsync<Endereco> _repository;

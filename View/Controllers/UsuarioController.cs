@@ -11,7 +11,6 @@ namespace e_commerce_ws.Controllers
     /// Controller de Usuario
     /// </summary>
     [Route("usuario")]
-    [ApiController]
     public class UsuarioController : Controller
     {
         private readonly IBaseRepositoryAsync<Usuario> _repository;

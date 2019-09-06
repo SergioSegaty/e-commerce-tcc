@@ -9,7 +9,6 @@ namespace e_commerce_ws.Controllers
     /// Controller do Estoque
     /// </summary>
     [Route("estoque")]
-    [ApiController]
     public class EstoqueController : Controller
     {
         private readonly IBaseRepositoryAsync<Estoque> _repository;

@@ -9,7 +9,6 @@ namespace e_commerce_ws.Controllers
     /// Controller de Estado
     /// </summary>
     [Route("estado")]
-    [ApiController]
     public class EstadoController : Controller
     {
         private readonly IBaseRepositoryAsync<Estado> _repository;

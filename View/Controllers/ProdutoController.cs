@@ -9,7 +9,6 @@ namespace e_commerce_ws.Controllers
     /// Controller de Produto
     /// </summary>
     [Route("produto")]
-    [ApiController]
     public class ProdutoController : Controller
     {
         private readonly IBaseRepositoryAsync<Produto> _repo;
