@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="tema/assets/css/site.min.css">
 
     <!-- Plugins -->
-    <link rel="stylesheet" href="tema/global/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="~/tema/global/vendor/animsition/animsition.css">
     <link rel="stylesheet" href="tema/global/vendor/asscrollable/asScrollable.css">
     <link rel="stylesheet" href="tema/global/vendor/switchery/switchery.css">
     <link rel="stylesheet" href="tema/global/vendor/intro-js/introjs.css">
@@ -32,8 +32,11 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="tema/global/fonts/weather-icons/weather-icons.css">
+    <link rel="stylesheet" href="~/tema/global/fonts/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" href="tema/global/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="tema/global/fonts/brand-icons/brand-icons.min.css">
+    <link rel="stylesheet" href="~/tema/global/fonts/material-design/material-design.min.css">
+    <link rel="stylesheet" href="~/tema/global/fonts/open-iconic/open-iconic.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
     <!--[if lt IE 9]>
@@ -100,7 +103,7 @@
                 <!-- End Navbar Toolbar -->
                 <!-- Navbar Toolbar Right -->
                 <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
-                    
+
                     <!--Notificação Start-->
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
@@ -186,8 +189,6 @@
                         </div>
                     </li>
                     <!--Notificação End-->
-
-                    
                     <!--Perfil Start-->
                     <li class="nav-item dropdown">
                         <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
@@ -201,7 +202,7 @@
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Perfil</a>
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Configurações</a>
                             <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Sair</a>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon fa-sign-in" aria-hidden="true"></i> Sair</a>
                         </div>
                     </li>
                     <!--Perfil End-->
@@ -233,44 +234,22 @@
                         <li class="site-menu-category">General</li>
                         <li class="site-menu-item has-sub">
                             <a href="javascript:void(0)">
-                                <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
-                                <span class="site-menu-title">Dashboard</span>
-                                <div class="site-menu-badge">
-                                    <span class="badge badge-pill badge-success">3</span>
-                                </div>
+                                <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
+                                <span class="site-menu-title">Painel de Controle</span>
+                                <span class="site-menu-arrow"></span>
                             </a>
                             <ul class="site-menu-sub">
-                                <li class="site-menu-item active">
-                                    <a class="animsition-link" href="index.html">
-                                        <span class="site-menu-title">Dashboard v1</span>
-                                    </a>
-                                </li>
-                                <li class="site-menu-item">
-                                    <a class="animsition-link" href="dashboard/v2.html">
-                                        <span class="site-menu-title">Dashboard v2</span>
-                                    </a>
-                                </li>
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="dashboard/ecommerce.html">
-                                        <span class="site-menu-title">Ecommerce</span>
-                                    </a>
-                                </li>
-                                <li class="site-menu-item">
-                                    <a class="animsition-link" href="dashboard/analytics.html">
-                                        <span class="site-menu-title">Analytics</span>
-                                    </a>
-                                </li>
-                                <li class="site-menu-item">
-                                    <a class="animsition-link" href="dashboard/team.html">
-                                        <span class="site-menu-title">Team</span>
+                                        <span class="site-menu-title"><i class="site-menu-icon md-money"></i> Vendas</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="site-menu-item has-sub">
                             <a href="javascript:void(0)">
-                                <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
-                                <span class="site-menu-title">Layouts</span>
+                                <i class="site-menu-icon io-box" aria-hidden="true"></i>
+                                <span class="site-menu-title">Estoque</span>
                                 <span class="site-menu-arrow"></span>
                             </a>
                             <ul class="site-menu-sub">
