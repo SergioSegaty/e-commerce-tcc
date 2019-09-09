@@ -3,6 +3,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+    <script src="~/Scripts/Ajax/Categoria.js"></script>
 <div>
 
 
@@ -16,44 +18,39 @@
 
     <div class="page-content">
 
+        <!-- Painel -->
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">Lista de Categorias</h3>
             </div>
+
             <div class="panel-body container-fluid">
-                <div class="row row-lg">
+                <div class="row">
 
+                    <div class="example-wrap">
 
-                    <div class="col-12">
-                            <button class="btn btn-primary mr-5" data-toggle="modal"
+                        <div class="row offset-1">
+                            <button class="btn btn-primary m-3" data-toggle="modal"
                                     data-target="#modalCadastroCategoria">
                                 <i class="fas fa-plus"></i> Nova Categoria
                             </button>
-                    </div>
-
-                    <div class="col-12">
-
-
-                        <table class="table table-bordered" width="90%">
-                            <thead>
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Nome</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Nome</th>
-                                    <th width="60%">Ação</th>
-                                </tr>
-                            </tfoot>
-                            <tbody id="lista-categorias"></tbody>
-                        </table>
+                        </div>
 
                     </div>
-                    <div class="col-md-6 col-lg-4">
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                      <tbody id="lista-categorias"></tbody>
+                    </table>
+
+                    <div class="col-md-6 col-lg-6">
                         <!-- Example Rounded Input -->
                         <div class="example-wrap">
                             <h4 class="example-title">Rounded Input</h4>
@@ -61,7 +58,7 @@
                         </div>
                         <!-- End Example Rounded Input -->
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-6">
                         <!-- Example Rounded Input -->
                         <div class="example-wrap">
                             <h4 class="example-title">Rounded Input</h4>
