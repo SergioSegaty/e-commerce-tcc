@@ -26,10 +26,6 @@ namespace Repository
                     DataCriacao = DateTime.Now,
                     RegistroAtivo = true
                 }
-
-
-
-
             );
 
         }
