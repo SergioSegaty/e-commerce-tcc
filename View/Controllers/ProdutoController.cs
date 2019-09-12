@@ -101,5 +101,11 @@ namespace e_commerce_ws.Controllers
             bool apagou = _repo.Apagar(id);
             return Json(new { status = apagou });
         }
+
+        [HttpGet, Route("")]
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }
