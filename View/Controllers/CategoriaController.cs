@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -92,6 +94,29 @@ namespace e_commerce_ws.Controllers
         {
             bool apagou = _repository.Apagar(id);
             return Json(new { status = apagou });
+        }
+
+
+        [HttpGet, Route("select2")]
+        public ActionResult Select2(string term = "")
+        {
+            term = term == null ? "" : term;
+
+            var registros = _repository.ObterTodos();
+
+            registros = registros.Where(x => x.Nome.Contains(term)).ToList();
+            var categoriasSelect2 = new List<object>();
+
+            foreach (var categoria in registros)
+            {
+                categoriasSelect2.Add(new
+                {
+                    id = categoria.Id,
+                    text = categoria.Nome
+                });
+            }
+
+            return Json(new { results = categoriasSelect2 });
         }
     }
 }
