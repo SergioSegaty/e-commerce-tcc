@@ -3,79 +3,51 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section Scripts {
-
-    <script src="~/js/Categoria/Categoria.js"></script>
-}
-
-<div>
-
-    <div class="page-header">
-        <h1 class="page-title">Categoria</h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-            <li class="breadcrumb-item active">Categorias</li>
-        </ol>
-    </div>
-
-    <div class="page-content">
-
-        <!-- Painel -->
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Lista de Categorias</h3>
-            </div>
-
-            <div class="panel-body container-fluid">
-                <div class="row">
-
-                    <div class="example-wrap">
-
-                        <div class="row offset-1">
-                            <button class="btn btn-primary m-3" data-toggle="modal"
-                                    data-target="#modalCadastroCategoria">
-                                <i class="fas fa-plus"></i> Nova Categoria
-                            </button>
-                        </div>
-
-                    </div>
 
 
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Nome</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
-                      <tbody id="lista-categorias"></tbody>
-                    </table>
+<div class="page-header">
+    <h1 class="page-title">Categoria</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item active">Categorias</li>
+    </ol>
+</div>
 
-                    <div class="col-md-6 col-lg-6">
-                        <!-- Example Rounded Input -->
-                        <div class="example-wrap">
-                            <h4 class="example-title">Rounded Input</h4>
-                            <input type="text" class="form-control round" id="inputRounded">
-                        </div>
-                        <!-- End Example Rounded Input -->
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <!-- Example Rounded Input -->
-                        <div class="example-wrap">
-                            <h4 class="example-title">Rounded Input</h4>
-                            <input type="text" class="form-control round" id="inputRounded">
-                        </div>
-                        <!-- End Example Rounded Input -->
-                    </div>
+<div class="page-content">
+    <!-- Painel -->
+    <div class="panel">
 
-                </div>
-            </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">Lista de Categorias</h3>
         </div>
-        <!-- End Panel Form Elements -->
+
+        <div class="panel-body container-fluid">
+
+            <div class="example-wrap">
+
+                <div class="row">
+                    <button class="btn btn-primary float-right" data-toggle="modal"
+                            data-target="#modalCadastroCategoria">
+                        <i class="fas fa-plus"></i> Nova Categoria
+                    </button>
+                </div>
+
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-categorias"></tbody>
+            </table>
+        </div>
 
     </div>
-
+    <!-- End Panel Form Elements -->
 </div>
 
 <!-- Modal Cadastro Categoria -->
@@ -117,3 +89,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/Categoria/Categoria.js"></script>
+}

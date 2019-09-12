@@ -38,7 +38,7 @@ $(function () {
         $nome = $('#campo-nome').val();
         $.ajax({
             method: 'post',
-            url: '/categoria/update',
+            url: '/categoria/alterar',
             data: {
 
                 Nome: $nome,
@@ -62,16 +62,16 @@ $(function () {
         $.ajax({
 
             method: 'post',
-            url: '/categoria/store',
+            url: '/categoria/adicionar',
             data: {
-                Nome: $nome,
+                Nome: $nome
 
             },
             success: function (data) {
                 $id = -1;
-                $("#modalEditarCategoria").modal("hide");
+                $("#modalCadastroCategoria").modal("hide");
                 obterTodos();
-                limparCampos();
+                //limparCampos();
             },
             error: function (data) {
                 console.log("ERROR");
@@ -85,7 +85,7 @@ $(function () {
 
         $busca = $('#campo-busca').val();
 
-        $("#lista-categorias").emtpy();
+        $("#lista-categorias").empty();
 
 
         $.ajax({
@@ -93,27 +93,27 @@ $(function () {
             url: '/categoria/obtertodos',
             method: 'get',
             data: {
-                busca: $busca
             },
 
             success: function (data) {
 
-                for (var i = 0; i < data.lenght; i++) {
+                for (let i = 0; i < data.length; i++) {
                     var dado = data[i];
 
                     var linha = document.createElement("tr");
+
                     var colunaCodigo = document.createElement("td");
-                    colunaCodigo.innerHTML = dado.Id;
+                    colunaCodigo.innerHTML = dado.id;
 
                     var colunaNome = document.createElement("td");
-                    colunaNome.innerHTML = dado.Nome;
+                    colunaNome.innerHTML = dado.nome;
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
 
                     botaoEditar.classList.add("btn", "btn-primary", "mr-2", "botao-editar");
                     botaoEditar.innerHTML = "<i class=\"fas fa-pen\"></i> Editar";
-                    botaoEditar.setAttribute("data-id", dado.Id);
+                    botaoEditar.setAttribute("data-id", dado.id);
 
 
                     var botaoApagar = document.createElement("button");
@@ -122,8 +122,7 @@ $(function () {
 
                     botaoApagar.classList.add("btn", "btn-warn", "mr-2", "botao-apagar");
                     botaoApagar.innerHTML = "<i class=\"fas fa-trash\"> </i> Apagar";
-                    botaoApagar.setAttribute("data-id", dado.Id);
-
+                    botaoApagar.setAttribute("data-id", dado.id);
 
                     colunaAcao.appendChild(botaoEditar);
                     colunaAcao.appendChild(botaoApagar);
@@ -133,10 +132,8 @@ $(function () {
                     linha.appendChild(colunaAcao);
 
                     document.getElementById("lista-categorias").appendChild(linha);
-
                 }
             },
-
             error: function (data) {
                 console.log("Erro ao ObterTodos(Categoria)");
                 error;
