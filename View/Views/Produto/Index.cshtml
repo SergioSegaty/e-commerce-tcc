@@ -70,22 +70,37 @@
                 </button>
                 <h4 class="modal-title" id="exampleFormModalLabel">Set The Messages</h4>
             </div>
+
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-xl-4 form-group">
-                        <input type="text" class="form-control" name="Nome" placeholder="First Name">
+                    <div class="col-xl-12 form-group">
+                        <input type="text" class="form-control" name="Nome" placeholder="Nome do produto">
                     </div>
-                    <div class="col-xl-4 form-group">
+                    <div class="col-xl-6 form-group">
                         <input type="email" class="form-control" name="lastName" placeholder="Last Name">
                     </div>
-                    <div class="col-xl-4 form-group">
+                    <div class="col-xl-6 form-group">
                         <input type="email" class="form-control" name="email" placeholder="Your Email">
                     </div>
-                    <div class="col-xl-12 form-group">
-                        <textarea class="form-control" rows="5" placeholder="Type your message"></textarea>
+                    <div class="col-xl-4 form-group">
+                        <input class="form-control" name="altura" placeholder="Altura" type="text">
                     </div>
-                    <div class="col-md-12 float-right">
-                        <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button">Add Comment</button>
+                    <div class="col-xl-4 form-group">
+                        <input type="email" class="form-control" name="largura" placeholder="Largura">
+                    </div>
+                    <div class="col-xl-4 form-group">
+                        <input type="email" class="form-control" name="comprimento" placeholder="Comprimento">
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" rows="4" placeholder="Descrição do produto"></textarea>
+                    </div>
+                    <div class="col-8 mt-20">
+                        <select id="categoria-select" class="form-control">
+                            <option disabled="disabled" selected="selected">Escolha uma Categoria</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-20">
+                        <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button">Salvar</button>
                     </div>
                 </div>
             </div>
