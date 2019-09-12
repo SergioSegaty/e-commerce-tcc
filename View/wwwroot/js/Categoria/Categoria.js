@@ -6,25 +6,41 @@ $(function () {
 
 
     $(".table").on("click", ".botao-editar", function () {
-
         $id = $(this).data("id");
 
 
         $.ajax({
 
-            url: '/categoria/obterpeloid' + $id,
+            url: '/categoria/obterpeloid?id=' + $id,
             method: 'get',
             success: function (data) {
-                $id = data.Id;
-                $("#campo-nome").val
+                $id = data.id;
+                $("#campo-nome").val(data.nome);
+                $("#modalCadastroCategoria").modal("show");
             }
         })
 
     });
 
+
+    $(".table").on("click", ".botao-apagar", function () {
+        $id = $(this).data("id");
+        $.ajax({
+            url: '/categoria/apagar?id=' + $id,
+            method: 'get',
+            success: function (data) {
+                obterTodos();
+            },
+            error: function (data) {
+                console.log("Erro apagar");
+            }
+        });
+    });
+
+
     $("#categoria-botao-salvar").on("click", function () {
         console.log("Clicou");
-    
+
 
         if ($id == -1) {
             inserir();
@@ -40,7 +56,6 @@ $(function () {
             method: 'post',
             url: '/categoria/alterar',
             data: {
-
                 Nome: $nome,
                 Id: $id
             },
@@ -71,7 +86,7 @@ $(function () {
                 $id = -1;
                 $("#modalCadastroCategoria").modal("hide");
                 obterTodos();
-                //limparCampos();
+                limparCampos();
             },
             error: function (data) {
                 console.log("ERROR");
@@ -112,7 +127,7 @@ $(function () {
                     var botaoEditar = document.createElement("button");
 
                     botaoEditar.classList.add("btn", "btn-primary", "mr-2", "botao-editar");
-                    botaoEditar.innerHTML = "<i class=\"fas fa-pen\"></i> Editar";
+                    botaoEditar.innerHTML = "<i class=\"fas fa-edit\"></i> Editar";
                     botaoEditar.setAttribute("data-id", dado.id);
 
 
@@ -120,7 +135,7 @@ $(function () {
 
                     botaoApagar = document.createElement("button");
 
-                    botaoApagar.classList.add("btn", "btn-warn", "mr-2", "botao-apagar");
+                    botaoApagar.classList.add("btn", "btn-danger", "mr-2", "botao-apagar");
                     botaoApagar.innerHTML = "<i class=\"fas fa-trash\"> </i> Apagar";
                     botaoApagar.setAttribute("data-id", dado.id);
 
@@ -141,6 +156,27 @@ $(function () {
 
         });
     }
+
+    function limparCampos() {
+        $("#campo-nome").val("");
+
+    }
+
+    $(".table").on("click", ".botao-apagar", function () {
+
+        $id = $(this).data("id");
+        $.ajax({
+
+            url: '/categoria/apagar/' + $id,
+            method: 'get',
+            success: function (data) {
+                obterTodos();
+            },
+            error: function (data) {
+                console.log("Deu erro");
+            }
+        });
+    });
 
     obterTodos();
 });

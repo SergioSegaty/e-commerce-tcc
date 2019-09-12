@@ -13,6 +13,13 @@ namespace e_commerce_ws.Controllers
     {
         private readonly IBaseRepositoryAsync<Estoque> _repository;
 
+
+        [HttpGet, Route("")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Construtor do controller de Estoque
         /// </summary>

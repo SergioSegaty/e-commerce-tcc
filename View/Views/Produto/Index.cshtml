@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="page-header">
+    <h1 class="page-title">Produtos</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item active">Produtos</li>
+    </ol>
+</div>
+
+
+
+<div class="page-content">
+    <!-- Painel -->
+    <div class="panel">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Lista de Produtos</h3>
+        </div>
+        <div class="panel-body container-fluid">
+
+            <div class="row row-lg">
+                <div class="col-12">
+
+                    <button class="btn btn-primary float-left ml-1" data-target="#modalCadastroProduto" data-toggle="modal"
+                            type="button">
+                        Cadastrar
+                    </button>
+
+                </div>
+
+
+                <div class="col-12 mt-20">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="15%">Código</th>
+                                <th>Nome</th>
+                                <th width="25%">Preço</th>
+                                <th width="15%">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-categorias" class="text-center table-content"></tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Cadastro Produtos -->
+
+<div class="modal fade" id="modalCadastroProduto" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
+     role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-simple">
+        <form class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="exampleFormModalLabel">Set The Messages</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xl-4 form-group">
+                        <input type="text" class="form-control" name="Nome" placeholder="First Name">
+                    </div>
+                    <div class="col-xl-4 form-group">
+                        <input type="email" class="form-control" name="lastName" placeholder="Last Name">
+                    </div>
+                    <div class="col-xl-4 form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email">
+                    </div>
+                    <div class="col-xl-12 form-group">
+                        <textarea class="form-control" rows="5" placeholder="Type your message"></textarea>
+                    </div>
+                    <div class="col-md-12 float-right">
+                        <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button">Add Comment</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
