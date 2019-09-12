@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Ajax\" />
+    <Folder Include="wwwroot\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 

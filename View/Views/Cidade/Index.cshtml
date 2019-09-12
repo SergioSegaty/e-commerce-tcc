@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2 style="text-align:center;">Lista de Cidades</h2>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary float-right" style="margin-bottom: 15px;" data-toggle="modal" data-target="#cadastro-modal">Nova Cidade</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr style="text-align:center">
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Sigla do Estado</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-cidades" style="text-align:center"></tbody>
+        </table>
+    </div>
+</div>
+
+<!--Modal de Cadastro-->
+<div class="modal" tabindex="-1" role="dialog" id="cadastro-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cadastrar uma nova Cidade</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="campo-nome">Nome</label>
+                            <input id="campo-nome" placeholder="Nome do Estado" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="campo-sigla">Estado</label>
+                            <!--TODO Select de Estado-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-success" id="btn-cadastrar">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fim Modal de Cadastro-->
+<!--Modal Alert Apagar-->
+<div class="modal" tabindex="-1" role="dialog" id="alert-apagar-estado">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Atenção!</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span> Desejas mesmo apagar esta Cidade? </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btn-apagar-cidade">Sim</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fim Modal Alert Apagar-->
+
+@section Scripts{
+    <script src="~/js/cidade/cidade-index.js"></script>
+}
