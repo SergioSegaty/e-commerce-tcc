@@ -4,6 +4,83 @@ $(function () {
 
     $id = -1;
 
+
+    $(".table").on("click", ".botao-editar", function () {
+
+        $id = $(this).data("id");
+
+
+        $.ajax({
+
+            url: '/categoria/obterpeloid' + $id,
+            method: 'get',
+            success: function (data) {
+                $id = data.Id;
+                $("#campo-nome").val
+            }
+        })
+
+    });
+
+    $("#categoria-botao-salvar").on("click", function () {
+        console.log("Clicou");
+    
+
+        if ($id == -1) {
+            inserir();
+        } else {
+            alterar();
+        }
+    });
+
+
+    function alterar() {
+        $nome = $('#campo-nome').val();
+        $.ajax({
+            method: 'post',
+            url: '/categoria/update',
+            data: {
+
+                Nome: $nome,
+                Id: $id
+            },
+            success: function (data) {
+                $id = -1;
+                $("#modalCadastroCategoria").modal("hide");
+                obterTodos();
+                limparCampos();
+            },
+            error: function (data) {
+                console.log("ERROR");
+            }
+        });
+
+    }
+
+    function inserir() {
+        $nome = $("#campo-nome").val();
+        $.ajax({
+
+            method: 'post',
+            url: '/categoria/store',
+            data: {
+                Nome: $nome,
+
+            },
+            success: function (data) {
+                $id = -1;
+                $("#modalEditarCategoria").modal("hide");
+                obterTodos();
+                limparCampos();
+            },
+            error: function (data) {
+                console.log("ERROR");
+            }
+        })
+
+    }
+
+
     function obterTodos() {
 
         $busca = $('#campo-busca').val();

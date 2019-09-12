@@ -21,9 +21,13 @@
 
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="Scripts\Ajax\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\js\Categoria\Categoria.js" />
   </ItemGroup>
 
 </Project>
