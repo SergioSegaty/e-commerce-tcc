@@ -157,5 +157,10 @@
         $id = -1;   
     });
 
+    $('.close').on('click', () => {
+        limparCampos();
+        $id = -1;
+    });
+
     ObterTodos();
 });

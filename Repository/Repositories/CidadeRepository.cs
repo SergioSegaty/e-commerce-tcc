@@ -25,6 +25,15 @@ namespace Repository.Repositories
                 .FirstOrDefault(x => x.RegistroAtivo && x.Id == id);
         }
 
+        public List<Cidade> ObterTodos()
+        {
+            return _context
+                .Cidades
+                .Include(x => x.Estado)
+                .Where(x => x.RegistroAtivo)
+                .ToList();
+        }
+
         public List<Cidade> ObterTodosPeloEstado(int idEstado)
         {
             return _context
