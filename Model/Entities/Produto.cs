@@ -16,7 +16,7 @@ namespace Model.Entities
         [Column("nome"), StringLength(100, ErrorMessage = "No maximo 100 caracteres.", MinimumLength = 3)]
         public string Nome { get; set; }
 
-        [Column("preco")]
+        [Column("preco", TypeName = "decimal(18,2)")]
         public decimal Preco { get; set; }
 
         [Column("descricao")]

@@ -3,7 +3,7 @@
 
     ObterTodos = function () {
         $.ajax({
-            url: 'https://localhost:5001/estado/obtertodos',
+            url: '/estado/obtertodos',
             method: 'get',
             success: function (data) {
                 console.log(data);
@@ -19,8 +19,10 @@
 
                     var tdId = document.createElement('td');
                     tdId.innerHTML = id;
+
                     var tdSigla = document.createElement('td');
                     tdSigla.innerHTML = sigla;
+
                     var tdNome = document.createElement('td');
                     tdNome.innerHTML = nome;
 
@@ -70,7 +72,7 @@
 
     editar = function () {
         $.ajax({
-            url: 'https://localhost:5001/estado/alterar',
+            url: '/estado/alterar',
             method: 'post',
             data: {
                 Id: $id,
@@ -91,7 +93,7 @@
 
     cadastrar = function () {
         $.ajax({
-            url: 'https://localhost:5001/estado/adicionar',
+            url: '/estado/adicionar',
             method: 'post',
             data: {
                 Nome: $nome,
@@ -118,7 +120,7 @@
         $id = $(this).data('id');
 
         $.ajax({
-            url: 'https://localhost:5001/estado/obterpeloid?id=' + $id,
+            url: '/estado/obterpeloid?id=' + $id,
             method: 'get',
             success: function (data) {
                 $('#campo-sigla').val(data.sigla);
@@ -133,7 +135,7 @@
 
     $('#btn-apagar-estado').on('click', function () {
         $.ajax({
-            url: 'https://localhost:5001/estado/apagar?id=' + $id,
+            url: '/estado/apagar?id=' + $id,
             method: 'get',
             success: function (data) {
                 ObterTodos();
