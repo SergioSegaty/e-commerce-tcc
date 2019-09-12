@@ -10,5 +10,7 @@ namespace Repository.Interface
         Cidade ObterPeloId(int id);
 
         List<Cidade> ObterTodosPeloEstado(int idEstado);
+
+        List<Cidade> ObterTodos();
     }
 }
