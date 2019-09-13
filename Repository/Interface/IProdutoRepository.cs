@@ -9,5 +9,7 @@ namespace Repository.Interface
         Produto ObterPeloId(int id);
 
         List<Produto> ObterTodosPelaCategoria(int idCategoria);
+
+        List<Produto> ObterTodos();
     }
 }

@@ -13,7 +13,7 @@ namespace e_commerce_ws.Controllers
     /// <summary>
     /// Controller de Categoria
     /// </summary>
-    [Route("categoria")]
+    [Route("categoria/")]
     public class CategoriaController : Controller
     {
         private readonly IBaseRepositoryAsync<Categoria> _repository;
@@ -98,7 +98,7 @@ namespace e_commerce_ws.Controllers
 
 
         [HttpGet, Route("select2")]
-        public ActionResult Select2(string term = "")
+        public JsonResult Select2(string term = "")
         {
             term = term == null ? "" : term;
 

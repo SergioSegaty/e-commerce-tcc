@@ -22,6 +22,13 @@ namespace Repository.Repositories
             .Where(x => x.Id == id && x.RegistroAtivo).FirstOrDefault();
         }
 
+        public List<Produto> ObterTodos()
+        {
+            return _context.Produtos
+            .Include(x => x.Categoria)
+            .Where(x => x.RegistroAtivo).ToList();
+        }
+
         public List<Produto> ObterTodosPelaCategoria(int idCategoria)
         {
             return _context.Produtos

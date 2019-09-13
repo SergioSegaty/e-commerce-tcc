@@ -32,7 +32,7 @@ namespace e_commerce_ws.Controllers
         [HttpGet, Route("obtertodos")]
         public JsonResult ObterTodos()
         {
-            var produtos = _repo.ObterTodos();
+            var produtos = _produtoRepository.ObterTodos();
             return Json(produtos);
         }
 
