@@ -28,7 +28,7 @@
         option.disabled = true;
         option.selected = true;
         option.value = -1;
-        option.innerHTML = 'Selecione algum Estado'
+        option.innerHTML = 'Selecione um Estado'
 
         document.getElementById('campo-estado').appendChild(option);
 
