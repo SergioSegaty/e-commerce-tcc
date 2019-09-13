@@ -53,12 +53,12 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="hamburger-bar"></span>
             </button>
-            
+
             <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse"
                     data-toggle="collapse">
                 <i class="icon wb-more-horizontal" aria-hidden="true"></i>
             </button>
-            
+
             <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
                 <img class="navbar-brand-logo" src="tema/assets/images/logo.png" title="Remark">
                 <span class="navbar-brand-text hidden-xs-down"> Remark</span>
@@ -164,19 +164,59 @@
                             </a>
                         </li>
                         <!---->
+                        <li class="site-menu-category">CRUDS</li>
+                        <!---->
                         <li class="site-menu-item has-sub">
                             <a href="@Url.Action("Index","Estoque")">
                                 <i class="site-menu-icon io-box" aria-hidden="true"></i>
                                 <span class="site-menu-title">Estoque</span>
-                                <span class="site-menu-arrow"></span>
+                                <!--
+            <span class="site-menu-arrow"></span>
+            -->
                             </a>
-                            <ul class="site-menu-sub">
-                                <li class="site-menu-item">
-                                    <a class="animsition-link" href="asdsad">
-                                        <span class="site-menu-title">Menu Collapsed</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            <!--
+
+        <ul class="site-menu-sub">
+            <li class="site-menu-item">
+                <a class="animsition-link" href="asdsad">
+                    <span class="site-menu-title">Menu Collapsed</span>
+                </a>
+            </li>
+        </ul>
+        -->
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Cidade")">
+                                <!--
+            <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
+            -->
+                                <span class="site-menu-title">Cidade</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Estado")">
+                                <!--
+            <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
+            -->
+                                <span class="site-menu-title">Estado</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Categoria")">
+                                <!--
+            <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
+            -->
+                                <span class="site-menu-title">Categoria</span>
+                            </a>
+                        </li>
+
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Produto")">
+                                <!--
+            <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
+            -->
+                                <span class="site-menu-title">Produto</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -188,10 +228,10 @@
     <!-- Page -->
     <div class="page">
         <div class="page-content container-fluid">
-                @RenderBody()
+            @RenderBody()
             <!--
             <div class="row" data-plugin="matchHeight" data-by-row="true">
-                
+
             </div>
             -->
         </div>

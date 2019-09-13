@@ -6,7 +6,6 @@
             url: '/estado/obtertodos',
             method: 'get',
             success: function (data) {
-                console.log(data);
 
                 $('#tabela-estados').empty();
 
