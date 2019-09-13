@@ -60,7 +60,7 @@
 
     $('#btn-cadastrar').on('click', function () {
         $sigla = $('#campo-sigla').val();
-        $nome = $('#campo-nome').val();
+        $nome = $('#campo-nome-estado').val();
 
         if ($id == -1) {
             cadastrar();
@@ -122,8 +122,8 @@
             url: '/estado/obterpeloid?id=' + $id,
             method: 'get',
             success: function (data) {
-                $('#campo-sigla').val(data.sigla);
-                $('#campo-nome').val(data.nome);
+                $('#campo-sigla-estado').val(data.sigla);
+                $('#campo-nome-estado').val(data.nome);
                 $('#cadastro-modal-estado').modal('show');
             },
             error: function (err) {
@@ -147,8 +147,8 @@
     });
 
     limparCampos = function () {
-        $('#campo-sigla').val("");
-        $('#campo-nome').val("");
+        $('#campo-sigla-estado').val("");
+        $('#campo-nome-estado').val("");
     }
 
     $('.close-modal').on('click', () => {

@@ -22,7 +22,7 @@
     $('#abrir-modal-cadastro').on('click', () => { PreencherSelectEstados(-1); });
 
     PreencherSelectEstados = function (idEstado) {
-        $('#campo-estado').empty();
+        $('#campo-estado-sigla').empty();
 
         let option = document.createElement('option');
         option.disabled = true;
@@ -31,7 +31,7 @@
         option.innerHTML = 'Selecione um Estado';
 
 
-        document.getElementById('campo-estado').appendChild(option);
+        document.getElementById('campo-estado-sigla').appendChild(option);
 
         $.ajax({
             url: '/estado/obtertodos',
@@ -47,15 +47,15 @@
                     option.value = _data.id;
                     option.innerHTML = _data.nome;
 
-                    document.getElementById('campo-estado').appendChild(option);
+                    document.getElementById('campo-estado-sigla').appendChild(option);
                 }
             }
         });
     }
 
     inserir = function () {
-        $nome = $("#campo-nome").val();
-        $idEstado = $("#campo-estado").val();
+        $nome = $("#campo-nome-cidade").val();
+        $idEstado = $("#campo-estado-sigla").val();
 
         $.ajax({
             url: '/cidade/adicionar',
@@ -74,8 +74,8 @@
     }
 
     alterar = function () {
-        $nome = $("#campo-nome").val();
-        $idEstado = $("#campo-estado").val();
+        $nome = $("#campo-nome-cidade").val();
+        $idEstado = $("#campo-estado-sigla").val();
 
         $.ajax({
             url: '/cidade/alterar',
@@ -95,8 +95,8 @@
     }
 
     limparCampos = function () {
-        $('#campo-nome').val("");
-        $('#campo-estado').val(-1);
+        $('#campo-nome-cidade').val("");
+        $('#campo-estado-sigla').val(-1);
     }
 
     obterTodos = function () {
@@ -158,7 +158,7 @@
             },
             method: 'get',
             success: function (data) {
-                $('#campo-nome').val(data.nome);
+                $('#campo-nome-cidade').val(data.nome);
                 PreencherSelectEstados(data.idEstado);
                 $('#cadastro-modal-cidade').modal('show');
             }
