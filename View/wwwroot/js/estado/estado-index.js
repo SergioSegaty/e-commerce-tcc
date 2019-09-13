@@ -81,7 +81,7 @@
             success: function (data) {
                 limparCampos();
                 ObterTodos();
-                $('#cadastro-modal').modal('hide');
+                $('#cadastro-modal-estado').modal('hide');
                 $id = -1;
             },
             error: function (err) {
@@ -101,7 +101,7 @@
             success: function (data) {
                 limparCampos();
                 ObterTodos();
-                $('#cadastro-modal').modal('hide');
+                $('#cadastro-modal-estado').modal('hide');
             },
             error: function (err) {
                 console.log(err);
@@ -124,7 +124,7 @@
             success: function (data) {
                 $('#campo-sigla').val(data.sigla);
                 $('#campo-nome').val(data.nome);
-                $('#cadastro-modal').modal('show');
+                $('#cadastro-modal-estado').modal('show');
             },
             error: function (err) {
                 console.log(err);

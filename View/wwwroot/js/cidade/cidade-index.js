@@ -11,7 +11,7 @@
         $id = -1;
     });
 
-    $("#btn-cadastrar").on('click', () => {
+    $("#btn-cadastrar-cidade").on('click', () => {
         if ($id == -1) {
             inserir();
         } else {
@@ -67,7 +67,7 @@
             success: function () {
                 obterTodos();
                 $id = -1;
-                $('#cadastro-modal').modal('hide');
+                $('#cadastro-modal-cidade').modal('hide');
                 limparCampos();
             }
         });
@@ -88,7 +88,7 @@
             success: function () {
                 obterTodos();
                 $id = -1;
-                $('#cadastro-modal').modal('hide');
+                $('#cadastro-modal-cidade').modal('hide');
                 limparCampos();
             }
         });
@@ -160,7 +160,7 @@
             success: function (data) {
                 $('#campo-nome').val(data.nome);
                 PreencherSelectEstados(data.idEstado);
-                $('#cadastro-modal').modal('show');
+                $('#cadastro-modal-cidade').modal('show');
             }
         });
     });
