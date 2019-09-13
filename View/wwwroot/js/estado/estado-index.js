@@ -6,7 +6,6 @@
             url: '/estado/obtertodos',
             method: 'get',
             success: function (data) {
-                console.log(data);
 
                 $('#tabela-estados').empty();
 
@@ -61,7 +60,7 @@
 
     $('#btn-cadastrar').on('click', function () {
         $sigla = $('#campo-sigla').val();
-        $nome = $('#campo-nome').val();
+        $nome = $('#campo-nome-estado').val();
 
         if ($id == -1) {
             cadastrar();
@@ -82,7 +81,7 @@
             success: function (data) {
                 limparCampos();
                 ObterTodos();
-                $('#cadastro-modal').modal('hide');
+                $('#cadastro-modal-estado').modal('hide');
                 $id = -1;
             },
             error: function (err) {
@@ -102,7 +101,7 @@
             success: function (data) {
                 limparCampos();
                 ObterTodos();
-                $('#cadastro-modal').modal('hide');
+                $('#cadastro-modal-estado').modal('hide');
             },
             error: function (err) {
                 console.log(err);
@@ -123,9 +122,9 @@
             url: '/estado/obterpeloid?id=' + $id,
             method: 'get',
             success: function (data) {
-                $('#campo-sigla').val(data.sigla);
-                $('#campo-nome').val(data.nome);
-                $('#cadastro-modal').modal('show');
+                $('#campo-sigla-estado').val(data.sigla);
+                $('#campo-nome-estado').val(data.nome);
+                $('#cadastro-modal-estado').modal('show');
             },
             error: function (err) {
                 console.log(err);
@@ -148,8 +147,8 @@
     });
 
     limparCampos = function () {
-        $('#campo-sigla').val("");
-        $('#campo-nome').val("");
+        $('#campo-sigla-estado').val("");
+        $('#campo-nome-estado').val("");
     }
 
     $('.close-modal').on('click', () => {
