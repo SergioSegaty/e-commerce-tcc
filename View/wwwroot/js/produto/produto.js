@@ -14,7 +14,7 @@ $(function () {
     });
 
     //Editar por botao
-    $(".table").on('click', '.botao-editar', function() {
+    $(".table").on('click', '.botao-editar', function () {
 
         $id = $(this).data('id');
 
@@ -27,7 +27,7 @@ $(function () {
                 $('#campo-altura').val(data.altura);
                 $('#campo-largura').val(data.largura);
                 $('#campo-comprimento').val(data.comprimento);
-                $('#campo-peso').val(data.Peso);
+                $('#campo-peso').val(data.peso);
                 $('#campo-descricao').val(data.descricao);
                 PreencherSelect(data.idCategoria);
                 $('#cadastro-modal-produto').modal('show');
@@ -72,7 +72,7 @@ $(function () {
         $('#campo-comprimento').val("");
         $('#campo-peso').val("");
         $('#campo-descricao').val("");
-    } 
+    }
 
 
     // Inserir
@@ -207,9 +207,11 @@ $(function () {
 
 
 
-    $('#botao-cadastrar-produto').on('click', () => { PreencherSelect(-1); })
-    limparCampos();
-    $id = -1;
+    $('#botao-cadastrar-produto').on('click', () => {
+        PreencherSelect(-1);
+        limparCampos();
+        $id = -1;
+    })
 
     PreencherSelect = function (idCategoria) {
 
@@ -245,7 +247,7 @@ $(function () {
 
                 }
             }
-            
+
         })
 
     }
