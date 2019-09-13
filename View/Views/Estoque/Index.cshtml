@@ -1,7 +1,45 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h3 class="text-black  text-center">Controle De Estoque</h3>
 
-<h1>Index</h1>
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-cadastro-produto">Novo Produto</button>
+    </div>
+</div>
 
+<div class="page-content">
+    <div class="panel">
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th width="5%">Código</th>
+                                <th>Nome do Produto</th>
+                                <th width="10%">Quantidade</th>
+                                <th width="10%">Valor</th>
+                                <th width="25%">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-estoque"></tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome do Produto</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
+                                <th>Ação</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="../Produto/CadastroModalProduto">
