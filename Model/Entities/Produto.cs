@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,25 +12,28 @@ namespace Model.Entities
         [ForeignKey("IdCategoria")]
         public Categoria Categoria { get; set; }
 
+        [Column("id_marca")]
+        public int IdMarca { get; set; }
+
+        [ForeignKey("IdMarca")]
+        public Marca Marca { get; set; }
+
         [Column("nome"), StringLength(100, ErrorMessage = "No maximo 100 caracteres.", MinimumLength = 3)]
         public string Nome { get; set; }
-
-        [Column("preco", TypeName = "decimal(18,2)")]
-        public decimal Preco { get; set; }
 
         [Column("descricao")]
         public string Descricao { get; set; }
 
-        [Column("altura")]
-        public double Altura { get; set; }
-
-        [Column("largura")]
-        public double Largura { get; set; }
-
-        [Column("comprimento")]
-        public double Comprimento { get; set; }
+        [Column("preco", TypeName = "decimal(8,2)")]
+        public decimal Preco { get; set; }
 
         [Column("peso")]
         public double Peso { get; set; }
+
+        [Column("cor")]
+        public string Cor { get; set; }
+
+        [Column("imagem")]
+        public string Imagem { get; set; }
     }
 }
