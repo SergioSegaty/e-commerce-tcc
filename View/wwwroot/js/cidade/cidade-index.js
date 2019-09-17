@@ -22,7 +22,7 @@
     $('#abrir-modal-cadastro').on('click', () => { PreencherSelectEstados(-1); });
 
     PreencherSelectEstados = function (idEstado) {
-        $('#campo-estado-sigla').empty();
+        $('#campo-sigla-estado').empty();
 
         let option = document.createElement('option');
         option.disabled = true;
@@ -31,7 +31,7 @@
         option.innerHTML = 'Selecione um Estado';
 
 
-        document.getElementById('campo-estado-sigla').appendChild(option);
+        document.getElementById('campo-sigla-estado').appendChild(option);
 
         $.ajax({
             url: '/estado/obtertodos',
@@ -47,7 +47,7 @@
                     option.value = _data.id;
                     option.innerHTML = _data.nome;
 
-                    document.getElementById('campo-estado-sigla').appendChild(option);
+                    document.getElementById('campo-sigla-estado').appendChild(option);
                 }
             }
         });
@@ -55,7 +55,7 @@
 
     inserir = function () {
         $nome = $("#campo-nome-cidade").val();
-        $idEstado = $("#campo-estado-sigla").val();
+        $idEstado = $("#campo-sigla-estado").val();
 
         $.ajax({
             url: '/cidade/adicionar',
@@ -64,18 +64,23 @@
                 Nome: $nome,
                 IdEstado: $idEstado
             },
-            success: function () {
+            success: function (data) {
                 obterTodos();
+                limparCampos();
                 $id = -1;
                 $('#cadastro-modal-cidade').modal('hide');
-                limparCampos();
+                notifyAlert(1, 'Cadastrado com Sucesso!', 2);
+            },
+            error: function (err) {
+                console.log(err);
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
 
     alterar = function () {
         $nome = $("#campo-nome-cidade").val();
-        $idEstado = $("#campo-estado-sigla").val();
+        $idEstado = $("#campo-sigla-estado").val();
 
         $.ajax({
             url: '/cidade/alterar',
@@ -85,18 +90,22 @@
                 Nome: $nome,
                 IdEstado: $idEstado
             },
-            success: function () {
+            success: function (data) {
                 obterTodos();
+                limparCampos();
                 $id = -1;
                 $('#cadastro-modal-cidade').modal('hide');
-                limparCampos();
+                notifyAlert(1, 'Alterado com Sucesso!', 2);
+            },
+            error: function (err) {
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
 
     limparCampos = function () {
         $('#campo-nome-cidade').val("");
-        $('#campo-estado-sigla').val(-1);
+        $('#campo-sigla-estado').val(-1);
     }
 
     obterTodos = function () {
@@ -178,9 +187,11 @@
                 obterTodos();
                 $id = -1;
                 $('#alert-apagar-cidade').modal('hide');
+                notifyAlert(1, 'Apagou com Sucesso!', 2);
             },
             error: function (err) {
                 console.log(err);
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     });
