@@ -1,6 +1,5 @@
 ﻿.notie-container {
     box-shadow: none;
-    margin-top: 66px;
-    margin-left: 260px;
-    width: 87%;
+    opacity: 0.9;
+    z-index: 2000;
 }
