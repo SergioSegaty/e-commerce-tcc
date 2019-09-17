@@ -59,7 +59,7 @@
     }
 
     $('#btn-cadastrar').on('click', function () {
-        $sigla = $('#campo-sigla').val();
+        $sigla = $('#campo-sigla-estado').val();
         $nome = $('#campo-nome-estado').val();
 
         if ($id == -1) {
