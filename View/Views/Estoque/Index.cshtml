@@ -1,7 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
+
 <h3 class="text-black  text-center">Controle De Estoque</h3>
 
 <div class="row">
@@ -11,35 +14,158 @@
 </div>
 
 <div class="page-content">
+    <!-- Panel Row Toggler -->
     <div class="panel">
-        <div class="panel-body container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th width="5%">Código</th>
-                                <th>Nome do Produto</th>
-                                <th width="10%">Quantidade</th>
-                                <th width="10%">Valor</th>
-                                <th width="25%">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabela-estoque"></tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Código</th>
-                                <th>Nome do Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor</th>
-                                <th>Ação</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
+        <header class="panel-heading">
+            <h3 class="panel-title">Row Toggler</h3>
+        </header>
+        <div class="panel-body">
+            <table class="table table-striped table-hover toggle-circle" id="exampleRowToggler">
+                <thead>
+                    <tr>
+                        <th data-visible="false" data-filterable="false">ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Status</th>
+                        <th data-name="something" data-visible="false" data-filterable="false">Never seen but always around</th>
+                        <th data-breakpoints="all">Job Title</th>
+                        <th data-breakpoints="all">Started On</th>
+                        <th data-breakpoints="all">Date of Birth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Shona</td>
+                        <td>Woldt</td>
+                        <td>
+                            <span class="badge badge-table badge-success">Active</span>
+                        </td>
+                        <td>1381105566987</td>
+                        <td>Airline Transport Pilot</td>
+                        <td>23 Jun 2013</td>
+                        <td>3 Oct 2017</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Lizzee</td>
+                        <td>Goodlow</td>
+                        <td>1381105566987</td>
+                        <td>Technical Services Librarian</td>
+                        <td>23 Jun 2013</td>
+                        <td>1 Nov 2014</td>
+                        <td>
+                            <span class="badge badge-table badge-danger">Suspended</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Isidra</td>
+                        <td>Boudreaux</td>
+                        <td>1381105566987</td>
+                        <td>Traffic Court Referee</td>
+                        <td>23 Jun 2013</td>
+                        <td>22 Jun 2014</td>
+                        <td>
+                            <span class="badge badge-table badge-success">Active</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Granville</td>
+                        <td>Leonardo</td>
+                        <td>1381105566987</td>
+                        <td>Business Services Sales Representative</td>
+                        <td>23 Jun 2013</td>
+                        <td>19 Apr 2013</td>
+                        <td>
+                            <span class="badge badge-table badge-danger">Suspended</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Lauri</td>
+                        <td>Hyland</td>
+                        <td>1381105566987</td>
+                        <td>Blackjack Supervisor</td>
+                        <td>23 Jun 2013</td>
+                        <td>15 Nov 2014</td>
+                        <td>
+                            <span class="badge badge-table badge-danger">Suspended</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Easer</td>
+                        <td>Dragoo</td>
+                        <td>1381105566987</td>
+                        <td>Drywall Stripper</td>
+                        <td>23 Jun 2013</td>
+                        <td>13 Dec 2014</td>
+                        <td>
+                            <span class="badge badge-table badge-success">Active</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Maple</td>
+                        <td>Halladay</td>
+                        <td>1381105566987</td>
+                        <td>Aviation Tactical Readiness Officer</td>
+                        <td>23 Jun 2013</td>
+                        <td>30 Dec 2017</td>
+                        <td>
+                            <span class="badge badge-table badge-danger">Suspended</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Maxine</td>
+                        <td>Woldt</td>
+                        <td>1381105566987</td>
+                        <td>Business Services Sales Representative</td>
+                        <td>23 Jun 2013</td>
+                        <td>17 Oct 2014</td>
+                        <td>
+                            <span class="badge badge-table badge-dark">Disabled</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Lorraine</td>
+                        <td>Mcgaughy</td>
+                        <td>1381105566987</td>
+                        <td>Hemodialysis Technician</td>
+                        <td>23 Jun 2013</td>
+                        <td>11 Nov 2014</td>
+                        <td>
+                            <span class="badge badge-table badge-success">Active</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Judi</td>
+                        <td>Badgett</td>
+                        <td>1381105566987</td>
+                        <td>Electrical Lineworker</td>
+                        <td>23 Jun 2013</td>
+                        <td>23 Jun 2013</td>
+                        <td>
+                            <span class="badge badge-table badge-success">Active</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+
+@section Scripts{
+
+
+    <!-- JavaScripts -->
+    <script src="~/js/estoque/estoque-index.js"></script>
+
+}
 
 <partial name="../Produto/CadastroModalProduto">
