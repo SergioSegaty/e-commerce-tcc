@@ -62,12 +62,35 @@
         $sigla = $('#campo-sigla-estado').val();
         $nome = $('#campo-nome-estado').val();
 
-        if ($id == -1) {
+        if ($id === -1) {
             cadastrar();
         } else {
+            alert($id);
             editar();
         }
     });
+
+    cadastrar = function () {
+        $.ajax({
+            url: '/estado/adicionar',
+            method: 'post',
+            data: {
+                Nome: $nome,
+                Sigla: $sigla
+            },
+            success: function (data) {
+                limparCampos();
+                ObterTodos();
+                $id = -1;
+                $('#cadastro-modal-estado').modal('hide');
+                notifyAlert(1, 'Cadastrado com sucesso!', 2);
+            },
+            error: function (err) {
+                console.log(err);
+                notifyAlert(2,'Erro no Servidor', 2);
+            }
+        });
+    }
 
     editar = function () {
         $.ajax({
@@ -83,31 +106,15 @@
                 ObterTodos();
                 $('#cadastro-modal-estado').modal('hide');
                 $id = -1;
+                notifyAlert(1, 'Alterado com sucesso!', 2);
             },
             error: function (err) {
                 console.log(err);
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
 
-    cadastrar = function () {
-        $.ajax({
-            url: '/estado/adicionar',
-            method: 'post',
-            data: {
-                Nome: $nome,
-                Sigla: $sigla
-            },
-            success: function (data) {
-                limparCampos();
-                ObterTodos();
-                $('#cadastro-modal-estado').modal('hide');
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    }
 
     $('#tabela-estados').on('click', '.botao-apagar', function () {
         $id = $(this).data('id');
@@ -128,6 +135,7 @@
             },
             error: function (err) {
                 console.log(err);
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     });
@@ -139,9 +147,12 @@
             success: function (data) {
                 ObterTodos();
                 $('#alert-apagar-estado').modal('hide');
+                notifyAlert(1, 'Apagou com sucesso!', 2);
+                $id = -1;
             },
             error: function (err) {
                 console.log(err);
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     });

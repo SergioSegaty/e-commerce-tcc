@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-12">
-        <button class="btn btn-primary float-right" style="margin-bottom: 15px;" data-toggle="modal" data-target="#cadastro-modal-estado">Novo Estado</button>
+        <button class="btn btn-primary float-right" style="margin-bottom: 15px;" data-toggle="modal" data-target="#cadastro-modal-estado" id="novo-estado">Novo Estado</button>
     </div>
 </div>
 
@@ -47,5 +47,6 @@
 <partial name="ModalAlertApagarEstado.cshtml"/>
 
 @section Scripts{
+    <script src="~/js/estado/estado-notify.js"></script>
     <script src="~/js/estado/estado-index.js"></script>
 }
