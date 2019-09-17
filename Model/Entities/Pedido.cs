@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Model.Entities;
 
 namespace Model.Entities
 {
