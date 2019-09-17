@@ -65,7 +65,6 @@
         if ($id === -1) {
             cadastrar();
         } else {
-            alert($id);
             editar();
         }
     });
