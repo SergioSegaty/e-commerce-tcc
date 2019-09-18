@@ -10,5 +10,7 @@ namespace Repository.Interface
         Estoque ObterPeloId(int id);
 
         List<Estoque> ObterTodosPeloProduto(int idProduto);
+
+        List<Estoque> ObterTodos();
     }
 }

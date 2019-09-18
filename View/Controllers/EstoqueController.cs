@@ -12,21 +12,22 @@ namespace e_commerce_ws.Controllers
     public class EstoqueController : Controller
     {
         private readonly IBaseRepositoryAsync<Estoque> _repository;
-
-
-        [HttpGet, Route("")]
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private readonly IEstoqueRepository _estoqueRepository;
 
         /// <summary>
         /// Construtor do controller de Estoque
         /// </summary>
         /// <param name="repository"></param>
-        public EstoqueController(IBaseRepositoryAsync<Estoque> repository)
+        public EstoqueController(IBaseRepositoryAsync<Estoque> repository, IEstoqueRepository estoqueRepository)
         {
             this._repository = repository;
+            _estoqueRepository = estoqueRepository;
+        }
+
+        [HttpGet, Route("")]
+        public ActionResult Index()
+        {
+            return View();
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace e_commerce_ws.Controllers
         [HttpGet, Route("obtertodos")]
         public JsonResult ObterTodos()
         {
-            var estoques = _repository.ObterTodos();
+            var estoques = _estoqueRepository.ObterTodos();
             return Json(estoques);
         }
 
@@ -48,7 +49,7 @@ namespace e_commerce_ws.Controllers
         [HttpGet, Route("obterpeloid")]
         public ActionResult ObterPeloId(int id)
         {
-            var estoque = _repository.ObterPeloId(id);
+            var estoque = _estoqueRepository.ObterPeloId(id);
 
             if (estoque == null)
                 return NotFound();

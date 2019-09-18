@@ -34,7 +34,7 @@ namespace View
             services.AddTransient(typeof(IBaseRepositoryAsync<>), typeof(BaseRepositoryAsync<>));
             services.AddTransient(typeof(ICidadeRepository), typeof(CidadeRepository));
             services.AddTransient(typeof(IEnderecoRepository), typeof(EnderecoRepository));
-            services.AddTransient(typeof(IEstoqueRepository), typeof(EstoqueRepository));
+            services.AddTransient(typeof(IEstoqueRepository), typeof(EstoqueRepository));   
             services.AddTransient(typeof(IPedidoProdutoRepository), typeof(PedidoProdutoRepository));
             services.AddTransient(typeof(IProdutoRepository), typeof(ProdutoRepository));
             #endregion

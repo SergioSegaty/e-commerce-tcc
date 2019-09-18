@@ -31,5 +31,13 @@ namespace Repository.Repositories
                 .Where(x => x.RegistroAtivo && x.IdProduto == idProduto)
                 .ToList();
         }
+
+        public List<Estoque> ObterTodos()
+        {
+            return _context.Estoques
+                .Include(x => x.Produto)
+                .Where(x => x.RegistroAtivo)
+                .ToList();
+        }
     }
 }

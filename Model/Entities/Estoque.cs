@@ -13,5 +13,8 @@ namespace Model.Entities
 
         [Column("quantidade")]
         public int Quantidade { get; set; }
+
+        [Column("status")]
+        public string Status { get; set; }
     }
 }
