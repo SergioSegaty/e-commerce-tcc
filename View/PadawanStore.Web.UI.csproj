@@ -30,4 +30,7 @@
     <None Include="wwwroot\js\Categoria\Categoria.js" />
   </ItemGroup>
 
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
