@@ -9,25 +9,29 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-nome-estado">Nome</label>
-                            <input id="campo-nome-estado" placeholder="Nome do Estado" class="form-control" />
+                <form id="cadastro-estado-form" action="javascript:void(0)">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="campo-nome-estado">Nome</label>
+                                <span class="text-danger">*</span>
+                                <input id="campo-nome-estado" name="nome" placeholder="Nome do Estado" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="campo-sigla-estado">Sigla</label>
+                                <span class="text-danger">*</span>
+                                <input id="campo-sigla-estado" name="sigla" placeholder="Sigla do Estado" class="form-control" />
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-sigla-estado">Sigla</label>
-                            <input id="campo-sigla-estado" placeholder="Sigla do Estado" class="form-control" />
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-success" id="btn-cadastrar">Salvar</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success" id="btn-cadastrar">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
