@@ -62,10 +62,12 @@
         $sigla = $('#campo-sigla-estado').val();
         $nome = $('#campo-nome-estado').val();
 
-        if ($id === -1) {
-            cadastrar();
-        } else {
-            editar();
+        if ($('#campo-nome-estado').hasClass('valid') && $('#campo-sigla-estado').hasClass('valid')) {
+            if ($id === -1) {
+                cadastrar();
+            } else {
+                editar();
+            }
         }
     });
 
@@ -86,7 +88,7 @@
             },
             error: function (err) {
                 console.log(err);
-                notifyAlert(2,'Erro no Servidor', 2);
+                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
@@ -163,7 +165,7 @@
 
     $('.close-modal').on('click', () => {
         limparCampos();
-        $id = -1;   
+        $id = -1;
     });
 
     $('.close').on('click', () => {
