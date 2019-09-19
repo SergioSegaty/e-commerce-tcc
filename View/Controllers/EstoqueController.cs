@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Model.Entities;
@@ -91,6 +92,27 @@ namespace e_commerce_ws.Controllers
         {
             bool apagou = _repository.Apagar(id);
             return Json(new { status = apagou });
+        }
+
+        [HttpGet, Route("obtertodosfootable")]
+        public JsonResult ObterTodosFootable()
+        {
+            var estoques = _estoqueRepository.ObterTodos();
+
+            var result = new List<object>();
+
+            foreach(var estoque in estoques)
+            {
+                result.Add(
+                    new {
+                        id =estoque.Id,
+                        nomeProduto = estoque.Produto.Nome,
+                        quantidade = estoque.Quantidade,
+                        status = estoque.Status
+                    });
+            }
+
+            return Json(result);
         }
     }
 }

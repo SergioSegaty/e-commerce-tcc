@@ -4,6 +4,11 @@
 
 }
 
+<style>
+    .footable-filtering {
+        display: none;
+    }
+</style>
 
 <h3 class="text-black  text-center">Controle De Estoque</h3>
 
@@ -28,21 +33,21 @@
                         </label>
                     </div>
                     <div class="radio-custom radio-primary mr-15">
-                        <input type="radio" name="status" id="status_active" class="filter-ui-status" value="active">
+                        <input type="radio" name="status" id="status_active" class="filter-ui-status" value="Em Estoque">
                         <label for="status_active">
-                            Active
+                            Em Estoque
                         </label>
                     </div>
                     <div class="radio-custom radio-primary mr-15">
                         <input type="radio" name="status" id="status_desativado" class="filter-ui-status"
-                               value="sem-estoque">
+                               value="Sem Estoque">
                         <label for="status_desativado">
                             Sem Estoque
                         </label>
                     </div>
                     <div class="radio-custom radio-primary">
                         <input type="radio" name="status" id="status_suspenso" class="filter-ui-status"
-                               value="suspenso">
+                               value="Suspenso">
                         <label for="status_suspenso">
                             Suspenso
                         </label>
@@ -51,7 +56,7 @@
             </div>
         </header>
         <div class="panel-body">
-            <table class="table footable footable-paging footable-paging-center breakpoint-lg" 
+            <table class="table footable footable-paging footable-filtering footable-paging-center breakpoint-lg"
                    id="tabela-estoque">
                 <thead>
                 </thead>
