@@ -2,7 +2,7 @@
 
 
 $(function () {
-
+    $idProduto = -1;
     $id = -1;
 
     $("#botao-salvar-produto").on('click', () => {
@@ -101,13 +101,32 @@ $(function () {
                 Peso: $peso,
                 Descricao: $descricao
             },
-            success: function () {
+            success: function (data) {
+                $id = data.id;
+
+                $.ajax({
+
+                    url: '/estoque/adicionar',
+                    method: 'post',
+                    data: {
+                        IdProduto: $id,
+                        Quantidade: 1,
+                        Status: 'Em Estoque',
+                    },
+                    success: function (data) {
+                        $idProduto = -1;
+                    }
+                });
+
                 obterTodos();
                 $id = -1;
                 $('#cadastro-modal-produto').modal('hide');
                 limparCampos();
+
             }
-        })
+        });
+
+
     }
 
     // Alterar
@@ -137,7 +156,7 @@ $(function () {
                 Peso: $peso,
                 Descricao: $descricao
             },
-            success: function () {
+            success: function (data) {
                 obterTodos();
                 $id = -1;
                 $('#cadastro-modal-produto').modal('hide');
