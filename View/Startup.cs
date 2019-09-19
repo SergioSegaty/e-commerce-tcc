@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repository;
+using Repository.Context;
 using Repository.Interface;
 using Repository.Repositories;
 
@@ -39,12 +40,11 @@ namespace View
             services.AddTransient(typeof(IProdutoRepository), typeof(ProdutoRepository));
             #endregion
 
-            services.AddDbContext<SistemaContext>(options =>
+            services.AddDbContext<StoreContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    opts => opts.MigrationsAssembly("PadawanStore.Infra.Data"));
             });
-
-            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
