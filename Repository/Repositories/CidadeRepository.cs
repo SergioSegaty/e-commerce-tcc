@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model.Entities;
+using Repository.Context;
 using Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace Repository.Repositories
 {
     public class CidadeRepository : ICidadeRepository
     {
-        private readonly SistemaContext _context;
+        private readonly StoreContext _context;
 
-        public CidadeRepository(SistemaContext context)
+        public CidadeRepository(StoreContext context)
         {
             this._context = context;
         }

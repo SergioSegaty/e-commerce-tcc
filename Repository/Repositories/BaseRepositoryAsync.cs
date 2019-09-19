@@ -4,15 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using Repository.Context;
 using Repository.Interface;
 
 namespace Repository.Repositories
 {
     public class BaseRepositoryAsync<T> : IBaseRepositoryAsync<T> where T : Base
     {
-        private readonly SistemaContext _context;
+        private readonly StoreContext _context;
 
-        public BaseRepositoryAsync(SistemaContext context)
+        public BaseRepositoryAsync(StoreContext context)
         {
             _context = context;
         }

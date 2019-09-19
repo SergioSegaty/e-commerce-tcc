@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Model.Entities;
+using Repository.Context;
 using Repository.Interface;
 
 namespace Repository.Repositories
 {
     public class PedidoProdutoRepository : IPedidoProdutoRepository
     {
-        private readonly SistemaContext _context;
+        private readonly StoreContext _context;
 
-        public PedidoProdutoRepository(SistemaContext context)
+        public PedidoProdutoRepository(StoreContext context)
         {
             _context = context;
         }
