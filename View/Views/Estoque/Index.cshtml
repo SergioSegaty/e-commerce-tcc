@@ -10,68 +10,71 @@
     }
 </style>
 
-<h3 class="text-black  text-center">Controle De Estoque</h3>
-
-<div class="row">
-    <div class="col-12">
-        <button class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-cadastro-produto">Novo Produto</button>
-    </div>
+<div class="page-header">
+    <h1 class="page-title">Controle de Estoque</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item active">Estoque</li>
+    </ol>
 </div>
 
 <div class="page-content">
     <!-- Panel Row Toggler -->
-    <div class="panel">
-        <header class="panel-heading">
-            <h3 class="panel-title">Estoque</h3>
-            <div class="pl-30">
-                <form class="form-inline">
-                    <div class="radio-custom radio-primary mr-15">
-                        <input type="radio" name="status" id="status_none" class="filter-ui-status" value="none"
-                               checked>
-                        <label for="status_none">
-                            Nenhum
-                        </label>
-                    </div>
-                    <div class="radio-custom radio-primary mr-15">
-                        <input type="radio" name="status" id="status_active" class="filter-ui-status" value="Em Estoque">
-                        <label for="status_active">
-                            Em Estoque
-                        </label>
-                    </div>
-                    <div class="radio-custom radio-primary mr-15">
-                        <input type="radio" name="status" id="status_desativado" class="filter-ui-status"
-                               value="Sem Estoque">
-                        <label for="status_desativado">
-                            Sem Estoque
-                        </label>
-                    </div>
-                    <div class="radio-custom radio-primary">
-                        <input type="radio" name="status" id="status_suspenso" class="filter-ui-status"
-                               value="Suspenso">
-                        <label for="status_suspenso">
-                            Suspenso
-                        </label>
-                    </div>
-                </form>
+
+
+        <div class="panel">
+            <header class="panel-heading">
+                <h3 class="panel-title">Estoque</h3>
+                <div class="pl-30">
+                  
+                    <form class="form-inline">
+                        <div class="radio-custom radio-primary mr-15">
+                            <input type="radio" name="status" id="status_none" class="filter-ui-status" value="none"
+                                   checked>
+                            <label for="status_none">
+                                Nenhum
+                            </label>
+                        </div>
+                        <div class="radio-custom radio-primary mr-15">
+                            <input type="radio" name="status" id="status_active" class="filter-ui-status" value="Em Estoque">
+                            <label for="status_active">
+                                Em Estoque
+                            </label>
+                        </div>
+                        <div class="radio-custom radio-primary mr-15">
+                            <input type="radio" name="status" id="status_desativado" class="filter-ui-status"
+                                   value="Sem Estoque">
+                            <label for="status_desativado">
+                                Sem Estoque
+                            </label>
+                        </div>
+                        <div class="radio-custom radio-primary">
+                            <input type="radio" name="status" id="status_suspenso" class="filter-ui-status"
+                                   value="Suspenso">
+                            <label for="status_suspenso">
+                                Suspenso
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </header>
+
+            <div class="panel-body">
+                <table class="table footable footable-paging footable-filtering footable-paging-center breakpoint-lg"
+                       id="tabela-estoque">
+                    <thead>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-        </header>
-        <div class="panel-body">
-            <table class="table footable footable-paging footable-filtering footable-paging-center breakpoint-lg"
-                   id="tabela-estoque">
-                <thead>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
         </div>
     </div>
-</div>
 
 @section Scripts{
 
 
-    <!-- JavaScripts -->
-    <script src="~/js/estoque/estoque-index.js"></script>
+<!-- JavaScripts -->
+<script src="~/js/estoque/estoque-index.js"></script>
 
 }
 
