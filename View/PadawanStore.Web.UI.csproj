@@ -27,7 +27,7 @@
 
 
   <ItemGroup>
-    <None Include="wwwroot\js\Categoria\Categoria.js" />
+    <None Include="wwwroot\js\categoria\Categoria.js" />
   </ItemGroup>
 
 

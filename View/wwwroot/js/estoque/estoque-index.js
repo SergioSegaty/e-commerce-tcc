@@ -3,7 +3,6 @@
         { "id": 1, "val": "em estoque" },
         { "id": 2, "val": "sem estoque" },
         { "id": 3, "val": "cancelado" },
-
     ]
 };
 
@@ -11,7 +10,8 @@ jQuery(function ($) {
     $('#tabela-estoque').footable({
         "columns": [
             { "name": "id", "title": "Código", "breakpoints": "xs sm", "type": "number", "style": { "width": 80, "maxWidth": 80 } },
-            { "name": "produto.name", "title": "Nome" }
+            { "name": "", "title": "Nome", "type": "text" },
+            { "name": "quantidade", "title": "Quantidade", "type": "number", "style": { "width": 80, "maxWidth": 80, "text-align": "center" }, }
         ],
         "rows": $.get('/estoque/obtertodos', (data) => {
 
@@ -29,4 +29,5 @@ jQuery(function ($) {
         filtering.filter();
     });
 });
+
 
