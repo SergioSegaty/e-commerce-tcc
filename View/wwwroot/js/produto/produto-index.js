@@ -25,7 +25,7 @@ $(function () {
 
     mascaras = function () {
 
-        $('#campo-preco').mask("#.##0,00 R$");
+        $('#campo-preco').mask("#.###,00 R$", { reverse: true });
         $('#campo-peso').mask("#,00 Kg", { reverse: true });
 
     }
