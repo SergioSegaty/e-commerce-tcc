@@ -210,7 +210,10 @@ $(function () {
                     tdCategoria.innerHTML = _data.categoria.nome;
 
                     var tdPreco = document.createElement('td');
-                    tdPreco.innerHTML = "R$: " + _data.preco;
+                    var index = _data.preco.toString().length;
+                    var precoString = _data.preco.toString().substring(0, (index -2)) + "," + _data.preco.toString().substring((index -2), index);
+
+                    tdPreco.innerHTML = "R$: " + precoString;
 
                     var botaoEditar = document.createElement("button");
 
