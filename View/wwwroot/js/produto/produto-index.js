@@ -14,8 +14,10 @@ $(function () {
 
             if ($id == -1) {
                 inserir();
+                notifyAlert(1, 'Cadastrado com sucesso.', 2);
             } else {
                 alterar();
+                notifyAlert(1, 'Alterado com sucesso', 2);
             }
         }
 
@@ -23,7 +25,7 @@ $(function () {
 
     mascaras = function () {
 
-        $('#campo-preco').mask("#.##0,00 R$", { reverse: true });
+        $('#campo-preco').mask("#.##0,00 R$");
         $('#campo-peso').mask("#,00 Kg", { reverse: true });
 
     }
@@ -78,9 +80,11 @@ $(function () {
                 obterTodos();
                 $id = -1;
                 $('#alert-apagar-produto').modal("hide");
+                notifyAlert(1, 'Apagado com Sucesso', 2);
             },
             error: function (err) {
                 console.log(err);
+                notifyAlert(1, 'Erro ao apagar', 2)
             }
         });
 
@@ -137,6 +141,7 @@ $(function () {
                     },
                     success: function (data) {
                         $idProduto = -1;
+                        notifyAlert(2, 'Erro ao Cadastrar', 2);
                     }
                 });
 
@@ -250,6 +255,10 @@ $(function () {
                     document.getElementById('lista-produtos').append(tr);
 
                 }
+                
+            },
+            error: function () {
+                notifyAlert(2, 'Erro ao obter os produtos', 2);
             }
 
         })
@@ -298,7 +307,7 @@ $(function () {
                 }
             }
 
-        })
+        });
 
     }
 

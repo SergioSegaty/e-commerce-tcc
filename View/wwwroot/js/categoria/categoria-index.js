@@ -50,12 +50,17 @@ $(function () {
 
     // Botao Salvar no [Modal]
     $("#categoria-botao-salvar").on("click", function () {
+        $form = $('#form-cadastro-categoria');
 
+        var $validado = $form.valid();
+
+        if ($validado == true) {
             if ($id == -1) {
                 inserir();
             } else {
                 alterar();
             }
+        }
     });
 
 

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -22,17 +21,13 @@
         </div>
 
         <div class="panel-body container-fluid">
-
-            <div class="example-wrap">
-
-                <div class="">
-                    <button class="btn btn-primary ml-3 pull-right" data-toggle="modal"
-                            data-target="#modalCadastroCategoria">
-                        <i class="fas fa-plus"></i> Nova Categoria
-                    </button>
-                </div>
-
+            <div class="">
+                <button class="btn btn-primary ml-3 pull-right mb-15" data-toggle="modal"
+                        data-target="#modalCadastroCategoria">
+                    <i class="fas fa-plus"></i> Nova Categoria
+                </button>
             </div>
+
 
             <table class="table table-bordered">
                 <thead>
@@ -45,15 +40,16 @@
                 <tbody id="lista-categorias" class="text-center table-content"></tbody>
             </table>
         </div>
-
     </div>
-    <!-- End Panel -->
+
+</div>
+<!-- End Panel -->
 </div>
 
 <partial name="ModalCadastroCategoria.cshtml" />
 <partial name="ModalAlertApagarCategoria.cshtml" />
 
 @section Scripts {
-    <script src="~/js/categoria/categoria-index.js"></script>
-    <script src="~/js/categoria/validation-categoria.js"></script>
+<script src="~/js/categoria/categoria-index.js"></script>
+<script src="~/js/categoria/validation-categoria.js"></script>
 }
