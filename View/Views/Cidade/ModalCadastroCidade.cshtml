@@ -9,26 +9,30 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-nome-cidade">Nome</label>
-                            <input id="campo-nome-cidade" placeholder="Nome da Cidade" class="form-control" />
+                <form id="cadastro-cidade-form" action="javascript:void(0)">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="campo-nome-cidade">Nome</label>
+                                <span class="text-danger">*</span>
+                                <input id="campo-nome-cidade" name="nome" placeholder="Nome da Cidade" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="campo-estado">Estado</label>
+                                <span class="text-danger">*</span>
+                                <select id="campo-estado" name="estado" class="form-control">
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-sigla-estado">Estado</label>
-                            <select id="campo-sigla-estado" class="form-control">
-                            </select>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-success" id="btn-cadastrar-cidade">Salvar</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success" id="btn-cadastrar-cidade">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
