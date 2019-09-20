@@ -210,9 +210,15 @@ $(function () {
 
                     var tdPreco = document.createElement('td');
                     var index = _data.preco.toString().length;
-                    var precoString = _data.preco.toString().substring(0, (index -2)) + "," + _data.preco.toString().substring((index -2), index);
+                    if (_data.preco.toString().length > 5) {
+                        var precoString = _data.preco.toString().substring(0, (index - 5)) + "." + _data.preco.toString().substring((index - 5), (index - 2)) + "," + _data.preco.toString().substring((index - 2), 3);
+
+                    } else {
+                        var precoString = _data.preco.toString().substring(0, (index - 2)) + "," + _data.preco.toString().substring((index - 2), index);
+                    }
 
                     tdPreco.innerHTML = "R$: " + precoString;
+                    index = 0;
 
                     var botaoEditar = document.createElement("button");
 
