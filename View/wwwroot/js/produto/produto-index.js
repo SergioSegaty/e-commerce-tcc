@@ -1,11 +1,47 @@
 ﻿// JQuerry
 
-
 $(function () {
     $idProduto = -1;
     $id = -1;
     $form = $('#form-cadastro-produto');
+    $imageUplaod = $('.box');
 
+   
+
+    // Image Drag&Drop Detection
+
+    var isAdvancedUpload = function () {
+        var div = document.createElement('div');
+        return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+    }();
+
+    if (isAdvancedUpload) {
+
+        var droppedFiles = false;
+
+        $imageUplaod.on('drag dragstart dragover dragcenter dragleave drop', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+
+        })
+
+            .on('dragover dragcenter ', function () {
+
+                $imageUplaod.addClass('is-dragover');
+
+            })
+            .on('dragleave dragend drop', function () {
+                $imageUpload.removeClass('is-dragover');
+            })
+            .on('drop', function (e) {
+                droppedFiles = e.originalEvent.dataTransfer.files;
+            });
+
+    }
+
+    console.log("funcionou: " + isAdvancedUpload);
 
     $("#botao-salvar-produto").on('click', () => {
         $valido = $form.valid();
@@ -141,7 +177,7 @@ $(function () {
                     },
                     success: function (data) {
                         $idProduto = -1;
-                        notifyAlert(2, 'Erro ao Cadastrar', 2);
+                        notifyAlert(1, 'Cadastrado com sucesso', 2);
                     }
                 });
 
@@ -150,7 +186,11 @@ $(function () {
                 $('#cadastro-modal-produto').modal('hide');
                 limparCampos();
 
+            },
+            error: function () {
+                notifyAlert(3, 'Errro ao Cadastrar Produto', 2);
             }
+
         });
 
 
@@ -255,7 +295,7 @@ $(function () {
                     document.getElementById('lista-produtos').append(tr);
 
                 }
-                
+
             },
             error: function () {
                 notifyAlert(2, 'Erro ao obter os produtos', 2);
