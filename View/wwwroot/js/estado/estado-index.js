@@ -88,7 +88,6 @@
             },
             error: function (err) {
                 console.log(err);
-                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
@@ -111,7 +110,6 @@
             },
             error: function (err) {
                 console.log(err);
-                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
@@ -136,7 +134,6 @@
             },
             error: function (err) {
                 console.log(err);
-                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     });
@@ -153,7 +150,6 @@
             },
             error: function (err) {
                 console.log(err);
-                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     });

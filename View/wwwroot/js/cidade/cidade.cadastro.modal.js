@@ -1,15 +1,13 @@
 ﻿$(() => {
-    $('#cadastro-estado-form').validate({
+    $('#cadastro-cidade-form').validate({
         rules: {
             nome: {
                 required: true,
                 minlength: 4,
                 maxlength: 19
             },
-            sigla: {
-                required: true,
-                minlength: 2,
-                maxlength: 2
+            estado: {
+                required: true
             }
         },
         messages: {
@@ -18,10 +16,8 @@
                 minlength: 'Este campo deve conter no mínimo 4 caracteres.',
                 maxlength: 'Este campo deve conter no máximo 19 caracteres.'
             },
-            sigla: {
-                required: 'Este campo é obrigatório.',
-                minlength: 'Este campo deve conter 2 caracteres.',
-                maxlength: 'Este campo deve conter 2 caracteres.'
+            estado: {
+                required: 'Este campo é obrigatório.'
             }
         },
         errorElement: 'em',

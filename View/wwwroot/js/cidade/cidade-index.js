@@ -12,17 +12,22 @@
     });
 
     $("#btn-cadastrar-cidade").on('click', () => {
-        if ($id == -1) {
-            inserir();
-        } else {
-            alterar();
+        $nome = $("#campo-nome-cidade").val();
+        $idEstado = $("#campo-estado").val();
+
+        if ($('#campo-nome-cidade').hasClass('valid') && $('#campo-estado').hasClass('valid')) {
+            if ($id == -1) {
+                inserir();
+            } else {
+                alterar();
+            }
         }
     });
 
     $('#abrir-modal-cadastro').on('click', () => { PreencherSelectEstados(-1); });
 
     PreencherSelectEstados = function (idEstado) {
-        $('#campo-sigla-estado').empty();
+        $('#campo-estado').empty();
 
         let option = document.createElement('option');
         option.disabled = true;
@@ -31,7 +36,7 @@
         option.innerHTML = 'Selecione um Estado';
 
 
-        document.getElementById('campo-sigla-estado').appendChild(option);
+        document.getElementById('campo-estado').appendChild(option);
 
         $.ajax({
             url: '/estado/obtertodos',
@@ -47,16 +52,13 @@
                     option.value = _data.id;
                     option.innerHTML = _data.nome;
 
-                    document.getElementById('campo-sigla-estado').appendChild(option);
+                    document.getElementById('campo-estado').appendChild(option);
                 }
             }
         });
     }
 
     inserir = function () {
-        $nome = $("#campo-nome-cidade").val();
-        $idEstado = $("#campo-sigla-estado").val();
-
         $.ajax({
             url: '/cidade/adicionar',
             method: 'post',
@@ -73,15 +75,11 @@
             },
             error: function (err) {
                 console.log(err);
-                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
 
     alterar = function () {
-        $nome = $("#campo-nome-cidade").val();
-        $idEstado = $("#campo-sigla-estado").val();
-
         $.ajax({
             url: '/cidade/alterar',
             method: 'post',
@@ -98,14 +96,13 @@
                 notifyAlert(1, 'Alterado com Sucesso!', 2);
             },
             error: function (err) {
-                notifyAlert(2, 'Erro no Servidor', 2);
             }
         });
     }
 
     limparCampos = function () {
         $('#campo-nome-cidade').val("");
-        $('#campo-sigla-estado').val(-1);
+        $('#campo-estado').val(-1);
     }
 
     obterTodos = function () {
@@ -174,7 +171,7 @@
         });
     });
 
-    $('#tabela-cidades').on('click', '.botao-apagar', function() {
+    $('#tabela-cidades').on('click', '.botao-apagar', function () {
         $id = $(this).data('id');
         $('#alert-apagar-cidade').modal('show');
     });
@@ -190,8 +187,7 @@
                 notifyAlert(1, 'Apagou com Sucesso!', 2);
             },
             error: function (err) {
-                console.log(err);
-                notifyAlert(2, 'Erro no Servidor', 2);
+                console.log(err);   
             }
         });
     });
