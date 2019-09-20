@@ -4,7 +4,7 @@ $(function () {
 
     $id = -1;
 
-
+    // Botao Editar
     $(".table").on("click", ".botao-editar", function () {
         $id = $(this).data("id");
 
@@ -22,31 +22,40 @@ $(function () {
 
     });
 
-
+    // Abrir Alerta Deletar
     $(".table").on("click", ".botao-apagar", function () {
         $id = $(this).data("id");
+        $('#alert-apagar-categoria').modal('show');
+
+    });
+
+    // Botao Apagar no Alerta
+    $("#btn-apagar-categoria").on('click', function () {
         $.ajax({
             url: '/categoria/apagar?id=' + $id,
             method: 'get',
             success: function (data) {
                 obterTodos();
+                notifyAlert(1, "Apagou com sucesso", 2);
+                $('#alert-apagar-categoria').modal("hide");
+
             },
             error: function (data) {
+                notifyAlert(2, "Erro no servidor", 2);
                 console.log("Erro apagar");
             }
         });
+
     });
 
-
+    // Botao Salvar no [Modal]
     $("#categoria-botao-salvar").on("click", function () {
-        console.log("Clicou");
 
-
-        if ($id == -1) {
-            inserir();
-        } else {
-            alterar();
-        }
+            if ($id == -1) {
+                inserir();
+            } else {
+                alterar();
+            }
     });
 
 
@@ -62,10 +71,13 @@ $(function () {
             success: function (data) {
                 $id = -1;
                 $("#modalCadastroCategoria").modal("hide");
+                notifyAlert(1, "Alterado com sucesso", 2);
+
                 obterTodos();
                 limparCampos();
             },
             error: function (data) {
+                notifyAlert(2, "Erro no servidor", 2);
                 console.log("ERROR");
             }
         });
@@ -86,10 +98,12 @@ $(function () {
                 $id = -1;
                 $("#modalCadastroCategoria").modal("hide");
                 obterTodos();
+                notifyAlert(1, "Cadastrado com sucesso", 2);
                 limparCampos();
             },
             error: function (data) {
                 console.log("ERROR");
+                notifyAlert(2, "Erro no servidor", 2);
             }
         })
 
@@ -162,21 +176,7 @@ $(function () {
 
     }
 
-    $(".table").on("click", ".botao-apagar", function () {
 
-        $id = $(this).data("id");
-        $.ajax({
-
-            url: '/categoria/apagar/' + $id,
-            method: 'get',
-            success: function (data) {
-                obterTodos();
-            },
-            error: function (data) {
-                console.log("Deu erro");
-            }
-        });
-    });
 
     obterTodos();
 });
