@@ -49,7 +49,6 @@ $(function () {
             url: '/produto/obterpeloid?id=' + $id,
             method: 'get',
             success: function (data) {
-                PreencherSelect(data.idCategoria);
                 $('#campo-nome').val(data.nome);
                 $('#campo-preco').val(data.preco);
                 $('#campo-cor').val(data.cor);
@@ -57,7 +56,7 @@ $(function () {
                 $('#campo-peso').val(data.peso);
                 $('#campo-descricao').val(data.descricao);
                 $('#cadastro-modal-produto').modal('show');
-                mascaras();
+                PreencherSelect(data.idCategoria);
             }
         });
 
@@ -280,7 +279,7 @@ $(function () {
                     let _data = data[i];
 
                     let option = document.createElement('option');
-                    if (idCategoria != 1 && _data.id == idCategoria) {
+                    if (idCategoria != -1 && _data.id == idCategoria) {
                         option.selected = true;
                     }
                     option.value = _data.id;

@@ -4,20 +4,20 @@
             nome: {
                 required: true,
                 minlength: 4,
-                maxlength: 30,
+                maxlength: 20,
             },
             categoria: {
                 required: true,
             },
             preco: {
                 required: true,
-                minlength: 2,
-                maxlength: 20
+                minlength: 3,
+                maxlength: 10
             },
             peso: {
                 required: true,
-                minlength: 1,
-                maxlength: 20
+                minlength: 3,
+                maxlength: 10
             },
             cor: {
 
@@ -31,20 +31,20 @@
             nome: {
                 required: 'Este campo é obrigatório',
                 minlength: 'Este campo deve ter no mínimo 4 caractéres',
-                maxlength: 'Este campo deve ter no máximo 30 caractéres'
+                maxlength: 'Este campo deve ter no máximo 20 caractéres'
             },
             categoria: {
                 required: 'Este campo é obrigatório',
             },
             preco: {
                 required: 'Este campo é obrigatório',
-                minlength: 'Este campo deve ter no mínimo 1 caractéres',
-                maxlength: 'Este campo deve ter no máximo 20 caractéres'
+                minlength: 'Este campo deve ter no mínimo 3 caractéres',
+                maxlength: 'Este campo deve ter no máximo 10 caractéres'
             },
             peso: {
                 required: 'Este campo é obrigatório',
-                minlength: 'Este campo deve ter no mínimo 1 caractéres',
-                maxlength: 'Este campo deve ter no máximo 20 caractéres'
+                minlength: 'Este campo deve ter no mínimo 3 caractéres',
+                maxlength: 'Este campo deve ter no máximo 10 caractéres'
             },
 
         },

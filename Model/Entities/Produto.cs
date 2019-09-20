@@ -24,11 +24,11 @@ namespace Model.Entities
         [Column("descricao")]
         public string Descricao { get; set; }
 
-        [Column("preco", TypeName = "decimal(8,2)")]
-        public decimal Preco { get; set; }
+        [Column("preco")]
+        public int Preco { get; set; }
 
         [Column("peso")]
-        public double Peso { get; set; }
+        public int Peso { get; set; }
 
         [Column("cor")]
         public string Cor { get; set; }
