@@ -47,49 +47,13 @@
         </div>
 
     </div>
-    <!-- End Panel Form Elements -->
+    <!-- End Panel -->
 </div>
 
-<!-- Modal Cadastro Categoria -->
-
-<div class="modal fade" id="modalCadastroCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"
-                    id="exampleModalLabel">
-                    Cadastro de Categoria
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="campo-nome">
-                                Título
-                            </label>
-                            <input type="text" id="campo-nome"
-                                   class="form-control" />
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success"
-                        id="categoria-botao-salvar">
-                    <i class="fas fa-save"></i> Salvar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<partial name="ModalCadastroCategoria.cshtml" />
+<partial name="ModalAlertApagarCategoria.cshtml" />
 
 @section Scripts {
-    <script src="~/js/Categoria/Categoria.js"></script>
+    <script src="~/js/categoria/categoria-index.js"></script>
+    <script src="~/js/categoria/validation-categoria.js"></script>
 }
