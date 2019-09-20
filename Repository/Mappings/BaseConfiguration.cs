@@ -4,11 +4,12 @@ using Model;
 
 namespace PadawanStore.Infra.Data.Mappings
 {
-    public class BaseMapping : IEntityTypeConfiguration<Base>
+    public class BaseConfiguration<T> : IEntityTypeConfiguration<T> where T : Base
     {
-        public void Configure(EntityTypeBuilder<Base> builder)
+        public virtual void Configure(EntityTypeBuilder<T> builder)
         {
             builder.Property(b => b.Id)
+                .HasColumnType("int")
                 .ValueGeneratedOnAdd()
                 .HasColumnName("id")
                 .IsRequired(true);
