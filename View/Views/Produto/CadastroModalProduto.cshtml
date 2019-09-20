@@ -1,44 +1,37 @@
-﻿<div class="modal fade modal-fade-in-scale-up" id="modal-cadastro-produto" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
+﻿<div class="modal fade" id="cadastro-modal-produto" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
      role="dialog" tabindex="-1">
     <div class="modal-dialog modal-simple">
-        <form class="modal-content">
+        <form class="modal-content" id="form-cadastro-produto" action="javascript:void(0)">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="exampleFormModalLabel">Set The Messages</h4>
+                <h4 class="modal-title" id="exampleFormModalLabel">Produto</h4>
             </div>
 
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xl-12 form-group">
-                        <input type="text" class="form-control" name="Nome" placeholder="Nome do produto">
+                        <input type="text" class="form-control" name="nome" id="campo-nome" placeholder="Nome do produto" required>
                     </div>
-                    <div class="col-8 mb-20">
-                        <select id="categoria-select" class="form-control">
-                            <option disabled="disabled" selected="selected">Escolha uma Categoria</option>
+                    <div class="col-9 form-group">
+                        <select id="campo-select-categoria" name="categoria" class="form-control">
                         </select>
                     </div>
-                    <div class="col-xl-6 form-group">
-                        <input type="email" class="form-control" name="lastName" placeholder="Last Name">
-                    </div>
-                    <div class="col-xl-6 form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Your Email">
+                    <div class="col-xl-4 form-group">
+                        <input type="text" class="form-control" name="preco" id="campo-preco" placeholder="Preço" required>
                     </div>
                     <div class="col-xl-4 form-group">
-                        <input class="form-control" name="altura" placeholder="Altura" type="text">
+                        <input type="text" class="form-control" name="peso" id="campo-peso" placeholder="Peso" required>
                     </div>
                     <div class="col-xl-4 form-group">
-                        <input type="email" class="form-control" name="largura" placeholder="Largura">
-                    </div>
-                    <div class="col-xl-4 form-group">
-                        <input type="email" class="form-control" name="comprimento" placeholder="Comprimento">
+                        <input type="text" class="form-control" name="cor" id="campo-cor" placeholder="Cor do produto">
                     </div>
                     <div class="col-12">
-                        <textarea class="form-control" rows="4" placeholder="Descrição do produto"></textarea>
+                        <textarea class="form-control" rows="4" name="descricao" id="campo-descricao" placeholder="Descrição do produto"></textarea>
                     </div>
                     <div class="col-md-12 mt-20">
-                        <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button">Salvar</button>
+                        <button class="btn btn-primary btn-outline" id="botao-salvar-produto" type="button">Salvar</button>
                     </div>
                 </div>
             </div>
