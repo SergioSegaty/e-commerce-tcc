@@ -59,59 +59,10 @@
 
 
 
-<!-- Modal Cadastro Produtos -->
+<partial name="CadastroModalProduto.cshtml" />
+<partial name="ModalDeletarAlerta.cshtml" />
 
-<div class="modal fade" id="cadastro-modal-produto" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
-     role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-simple">
-        <form class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="exampleFormModalLabel">Set The Messages</h4>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xl-12 form-group">
-                        <input type="text" class="form-control" id="campo-nome" name="campo-nome" placeholder="Nome do produto">
-                    </div>
-                    <div class="col-8 mb-20">
-                        <select id="campo-select-categoria" class="form-control">
-                            <option disabled="disabled" selected="selected">Escolha uma Categoria</option>
-                        </select>
-                    </div>
-                    <div class="col-xl-6 form-group">
-                        <input type="text" class="form-control" name="campo-preco" id="campo-preco" placeholder="Preço">
-                    </div>
-                    <div class="col-xl-6 form-group">
-                        <input type="text" class="form-control" name="campo-peso" id="campo-peso" placeholder="Peso">
-                    </div>
-                    <div class="col-xl-4 form-group">
-                        <input class="form-control" name="campo-altura" id="campo-altura" placeholder="Altura" type="text">
-                    </div>
-                    <div class="col-xl-4 form-group">
-                        <input type="text" class="form-control" name="campo-largura" id="campo-largura" placeholder="Largura">
-                    </div>
-                    <div class="col-xl-4 form-group">
-                        <input type="text" class="form-control" name="campo-comprimento" id="campo-comprimento" placeholder="Comprimento">
-                    </div>
-                    <div class="col-12">
-                        <textarea class="form-control" rows="4" placeholder="Descrição do produto" id="campo-descricao"></textarea>
-                    </div>
-                    <div class="col-md-12 mt-20">
-                        <button class="btn btn-primary btn-outline" data-dismiss="modal" id="botao-salvar-produto" type="button">Salvar</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<partial name="ModalDeletarAlerta.cshtml"/>
-
-@section Scripts{ 
-    <script src="~/js/produto/produto.js"></script>
+@section Scripts{
+    <script src="~/js/produto/produto-index.js"></script>
+    <script src="~/js/produto/validation-produto.js"></script>
 }
