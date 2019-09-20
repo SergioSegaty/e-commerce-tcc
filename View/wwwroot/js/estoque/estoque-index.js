@@ -5,7 +5,14 @@
             { "name": "nomeProduto", "title": "Nome", "type": "text" },
             { "name": "quantidade", "title": "Quantidade", "type": "number", "style": { "width": 80, "maxWidth": 80, "text-align": "center" } },
             {
-                "name": "status", "title": "Status", "type": "text", "style": { "width": 100, "maxWidth": 120, "text-align": "center" } 
+                "name": "status", "title": "Status", "type": "text", "style": {
+                    "width": 100, "maxWidth": 120, "text-align": "center",
+                    //"formater": function () {
+                    //    if ("status" === "Em Estoque") {
+                    //        return 
+                    //    }
+                   // }
+                } 
             },
         ],
         "rows": $.get({
