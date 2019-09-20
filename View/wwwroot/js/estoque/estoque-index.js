@@ -5,14 +5,15 @@
             { "name": "nomeProduto", "title": "Nome", "type": "text" },
             { "name": "quantidade", "title": "Quantidade", "type": "number", "style": { "width": 80, "maxWidth": 80, "text-align": "center" } },
             {
-                "name": "status", "title": "Status", "type": "text", "style": {
-                    "width": 100, "maxWidth": 120, "text-align": "center",
-                    //"formater": function () {
-                    //    if ("status" === "Em Estoque") {
-                    //        return 
-                    //    }
-                   // }
-                } 
+                "name": "status", "title": "Status", "type": "text", "style": { "width": 100, "maxWidth": 120, "text-align": "center" },
+                "formatter": function (status) {
+                    if (status === 'Em Estoque')
+                        return '<td class="badge badge-table badge-success">'+status+'</td>'
+                    else if (status === 'Esgotado')
+                        return '<td class="badge badge-table badge-warning">'+status+'</td>'
+                    else if (status === 'Suspenso')
+                        return '<td class="badge badge-table badge-danger">'+status+'</td>'
+                }
             },
         ],
         "rows": $.get({
