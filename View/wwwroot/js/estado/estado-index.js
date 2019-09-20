@@ -148,7 +148,7 @@
             success: function (data) {
                 ObterTodos();
                 $('#alert-apagar-estado').modal('hide');
-                notifyAlert(1, 'Apagou com sucesso!', 2);
+                notifyAlert(1, 'Apagado com sucesso!', 2);
                 $id = -1;
             },
             error: function (err) {
