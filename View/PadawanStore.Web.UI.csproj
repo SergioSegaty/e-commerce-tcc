@@ -31,6 +31,11 @@
   </ItemGroup>
 
 
+  <ItemGroup>
+    <Folder Include="wwwroot\tema\assets\js\Modernizr\" />
+  </ItemGroup>
+
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
