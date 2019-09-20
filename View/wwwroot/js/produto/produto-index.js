@@ -211,9 +211,7 @@ $(function () {
                     var tdPreco = document.createElement('td');
                     var index = _data.preco.toString().length;
                     if (_data.preco.toString().length >= 6) {
-                        //var precoString = _data.preco.toString().substring((index - 5), 0) + "." + _data.preco.toString().substring(3, (index - 5)) + "," + _data.preco.toString().substring(2, (index - 2));
                         var precoString = _data.preco.toString().substring(0, (index - 5)) + "." + _data.preco.toString().substring((index - 5), 4) + "," + _data.preco.toString().substring(index - 2);
-                            //+ "." + _data.preco.toString().substring((index - 5), 3) + "," + _data.preco.toString().substring(index - 2);
                     } else {
                         var precoString = _data.preco.toString().substring(0, (index - 2)) + "," + _data.preco.toString().substring((index - 2), index);
                     }
