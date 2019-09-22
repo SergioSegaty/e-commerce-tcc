@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,5 +22,8 @@ namespace Model.Entities
 
         [Column("quantidade_de_vezes_senha_errada")]
         public int QuantidadeDeVezesSenhaErrada { get; set; }
+
+        public ICollection<Endereco> Endereco { get; set; }
+        public ICollection<Pedido> Pedido { get; set; }
     }
 }
