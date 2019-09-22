@@ -1,4 +1,6 @@
-﻿namespace Model.Entities
+﻿using System.Collections.Generic;
+
+namespace Model.Entities
 {
     public class Cidade : Base
     {
@@ -7,5 +9,7 @@
         public Estado Estado { get; private set; }
 
         public string Nome { get; set; }
+
+        public ICollection<Endereco> Endereco { get; set; }
     }
 }
