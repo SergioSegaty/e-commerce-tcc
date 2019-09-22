@@ -1,6 +1,5 @@
 ﻿namespace Model.Entities
 {
-
     public class Cidade : Base
     {
         public int IdEstado { get; set; }

@@ -7,7 +7,7 @@ namespace Model.Entities
     {
         [Column("id_usuario")]
         public int IdUsuario { get; set; }
-        
+
         [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
 
