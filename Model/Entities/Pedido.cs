@@ -9,6 +9,5 @@ namespace Model.Entities
         public int IdUsuario { get; set; }
 
         public ICollection<PedidoProduto> PedidoProduto { get; set; }
-
     }
 }
