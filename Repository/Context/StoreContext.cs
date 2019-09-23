@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Model.Entities;
-using PadawanStore.Infra.Data.Mappings;
+using PadawanStore.Domain.Entities;
+using PadawanStore.Domain.Identity;
 
-namespace Repository.Context
+namespace PadawanStore.Infra.Data.Context
 {
-    public class StoreContext : DbContext
+    public class StoreContext : IdentityDbContext<
+        Usuario,
+        Privilegio,
+        int>
     {
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
@@ -15,9 +19,7 @@ namespace Repository.Context
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Estado> Estados { get; set; }
         public DbSet<Estoque> Estoques { get; set; }
-        public DbSet<Privilegio> Privilegios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoProduto> PedidoProdutos { get; set; }
 
@@ -25,9 +27,23 @@ namespace Repository.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.ApplyConfiguration(new EstadoMapping());
-            modelBuilder.ApplyConfiguration(new CategoriaMapping());
-            modelBuilder.ApplyConfiguration(new CidadeMapping());
+            modelBuilder.Entity<UsuarioPrivilegio>(userRole =>
+                {
+                    userRole.HasKey(ur => new { ur.IdUsuario, ur.IdPrivilegio });
+
+                    userRole.HasOne(ur => ur.Privilegio)
+                    .WithMany(r => r.UsuarioPrivilegios)
+                    .HasForeignKey(ur => ur.IdPrivilegio)
+                    .IsRequired();
+
+                    userRole.HasOne(ur => ur.Usuario)
+                    .WithMany(r => r.UsuarioPrivilegios)
+                    .HasForeignKey(ur => ur.IdUsuario)
+                    .IsRequired();
+                }
+            );
+
+
         }
     }
 }

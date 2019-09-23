@@ -1,7 +1,7 @@
+using PadawanStore.Domain.Entities;
 using System.Collections.Generic;
-using Model.Entities;
 
-namespace Repository.Interface
+namespace PadawanStore.Infra.Data.Interface
 {
     public interface IPedidoProdutoRepository
     {

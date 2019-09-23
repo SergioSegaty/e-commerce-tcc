@@ -1,8 +1,8 @@
+using PadawanStore.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Model;
 
-namespace Repository.Interface
+namespace PadawanStore.Infra.Data.Interface
 {
     public interface IBaseRepositoryAsync<T> where T : Base
     {

@@ -1,9 +1,9 @@
-﻿using Model.Entities;
+﻿using PadawanStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repository.Interface
+namespace PadawanStore.Infra.Data.Interface
 {
     public interface IEstoqueRepository
     {

@@ -1,13 +1,15 @@
-using System.Collections.Generic;
+using PadawanStore.Domain.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Model.Entities
+namespace PadawanStore.Domain.Entities
 {
+    [Table("pedidos")]
     public class Pedido : Base
     {
+        [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
-        
-        public int IdUsuario { get; set; }
 
-        public ICollection<PedidoProduto> PedidoProduto { get; set; }
+        [Column("id_usuario")]
+        public int IdUsuario { get; set; }
     }
 }

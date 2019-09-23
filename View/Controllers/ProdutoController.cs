@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Model.Entities;
-using Repository.Interface;
+using PadawanStore.Domain.Entities;
+using PadawanStore.Infra.Data.Interface;
 
 namespace e_commerce_ws.Controllers
 {

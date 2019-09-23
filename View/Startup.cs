@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Repository;
-using Repository.Context;
-using Repository.Interface;
-using Repository.Repositories;
+using PadawanStore.Domain.Identity;
+using PadawanStore.Infra.Data.Context;
+using PadawanStore.Infra.Data.Interface;
+using PadawanStore.Infra.Data.Repositories;
 
 namespace View
 {
@@ -46,9 +49,32 @@ namespace View
                     opts => opts.MigrationsAssembly("PadawanStore.Infra.Data"));
             });
 
-            
+            IdentityBuilder builder = services.AddIdentityCore<Usuario>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
+            });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            builder = new IdentityBuilder(builder.UserType, typeof(Privilegio), builder.Services);
+            builder.AddEntityFrameworkStores<StoreContext>();
+            builder.AddRoleValidator<RoleValidator<Privilegio>>();
+            builder.AddRoleManager<RoleManager<Privilegio>>();
+            builder.AddSignInManager<SignInManager<Usuario>>();
+
+            services.AddCors();
+            services.AddMvc(options =>
+                {
+                    var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                }
+            )
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +91,7 @@ namespace View
                 app.UseHsts();
             }
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

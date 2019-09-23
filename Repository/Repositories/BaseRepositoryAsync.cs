@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Model;
-using Repository.Context;
-using Repository.Interface;
+using PadawanStore.Domain;
+using PadawanStore.Infra.Data.Context;
+using PadawanStore.Infra.Data.Interface;
 
-namespace Repository.Repositories
+namespace PadawanStore.Infra.Data.Repositories
 {
     public class BaseRepositoryAsync<T> : IBaseRepositoryAsync<T> where T : Base
     {

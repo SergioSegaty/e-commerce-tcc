@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Model.Entities
+namespace PadawanStore.Domain.Entities
 {
     [Table("produtos")]
     public class Produto : Base
@@ -36,10 +36,5 @@ namespace Model.Entities
 
         [Column("imagem")]
         public string Imagem { get; set; }
-
-        public ICollection<Estoque> Estoque { get; set; }
-
-        public ICollection<PedidoProduto> PedidoProduto { get; set; }
-
     }
 }

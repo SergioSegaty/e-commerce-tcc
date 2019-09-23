@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Model.Entities;
-using Repository.Context;
-using Repository.Interface;
+using PadawanStore.Domain.Entities;
+using PadawanStore.Infra.Data.Context;
+using PadawanStore.Infra.Data.Interface;
 
-namespace Repository.Repositories
+namespace PadawanStore.Infra.Data.Repositories
 {
     public class PedidoProdutoRepository : IPedidoProdutoRepository
     {
