@@ -1,0 +1,196 @@
+﻿@{
+    ViewData["Title"] = "Carrinho de Compras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/wizard/wizard.css" />
+
+<div class="page-header">
+    <h1 class="page-title">Carrinho de Compras</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item active">Seu Carrinho</li>
+    </ol>
+</div>
+
+<div class="page-content">
+
+    <!-- Painel -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Carrinho</h3>
+        </div>
+        <div class="panel-body container-fluid">
+
+            <!-- Box de Compras-->
+            <div class="row">
+                <div class="col-xl-12 col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th>Imagem</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Preco</th>
+                                <th scope="col" width="15%">Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td></td>
+                                <td>Lalala</td>
+                                <td>R$ 12,25</td>
+                                <td>2</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr style="">
+                                <td>Total</td>
+                                <td></td>
+                                <td></td>
+                                <td>R$ 24,50</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Termino do Painel -->
+
+    <div class="col-8 offset-2">
+        <!-- Comeco Wizard -->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fazer o Pagamento</h3>
+            </div>
+
+
+            <div class="panel-body">
+                <div class="row pearls">
+                    <div class="pearl current col-4">
+                        <div class="pearl-icon"><i class="icon wb-user" aria-hidden="true"></i></div>
+                        <span class="pearl-title">Verificar Endereço</span>
+                    </div>
+                    <div class="pearl col-4">
+                        <div class="pearl-icon"><i class="icon wb-payment" aria-hidden="true"></i></div>
+                        <span class="pearl-title">Informação de Pagamento</span>
+                    </div>
+                    <div class="pearl col-4">
+                        <div class="pearl-icon"><i class="icon wb-check" aria-hidden="true"></i></div>
+                        <span class="pearl-title">Confirmação</span>
+                    </div>
+                </div>
+                <!-- Conteudo Wizzard-->
+
+                <form id="exemploWizard">
+                    <div class="wizard-content">
+                        <div class="wizard-pane active" id="formConta" role="tabpanel">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="form-control-label" for="campo-end-cep">Cep</label>
+                                    <input class="form-control" type="text" id="campo-end-cep" name="cep" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-control-label" for="campo-end-estado">Estado</label>
+                                    <select class="form-control" id="campo-end-estado" name="estado"></select>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-control-label" for="campo-end-cidade">Cidade</label>
+                                    <select class="form-control" id="campo-end-cidade" name="cidade"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-8">
+                                    <label class="form-control-label" for="campo-end">Endereço</label>
+                                    <input type="text" class="form-control" id="campo-end" name="endereco" required="required">
+                                </div>
+                                <div class="form-group col-4">
+                                    <label class="form-control-label" for="campo-end-numero">Número</label>
+                                    <input type="text" class="form-control" id="campo-end-numero" name="numero"
+                                           required="required">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <label class="form-control-label" for="campo-end-bairro">Bairro</label>
+                                    <input class="form-control" type="text" name="bairro" id="campo-end-bairro" value="" />
+                                </div>
+                                <div class="form-group col-8">
+                                    <label class="form-control-label" for="campo-end-complemento">Complemento</label>
+                                    <input class="form-control" type="text" name="complemento" id="campo-end-complemento" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-pane" id="formPagamento" role="tabpanel">
+                            <div class="form-group">
+                                <label class="form-control-label" for="inputCardNumberOne">Card Number</label>
+                                <input type="text" class="form-control" id="inputCardNumberOne" name="number" placeholder="Card number">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="inputCVVOne">CVV</label>
+                                <input type="text" class="form-control" id="inputCVVOne" name="cvv" placeholder="CVV">
+                            </div>
+                        </div>
+                        <div class="wizard-pane" id="formFeito" role="tabpanel">
+                            <div class="text-center my-20">
+                                <h4>Please confrim your order.</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-hover text-right">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th>Description</th>
+                                                <th class="text-right">Quantity</th>
+                                                <th class="text-right">Unit Cost</th>
+                                                <th class="text-right">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td class="text-left">Server hardware purchase</td>
+                                                <td>32</td>
+                                                <td>$75</td>
+                                                <td>$2152</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2</td>
+                                                <td class="text-left">Office furniture purchase</td>
+                                                <td>15</td>
+                                                <td>$169</td>
+                                                <td>$4169</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3</td>
+                                                <td class="text-left">Company Anual Dinner Catering</td>
+                                                <td>69</td>
+                                                <td>$49</td>
+                                                <td>$1260</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Final Conteudo Wizard -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/wizard/jquery-wizard.js"></script>
+    <script src="~/js/usuario/usuario-form-wizard.js"></script>
+
+}
+
+
