@@ -5,10 +5,7 @@ using PadawanStore.Domain.Identity;
 
 namespace PadawanStore.Infra.Data.Context
 {
-    public class StoreContext : IdentityDbContext<
-        Usuario,
-        Privilegio,
-        int>
+    public class StoreContext : DbContext
     {
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
@@ -23,26 +20,21 @@ namespace PadawanStore.Infra.Data.Context
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoProduto> PedidoProdutos { get; set; }
 
+        public DbSet<Usuario> Usuarios { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<UsuarioPrivilegio>(userRole =>
-                {
-                    userRole.HasKey(ur => new { ur.IdUsuario, ur.IdPrivilegio });
-
-                    userRole.HasOne(ur => ur.Privilegio)
-                    .WithMany(r => r.UsuarioPrivilegios)
-                    .HasForeignKey(ur => ur.IdPrivilegio)
-                    .IsRequired();
-
-                    userRole.HasOne(ur => ur.Usuario)
-                    .WithMany(r => r.UsuarioPrivilegios)
-                    .HasForeignKey(ur => ur.IdUsuario)
-                    .IsRequired();
-                }
-            );
-
+            modelBuilder.Entity<Usuario>().HasData(
+               new Usuario
+               {
+                   Id = 1,
+                   NomeCompleto = "Guilherme",
+                   Login = "guilherme",
+                   Senha = "123",
+                   RegistroAtivo = true,
+               }
+           );
 
         }
     }

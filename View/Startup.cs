@@ -12,6 +12,7 @@ using PadawanStore.Domain.Identity;
 using PadawanStore.Infra.Data.Context;
 using PadawanStore.Infra.Data.Interface;
 using PadawanStore.Infra.Data.Repositories;
+using PadawanStore.Web.UI.Controllers;
 
 namespace View
 {
@@ -41,6 +42,7 @@ namespace View
             services.AddTransient(typeof(IEstoqueRepository), typeof(EstoqueRepository));   
             services.AddTransient(typeof(IPedidoProdutoRepository), typeof(PedidoProdutoRepository));
             services.AddTransient(typeof(IProdutoRepository), typeof(ProdutoRepository));
+            services.AddTransient(typeof(IUsuarioRepository), typeof(UsuarioRepository));
             #endregion
 
             services.AddDbContext<StoreContext>(options =>
@@ -49,28 +51,12 @@ namespace View
                     opts => opts.MigrationsAssembly("PadawanStore.Infra.Data"));
             });
 
-            IdentityBuilder builder = services.AddIdentityCore<Usuario>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 4;
-            });
-
-            builder = new IdentityBuilder(builder.UserType, typeof(Privilegio), builder.Services);
-            builder.AddEntityFrameworkStores<StoreContext>();
-            builder.AddRoleValidator<RoleValidator<Privilegio>>();
-            builder.AddRoleManager<RoleManager<Privilegio>>();
-            builder.AddSignInManager<SignInManager<Usuario>>();
-
+            services.AddSession();
             services.AddCors();
-            services.AddMvc(options =>
+            services.AddMvc(
+                opt =>
                 {
-                    var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                    options.Filters.Add(new AuthorizeFilter(policy));
+                    opt.Filters.Add(new LoginFilter());
                 }
             )
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
@@ -96,6 +82,7 @@ namespace View
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

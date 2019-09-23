@@ -3,10 +3,12 @@ using System.Collections.Generic;
 
 namespace PadawanStore.Domain.Identity
 {
-    public class Usuario : IdentityUser<int>
+    public class Usuario : Base
     {
-        public string NomeCompleto { get; set; }
+        public string Login { get; set; }
 
-        public List<UsuarioPrivilegio> UsuarioPrivilegios { get; set; }
+        public string Senha { get; set; }
+
+        public string NomeCompleto { get; set; }
     }
 }
