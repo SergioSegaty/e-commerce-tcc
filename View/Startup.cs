@@ -49,31 +49,31 @@ namespace View
                     opts => opts.MigrationsAssembly("PadawanStore.Infra.Data"));
             });
 
-            IdentityBuilder builder = services.AddIdentityCore<Usuario>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 4;
-            });
+            //IdentityBuilder builder = services.AddIdentityCore<Usuario>(options =>
+            //{
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireLowercase = false;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequiredLength = 4;
+            //});
 
-            builder = new IdentityBuilder(builder.UserType, typeof(Privilegio), builder.Services);
-            builder.AddEntityFrameworkStores<StoreContext>();
-            builder.AddRoleValidator<RoleValidator<Privilegio>>();
-            builder.AddRoleManager<RoleManager<Privilegio>>();
-            builder.AddSignInManager<SignInManager<Usuario>>();
+            //builder = new IdentityBuilder(builder.UserType, typeof(Privilegio), builder.Services);
+            //builder.AddEntityFrameworkStores<StoreContext>();
+            //builder.AddRoleValidator<RoleValidator<Privilegio>>();
+            //builder.AddRoleManager<RoleManager<Privilegio>>();
+            //builder.AddSignInManager<SignInManager<Usuario>>();
 
-            services.AddCors();
-            services.AddMvc(options =>
-                {
-                    var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                    options.Filters.Add(new AuthorizeFilter(policy));
-                }
-            )
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            //services.AddCors();
+
+            //    {
+            //        var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //        options.Filters.Add(new AuthorizeFilter(policy));
+            //    }
+            //)
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
