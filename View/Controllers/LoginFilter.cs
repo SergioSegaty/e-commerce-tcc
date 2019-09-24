@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
+using PadawanStore.Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +16,20 @@ namespace PadawanStore.Web.UI.Controllers
         public void OnActionExecuting(ActionExecutingContext context)
         {
 
-            string name = (string)context.RouteData.Values["Controller"];
+            //string name = (string)context.RouteData.Values["Controller"];
 
 
 
-            if (name != "Auth" && context.HttpContext.Session.GetString("Usuario") == null)
-            {
-                context.Result = new RedirectToRouteResult(
-                     new RouteValueDictionary
-                     {
-                        {"controller", "Auth"},
-                        {"action", "Index"}
-                     }
-                 );
-            }
+            //if (name != "Auth" && context.HttpContext.Request.Cookies["Usuario"] == null)
+            //{
+            //    context.Result = new RedirectToRouteResult(
+            //         new RouteValueDictionary
+            //         {
+            //            {"controller", "Auth"},
+            //            {"action", "Index"}
+            //         }
+            //     );
+            //}
         }
 
         public void OnActionExecuted(ActionExecutedContext context)

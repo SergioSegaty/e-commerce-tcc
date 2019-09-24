@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using View.Models;
 
 namespace View.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         [HttpGet, Route("")]

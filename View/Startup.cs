@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -51,12 +52,25 @@ namespace View
                     opts => opts.MigrationsAssembly("PadawanStore.Infra.Data"));
             });
 
-            services.AddSession();
+
+
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/auth";
+            }
+            );
             services.AddCors();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = new PathString("/auth");
+                //options.LoginPath = new PathString("/auth");
+            });
             services.AddMvc(
                 opt =>
                 {
-                    //opt.Filters.Add(new LoginFilter());
+                    opt.Filters.Add(new LoginFilter());
                 }
             )
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
@@ -82,7 +96,12 @@ namespace View
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseSession();
+            app.UseAuthentication();
+            var cookiePolicyOptions = new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+            };
+            app.UseCookiePolicy(cookiePolicyOptions);
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
