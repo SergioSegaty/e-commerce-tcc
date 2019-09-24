@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 
-    <title>Dashboard</title>
+    <title>PadawanStore</title>
 
     <link rel="apple-touch-icon" href="tema/assets/images/apple-touch-icon.png">
     <link rel="shortcut icon" href="tema/assets/images/favicon.ico">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="tema/global/vendor/intro-js/introjs.css">
     <link rel="stylesheet" href="tema/global/vendor/slidepanel/slidePanel.css">
     <link rel="stylesheet" href="tema/global/vendor/flag-icon-css/flag-icon.css">
-    
+
 
     <!--Notie-->
     <link rel="stylesheet" href="~/css/notify/notie.min.css">
@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="tema/global/fonts/brand-icons/brand-icons.min.css">
     <link rel="stylesheet" href="~/tema/global/fonts/material-design/material-design.min.css">
     <link rel="stylesheet" href="~/tema/global/fonts/open-iconic/open-iconic.min.css">
+    <link rel="stylesheet" href="~/tema/global/fonts/glyphicons/glyphicons.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
     @RenderSection("Styles", required: false);
@@ -67,8 +68,9 @@
             </button>
 
             <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
-                <img class="navbar-brand-logo" src="tema/assets/images/logo.png" title="Remark">
-                <span class="navbar-brand-text hidden-xs-down"> Remark</span>
+                <!--#8DBA76-->
+                <img class="navbar-brand-logo" src="~/tema/assets/images/Thehoth-Seo-Seo-panda.ico" title="Remark">
+                <span class="navbar-brand-text hidden-xs-down"> PadawanStore</span>
             </div>
         </div>
 
@@ -163,66 +165,62 @@
             <div>
                 <div>
                     <ul class="site-menu" data-plugin="menu">
-                        <li class="site-menu-category">General</li>
+
+                        <li class="site-menu-category">Retorne A Loja</li>
                         <li class="site-menu-item has-sub">
                             <a href="@Url.Action("Index","Home")">
-                                <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
-                                <span class="site-menu-title">Painel de Controle</span>
+                                <i class="site-menu-icon fa-mail-forward" aria-hidden="true"></i>
+                                <span class="site-menu-title">Loja</span>
+                            </a>
+                        </li>
+
+                        <li class="site-menu-category">Dados Gerais</li>
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Estatistica")">
+                                <i class="site-menu-icon glyphicon-stats" aria-hidden="true"></i>
+                                <span class="site-menu-title">Estatísticas</span>
                             </a>
                         </li>
                         <!---->
-                        <li class="site-menu-category">CRUDS</li>
+                        <li class="site-menu-category">Telas administrativas</li>
                         <!---->
+                        <li class="site-menu-item has-sub">
+                            <a href="javascript:void(0)">
+                                <i class="site-menu-icon fa-globe" aria-hidden="true"></i>
+                                <span class="site-menu-title">Região</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                            <ul class="site-menu-sub">
+                                <li class="site-menu-item has-sub">
+                                    <a href="@Url.Action("Index","Estado")">
+                                        <i class="site-menu-icon wb-map"></i>
+                                        <span class="site-menu-title">Estado</span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item has-sub">
+                                    <a href="@Url.Action("Index","Cidade")">
+                                        <i class="site-menu-icon fa-map"></i>
+                                        <span class="site-menu-title">Cidade</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Categoria")">
+                                <i class="site-menu-icon wb-list" aria-hidden="true"></i>
+                                <span class="site-menu-title">Categoria</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="@Url.Action("Index","Produto")">
+                                <i class="site-menu-icon fa-cube" aria-hidden="true"></i>
+                                <span class="site-menu-title">Produto</span>
+                            </a>
+                        </li>
                         <li class="site-menu-item has-sub">
                             <a href="@Url.Action("Index","Estoque")">
                                 <i class="site-menu-icon io-box" aria-hidden="true"></i>
                                 <span class="site-menu-title">Estoque</span>
-                                <!--
-                                <span class="site-menu-arrow"></span>
-                                -->
-                            </a>
-                            <!--
-
-                            <ul class="site-menu-sub">
-                                <li class="site-menu-item">
-                                    <a class="animsition-link" href="asdsad">
-                                        <span class="site-menu-title">Menu Collapsed</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            -->
-                        </li>
-                        <li class="site-menu-item has-sub">
-                            <a href="@Url.Action("Index","Cidade")">
-                                <!--
-                                <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
-                                -->
-                                <span class="site-menu-title">Cidade</span>
-                            </a>
-                        </li>
-                        <li class="site-menu-item has-sub">
-                            <a href="@Url.Action("Index","Estado")">
-                                <!--
-                                <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
-                                -->
-                                <span class="site-menu-title">Estado</span>
-                            </a>
-                        </li>
-                        <li class="site-menu-item has-sub">
-                            <a href="@Url.Action("Index","Categoria")">
-                                <!--
-                                <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
-                                -->
-                                <span class="site-menu-title">Categoria</span>
-                            </a>
-                        </li>
-
-                        <li class="site-menu-item has-sub">
-                            <a href="@Url.Action("Index","Produto")">
-                                <!--
-                                <i class="site-menu-icon fa-gears" aria-hidden="true"></i>
-                                -->
-                                <span class="site-menu-title">Produto</span>
                             </a>
                         </li>
                     </ul>
@@ -246,7 +244,7 @@
     <!-- End Page -->
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+        <div class="site-footer-legal">© 2019 <a href="https://github.com/SergioSegaty/e-commerce-tcc/blob/master/README.md">Grupo Pandawan</a></div>
         <div class="site-footer-right">
             Crafted with <i class="red-600 wb wb-heart"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
         </div>
