@@ -40,7 +40,7 @@ namespace View
             services.AddTransient(typeof(IBaseRepositoryAsync<>), typeof(BaseRepositoryAsync<>));
             services.AddTransient(typeof(ICidadeRepository), typeof(CidadeRepository));
             services.AddTransient(typeof(IEnderecoRepository), typeof(EnderecoRepository));
-            services.AddTransient(typeof(IEstoqueRepository), typeof(EstoqueRepository));   
+            services.AddTransient(typeof(IEstoqueRepository), typeof(EstoqueRepository));
             services.AddTransient(typeof(IPedidoProdutoRepository), typeof(PedidoProdutoRepository));
             services.AddTransient(typeof(IProdutoRepository), typeof(ProdutoRepository));
             services.AddTransient(typeof(IUsuarioRepository), typeof(UsuarioRepository));
@@ -52,27 +52,15 @@ namespace View
                     opts => opts.MigrationsAssembly("PadawanStore.Infra.Data"));
             });
 
-
-
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(options =>
-            {
-                options.LoginPath = "/auth";
-            }
-            );
-            services.AddCors();
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = new PathString("/auth");
-                //options.LoginPath = new PathString("/auth");
-            });
-            services.AddMvc(
-                opt =>
+                .AddCookie(options =>
                 {
-                    opt.Filters.Add(new LoginFilter());
-                }
-            )
+                    options.LoginPath = "/auth";
+                });
+
+            services.AddCors();
+
+            services.AddMvc()
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }

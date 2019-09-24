@@ -55,7 +55,7 @@
     <!-- Scripts -->
     <script src="~/tema/global/vendor/breakpoints/breakpoints.js"></script>
     <script>
-      Breakpoints();
+        Breakpoints();
     </script>
 </head>
 <body class="animsition page-register-v3 layout-full">
@@ -64,7 +64,7 @@
     <![endif]-->
     <!-- Page -->
     <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">
-        >
+
         <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
             <div class="panel">
                 <div class="panel-body">
@@ -72,26 +72,26 @@
                         <img class="brand-img" src="~/tema/assets//images/Thehoth-Seo-Seo-panda.ico" width="155" height="155">
                         <h2 class="brand-text font-size-18">Pandawan Store</h2>
                     </div>
-                    <form method="post" action="#">
+                    <form method="post" action="javascript:void(0)">
                         <div class="form-group form-material floating" data-plugin="formMaterial">
-                            <input type="text" class="form-control" name="name" />
+                            <input type="text" class="form-control" name="name" id="campo-nome-cadastro-usuario" />
                             <label class="floating-label">Nome Completo</label>
                         </div>
                         <div class="form-group form-material floating" data-plugin="formMaterial">
-                            <input type="email" class="form-control" name="email" />
+                            <input type="email" class="form-control" name="email" id="campo-email-cadastro-usuario" />
                             <label class="floating-label">E-mail</label>
                         </div>
                         <div class="form-group form-material floating" data-plugin="formMaterial">
-                            <input type="password" class="form-control" name="password" />
+                            <input type="password" class="form-control" name="password" id="campo-senha-cadastro-usuario" />
                             <label class="floating-label">Senha</label>
                         </div>
                         <div class="form-group form-material floating" data-plugin="formMaterial">
-                            <input type="password" class="form-control" name="PasswordCheck" />
+                            <input type="password" class="form-control" name="PasswordCheck" id="campo-senha-check-cadastro-usuario" />
                             <label class="floating-label">Confirme a Senha</label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block btn-lg mt-40">Cadastrar</button>
                     </form>
+                    <button type="button" class="btn btn-primary btn-block btn-lg mt-40" id="btn-cadastro-usuario">Cadastrar</button>
                     <p>Já tem conta?<a href="@Url.Action("Index","Auth")"> Entrar</a></p>
                 </div>
             </div>
@@ -157,18 +157,17 @@
     <script src="~/tema/global/js/Plugin/material.js"></script>
 
     <script>
-      (function(document, window, $){
-        'use strict';
+        (function (document, window, $) {
+            'use strict';
 
-        var Site = window.Site;
-        $(document).ready(function(){
-          Site.run();
-        });
-      })(document, window, jQuery);
+            var Site = window.Site;
+            $(document).ready(function () {
+                Site.run();
+            });
+        })(document, window, jQuery);
     </script>
+
+    <script src="~/js/auth/cadastro-usuario.js"></script>
+
 </body>
 </html>
-
-
-
-

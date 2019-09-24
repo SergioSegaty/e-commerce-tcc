@@ -17,41 +17,45 @@ using PadawanStore.Web.UI;
 namespace View.Controllers
 {
     [AllowAnonymous]
+    [Route("auth")]
     public class AuthController : Controller
     {
-        private IUsuarioRepository repository;
+        private IUsuarioRepository usuarioRepository;
+        private IBaseRepositoryAsync<Usuario> repository;
 
-        public AuthController(IUsuarioRepository repository)
+        public AuthController(IUsuarioRepository usuarioRepository, IBaseRepositoryAsync<Usuario> repository)
         {
+            this.usuarioRepository = usuarioRepository;
             this.repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet, Route("")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet, Route("register")]
         public IActionResult Register()
         {
             return View();
         }
 
-        [HttpGet]
+        [HttpGet, Route("logout")]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpPost, Route("login")]
         public async Task<IActionResult> Login(string login, string senha)
         {
-            var usuario = repository.ValidarLogin(login, senha);
+            var usuario = usuarioRepository.ValidarLogin(login, senha);
+
             if (usuario == null)
-            {
                 return RedirectToAction("Index");
-            }
+           
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, usuario.Login),
@@ -90,6 +94,20 @@ namespace View.Controllers
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost, Route("store")]
+        public IActionResult Store(Usuario usuario)
+        {
+            var result = repository.Adicionar(usuario);
+            return Json(new { id = result });
+        }
+
+        [HttpPost, Route("update")]
+        public IActionResult Update(Usuario usuario)
+        {
+            var result = repository.Alterar(usuario);
+            return Json(new { Alterou = result });
         }
     }
 }
