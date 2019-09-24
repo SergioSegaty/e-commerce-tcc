@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar um novo Estado</h5>
+                <h5 class="modal-title">Cadastro de Estado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,23 +15,25 @@
                             <div class="form-group">
                                 <label for="campo-nome-estado">Nome</label>
                                 <span class="text-danger">*</span>
-                                <input id="campo-nome-estado" name="nome" placeholder="Nome do Estado" class="form-control" />
+                                <input id="campo-nome-estado" name="nome" class="form-control" />
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="campo-sigla-estado">Sigla</label>
                                 <span class="text-danger">*</span>
-                                <input id="campo-sigla-estado" name="sigla" placeholder="Sigla do Estado" class="form-control" />
+                                <input id="campo-sigla-estado" name="sigla" class="form-control" />
                             </div>
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger close-modal" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-success" id="btn-cadastrar">Salvar</button>
-                    </div>
+
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger close-modal" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-success" id="btn-cadastrar">
+                    <i class="fas fa-save"></i> Salvar</button>
             </div>
         </div>
     </div>
