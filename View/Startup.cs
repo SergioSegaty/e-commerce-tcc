@@ -56,7 +56,7 @@ namespace View
             services.AddMvc(
                 opt =>
                 {
-                    opt.Filters.Add(new LoginFilter());
+                    //opt.Filters.Add(new LoginFilter());
                 }
             )
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
 }
 
 @section Styles {
@@ -23,13 +23,8 @@
         </div>
         <div class="panel-body container-fluid">
             <div class="row">
-                <div class="card-container" id="lista-produtos">
-
-
-
-
-
-                </div>
+                <table class="" id="lista-produtos">
+                </table>
             </div>
         </div>
     </div>
@@ -39,48 +34,12 @@
     $(() => {
 
         obterTodos = function () {
-
+            $('#lista-produtos').empty();
             $.ajax({
                 url: 'usuarioproduto/obtertodos',
                 method: 'get',
                 success: function (data) {
                     for (let i = 0; i < data.length; i++) {
-
-                        let card = document.createElement('div');
-                        card.classList.add('card');
-
-                        let face1 = document.createElement('div');
-                        face1.classList.add('face', 'face1');
-                        let img = document.createElement('img');
-
-                        let h3 = document.createElement('h3');
-                        h3.innerHTML = data[i].nome;
-
-                        let face2 = document.createElement('div');
-                        face2.classList.add('face', 'face2');
-
-                        let content = document.createElement('div');
-                        content.classList.add('content');
-
-                        let p = document.createElement('p');
-                        p.innerHTML = data[i].descricao;
-
-                        let a = document.createElement('a');
-                        a.innerHTML = 'Read More';
-                        a.href = '#';
-
-                        face1.appendChild(img);
-                        face1.appendChild(h3);
-
-                        content.appendChild(p);
-                        content.appendChild(a);
-
-                        face2.appendChild(content);
-
-                        card.appendChild(face1);
-                        card.appendChild(face2);
-
-                        document.getElementById('lista-produtos').appendChild(card);
 
                     }
                 }
