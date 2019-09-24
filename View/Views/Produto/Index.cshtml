@@ -5,12 +5,11 @@
 <link rel="stylesheet" href="~/css/produto.css"/>
 
 
-
 <div class="page-header">
     <h1 class="page-title">Produtos</h1>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-        <li class="breadcrumb-item active">Produtos</li>
+        <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li class="breadcrumb-item active">Produto</li>
     </ol>
 </div>
 
@@ -30,7 +29,7 @@
 
                     <button class="btn btn-primary float-left ml-1" data-target="#cadastro-modal-produto" id="botao-cadastrar-produto" data-toggle="modal"
                             type="button">
-                        Cadastrar
+                        <i class="fa fa-plus"></i> Novo Produto
                     </button>
 
                 </div>
@@ -40,11 +39,11 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="15%">Código</th>
+                                <th width="5%">Código</th>
                                 <th>Nome</th>
-                                <th width="15%">Preço</th>
+                                <th width="10%">Preço</th>
                                 <th width="15%">Categoria</th>
-                                <th width="15%">Ação</th>
+                                <th width="25%">Ação</th>
                             </tr>
                         </thead>
                         <tbody id="lista-produtos" class="text-center table-content"></tbody>
