@@ -109,5 +109,12 @@ namespace View.Controllers
             var result = repository.Alterar(usuario);
             return Json(new { Alterou = result });
         }
+
+        [HttpGet, Route("obtertodos")]
+        public IActionResult ObterTodos()
+        {
+            var result = repository.ObterTodos();
+            return Json(result);
+        }
     }
 }

@@ -19,7 +19,8 @@ namespace PadawanStore.Infra.Data.Repositories
 
         public Usuario ValidarLogin(string login, string senha)
         {
-            return context.Usuarios.FirstOrDefault(x => x.Login == login && x.Senha == senha && x.RegistroAtivo);
+            //ToUpper pois o login nao eh case sensitive
+            return context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper() && x.Senha == senha && x.RegistroAtivo);
         }
     }
 }
