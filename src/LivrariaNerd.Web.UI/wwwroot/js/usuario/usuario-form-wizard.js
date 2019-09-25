@@ -113,9 +113,9 @@
                                 }
                             }
                         },
-                        titular: {
+                        titularCartao: {
                             validators: {
-                                notEmtpy: {
+                                notEmpty: {
                                     message: 'Este campo é obrigatório'
                                 },
 
@@ -260,7 +260,7 @@ $(() => {
     PreencherEstados(-1);
 
     $('#campo-end-estado').change(function () {
-        idEstado = $('#campo-end-estado').val(); 
+        idEstado = $('#campo-end-estado').val();
 
         PreencherCidades(idEstado);
     });
