@@ -24,6 +24,7 @@ namespace LivrariaNerd.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Usuario>().HasData(
                new Usuario
                {
@@ -33,8 +34,32 @@ namespace LivrariaNerd.Infra.Data.Context
                    Senha = "123",
                    RegistroAtivo = true,
                }
-           );
+            );
+
+            modelBuilder.Entity<Estado>().HasData(
+                new Estado
+                {
+                    Id = 1,
+                    Nome = "Santa Catarina",
+                    Sigla = "SC",
+                    RegistroAtivo = true,
+                }
+            );
+
+            modelBuilder.Entity<Cidade>().HasData(
+
+                new Cidade
+                {
+                    Id = 1,
+                    IdEstado = 1,
+                    Nome = "Blumenau",
+                    RegistroAtivo = true,
+                }
+            );
 
         }
+
+
+
     }
 }
