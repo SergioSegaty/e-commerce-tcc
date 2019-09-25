@@ -34,21 +34,21 @@
                         estado: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Este campo é necessario.'
+                                    message: 'Este campo é obrigatório'
                                 }
                             }
                         },
-                        cidade: {
+                        campoCidade: {
                             validators: {
-                                notEmtpy: {
-                                    message: 'Este campo é necessario.'
+                                notEmpty: {
+                                    message: 'Este campo é obrigatório'
                                 }
                             }
                         },
                         cep: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Este campo é necessario.',
+                                    message: 'Este campo é obrigatório',
                                 },
                                 stringLength: {
                                     min: 8,
@@ -64,7 +64,7 @@
                         endereco: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Este campo é necessario.',
+                                    message: 'Este campo é obrigatório',
                                 },
                                 stringLength: {
                                     min: 5,
@@ -76,7 +76,7 @@
                         numeroEnd: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Este campo é necessario.'
+                                    message: 'Este campo é obrigatório'
                                 },
                                 stringLength: {
                                     min: 2,
@@ -104,7 +104,7 @@
                         cvv: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Este campo é necessario.'
+                                    message: 'Este campo é obrigatório'
                                 },
                                 stringLength: {
                                     min: 3,
@@ -116,11 +116,35 @@
                         titular: {
                             validators: {
                                 notEmtpy: {
-                                    message: 'Este campo é necessário'
+                                    message: 'Este campo é obrigatório'
                                 },
 
                             }
                         },
+                        bairro: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo é obrigatório'
+                                },
+                                stringLength: {
+                                    min: 4,
+                                    max: 30,
+                                    message: 'Este campo deve ter entre 4 e 30 caractéres'
+                                }
+                            }
+                        },
+                        cpfTitular: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Este campo é obrigatório'
+                                },
+                                stringLength: {
+                                    min: 11,
+                                    max: 11,
+                                    message: 'Cpf inválido'
+                                }
+                            }
+                        }
                     },
                     err: {
                         clazz: 'invalid-feedback'
@@ -156,7 +180,89 @@
 
         (0, _jquery.default)("#exampleWizardFormContainer").wizard(options);
     })();
+
+
+
+
 });
 
+$(() => {
 
+    PreencherEstados = function (idEstado) {
+
+        $('#campo-end-estado').empty();
+
+        let opcao = document.createElement('option');
+        opcao.disabled = true;
+        opcao.selected = true;
+        opcao.value = -1;
+        opcao.innerHTML = 'Selecione um Estado';
+
+        document.getElementById('campo-end-estado').appendChild(opcao);
+
+        $.ajax({
+
+            url: '/estado/obtertodos',
+            type: 'get',
+            success: function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    let _data = data[i];
+
+                    let opcao = document.createElement('option');
+                    if (idEstado != -1 && _data.id == idEstado) {
+                        opcao.selected = true;
+                    }
+                    opcao.value = _data.id;
+                    opcao.innerHTML = _data.nome;
+
+                    document.getElementById('campo-end-estado').appendChild(opcao);
+                }
+            }
+        });
+    }
+
+    PreencherCidades = function (idEstado) {
+        $('#campo-end-cidade').empty();
+        let idCidade = 0;
+        let opcao = document.createElement('option');
+        opcao.disabled;
+        opcao.selected;
+        opcao.value = -1;
+        opcao.innerHTML = 'Selecione uma Cidade';
+
+        document.getElementById('campo-end-cidade').appendChild(opcao);
+
+        $.ajax({
+
+            url: '/cidade/obtertodospeloestado?=' + idEstado,
+            type: 'get',
+            success: function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    let _data = data[i];
+
+                    let opcao = document.createElement('option');
+                    if (idCidade != -1 && idCidade == _data.id) {
+                        opcao.selected = true;
+                    }
+
+                    opcao.value = _data.id;
+                    opcao.innerHTML = _data.nome;
+
+                    document.getElementById('campo-end-cidade').appendChild(opcao);
+                }
+            }
+        });
+
+    }
+
+
+
+    PreencherEstados(-1);
+
+    $('#campo-end-estado').change(function () {
+        idEstado = $('#campo-end-estado').val(); 
+
+        PreencherCidades(idEstado);
+    });
+});
 
