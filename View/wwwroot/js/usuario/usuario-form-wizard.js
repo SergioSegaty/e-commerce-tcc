@@ -109,7 +109,7 @@
                                 stringLength: {
                                     min: 3,
                                     max: 3,
-                                    message: 'Somente 3 caracéres'
+                                    message: 'Somente 3 caractéres'
                                 }
                             }
                         },
