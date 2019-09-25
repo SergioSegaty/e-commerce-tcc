@@ -73,7 +73,7 @@
                                 }
                             }
                         },
-                        numero: {
+                        numeroEnd: {
                             validators: {
                                 notEmpty: {
                                     message: 'Este campo é necessario.'
