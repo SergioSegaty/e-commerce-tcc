@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="~/tema/global/fonts/brand-icons/brand-icons.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
-    @RenderSection("Styles", required: false);
+    @RenderSection("Styles", required: false)
 
     <!--[if lt IE 9]>
     <script src="~/tema/global/vendor/html5shiv/html5shiv.min.js"></script>
@@ -312,7 +312,6 @@
             <div>
                 <div>
                     <ul class="site-menu" data-plugin="menu">
-                        <li class="site-menu-category">General</li>
                         <li class="dropdown site-menu-item has-sub">
                             <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
                                 <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
@@ -357,7 +356,6 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="site-menu-category">Apps</li>
                         <li class="dropdown site-menu-item has-sub">
                             <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
                                 <i class="site-menu-icon wb-grid-4" aria-hidden="true"></i>
@@ -387,11 +385,13 @@
     </div>
 
     <!-- Page -->
+    <!--
     <div class="page">
         <div class="page-content container-fluid">
-            @RenderBody()
         </div>
     </div>
+    -->
+    @RenderBody()
 
     <div id="addtodoItemForm" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="addtodoItemForm"
          aria-hidden="true">
