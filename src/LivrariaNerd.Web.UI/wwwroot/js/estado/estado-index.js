@@ -62,7 +62,7 @@
         $sigla = $('#campo-sigla-estado').val();
         $nome = $('#campo-nome-estado').val();
 
-        if ($('#campo-nome-estado').hasClass('valid') && $('#campo-sigla-estado').hasClass('valid')) {
+        if ($('#cadastro-estado-form').valid()) {
             if ($id === -1) {
                 cadastrar();
             } else {

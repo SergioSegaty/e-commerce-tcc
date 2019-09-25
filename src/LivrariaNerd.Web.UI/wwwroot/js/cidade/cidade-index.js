@@ -15,7 +15,7 @@
         $nome = $("#campo-nome-cidade").val();
         $idEstado = $("#campo-estado").val();
 
-        if ($('#campo-nome-cidade').hasClass('valid') && $('#campo-estado').hasClass('valid')) {
+        if ($('#cadastro-cidade-form').valid()) {
             if ($id == -1) {
                 inserir();
             } else {
