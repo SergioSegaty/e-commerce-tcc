@@ -47,6 +47,10 @@ $(function () {
         $valido = $form.valid();
 
         if ($valido) {
+            if (!$id == -1) {
+                $("#id-produto-hidden").val($id);
+                $("#form-cadastro-produto-upload-imagem").submit();
+            }
 
             if ($id == -1) {
                 inserir();
@@ -166,6 +170,9 @@ $(function () {
             success: function (data) {
                 $id = data.id;
 
+                $("#id-produto-hidden").val($id);
+                $("#form-cadastro-produto-upload-imagem").submit();
+
                 $.ajax({
 
                     url: '/estoque/adicionar',
@@ -279,7 +286,6 @@ $(function () {
                     botaoApagar.classList.add('btn', 'btn-danger', 'botao-apagar');
                     botaoApagar.innerHTML = "<i class=\"fas fa-trash\"> </i>";
                     botaoApagar.setAttribute('data-id', _data.id);
-
 
                     var tdAcao = document.createElement('td');
 

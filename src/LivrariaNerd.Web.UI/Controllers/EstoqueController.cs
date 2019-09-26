@@ -105,7 +105,7 @@ namespace e_commerce_ws.Controllers
             {
                 result.Add(
                     new {
-                        id =estoque.Id,
+                        id = estoque.Id,
                         nomeProduto = estoque.Produto.Nome,
                         quantidade = estoque.Quantidade,
                         status = estoque.Status
