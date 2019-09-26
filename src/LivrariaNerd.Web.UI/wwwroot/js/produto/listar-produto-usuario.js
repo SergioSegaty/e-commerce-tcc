@@ -1,7 +1,7 @@
 ﻿$(() => {
 
     ObterTodosOsProdutos = function () {
-        $('#lista-produto').empty();
+        //$('#lista-produto').empty();
 
         $.ajax({
             url: '/loja/obtertodosprodutosusuarios',
@@ -44,8 +44,7 @@
                     div.classList.add('card');
                     div.classList.add('card-shadow');
 
-                    li.setAttribute('data-type', _data.nomeCategoriaProduto);
-                    li.setAttribute('id', _data.codigo);
+                    li.setAttribute('data-type', _data.nomeCategoriaProduto.toLowerCase());
 
                     divCardBlock.appendChild(h4);
                     figure.appendChild(img);

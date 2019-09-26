@@ -22,69 +22,69 @@
   var NAME = 'filterable';
 
   var Filterable =
-  /*#__PURE__*/
-  function (_Plugin) {
-    babelHelpers.inherits(Filterable, _Plugin);
+    /*#__PURE__*/
+    function (_Plugin) {
+      babelHelpers.inherits(Filterable, _Plugin);
 
-    function Filterable() {
-      babelHelpers.classCallCheck(this, Filterable);
-      return babelHelpers.possibleConstructorReturn(this, babelHelpers.getPrototypeOf(Filterable).apply(this, arguments));
-    }
-
-    babelHelpers.createClass(Filterable, [{
-      key: "getName",
-      value: function getName() {
-        return NAME;
+      function Filterable() {
+        babelHelpers.classCallCheck(this, Filterable);
+        return babelHelpers.possibleConstructorReturn(this, babelHelpers.getPrototypeOf(Filterable).apply(this, arguments));
       }
-    }, {
-      key: "render",
-      value: function render() {
-        if (typeof _jquery.default.fn.isotope === 'undefined') {
-          return;
+      babelHelpers.createClass(Filterable, [{
+        key: "getName",
+        value: function getName() {
+          return NAME;
         }
-
-        var $el = this.$el;
-
-        var options = _jquery.default.extend(this.options, {
-          filter: '*'
-        });
-
-        this.$el.isotope(options);
-        this.$filters = (0, _jquery.default)(options.filters);
-        var self = this;
-        (0, _jquery.default)('[data-filter]', this.$filters).on('click', function (e) {
-          var $this = (0, _jquery.default)(this);
-          var $li = $this.parent('li');
-          $li.siblings().find('.nav-link.active').each(function () {
-            (0, _jquery.default)(this).attr('aria-expanded', false).removeClass('active');
-          });
-          $this.addClass('active').attr('aria-expanded', true);
-          var filter = $this.attr('data-filter');
-
-          if (filter !== '*') {
-            filter = "[data-type=\"".concat(filter, "\"]");
+      }, {
+        key: "render",
+        value: function render() {
+          if (typeof _jquery.default.fn.isotope === 'undefined') {
+            return;
           }
 
-          self.$el.isotope({
-            filter: filter
+          var $el = this.$el;
+
+          var options = _jquery.default.extend(this.options, {
+            filter: '*'
           });
-          e.preventDefault();
-        });
-      }
-    }], [{
-      key: "getDefaults",
-      value: function getDefaults() {
-        return {
-          animationOptions: {
-            duration: 750,
-            easing: 'linear',
-            queue: false
-          }
-        };
-      }
-    }]);
-    return Filterable;
-  }(_Plugin2.default);
+
+          this.$el.isotope(options);
+          this.$filters = (0, _jquery.default)(options.filters);
+          var self = this;
+          
+          (0, _jquery.default)('[data-filter]', this.$filters).on('click', function (e) {
+            var $this = (0, _jquery.default)(this);
+            var $li = $this.parent('li');
+            $li.siblings().find('.nav-link.active').each(function () {
+              (0, _jquery.default)(this).attr('aria-expanded', false).removeClass('active');
+            });
+            $this.addClass('active').attr('aria-expanded', true);
+            var filter = $this.attr('data-filter');
+            console.log(filter);
+            if (filter !== '*') {
+              filter = "[data-type=\"".concat(filter, "\"]");
+            }
+
+            self.$el.isotope({
+              filter: filter
+            });
+            e.preventDefault();
+          });
+        }
+      }], [{
+        key: "getDefaults",
+        value: function getDefaults() {
+          return {
+            animationOptions: {
+              duration: 750,
+              easing: 'linear',
+              queue: false
+            }
+          };
+        }
+      }]);
+      return Filterable;
+    }(_Plugin2.default);
 
   _Plugin2.default.register(NAME, Filterable);
 
