@@ -270,14 +270,14 @@ $(function () {
                     var botaoEditar = document.createElement("button");
 
                     botaoEditar.classList.add("btn", "btn-primary", "mr-2", "botao-editar");
-                    botaoEditar.innerHTML = "<i class=\"fas fa-edit\"></i> Editar";
+                    botaoEditar.innerHTML = "<i class=\"fas fa-edit\"></i>";
                     botaoEditar.setAttribute("data-id", _data.id);
 
 
                     var botaoApagar = document.createElement("button");
                     botaoApagar.innerHTML = 'Apagar';
                     botaoApagar.classList.add('btn', 'btn-danger', 'botao-apagar');
-                    botaoApagar.innerHTML = "<i class=\"fas fa-trash\"> </i> Apagar";
+                    botaoApagar.innerHTML = "<i class=\"fas fa-trash\"> </i>";
                     botaoApagar.setAttribute('data-id', _data.id);
 
 

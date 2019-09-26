@@ -129,17 +129,17 @@
                     tdSigla.innerHTML = _data.estado.sigla;
 
                     var botaoEditar = document.createElement('a');
-                    botaoEditar.innerHTML = 'Editar';
+                    botaoEditar.innerHTML = '<i class=\"fas fa-edit\"></i>';
                     botaoEditar.classList.add('btn', 'btn-primary', 'botao-editar');
-                    botaoEditar.style = "color: white; margin-right: 50px";
+                    botaoEditar.style = "color: white; margin-right: 5px";
                     botaoEditar.setAttribute('data-id', _data.id);
 
                     tdAcao.append(botaoEditar);
 
                     var botaoApagar = document.createElement('a');
-                    botaoApagar.innerHTML = 'Apagar';
+                    botaoApagar.innerHTML = '<i class=\"fas fa-trash\"></i>';
                     botaoApagar.classList.add('btn', 'btn-danger', 'botao-apagar');
-                    botaoApagar.style = "color: white;margin-left: 50px;";
+                    botaoApagar.style = "color: white;margin-left: 5px;";
                     botaoApagar.setAttribute('data-id', _data.id);
 
                     tdAcao.append(botaoApagar);

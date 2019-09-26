@@ -1,10 +1,10 @@
 ﻿jQuery(function ($) {
     $('#tabela-estoque').footable({
         "columns": [
-            { "name": "id", "title": "Código", "breakpoints": "xs sm", "type": "number", "style": { "width": 80, "maxWidth": 80 } },
-            { "name": "nomeProduto", "title": "Nome", "type": "text" },
-            { "name": "quantidade", "title": "Quantidade", "type": "number", "style": { "width": 80, "maxWidth": 80, "text-align": "center" } },
-            { "name": "status", "title": "Status", "type": "text", "style": { "width": 100, "maxWidth": 120, "text-align": "center" }, 
+            { "name": "id", "title": "Código", "breakpoints": "xs sm", "type": "number", "style": { "width": 122, "maxWidth": 80} },
+            { "name": "nomeProduto", "title": "Nome", "type": "text", "style": { "width": 167, "maxWidth": 80}},
+            { "name": "quantidade", "title": "Quantidade", "type": "number", "style": { "width": 130, "maxWidth": 80, "text-align": "center" } },
+            { "name": "status", "title": "Status", "type": "text", "style": { "width": 190, "maxWidth": 120, "text-align": "center" }, 
                 "formatter": function (status) {
                     if (status === 'Em Estoque')
                         return '<td class="badge badge-table badge-success">'+status+'</td>'
@@ -15,7 +15,7 @@
                 } },
             { "name": "id", "title": "Ação", 
                 "formatter": function(id){ 
-                    return '<button data-id="' + id +'" class="editar-estoque btn btn-primary">Editar</button>' + '<button data-id="'+id+'" class="apagar-estoque btn btn-danger">Apagar</button>';              
+                    return '<button data-id="' + id + '" class="editar-estoque btn btn-primary mr-2"> <i class=\"fas fa-edit\"></i> </button>' + '<button data-id="' + id +'" class="apagar-estoque btn btn-danger ml-2"> <i class=\"fas fa-trash\"></i> </button>';              
                 }}
         ],
         "rows": $.get({
