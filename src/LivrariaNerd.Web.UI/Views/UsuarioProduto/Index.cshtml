@@ -5,9 +5,11 @@
 }
 
 @section Styles {
-
+    <link rel="stylesheet" href="~/tema/global/vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="~/tema/topassets/examples/css/pages/gallery.css">
 }
 
+<!--Carrosel-->
 <div class="row row-lg">
     <div class="col-xl-12">
         <!-- Example Default -->
@@ -45,8 +47,50 @@
     </div>
 </div>
 
+
+<!--Galeria Começo-->
+<div class="page">
+    <div class="page-header page-header-bordered page-header-tabs">
+        <ul class="nav nav-tabs nav-tabs-line" role="tablist" id="exampleFilter">
+            <li class="nav-item" role="presentation">
+                <a class="active nav-link" href="" aria-controls="exampleList" aria-expanded="true"
+                   role="tab" data-filter="*">All</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="" aria-expanded="false" role="tab" data-filter="hq">HQ</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="" aria-expanded="false" role="tab" data-filter="action-figure">Action Figure</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="" aria-expanded="false" role="tab" data-filter="Abacate">Abacate</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="page-content">
+        <ul class="blocks blocks-100 blocks-xxl-4 blocks-lg-3 blocks-md-2" data-plugin="filterable"
+            data-filters="#exampleFilter" id="lista-produto">
+            <!--<li data-type="animal">
+        <div class="card card-shadow">
+            <figure class="card-img-top overlay-hover overlay">
+                <img class="overlay-figure overlay-scale" src="../../../global/photos/placeholder.png"
+                     alt="...">
+                <figcaption class="overlay-panel overlay-background overlay-fade overlay-icon">
+                    <a class="icon wb-search" href="../../../global/photos/placeholder.png"></a>
+                </figcaption>
+            </figure>
+            <div class="card-block">
+                <h4 class="card-title">Animal Horse</h4>
+            </div>
+        </div>
+    </li>-->
+        </ul>
+    </div>
+</div>
+<!--Galeria Fim-->
 <!-- Como foi retirado as duas divs no layout,
-    o render body nao possui elas, 
+    o render body nao possui elas,
     entao para que fique bonitinho com as margins
     precisa-se por o conteudo ali dentro das mesmas -->
 <div class="page">
@@ -54,3 +98,12 @@
 
     </div>
 </div>
+
+@section Scripts {
+
+    <script src="~/js/produto/listar-produto-usuario.js"></script>
+    <script src="~/tema/global/js/Plugin/filterable.js"></script>
+    <script src="~/tema/topassets/examples/js/pages/gallery.js"></script>
+    <script src="~/tema/global/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/tema/global/vendor/isotope/isotope.pkgd.min.js"></script>
+}

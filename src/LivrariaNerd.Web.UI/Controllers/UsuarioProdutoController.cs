@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LivrariaNerd.Domain.Entities;
 using LivrariaNerd.Infra.Data.Interface;
+using System.Collections.Generic;
 
 namespace PadawanStore.Web.UI.Controllers
 {
@@ -27,6 +28,29 @@ namespace PadawanStore.Web.UI.Controllers
         {
             var produtos = _produtoRepository.ObterTodos();
             return Json(produtos);
+        }
+
+        [HttpGet, Route("obtertodosprodutosusuarios")]
+        public JsonResult ObterTodosProdutosUsuarios()
+        {
+            var produtos = _produtoRepository.ObterTodos();
+
+            var result = new List<object>();
+
+            foreach (var produto in produtos)
+            {
+                result.Add(
+                    new
+                    {
+                        Codigo = produto.Id,
+                        ValorDoProduto = produto.Preco,
+                        NomeProduto = produto.Nome,
+                        NomeCategoriaProduto = produto.Categoria.Nome,
+                        ImagemDoProduto = produto.Imagem
+                    });
+            }
+
+            return Json(result);
         }
     }
 }
