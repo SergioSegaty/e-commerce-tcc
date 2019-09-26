@@ -27,6 +27,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
         {
             return _context.Produtos
             .Include(x => x.Categoria)
+            .OrderByDescending(x => x.Categoria.Nome)
             .Where(x => x.RegistroAtivo).ToList();
         }
 

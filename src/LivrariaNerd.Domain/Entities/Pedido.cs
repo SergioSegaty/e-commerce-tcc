@@ -11,5 +11,8 @@ namespace LivrariaNerd.Domain.Entities
 
         [Column("id_usuario")]
         public int IdUsuario { get; set; }
+
+        [Column("quantidade")]
+        public int Quantidade { get; set; }
     }
 }
