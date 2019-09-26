@@ -2,6 +2,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LivrariaNerd.Domain.Entities;
 using LivrariaNerd.Infra.Data.Interface;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography;
+using System;
+using System.Text;
 
 namespace e_commerce_ws.Controllers
 {
@@ -13,16 +19,61 @@ namespace e_commerce_ws.Controllers
     {
         private readonly IBaseRepositoryAsync<Produto> _repo;
         private readonly IProdutoRepository _produtoRepository;
-    
+        private readonly IHostingEnvironment _env;
+        private readonly string _nomePasta;
+        private readonly string _caminho;
+
         /// <summary>
         /// Construtor do controller de Produto
         /// </summary>
         /// <param name="context"></param>
         /// <param name="produtoRepository"></param>
-        public ProdutoController(IBaseRepositoryAsync<Produto> context, IProdutoRepository produtoRepository)
+        public ProdutoController(IBaseRepositoryAsync<Produto> context, IProdutoRepository produtoRepository, IHostingEnvironment env)
         {
             _repo = context;
             _produtoRepository = produtoRepository;
+            _env = env;
+
+            string wwwroot = env.WebRootPath;
+            _nomePasta = "uploads";
+            _caminho = Path.Combine(wwwroot, _nomePasta);
+            _caminho = Path.Combine(_caminho, "imagens");
+
+            if (!Directory.Exists(_caminho))
+            {
+                Directory.CreateDirectory(_caminho);
+            }
+        }
+
+        [HttpPost, Route("upload")]
+        public IActionResult Upload(IFormFile file, int id)
+        {
+            var nomeArquivo = file.FileName;
+
+            var produto = _repo.ObterPeloId(id);
+
+            //Hash
+            FileInfo fileInfo = new FileInfo(nomeArquivo);
+
+            var crypt = new SHA256Managed();
+            var hash = new StringBuilder();
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(fileInfo.Name.Replace(fileInfo.Extension, "") + DateTime.Now));
+            foreach(byte oByte in crypto)
+            {
+                hash.Append(oByte.ToString("x2"));
+            }
+            
+            var caminhoArquivo = Path.Combine(_caminho, (hash + fileInfo.Extension).ToUpper());
+            
+            using(var stream = new FileStream(caminhoArquivo, FileMode.Create))
+            {
+                file.CopyTo(stream);
+                //Add The Image to the product object
+                produto.Imagem = caminhoArquivo;
+                _repo.Alterar(produto);
+            }
+
+            return new EmptyResult();
         }
 
         /// <summary>

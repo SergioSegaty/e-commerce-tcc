@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\tema\assets\js\Modernizr\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 
