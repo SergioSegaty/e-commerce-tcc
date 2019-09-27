@@ -60,5 +60,78 @@
         })
     }
 
-    ObterTodosOsProdutos();
+
+    ObterProdutos = function () {
+        $('#exampleResponsive1').empty();
+
+
+        $.ajax({
+
+            url: '/produto/obtertodospelacategoria?=1',
+            method: 'get',
+            success: function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    _data = data[i];
+
+                    let figure = document.createElement('figure');
+                    figure.classList.add('overlay', 'overlay-hover', 'animation-hover', 'container');
+
+                   
+                }
+            }
+
+        });
+    }
+
+    // ObterProdutos();
+
 });
+
+/*
+ *
+ * // Criando botoes e alterando eles
+                    let botaoComprar = document.createElement('button');
+                    let botaoDesejo = document.createElement('button');
+                    let iconeComprar = document.createElement('i');
+                    let iconeDesejo = document.createElement('i');
+
+                    iconeComprar.classList.add('icon');
+                    iconeComprar.classList.add('fa-cart-plus');
+
+                    botaoComprar.classList.add('btn');
+                    botaoComprar.classList.add('btn-warning');
+                    botaoComprar.classList.add('align-bottom');
+                    botaoComprar.classList.add('mr-5');
+
+                    // Criando as FigCap e o titulo
+                    let figuraCap = document.createElement('figcaption');
+
+                    figuraCap.classList.add('vertical-align');
+                    figuraCap.classList.add('overlay-panel');
+                    figuraCap.classList.add('overlay-background');
+                    figuraCap.classList.add('overlay-fade');
+
+                    figuraCap.appendChild(botaoComprar);
+                    figuraCap.appendChild(botaoDesejo);
+
+                    titulo = document.createElement('h4');
+                    titulo.innerHTML = _data.nome;
+
+                    // Criando as Figuras
+                    let figura = document.createElement('figure');
+
+                    figura.classList.add('overlay');
+                    figura.classList.add('overlay-hover');
+                    figura.classList.add('animation-hover');
+
+
+                    imagem = document.createElement('img');
+                    imagem.setAttribute('src', '/img/witcher_action_figure.jpg');
+
+                    figura.appendChild(titulo);
+                    figura.appendChild(imagem);
+                    figura.appendChild(figuraCap);
+
+                    document.getElementById('exampleResponsive1').appendChild(figura);
+ *
+ * */
