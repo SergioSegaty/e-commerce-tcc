@@ -1,17 +1,15 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/tema/global/vendor/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="~/tema/topassets/examples/css/pages/gallery.css">
-    <link rel="stylesheet" href="~/tema/global/vendor/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="~/tema/global/vendor/slick-carousel/slick.css">
-    <link rel="stylesheet" href="~/tema/assets/examples/css/uikit/carousel.css">
+<link rel="stylesheet" href="~/tema/global/vendor/magnific-popup/magnific-popup.css">
+<link rel="stylesheet" href="~/tema/topassets/examples/css/pages/gallery.css">
+<link rel="stylesheet" href="~/tema/global/vendor/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="~/tema/global/vendor/slick-carousel/slick.css">
+<link rel="stylesheet" href="~/tema/assets/examples/css/uikit/carousel.css">
 }
-
 
 
 <!--Carrosel-->
@@ -88,48 +86,33 @@
 <!-- Carrousel da Loja -->
 
 <div class="page">
-    <div class="page-content container-fluid">
+    <div class="page-content">
         <!-- Painel da Categoria 1-->
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Categoria 1
+                    Loja
                 </h3>
             </div>
+            <!-- Comeco do Corpo do Painel -->
             <div class="panel-body container-fluid">
                 <div class="row row-lg">
                     <!-- Bloco -->
                     <div class="col-10 offset-1">
                         <div class="example-wrap">
                             <div class="example">
-                                <div class="slider" id="exampleResponsive">
+                                <div class="slider" id="exampleResponsive1">
                                     <figure class="overlay overlay-hover animation-hover">
                                         <h3>Hover</h3>
                                         <figcaption class="vertical-align overlay-panel overlay-background overlay-fade">
-                                            <button>Teste</button>
+                                            <button class="btn btn-warning align-bottom mr-5">
+                                                <i class="icon fa-cart-plus"></i>
+                                            </button>
+                                            <button class="btn btn-danger align-bottom">
+                                                <i class="icon wb-heart"></i>
+                                            </button>
                                         </figcaption>
                                     </figure>
-                                    <div>
-                                        <h3>2</h3>
-                                    </div>
-                                    <div>
-                                        <h3>3</h3>
-                                    </div>
-                                    <div>
-                                        <h3>4</h3>
-                                    </div>
-                                    <div>
-                                        <h3>5</h3>
-                                    </div>
-                                    <div>
-                                        <h3>6</h3>
-                                    </div>
-                                    <div>
-                                        <h3>7</h3>
-                                    </div>
-                                    <div>
-                                        <h3>8</h3>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -137,19 +120,17 @@
                     <!-- Fim do Bloco -->
                 </div>
             </div>
-        </div>
-        <!-- Fim painel Categoria 1-->
-        <!-- Painel Categoria 2-->
-        <div class="panel">
+            <!-- Fim painel Categoria 1-->
+            <!-- Painel Categoria 2 e 3 -->
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Categoria 2
+                    Categoria 2 e 3
                 </h3>
             </div>
             <div class="panel-body container-fluid">
                 <div class="row">
                     <!-- Bloco 1 -->
-                    <div class="col-5">
+                    <div class="col-lg-6 col-md-12">
                         <div class="example-wrap">
                             <div class="example">
                                 <div class="slider" id="exampleResponsive2">
@@ -182,27 +163,110 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
+                    </div>
+                    <!-- Final do Bloco 1 -->
+                    <!-- Bloco 2 -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="example-wrap">
+                            <div class="example">
+                                <div class="slider" id="exampleResponsive3">
+                                    <figure class="overlay overlay-hover animation-hover">
+                                        <h3>Hover</h3>
+                                        <figcaption class="vertical-align overlay-panel overlay-background overlay-fade">
+                                            <button>Teste</button>
+                                        </figcaption>
+                                    </figure>
+                                    <div>
+                                        <h3>2</h3>
+                                    </div>
+                                    <div>
+                                        <h3>3</h3>
+                                    </div>
+                                    <div>
+                                        <h3>4</h3>
+                                    </div>
+                                    <div>
+                                        <h3>5</h3>
+                                    </div>
+                                    <div>
+                                        <h3>6</h3>
+                                    </div>
+                                    <div>
+                                        <h3>7</h3>
+                                    </div>
+                                    <div>
+                                        <h3>8</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim Bloco 2 -->
+                </div>
+            </div>
+            <!-- Fim Painel 2 -->
+            <!-- Painel Categoria 4 -->
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Categoria 4
+                </h3>
+            </div>
+            <div class="row row-lg">
+                <!-- Bloco -->
+                <div class="col-10 offset-1">
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="slider" id="exampleResponsive4">
+                                <figure class="overlay overlay-hover animation-hover">
+                                    <h3>Hover</h3>
+                                    <figcaption class="vertical-align overlay-panel overlay-background overlay-fade">
+                                        <button>Teste</button>
+                                    </figcaption>
+                                </figure>
+                                <div>
+                                    <h3>2</h3>
+                                </div>
+                                <div>
+                                    <h3>3</h3>
+                                </div>
+                                <div>
+                                    <h3>4</h3>
+                                </div>
+                                <div>
+                                    <h3>5</h3>
+                                </div>
+                                <div>
+                                    <h3>6</h3>
+                                </div>
+                                <div>
+                                    <h3>7</h3>
+                                </div>
+                                <div>
+                                    <h3>8</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Fim do Bloco -->
             </div>
         </div>
     </div>
 </div>
-
+<!-- Fim do Corpo do Painel -->
 @section Scripts {
 
-    <script src="~/js/produto/listar-produto-usuario.js"></script>
-    <script src="~/tema/global/js/Plugin/filterable.js"></script>
-    <script src="~/tema/topassets/examples/js/pages/gallery.js"></script>
-    <script src="~/tema/global/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="~/tema/global/vendor/isotope/isotope.pkgd.min.js"></script>
-    <script src="~/tema/global/vendor/slidepanel/jquery-slidePanel.js"></script>
+<script src="~/js/produto/listar-produto-usuario.js"></script>
+<script src="~/tema/global/js/Plugin/filterable.js"></script>
+<script src="~/tema/topassets/examples/js/pages/gallery.js"></script>
+<script src="~/tema/global/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="~/tema/global/vendor/isotope/isotope.pkgd.min.js"></script>
+<script src="~/tema/global/vendor/slidepanel/jquery-slidePanel.js"></script>
 
-    <!-- Carrossel -->
-    <script src="~/tema/global/vendor/slick-carousel/slick.js"></script>
-    <script src="~/tema/global/vendor/owl-carousel/owl.carousel.js"></script>
-    <script src="~/tema/global/js/Plugin/owl-carousel.js"></script>
-    <script src="~/tema/assets/examples/js/uikit/carousel.js"></script>
+<!-- Carrossel -->
+<script src="~/tema/global/vendor/slick-carousel/slick.js"></script>
+<script src="~/tema/global/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="~/tema/global/js/Plugin/owl-carousel.js"></script>
+<script src="~/tema/assets/examples/js/uikit/carousel.js"></script>
 }
