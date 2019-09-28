@@ -56,6 +56,7 @@
                     document.getElementById('lista-produto').appendChild(li);
                     console.log(data);
                 }
+                $('#lista-produto').filterable();
             }
         })
     }
@@ -73,17 +74,202 @@
                 for (let i = 0; i < data.length; i++) {
                     _data = data[i];
 
-                    let figure = document.createElement('figure');
-                    figure.classList.add('overlay', 'overlay-hover', 'animation-hover', 'container');
 
+                    // Criando botoes
+                    let botaoComprar = document.createElement('button');
+                    let botaoDesejo = document.createElement('button');
+                    // Icone
+                    let iconeComprar = document.createElement('i');
+                    let iconeDesejo = document.createElement('i');
+
+                    iconeComprar.classList.add('icon', 'fa-cart-plus');
+                    iconeDesejo.classList.add('icon', 'wb-heart');
+
+                    
+                    botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5');
+                    botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom');
+
+                    // Criando as FigCap e o titulo
+                    let figuraCap = document.createElement('figcaption');
+
+                    figuraCap.classList.add('vertical-align', 'overlay-panel', 'overlay-background', 'overlay-fade');
+
+                    botaoComprar.appendChild(iconeComprar);
+                    botaoDesejo.appendChild(iconeDesejo);
+
+                    figuraCap.appendChild(botaoComprar);
+                    figuraCap.appendChild(botaoDesejo);
+
+                    titulo = document.createElement('h4');
+                    titulo.innerHTML = _data.nome;
+
+                    // Criando as Figuras
+                    let figura = document.createElement('figure');
+
+                    figura.classList.add('overlay');
+                    figura.classList.add('overlay-hover');
+                    figura.classList.add('animation-hover');
+
+
+                    imagem = document.createElement('img');
+                    imagem.setAttribute('src', '/img/witcher_action_figure.jpg');
+
+                    figura.appendChild(titulo);
+                    figura.appendChild(imagem);
+                    figura.appendChild(figuraCap);
+
+                    document.getElementById('exampleResponsive1').append(figura);
+
+                    
                    
                 }
+
+                // Slick(Carousel) na Categoria 1
+                $("#exampleResponsive1").slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 500,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    }, {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }, {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        } // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+
+                    }]
+                });
+
+                // Carousel Settings - Para o hardcode // Copiar exemplo para o Programático; 
+                $('#exampleResponsive2').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    }, {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }, {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        } // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+
+                    }]
+                });
+                // Carousel Settings - Para o hardcode // Copiar exemplo para o Programático; 
+                $('#exampleResponsive3').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    }, {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }, {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        } // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+
+                    }]
+                });
+                // Carousel Settings - Para o hardcode // Copiar exemplo para o Programático; 
+                $('#exampleResponsive4').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    }, {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }, {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        } // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+
+                    }]
+                });
             }
 
         });
     }
 
-    // ObterProdutos();
+
+
+
+
+    ObterProdutos();
+    
+
+
+
+    
+
+
 
 });
 
