@@ -97,8 +97,8 @@
                     iconeDesejo.classList.add('icon', 'wb-heart');
 
                     
-                    botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5');
-                    botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom');
+                    botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating');
+                    botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom', 'btn-floating');
 
                     // Criando as FigCap e o titulo
                     let figuraCap = document.createElement('figcaption');
