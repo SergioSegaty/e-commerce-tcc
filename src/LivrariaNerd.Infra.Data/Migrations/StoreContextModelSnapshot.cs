@@ -76,6 +76,17 @@ namespace LivrariaNerd.Infra.Data.Migrations
                     b.HasIndex("IdEstado");
 
                     b.ToTable("cidades");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataUltimaAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdEstado = 1,
+                            Nome = "Blumenau",
+                            RegistroAtivo = true
+                        });
                 });
 
             modelBuilder.Entity("LivrariaNerd.Domain.Entities.Endereco", b =>
@@ -155,6 +166,17 @@ namespace LivrariaNerd.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("estados");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DataCriacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataUltimaAtualizacao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Nome = "Santa Catarina",
+                            RegistroAtivo = true,
+                            Sigla = "SC"
+                        });
                 });
 
             modelBuilder.Entity("LivrariaNerd.Domain.Entities.Estoque", b =>
@@ -210,6 +232,9 @@ namespace LivrariaNerd.Infra.Data.Migrations
 
                     b.Property<int>("IdUsuario")
                         .HasColumnName("id_usuario");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnName("quantidade");
 
                     b.Property<bool>("RegistroAtivo")
                         .HasColumnName("registro_ativo");
@@ -280,8 +305,11 @@ namespace LivrariaNerd.Infra.Data.Migrations
                     b.Property<int>("IdCategoria")
                         .HasColumnName("id_categoria");
 
-                    b.Property<string>("Imagem")
-                        .HasColumnName("imagem");
+                    b.Property<string>("ImagemCaminhoCompleto")
+                        .HasColumnName("imagem_caminho_completo");
+
+                    b.Property<string>("ImagemCaminhoWwwroot")
+                        .HasColumnName("imagem_caminho_wwwroot");
 
                     b.Property<string>("Nome")
                         .HasColumnName("nome")

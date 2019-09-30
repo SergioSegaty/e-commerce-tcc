@@ -36,14 +36,16 @@ namespace e_commerce_ws.Controllers
             _env = env;
 
             string wwwroot = env.WebRootPath;
+
             _nomePasta = "uploads";
+            _nomePasta = Path.Combine(_nomePasta, "imagens");
             _caminho = Path.Combine(wwwroot, _nomePasta);
-            _caminho = Path.Combine(_caminho, "imagens");
 
             if (!Directory.Exists(_caminho))
             {
                 Directory.CreateDirectory(_caminho);
             }
+
             var claimsIdentity = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
             var nome = claimsIdentity.FindFirst("FullName").Value;
             var idUsuario = claimsIdentity.FindFirst("Id").Value;
@@ -70,11 +72,15 @@ namespace e_commerce_ws.Controllers
 
             var caminhoArquivo = Path.Combine(_caminho, (hash + fileInfo.Extension).ToUpper());
 
+            var caminhoWWWRoot = Path.Combine(_nomePasta, (hash + fileInfo.Extension).ToUpper());
+
+
             using (var stream = new FileStream(caminhoArquivo, FileMode.Create))
             {
                 file.CopyTo(stream);
                 //Add The Image to the product object
-                produto.Imagem = caminhoArquivo;
+                produto.ImagemCaminhoCompleto = caminhoArquivo;
+                produto.ImagemCaminhoWwwroot = caminhoWWWRoot;
                 _repo.Alterar(produto);
             }
 
