@@ -67,7 +67,6 @@ $(function () {
 
 
                 $('#editar-modal-estoque').modal('show');
-                console.log('Id do Estoque: ' + $id + ', Id do Produto: ' + $idProduto);
 
             }
 
@@ -78,14 +77,10 @@ $(function () {
     });
 
     $('#btn-editar-estoque').on('click', function () {
-
-        console.log('clickou btn-salvar');
-
         $status = $('#campo-status').val();
         $quantidade = $('#campo-quantidade').val();
         $nomeProduto = $('#campo-nome-produto').val();
 
-        console.log('Status: ' + $status + ', Quantidade: ' + $quantidade)
 
         $.ajax({
             url: '/estoque/alterar',
