@@ -36,9 +36,9 @@ namespace e_commerce_ws.Controllers
         /// </summary>
         /// <returns>Lista de Estoques em JSON</returns>
         [HttpGet, Route("obtertodos")]
-        public JsonResult ObterTodos()
+        public JsonResult ObterTodos(string status)
         {
-            var estoques = _estoqueRepository.ObterTodos();
+            var estoques = _estoqueRepository.ObterTodos(status);
             return Json(estoques);
         }
 
@@ -95,9 +95,9 @@ namespace e_commerce_ws.Controllers
         }
 
         [HttpGet, Route("obtertodosfootable")]
-        public JsonResult ObterTodosFootable()
+        public JsonResult ObterTodosFootable(string status)
         {
-            var estoques = _estoqueRepository.ObterTodos();
+            var estoques = _estoqueRepository.ObterTodos(status);
 
             var result = new List<object>();
 

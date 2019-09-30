@@ -31,12 +31,20 @@ namespace LivrariaNerd.Infra.Data.Repositories
                 .ToList();
         }
 
-        public List<Estoque> ObterTodos()
+        public List<Estoque> ObterTodos(string status)
         {
-            return _context.Estoques
+            var query =  _context.Estoques
                 .Include(x => x.Produto)
                 .Where(x => x.RegistroAtivo)
-                .ToList();
+                .AsQueryable();
+
+
+            if (status != "*")
+            {
+                query = query.Where(x => x.Status == status);
+            }
+
+            return query.ToList();
         }
     }
 }
