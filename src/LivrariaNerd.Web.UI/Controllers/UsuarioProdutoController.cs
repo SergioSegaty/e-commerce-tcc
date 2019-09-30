@@ -46,7 +46,7 @@ namespace PadawanStore.Web.UI.Controllers
                         ValorDoProduto = produto.Preco,
                         NomeProduto = produto.Nome,
                         NomeCategoriaProduto = produto.Categoria.Nome,
-                        ImagemDoProduto = produto.Imagem
+                        ImagemDoProduto = produto.ImagemCaminhoCompleto
                     });
             }
 

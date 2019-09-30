@@ -34,7 +34,10 @@ namespace LivrariaNerd.Domain.Entities
         [Column("cor")]
         public string Cor { get; set; }
 
-        [Column("imagem")]
-        public string Imagem { get; set; }
+        [Column("imagem_caminho_completo")]
+        public string ImagemCaminhoCompleto { get; set; }
+
+        [Column("imagem_caminho_wwwroot")]
+        public string ImagemCaminhoWwwroot { get; set; }
     }
 }
