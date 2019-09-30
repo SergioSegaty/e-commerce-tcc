@@ -1,7 +1,52 @@
-﻿
-@{
-    ViewData["Title"] = "EditarModalEstoque";
-}
-
-<h1>EditarModalEstoque</h1>
-
+﻿<!--Modal de Cadastro-->
+<div class="modal" tabindex="-1" role="dialog" id="editar-modal-estoque">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Estoque</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editar-estoque" action="javascript:void(0)">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="campo-nome-cidade">Nome do Produto</label>
+                                <span class="text-danger">*</span>
+                                <input disabled id="campo-nome-produto" name="nome" placeholder="Nome da Cidade" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="campo-estado">Quantidade em Estoque</label>
+                                <span class="text-danger">*</span>
+                                <input type="text" id="campo-quantidade" name="quantidade" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="campo-status">Status do Estoque</label>
+                            <span class="text-danger">*</span>
+                            <select id="campo-status" name="status-estoque" class="form-control">
+                                <option selected="selected" disabled="disabled">Escolha um Estoque</option>
+                                <option value="Em Estoque">Em Estoque</option>
+                                <option value="Esgotado">Esgotado</option>
+                                <option value="Suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger close-modal" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-success" id="btn-editar-estoque">
+                    <i class="fas fa-save"></i> Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fim Modal de Cadastro-->
