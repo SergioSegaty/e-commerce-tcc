@@ -72,7 +72,6 @@
         })
     }
 
-
     ObterProdutos = function () {
         $('#exampleResponsive1').empty();
 
@@ -97,14 +96,17 @@
                     iconeComprar.classList.add('icon', 'fa-cart-plus');
                     iconeDesejo.classList.add('icon', 'wb-heart');
 
-                    
-                    botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating');
-                    botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom', 'btn-floating');
+
+                    botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating', 'botao-comprar');
+                    botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom', 'btn-floating', 'botao-desejo');
 
                     // Criando as FigCap e o titulo
                     let figuraCap = document.createElement('figcaption');
 
                     figuraCap.classList.add('vertical-align', 'overlay-panel', 'overlay-background', 'overlay-fade');
+
+                    botaoComprar.setAttribute('data-id', _data.id);
+                    botaoDesejo.setAttribute('data-id', _data.id);
 
                     botaoComprar.appendChild(iconeComprar);
                     botaoDesejo.appendChild(iconeDesejo);
@@ -132,8 +134,8 @@
 
                     document.getElementById('exampleResponsive1').append(figura);
 
-                    
-                   
+
+
                 }
 
                 // Slick(Carousel) na Categoria 1
@@ -270,18 +272,28 @@
         });
     }
 
-
-
-
-
     ObterProdutos();
+
     ObterTodosOsProdutos();
 
+    $('#exampleResponsive1').on('click', '.botao-comprar', function () {
+        $idProduto = $(this).data('id');
 
-
-    
-
-
+        $.ajax({
+            url: '/produto/obterpeloid?id=' + $idProduto,
+            method: 'get',
+            success: function (data) {
+                $.ajax({
+                    url: '/pedido/adicionaraocarrinho',
+                    method: 'post',
+                    data: data,
+                    success: function(data){
+                        alert('adicionado ao carrinho')
+                    }
+                });
+            }
+        });
+    });
 
 });
 

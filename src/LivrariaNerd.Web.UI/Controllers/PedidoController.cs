@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivrariaNerd.Web.UI.Controllers
 {
-    [Route("pedidos")]
+    [Route("pedido")]
     public class PedidoController : Controller
     {
         private readonly IHttpContextAccessor _context;
@@ -34,11 +34,11 @@ namespace LivrariaNerd.Web.UI.Controllers
         public async Task<IActionResult> AdicionarAoCarrinho(Produto produto)
         {
             var claimsIdentity = (ClaimsIdentity)_context.HttpContext.User.Identity;
-            var IdUsuario = claimsIdentity.FindFirst("Id").Value;
+            var idUsuario = claimsIdentity.FindFirst("Id").Value;
 
             var IdPedido =  await _pedidoRepository.Adicionar(new Pedido()
             {
-                IdUsuario = Convert.ToInt32(IdUsuario)
+                IdUsuario = Convert.ToInt32(idUsuario)
             });
 
             var idPedidoProduto = await _pedidoProdutoRepository.Adicionar(new PedidoProduto()

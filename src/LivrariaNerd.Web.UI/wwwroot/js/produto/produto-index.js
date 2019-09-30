@@ -62,6 +62,7 @@ $(function () {
             $('#popup-imagem').css('display', 'none');
         }
 
+
         if ($valido && $('#upload-imagem').get(0).files.length == 1) {
             if (!$id == -1) {
                 $("#id-produto-hidden").val($id);

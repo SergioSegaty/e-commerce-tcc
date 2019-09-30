@@ -60,7 +60,6 @@ namespace e_commerce_ws.Controllers
 
             //Hash
             FileInfo fileInfo = new FileInfo(nomeArquivo);
-
             var crypt = new SHA256Managed();
             var hash = new StringBuilder();
             byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(fileInfo.Name.Replace(fileInfo.Extension, "") + DateTime.Now));
@@ -72,7 +71,6 @@ namespace e_commerce_ws.Controllers
             var caminhoArquivo = Path.Combine(_caminho, (hash + fileInfo.Extension).ToUpper());
 
             var caminhoWWWRoot = Path.Combine(_nomePasta, (hash + fileInfo.Extension).ToUpper());
-
 
             using (var stream = new FileStream(caminhoArquivo, FileMode.Create))
             {
