@@ -36,7 +36,7 @@ namespace LivrariaNerd.Web.UI.Controllers
             var claimsIdentity = (ClaimsIdentity)_context.HttpContext.User.Identity;
             var idUsuario = claimsIdentity.FindFirst("Id").Value;
 
-            var IdPedido =  await _pedidoRepository.Adicionar(new Pedido()
+            var IdPedido = await _pedidoRepository.Adicionar(new Pedido()
             {
                 IdUsuario = Convert.ToInt32(idUsuario)
             });
@@ -50,9 +50,14 @@ namespace LivrariaNerd.Web.UI.Controllers
                 PrecoTotal = produto.Preco // ou 1 * produto.Preco, sendo 1 a quantidade.
             });
 
-
             var result = idPedidoProduto != 0 ? true : false; // se for diferente de 0 true, caso contrario false ( resultado de deu certo ou nao )
             return Json(new { result });
+        }
+
+        [HttpGet, Route("obtertodospedidospeloidusuario")]
+        public IActionResult ObterTodosPedidosPeloIdUsuario(int idUsuario)
+        {
+
         }
     }
 }

@@ -42,5 +42,14 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Where(x => x.RegistroAtivo && x.IdProduto == idProduto)
             .ToList();
         }
+
+        public List<PedidoProduto> ObterTodosPeloIdUsuario(int idUsuario)
+        {
+            return _context.PedidoProdutos
+                .Include(x => x.Pedido)
+                .Include(x => x.Produto)
+                .Where(x => x.RegistroAtivo && x.Pedido.IdUsuario == idUsuario)
+                .ToList();
+        }
     }
 }
