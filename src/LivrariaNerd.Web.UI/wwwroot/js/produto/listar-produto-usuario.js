@@ -85,6 +85,7 @@
                 for (let i = 0; i < data.length; i++) {
                     _data = data[i];
 
+                    console.log(_data);
 
                     // Criando botoes
                     let botaoComprar = document.createElement('button');
@@ -123,7 +124,7 @@
 
 
                     imagem = document.createElement('img');
-                    imagem.setAttribute('src', '/img/witcher_action_figure.jpg');
+                    imagem.setAttribute('src', _data.imagemCaminhoWwwroot);
 
                     figura.appendChild(titulo);
                     figura.appendChild(imagem);
