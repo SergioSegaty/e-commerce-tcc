@@ -43,10 +43,26 @@ $(function () {
 
     console.log("funcionou: " + isAdvancedUpload);
 
+    $('#upload-imagem').on('change', function () {
+
+        if ($('#upload-imagem').get(0).files.length === 0) {
+            $('#popup-imagem').css('display', 'inline-block');
+        } else {
+            $('#popup-imagem').css('display', 'none');
+        }
+
+    });
+
     $("#botao-salvar-produto").on('click', () => {
         $valido = $form.valid();
 
-        if ($valido) {
+        if ($('#upload-imagem').get(0).files.length === 0) {
+            $('#popup-imagem').css('display', 'inline-block');
+        } else {
+            $('#popup-imagem').css('display', 'none');
+        }
+
+        if ($valido && $('#upload-imagem').get(0).files.length == 1) {
             if (!$id == -1) {
                 $("#id-produto-hidden").val($id);
                 $("#form-cadastro-produto-upload-imagem").submit();

@@ -53,13 +53,14 @@
 
             </form>
             <!--Form upload img-->
-            <form id="form-cadastro-produto-upload-imagem"  method="post" enctype="multipart/form-data" action="@Url.Action("upload", "produto")">
+            <form id="form-cadastro-produto-upload-imagem"  method="post" enctype="multipart/form-data" action="javascript:void(0)">
                 <div class="row">
                     <div class="col-12">
                         <input type="hidden" id="id-produto-hidden" name="id"/>
                         <span style="margin-left: 25px;">
                             Upload da Imagem
                         </span>
+                        <span class="text-danger" id="popup-imagem" style="display:none">* É necessário uma imagem.</span>
                         <div class="box" style="margin-left: 25px;">
                             <div class="box__input">
                                 <input class="box__file" type="file" name="file" id="upload-imagem" data-multiple-caption="{count} files selected" />

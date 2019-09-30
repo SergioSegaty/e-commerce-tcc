@@ -84,7 +84,7 @@ namespace e_commerce_ws.Controllers
                 _repo.Alterar(produto);
             }
 
-            return new EmptyResult();
+            return RedirectToAction("Index");
         }
 
         /// <summary>
