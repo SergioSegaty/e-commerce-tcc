@@ -15,13 +15,16 @@ namespace LivrariaNerd.Web.UI.Controllers
     {
         private readonly IHttpContextAccessor _context;
         private readonly IBaseRepositoryAsync<Pedido> _pedidoRepository;
-        private readonly IBaseRepositoryAsync<PedidoProduto> _pedidoProdutoRepository;
+        private readonly IPedidoProdutoRepository _pedidoProdutoRepository;
+        private readonly IBaseRepositoryAsync<PedidoProduto> _pedidoProdutoAsyncRepository;
 
-        public PedidoController(IHttpContextAccessor context, IBaseRepositoryAsync<Pedido> pedidoRepository, IBaseRepositoryAsync<PedidoProduto> pedidoProdutoRepository)
+
+        public PedidoController(IHttpContextAccessor context, IBaseRepositoryAsync<Pedido> pedidoRepository, IPedidoProdutoRepository pedidoProdutoRepository, IBaseRepositoryAsync<PedidoProduto> pedidoProdutoAsyncRepository)
         {
             _context = context;
             _pedidoRepository = pedidoRepository;
             _pedidoProdutoRepository = pedidoProdutoRepository;
+            _pedidoProdutoAsyncRepository = pedidoProdutoAsyncRepository;
         }
 
         [HttpGet, Route("")]
@@ -41,7 +44,7 @@ namespace LivrariaNerd.Web.UI.Controllers
                 IdUsuario = Convert.ToInt32(idUsuario)
             });
 
-            var idPedidoProduto = await _pedidoProdutoRepository.Adicionar(new PedidoProduto()
+            var idPedidoProduto = await _pedidoProdutoAsyncRepository.Adicionar(new PedidoProduto()
             {
                 IdPedido = IdPedido,
                 IdProduto = produto.Id,
@@ -55,9 +58,13 @@ namespace LivrariaNerd.Web.UI.Controllers
         }
 
         [HttpGet, Route("obtertodospedidospeloidusuario")]
-        public IActionResult ObterTodosPedidosPeloIdUsuario(int idUsuario)
+        public IActionResult ObterTodosPedidosPeloIdUsuario()
         {
+            var claimsIdentity = (ClaimsIdentity)_context.HttpContext.User.Identity;
+            var idUsuario = Convert.ToInt32(claimsIdentity.FindFirst("Id").Value);
 
+            var pedidosProduto = _pedidoProdutoRepository.ObterTodosPeloIdUsuario(idUsuario);
+            return Json(new { pedidosProduto });
         }
     }
 }

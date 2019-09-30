@@ -10,5 +10,7 @@ namespace LivrariaNerd.Infra.Data.Interface
         List<PedidoProduto> ObterTodosPeloPedido(int idPedido);
 
         List<PedidoProduto> ObterTodosPeloProduto(int idProduto);
+
+        List<PedidoProduto> ObterTodosPeloIdUsuario(int idUsuario);
     }
 }
