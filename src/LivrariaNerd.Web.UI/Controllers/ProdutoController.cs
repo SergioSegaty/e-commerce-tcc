@@ -46,10 +46,9 @@ namespace e_commerce_ws.Controllers
                 Directory.CreateDirectory(_caminho);
             }
 
-            var claimsIdentity = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
-            var nome = claimsIdentity.FindFirst("FullName").Value;
-            var idUsuario = claimsIdentity.FindFirst("Id").Value;
-
+            //Pegar o Id do usuario por claim
+            //var claimsIdentity = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
+            //var idUsuario = claimsIdentity.FindFirst("Id").Value;
         }
 
         [HttpPost, Route("upload")]

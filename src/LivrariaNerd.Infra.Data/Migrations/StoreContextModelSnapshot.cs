@@ -233,8 +233,9 @@ namespace LivrariaNerd.Infra.Data.Migrations
                     b.Property<int>("IdUsuario")
                         .HasColumnName("id_usuario");
 
-                    b.Property<int>("Quantidade")
-                        .HasColumnName("quantidade");
+                    b.Property<decimal>("PrecoTotal")
+                        .HasColumnName("preco_total")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("RegistroAtivo")
                         .HasColumnName("registro_ativo");
@@ -267,6 +268,17 @@ namespace LivrariaNerd.Infra.Data.Migrations
 
                     b.Property<int>("IdProduto")
                         .HasColumnName("id_produto");
+
+                    b.Property<decimal>("PrecoTotal")
+                        .HasColumnName("preco_total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PrecoUnidade")
+                        .HasColumnName("preco_unidade")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnName("quantidade");
 
                     b.Property<bool>("RegistroAtivo")
                         .HasColumnName("registro_ativo");
@@ -318,8 +330,9 @@ namespace LivrariaNerd.Infra.Data.Migrations
                     b.Property<int>("Peso")
                         .HasColumnName("peso");
 
-                    b.Property<int>("Preco")
-                        .HasColumnName("preco");
+                    b.Property<decimal>("Preco")
+                        .HasColumnName("preco")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("RegistroAtivo")
                         .HasColumnName("registro_ativo");

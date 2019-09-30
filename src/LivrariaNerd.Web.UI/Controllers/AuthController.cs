@@ -15,9 +15,8 @@ namespace View.Controllers
     [AllowAnonymous]
     [Route("auth")]
     public class AuthController : Controller
-    {
-        private readonly UserManager<Usuario> _userManager;
-    
+    { 
+
         private IUsuarioRepository usuarioRepository;
         private IBaseRepositoryAsync<Usuario> repository;
 
@@ -30,7 +29,6 @@ namespace View.Controllers
             {
                 var x = ((ClaimsIdentity)User.Identity);
             }
-            //this._userManager = _userManager;
         }
 
         [HttpGet, Route("")]
