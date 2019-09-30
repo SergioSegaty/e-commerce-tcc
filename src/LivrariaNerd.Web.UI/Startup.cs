@@ -50,7 +50,7 @@ namespace View
                 {
                     options.LoginPath = "/auth";
                 });
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddCors();
 
             services.AddMvc()

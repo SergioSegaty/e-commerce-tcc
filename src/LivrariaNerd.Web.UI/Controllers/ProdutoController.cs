@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography;
 using System;
 using System.Text;
+using System.Security.Claims;
 
 namespace e_commerce_ws.Controllers
 {
@@ -28,7 +29,7 @@ namespace e_commerce_ws.Controllers
         /// </summary>
         /// <param name="context"></param>
         /// <param name="produtoRepository"></param>
-        public ProdutoController(IBaseRepositoryAsync<Produto> context, IProdutoRepository produtoRepository, IHostingEnvironment env)
+        public ProdutoController(IBaseRepositoryAsync<Produto> context, IProdutoRepository produtoRepository, IHostingEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _repo = context;
             _produtoRepository = produtoRepository;
@@ -43,6 +44,10 @@ namespace e_commerce_ws.Controllers
             {
                 Directory.CreateDirectory(_caminho);
             }
+            var claimsIdentity = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
+            var nome = claimsIdentity.FindFirst("FullName").Value;
+            var idUsuario = claimsIdentity.FindFirst("Id").Value;
+
         }
 
         [HttpPost, Route("upload")]
@@ -58,14 +63,14 @@ namespace e_commerce_ws.Controllers
             var crypt = new SHA256Managed();
             var hash = new StringBuilder();
             byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(fileInfo.Name.Replace(fileInfo.Extension, "") + DateTime.Now));
-            foreach(byte oByte in crypto)
+            foreach (byte oByte in crypto)
             {
                 hash.Append(oByte.ToString("x2"));
             }
-            
+
             var caminhoArquivo = Path.Combine(_caminho, (hash + fileInfo.Extension).ToUpper());
-            
-            using(var stream = new FileStream(caminhoArquivo, FileMode.Create))
+
+            using (var stream = new FileStream(caminhoArquivo, FileMode.Create))
             {
                 file.CopyTo(stream);
                 //Add The Image to the product object

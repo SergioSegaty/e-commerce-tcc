@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using LivrariaNerd.Domain.Identity;
 using LivrariaNerd.Infra.Data.Interface;
+using Microsoft.AspNetCore.Identity;
 
 namespace View.Controllers
 {
@@ -15,6 +16,8 @@ namespace View.Controllers
     [Route("auth")]
     public class AuthController : Controller
     {
+        private readonly UserManager<Usuario> _userManager;
+    
         private IUsuarioRepository usuarioRepository;
         private IBaseRepositoryAsync<Usuario> repository;
 
@@ -22,6 +25,12 @@ namespace View.Controllers
         {
             this.usuarioRepository = usuarioRepository;
             this.repository = repository;
+          
+            if(User != null)
+            {
+                var x = ((ClaimsIdentity)User.Identity);
+            }
+            //this._userManager = _userManager;
         }
 
         [HttpGet, Route("")]
@@ -55,6 +64,7 @@ namespace View.Controllers
             {
                 new Claim(ClaimTypes.Name, usuario.Login),
                 new Claim("FullName", usuario.NomeCompleto),
+                new Claim("Id", usuario.Id.ToString()),
                 new Claim(ClaimTypes.Role, "Administrator"),
             };
 
@@ -111,5 +121,7 @@ namespace View.Controllers
             var result = repository.ObterTodos();
             return Json(result);
         }
+
+
     }
 }
