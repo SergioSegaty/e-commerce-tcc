@@ -12,7 +12,7 @@ namespace LivrariaNerd.Domain.Entities
         [Column("id_usuario")]
         public int IdUsuario { get; set; }
 
-        [Column("quantidade")]
-        public int Quantidade { get; set; }
+        [Column("preco_total", TypeName = ("decimal(18,2)"))]
+        public decimal PrecoTotal { get; set; }
     }
 }

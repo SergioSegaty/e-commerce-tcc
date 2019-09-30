@@ -16,5 +16,14 @@ namespace LivrariaNerd.Domain.Entities
 
         [Column("id_pedido")]
         public int IdPedido { get; set; }
+
+        [Column("preco_unidade", TypeName = ("decimal(18,2)"))]
+        public decimal PrecoUnidade { get; set; }
+
+        [Column("preco_total", TypeName = ("decimal(18,2)"))]
+        public decimal PrecoTotal { get; set; }
+
+        [Column("quantidade")]
+        public int Quantidade { get; set; }
     }
 }
