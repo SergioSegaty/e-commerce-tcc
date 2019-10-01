@@ -56,7 +56,7 @@ namespace LivrariaNerd.Web.UI.Controllers
                             auxPedidoProduto.Pedido.PrecoTotal = auxPedidoProduto.PrecoTotal;
 
                             var resultado = _pedidoProdutoAsyncRepository.Alterar(auxPedidoProduto); 
-                            return Json(new { Action = "Aumentou quantidade de items no carrinho", Result = resultado });
+                            return Json(resultado);
                         }
                     }
                 }
@@ -77,7 +77,7 @@ namespace LivrariaNerd.Web.UI.Controllers
             });
 
             var result = idPedidoProduto != 0 ? true : false; // se for diferente de 0 true, caso contrario false ( resultado de deu certo ou nao )
-            return Json(new { Action = "Adicionado no carrinho", Result = result });
+            return Json(result);
         }
 
         [HttpGet, Route("obtertodospedidospeloidusuario")]
@@ -88,6 +88,40 @@ namespace LivrariaNerd.Web.UI.Controllers
 
             var pedidosProduto = _pedidoProdutoRepository.ObterTodosPeloIdUsuario(idUsuario);
             return Json(pedidosProduto);
+        }
+
+        [HttpGet, Route("obterpeloid")]
+        public IActionResult ObterPeloId(int id)
+        {
+            return Json(_pedidoProdutoRepository.ObterPeloId(id));
+        }
+
+        [HttpPost, Route("modificarquantidade")]
+        public IActionResult ModificarQuantidade(PedidoProduto pedidoProduto)
+        {
+            var claimsIdentity = (ClaimsIdentity)_context.HttpContext.User.Identity;
+            var idUsuario = Convert.ToInt32(claimsIdentity.FindFirst("Id").Value);
+
+            var pedidosUsuario = _pedidoProdutoRepository.ObterTodosPeloIdUsuario(idUsuario);
+            if (pedidosUsuario != null)
+            {
+                if (pedidosUsuario.Count != 0)
+                {
+                    for (int i = 0; i < pedidosUsuario.Count; i++)
+                    {
+                        if (pedidosUsuario[i].Id == pedidoProduto.Id)
+                        {
+                            var auxPedidoProduto = pedidosUsuario[i];
+
+                            auxPedidoProduto = pedidoProduto;
+
+                            var result = _pedidoProdutoAsyncRepository.Alterar(auxPedidoProduto);
+                            return Json(result);
+                        }
+                    }
+                }
+            }
+            return Json(false);
         }
     }
 }
