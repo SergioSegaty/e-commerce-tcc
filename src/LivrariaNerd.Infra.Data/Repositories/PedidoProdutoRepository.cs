@@ -22,6 +22,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Include(x => x.Pedido)
             .Include(x => x.Produto)
             .Where(x => x.RegistroAtivo && x.Id == id)
+            .AsNoTracking()
             .FirstOrDefault();
         }
 
@@ -31,6 +32,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Include(x => x.Pedido)
             .Include(x => x.Produto)
             .Where(x => x.RegistroAtivo && x.IdPedido == idPedido)
+             .AsNoTracking()
             .ToList();
         }
 
@@ -40,6 +42,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Include(x => x.Pedido)
             .Include(x => x.Produto)
             .Where(x => x.RegistroAtivo && x.IdProduto == idProduto)
+             .AsNoTracking()
             .ToList();
         }
 
@@ -49,6 +52,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
                 .Include(x => x.Pedido)
                 .Include(x => x.Produto)
                 .Where(x => x.RegistroAtivo && x.Pedido.IdUsuario == idUsuario)
+                 .AsNoTracking()
                 .ToList();
         }
     }
