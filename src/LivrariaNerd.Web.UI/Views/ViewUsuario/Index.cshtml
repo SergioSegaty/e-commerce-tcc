@@ -3,6 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles{
+    <link href="~/tema/global/vendor/dropify/dropify.css" rel="stylesheet" />
+
+}
+
 <div class="page-header">
     <h1 class="page-title">Gerenciamento do Usuario</h1>
     <ol class="breadcrumb">
@@ -20,6 +25,18 @@
             <h3 class="panel-title">[Nome da Pessoa]</h3>
         </div>
         <div class="panel-body container-fluid">
+
+            <div class="row">
+                <div class="col-lg-6 offset-lg-4 col-md-10 offset-md-3 offset-xl-3">
+                    <div class="example-wrap">
+                        <h4 class="panel-title text-center">Upload da Imagem</h4>
+                        <div class="example">
+                            <input type="file" id="input-file-now" data-plugin="dropify" data-default-file="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="row">
                 <!-- Box da Esquerda-->
@@ -61,6 +78,9 @@
                                         data-toggle="modal">
                                     Trocar a senha
                                 </button>
+                                <button class="btn btn-outline-success float-right btn-sm" type="submit" id="btn-alterar-usuario">
+                                    Atualizar Informações
+                                </button>
                             </div>
                         </div>
 
@@ -89,32 +109,48 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="form-row">
                             <div class="col-lg-6 col-md-10 form-group">
                                 <label for="campo-bairro">Bairro <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="usuario-bairro" id="campo-end-bairro" value="" />
                             </div>
+
                             <div class="col-lg-8 form-group">
                                 <label for="campo-rua">Endereço <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="usuario-rua" id="campo-rua" value="" />
                             </div>
-                            <div class="col-4 form-group">
-                                <label for="campo-numero">Número da residência <span style="color:red">*</span></label>
+                            <div class="col-lg-4 col-md-4 form-group">
+                                <label for="campo-numero">Número<span style="color:red">*</span></label>
                                 <input class="form-control" type="text" id="campo-end-numero" name="usuario-numero" />
                             </div>
-                            <div class="col-8 form-group">
+                            <div class="col-lg-8 col-md-7 form-group">
                                 <label for="campo-complemento">Complemento <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="usuario-complemento" id="campo-end-complemento" value="" placeholder="Apartamento, Número de loja, etc." />
                             </div>
                         </div>
-                        <!-- Termina Row -->
+                        <div class="row">
+                            <div class="col-12">
+
+                                <button class="btn btn-outline-success float-right btn-sm" type="submit" id="btn-alterar-endereco">
+                                    Atualizar Endereço
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
+                <!-- Termina Row -->
             </div>
-
-
         </div>
+
+
     </div>
-
-
 </div>
+
+
+<partial name="ModalTrocarSenha.cshtml" />
+
+@section Scripts{
+
+    <script src="~/tema/global/vendor/dropify/dropify.min.js"></script>
+
+}

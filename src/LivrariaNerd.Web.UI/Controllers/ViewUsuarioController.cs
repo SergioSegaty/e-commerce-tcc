@@ -12,10 +12,10 @@ namespace PadawanStore.Web.UI.Controllers
         //    _repository = rep;
         //}
 
-        //[HttpGet, Route("")]
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        [HttpGet, Route("")]
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
