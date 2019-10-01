@@ -52,6 +52,9 @@ namespace LivrariaNerd.Web.UI.Controllers
 
                             auxPedidoProduto.Quantidade++;
 
+                            auxPedidoProduto.PrecoTotal = auxPedidoProduto.Quantidade * auxPedidoProduto.PrecoUnidade;
+                            auxPedidoProduto.Pedido.PrecoTotal = auxPedidoProduto.PrecoTotal;
+
                             var resultado = _pedidoProdutoAsyncRepository.Alterar(auxPedidoProduto); 
                             return Json(new { Action = "Aumentou quantidade de items no carrinho", Result = resultado });
                         }
