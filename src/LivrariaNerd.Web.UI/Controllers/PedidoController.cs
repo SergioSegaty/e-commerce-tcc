@@ -14,15 +14,15 @@ namespace LivrariaNerd.Web.UI.Controllers
     public class PedidoController : Controller
     {
         private readonly IHttpContextAccessor _context;
-        private readonly IBaseRepositoryAsync<Pedido> _pedidoRepository;
+        private readonly IBaseRepositoryAsync<Pedido> _pedidoRepositoryAsync;
         private readonly IPedidoProdutoRepository _pedidoProdutoRepository;
         private readonly IBaseRepositoryAsync<PedidoProduto> _pedidoProdutoAsyncRepository;
 
 
-        public PedidoController(IHttpContextAccessor context, IBaseRepositoryAsync<Pedido> pedidoRepository, IPedidoProdutoRepository pedidoProdutoRepository, IBaseRepositoryAsync<PedidoProduto> pedidoProdutoAsyncRepository)
+        public PedidoController(IHttpContextAccessor context, IBaseRepositoryAsync<Pedido> pedidoRepositoryAsync, IPedidoProdutoRepository pedidoProdutoRepository, IBaseRepositoryAsync<PedidoProduto> pedidoProdutoAsyncRepository)
         {
             _context = context;
-            _pedidoRepository = pedidoRepository;
+            _pedidoRepositoryAsync = pedidoRepositoryAsync;
             _pedidoProdutoRepository = pedidoProdutoRepository;
             _pedidoProdutoAsyncRepository = pedidoProdutoAsyncRepository;
         }
@@ -37,11 +37,31 @@ namespace LivrariaNerd.Web.UI.Controllers
         public async Task<IActionResult> AdicionarAoCarrinho(Produto produto)
         {
             var claimsIdentity = (ClaimsIdentity)_context.HttpContext.User.Identity;
-            var idUsuario = claimsIdentity.FindFirst("Id").Value;
+            var idUsuario = Convert.ToInt32(claimsIdentity.FindFirst("Id").Value);
 
-            var IdPedido = await _pedidoRepository.Adicionar(new Pedido()
+            var pedidosUsuario = _pedidoProdutoRepository.ObterTodosPeloIdUsuario(idUsuario);
+            if (pedidosUsuario != null)
             {
-                IdUsuario = Convert.ToInt32(idUsuario)
+                if (pedidosUsuario.Count != 0)
+                {
+                    for(int i = 0; i < pedidosUsuario.Count; i++)
+                    {
+                        if(pedidosUsuario[i].Produto.Id == produto.Id)
+                        {
+                            var auxPedidoProduto = pedidosUsuario[i];
+
+                            auxPedidoProduto.Quantidade++;
+
+                            var resultado = _pedidoProdutoAsyncRepository.Alterar(auxPedidoProduto); 
+                            return Json(new { Action = "Aumentou quantidade de items no carrinho", Result = resultado });
+                        }
+                    }
+                }
+            }
+
+            var IdPedido = await _pedidoRepositoryAsync.Adicionar(new Pedido()
+            {
+                IdUsuario = idUsuario
             });
 
             var idPedidoProduto = await _pedidoProdutoAsyncRepository.Adicionar(new PedidoProduto()
@@ -54,7 +74,7 @@ namespace LivrariaNerd.Web.UI.Controllers
             });
 
             var result = idPedidoProduto != 0 ? true : false; // se for diferente de 0 true, caso contrario false ( resultado de deu certo ou nao )
-            return Json(new { result });
+            return Json(new { Action = "Adicionado no carrinho", Result = result });
         }
 
         [HttpGet, Route("obtertodospedidospeloidusuario")]
@@ -64,7 +84,7 @@ namespace LivrariaNerd.Web.UI.Controllers
             var idUsuario = Convert.ToInt32(claimsIdentity.FindFirst("Id").Value);
 
             var pedidosProduto = _pedidoProdutoRepository.ObterTodosPeloIdUsuario(idUsuario);
-            return Json(new { pedidosProduto });
+            return Json(pedidosProduto);
         }
     }
 }
