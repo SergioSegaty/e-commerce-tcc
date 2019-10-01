@@ -73,7 +73,7 @@
                             <img class="brand-img" src="~/tema/assets/images/Logo-Tcc.png" width="250" height="250">
                         </div>
                     </div>
-                    <form method="post" action="javascript:void(0)">
+                    <form method="post" action="javascript:void(0)" id="form-cadastro-usuario">
                         <div class="form-group form-material floating" data-plugin="formMaterial">
                             <input type="text" class="form-control" name="name" id="campo-nome-cadastro-usuario" />
                             <label class="floating-label">Nome Completo</label>
@@ -168,7 +168,7 @@
             });
         })(document, window, jQuery);
     </script>
-
+    <script src="~/js/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/js/auth/cadastro-usuario.js"></script>
 
 </body>
