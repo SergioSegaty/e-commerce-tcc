@@ -7,7 +7,7 @@
     <meta name="description" content="bootstrap admin template">
     <meta name="author" content="">
 
-    <title>Loja</title>
+    <title>Loja | Livraria Nerd</title>
 
     <link rel="apple-touch-icon" href="~/tema/topassets/images/apple-touch-icon.png">
     <link rel="shortcut icon" href="~/tema/topassets/images/favicon.ico">
@@ -37,17 +37,13 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="~/tema/global/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="~/tema/global/fonts/brand-icons/brand-icons.min.css">
+    <link rel="stylesheet" href="~/tema/global/fonts/glyphicons/glyphicons.min.css">
+    <link rel="stylesheet" href="~/tema/global/fonts/ionicons/ionicons.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
     @RenderSection("Styles", required: false)
 
-    <!--[if lt IE 9]>
-    <script src="~/tema/global/vendor/html5shiv/html5shiv.min.js"></script>
-    <![endif]-->
-    <!--[if lt IE 10]>
-    <script src="~/tema/global/vendor/media-match/media.match.min.js"></script>
-    <script src="~/tema/global/vendor/respond/respond.min.js"></script>
-    <![endif]-->
+
     <!-- Scripts -->
     <script src="~/tema/global/vendor/breakpoints/breakpoints.js"></script>
     <script>
@@ -55,33 +51,19 @@
     </script>
 </head>
 <body class="animsition site-navbar-small dashboard">
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse"
          role="navigation">
 
         <div class="navbar-header">
-            <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
-                    data-toggle="menubar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="hamburger-bar"></span>
-            </button>
             <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse"
                     data-toggle="collapse">
                 <i class="icon wb-more-horizontal" aria-hidden="true"></i>
             </button>
             <a class="navbar-brand navbar-brand-center" href="">
-                <img class="navbar-brand-logo navbar-brand-logo-normal" src="~/tema/topassets/images/Thehoth-Seo-Seo-panda.png"
-                     title="Pandawan">
-                <span class="navbar-brand-text hidden-xs-down"> Pandawan Store</span>
+                <img class="navbar-brand-logo navbar-brand-center" src="~/tema/assets/images/Nova-Logo.png"
+                     title="LN Store">
+                <span class="navbar-brand-text hidden-xs-down"> Livraria Nerd </span>
             </a>
-            <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
-                    data-toggle="collapse">
-                <span class="sr-only">Toggle Search</span>
-                <i class="icon wb-search" aria-hidden="true"></i>
-            </button>
         </div>
 
         <div class="navbar-container container-fluid">
@@ -92,32 +74,17 @@
                 <!-- End Navbar Toolbar -->
                 <!-- Navbar Toolbar Right -->
                 <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    <!--Notificação Start-->
                     <li class="nav-item dropdown">
-                        <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
-                           data-animation="scale-up" role="button">
-                            <span class="avatar avatar-online">
-                                <img src="~/tema/global/portraits/5.jpg" alt="...">
-                                <i></i>
-                            </span>
-                        </a>
-                        <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Billing</a>
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
-                            <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
+                        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notificações"
                            aria-expanded="false" data-animation="scale-up" role="button">
                             <i class="icon wb-bell" aria-hidden="true"></i>
-                            <span class="badge badge-pill badge-danger up">5</span>
+                            <span class="badge badge-pill badge-danger up">1</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
                             <div class="dropdown-menu-header">
-                                <h5>NOTIFICATIONS</h5>
-                                <span class="badge badge-round badge-danger">New 5</span>
+                                <h5>Notificações</h5>
+                                <span class="badge badge-round badge-danger">New 1</span>
                             </div>
 
                             <div class="list-group">
@@ -126,55 +93,11 @@
                                         <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
                                             <div class="media">
                                                 <div class="pr-10">
-                                                    <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">A new order has been placed</h6>
-                                                    <time class="media-meta" datetime="2018-06-12T20:50:48+08:00">5 hours ago</time>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10">
-                                                    <i class="icon wb-user bg-green-600 white icon-circle" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Completed the task</h6>
-                                                    <time class="media-meta" datetime="2018-06-11T18:29:20+08:00">2 days ago</time>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10">
-                                                    <i class="icon wb-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Settings updated</h6>
-                                                    <time class="media-meta" datetime="2018-06-11T14:05:00+08:00">2 days ago</time>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10">
                                                     <i class="icon wb-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
                                                 </div>
                                                 <div class="media-body">
                                                     <h6 class="media-heading">Event started</h6>
                                                     <time class="media-meta" datetime="2018-06-10T13:50:18+08:00">3 days ago</time>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10">
-                                                    <i class="icon wb-chat bg-orange-600 white icon-circle" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Message received</h6>
-                                                    <time class="media-meta" datetime="2018-06-10T12:34:48+08:00">3 days ago</time>
                                                 </div>
                                             </div>
                                         </a>
@@ -191,6 +114,25 @@
                             </div>
                         </div>
                     </li>
+                    <!--Notificação End-->
+                    <!--Perfil Start-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
+                           data-animation="scale-up" role="button">
+                            <span class="avatar avatar-online">
+                                <img src="~/tema/global/portraits/5.jpg" alt="...">
+                                <i></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Perfil</a>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Pagamentos</a>
+                            <div class="dropdown-divider" role="presentation"></div>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Sair</a>
+                        </div>
+                    </li>
+                    <!--Perfil End-->
+
                     <li class="nav-item dropdown">
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
                             <div class="dropdown-menu-header" role="presentation">
@@ -283,9 +225,9 @@
                         </div>
                     </li>
                     <li class="nav-item" id="toggleChat">
-                        <a class="nav-link" data-toggle="site-sidebar" href="javascript:void(0)" title="Chat"
+                        <a class="nav-link" data-toggle="site-sidebar" href="javascript:void(0)" title="Carrinho"
                            data-url="site-sidebar.tpl">
-                            <i class="icon wb-chat" aria-hidden="true"></i>
+                            <i class="icon fa fa-shopping-cart" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
@@ -315,7 +257,7 @@
                         <li class="dropdown site-menu-item has-sub">
                             <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
                                 <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
-                                <span class="site-menu-title">Layouts</span>
+                                <span class="site-menu-title">Categoria 1</span>
                                 <span class="site-menu-arrow"></span>
                             </a>
                             <div class="dropdown-menu">
@@ -325,7 +267,7 @@
                                             <ul class="site-menu-sub site-menu-normal-list">
                                                 <li class="site-menu-item">
                                                     <a class="animsition-link" href="layouts/bordered-header.html">
-                                                        <span class="site-menu-title">Bordered Header</span>
+                                                        <span class="site-menu-title">Sub-Categoria 1</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -337,7 +279,7 @@
                         <li class="dropdown site-menu-item has-sub">
                             <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
                                 <i class="site-menu-icon wb-extension" aria-hidden="true"></i>
-                                <span class="site-menu-title">Widgets</span>
+                                <span class="site-menu-title">Categoria 2</span>
                                 <span class="site-menu-arrow"></span>
                             </a>
                             <div class="dropdown-menu">
@@ -347,7 +289,7 @@
                                             <ul class="site-menu-sub site-menu-normal-list">
                                                 <li class="site-menu-item">
                                                     <a class="animsition-link" href="widgets/chart.html">
-                                                        <span class="site-menu-title">Chart Widgets</span>
+                                                        <span class="site-menu-title">Sub-Categoria 2</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -359,7 +301,7 @@
                         <li class="dropdown site-menu-item has-sub">
                             <a data-toggle="dropdown" href="javascript:void(0)" data-dropdown-toggle="false">
                                 <i class="site-menu-icon wb-grid-4" aria-hidden="true"></i>
-                                <span class="site-menu-title">Apps</span>
+                                <span class="site-menu-title">Categoria 3</span>
                                 <span class="site-menu-arrow"></span>
                             </a>
                             <div class="dropdown-menu">
@@ -369,7 +311,7 @@
                                             <ul class="site-menu-sub site-menu-normal-list">
                                                 <li class="site-menu-item">
                                                     <a class="animsition-link" href="apps/contacts/contacts.html">
-                                                        <span class="site-menu-title">Contacts</span>
+                                                        <span class="site-menu-title">Sub-Categoria 3</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -383,14 +325,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Page -->
-    <!--
-    <div class="page">
-        <div class="page-content container-fluid">
-        </div>
-    </div>
-    -->
     @RenderBody()
 
     <div id="addtodoItemForm" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="addtodoItemForm"
@@ -494,10 +428,7 @@
     <!-- End Edit Dialog -->
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
-        <div class="site-footer-right">
-            Crafted with <i class="red-600 wb wb-heart"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
-        </div>
+       
     </footer>
     <!-- Core  -->
     <script src="~/tema/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
