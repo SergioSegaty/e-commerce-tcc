@@ -14,5 +14,8 @@ namespace LivrariaNerd.Domain.Entities
 
         [Column("preco_total", TypeName = ("decimal(18,2)"))]
         public decimal PrecoTotal { get; set; }
+
+        [Column("status_pedido")]
+        public string StatusDoPedido { get; set; }
     }
 }
