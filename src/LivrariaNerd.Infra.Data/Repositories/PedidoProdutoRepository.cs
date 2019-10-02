@@ -55,5 +55,16 @@ namespace LivrariaNerd.Infra.Data.Repositories
                  .AsNoTracking()
                 .ToList();
         }
+
+        public List<PedidoProduto> ObterTudo()
+        {
+            return _context.PedidoProdutos
+                .Include(x => x.Pedido)
+                .Include(x => x.Produto)
+                .Where(x => x.RegistroAtivo)
+                .OrderBy(x => x.Pedido.DataCriacao)
+                .AsNoTracking()
+                .ToList();
+        }
     }
 }

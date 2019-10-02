@@ -1,4 +1,33 @@
 ﻿$(() => {
+    $id = -1;
+    $idUsuario = -1;
+
+    buscarDadosUsuario = function () {
+
+        $.ajax({
+
+            url: '/usuario/obterusuarioativo',
+            method: 'get',
+            success: function(data) {
+                console.log(data);
+                $idUsuario = data.id;
+
+                $('#campo-nome').val(data.id);
+                $('#campo-email').val(data.email);
+                $('#campo-')
+
+
+            }
+
+
+        });
+
+
+    };
+
+    // Fazer Aqui Gui
+
+
 
     // Validação do Form Usuario
     $(function () {
@@ -264,4 +293,7 @@
         PreencherCidades(idEstado);
     });
 
+
+
+    buscarDadosUsuario();
 });
