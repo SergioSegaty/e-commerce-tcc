@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" href="~/css/produto.css"/>
@@ -12,7 +13,6 @@
         <li class="breadcrumb-item active">Produto</li>
     </ol>
 </div>
-
 
 
 <div class="page-content">
@@ -34,7 +34,6 @@
 
                 </div>
 
-
                 <div class="col-12 mt-20">
                     <table class="table table-bordered">
                         <thead>
@@ -48,19 +47,11 @@
                         </thead>
                         <tbody id="lista-produtos" class="text-center table-content"></tbody>
                     </table>
-
                 </div>
-
-
             </div>
-
-
-
         </div>
     </div>
 </div>
-
-
 
 <partial name="CadastroModalProduto.cshtml" />
 <partial name="ModalDeletarAlerta.cshtml" />
