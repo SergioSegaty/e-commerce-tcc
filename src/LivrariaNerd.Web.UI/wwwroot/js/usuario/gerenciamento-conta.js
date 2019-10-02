@@ -1,5 +1,6 @@
 ﻿$(() => {
     $id = -1;
+    $idUsuario = -1;
 
     buscarDadosUsuario = function () {
 
@@ -8,8 +9,13 @@
             url: '/usuario/obterusuarioativo',
             method: 'get',
             success: function(data) {
-
                 console.log(data);
+                $idUsuario = data.id;
+
+                $('#campo-nome').val(data.id);
+                $('#campo-email').val(data.email);
+                $('#campo-')
+
 
             }
 
@@ -19,7 +25,7 @@
 
     };
 
-
+    // Fazer Aqui Gui
 
 
 
@@ -287,4 +293,7 @@
         PreencherCidades(idEstado);
     });
 
+
+
+    buscarDadosUsuario();
 });

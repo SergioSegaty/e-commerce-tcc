@@ -23,7 +23,7 @@ namespace PadawanStore.Web.UI.Controllers
         private readonly int idUsuarioAtivo;
         private readonly IEnderecoRepository _endRepository;
 
-        public ViewUsuarioController(IBaseRepositoryAsync<Usuario> context, IUsuarioRepository usuarioRepository, IHostingEnvironment environment, HttpContextAccessor httpContextAccessor, IEnderecoRepository enderecoRepository)
+        public ViewUsuarioController(IBaseRepositoryAsync<Usuario> context, IUsuarioRepository usuarioRepository, IHostingEnvironment environment, IHttpContextAccessor httpContextAccessor, IEnderecoRepository enderecoRepository)
         {
             _repo = context;
             _userRepository = usuarioRepository;
