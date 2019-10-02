@@ -39,7 +39,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
             return _context.Enderecos
                 .Include(x => x.Cidade)
                 .Include(x => x.Usuario)
-                .Where(x => x.RegistroAtivo && x.Id == idUsuario)
+                .Where(x => x.RegistroAtivo && x.IdUsuario == idUsuario)
                 .ToList();
         }
     }
