@@ -15,5 +15,11 @@ namespace LivrariaNerd.Domain.Identity
 
         [Column("nome_completo")]
         public string NomeCompleto { get; set; }
+
+        [Column("imagem_caminho_completo")]
+        public string CaminhoImagem { get; set; }
+
+        [Column("imagem_shortcut")]
+        public string ShortcutImagem { get; set; }
     }
 }
