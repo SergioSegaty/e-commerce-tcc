@@ -20,7 +20,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="~/tema/global/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/tema/global/css/bootstrap-extend.min.css">
-    <link rel="stylesheet" href="~/tema/assets/css/site.min.css">
+    <link rel="stylesheet" href="~/tema/assets/css/site.css">
 
     <!-- Plugins -->
     <link rel="stylesheet" href="~/tema/global/vendor/animsition/animsition.css">
@@ -38,9 +38,13 @@
         Breakpoints();
     </script>
 </head>
-<body class="animsition page-login-v3 layout-full">
+<body class="animsition page-login-v3 layout-full" id="body"
+     >
     <!-- Page -->
-    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">
+    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out"
+         >
+
+        @*<img src="~/img/wallpaper_full_livros_tcc.png" />*@
         <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
             <div class="panel">
                 <div class="panel-body">
@@ -62,7 +66,7 @@
                 </div>
             </div>
             <footer class="page-copyright page-copyright-inverse">
-            <p>Site Criado Por:</p>
+                <p>Site Criado Por:</p>
                 <div class="social">
                     <a href="https://github.com/pedroDeLizAmorim" data-toggle="tooltip" title="Pedro Amorim">
                         <img src="~/tema/assets/images/Icone-Github.png" width="20" height="20" />
@@ -80,7 +84,6 @@
         </div>
     </div>
     <!-- End Page -->
-
     <!-- Core  -->
     <script src="~/tema/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
     <script src="~/tema/global/vendor/jquery/jquery.js"></script>
@@ -122,7 +125,7 @@
     <script src="~/tema/global/js/Plugin/switchery.js"></script>
     <script src="~/tema/global/js/Plugin/jquery-placeholder.js"></script>
     <script src="~/tema/global/js/Plugin/material.js"></script>
-
+    <script src="~/js/auth/background.js"></script>
     <script>
         (function (document, window, $) {
             'use strict';

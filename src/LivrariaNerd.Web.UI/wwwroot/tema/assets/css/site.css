@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 .site-navbar {
   background-color: #3e8ef7; }
   .site-navbar .navbar-header {
@@ -38,7 +38,9 @@ html, body {
   height: 100%; }
 
 body {
-  padding-top: 66.01px; }
+  padding-top: 66.01px;
+
+}
 
 .site-menubar {
   position: fixed;
