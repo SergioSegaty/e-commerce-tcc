@@ -1,4 +1,27 @@
 ﻿$(() => {
+    $id = -1;
+
+    buscarDadosUsuario = function () {
+
+        $.ajax({
+
+            url: '/usuario/obterusuarioativo',
+            method: 'get',
+            success: function(data) {
+
+                console.log(data);
+
+            }
+
+
+        });
+
+
+    };
+
+
+
+
 
     // Validação do Form Usuario
     $(function () {

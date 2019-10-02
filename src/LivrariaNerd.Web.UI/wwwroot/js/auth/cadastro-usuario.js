@@ -69,6 +69,9 @@
 
     $('#btn-cadastro-usuario').on('click', function () {
         $('#form-cadastro-usuario').validate();
+        $email = $('#campo-email-cadastro-usuario').val();
+        $senha = $('#campo-senha-cadastro-usuario').val();
+        $nome = $('#campo-nome-cadastro-usuario').val();
 
         $valido = $('#form-cadastro-usuario').valid();
         //TODO: checkar  validação
