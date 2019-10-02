@@ -8,6 +8,10 @@
                 minlength: 6,
                 maxlength: 40,
             },
+            email: {
+                required: true,
+                email: true
+            },
             password: {
                 required: true,
                 minlength: 6,
@@ -21,6 +25,10 @@
             }
         },
         messages: {
+            email: {
+                required: 'Este campo é obrigatório',
+                email: 'Não é um e-mail válido'
+            },
             name: {
                 required: 'Este campo é obrigatório',
                 minlength: 'Nome deve conter no mínimo 6 caractéres',
@@ -61,6 +69,9 @@
 
     $('#btn-cadastro-usuario').on('click', function () {
         $('#form-cadastro-usuario').validate();
+        $email = $('#campo-email-cadastro-usuario').val();
+        $senha = $('#campo-senha-cadastro-usuario').val();
+        $nome = $('#campo-nome-cadastro-usuario').val();
 
         $valido = $('#form-cadastro-usuario').valid();
         //TODO: checkar  validação
