@@ -23,6 +23,44 @@
         });
     });
 
+    $('#tabela-carrinho').on('click', '.aumentar-quantidade', function () {
+        $id = $(this).data('id');
+
+        $.ajax({
+            url: '/pedido/obterpeloid?id=' + $id,
+            method: 'get',
+            success: function (data) {
+                data.quantidade++;
+                if (data.quantidade < 1) {
+                    data.quantidade = 1;
+                }
+                $.ajax({
+                    url: '/pedido/modificarquantidade',
+                    method: 'post',
+                    data: data,
+                    success: function (data) {
+                        PreencherTabela();
+                    }
+                })
+            }
+        });
+    });
+
+    $('#tabela-carrinho').on('click', '.remover', function () {
+        $id = $(this).data('id');
+
+        $.ajax({
+            url: '/pedido/removerdocarrinho',
+            method: 'post',
+            data: {
+                id: $id
+            },
+            success: function (data) {
+                PreencherTabela();
+            }
+        });
+    });
+
     PreencherTabela = function () {
         $('#tabela-carrinho').empty();
         $.ajax({
@@ -52,10 +90,14 @@
                 thPreco.setAttribute('scope', 'col');
                 thPreco.setAttribute('width', '15%');
 
+                let thRemover = document.createElement('th');
+                thRemover.setAttribute('width', '10%');
+
                 theadTr.appendChild(thImagem);
                 theadTr.appendChild(thNome);
                 theadTr.appendChild(thPreco);
                 theadTr.appendChild(thQuantidade);
+                theadTr.appendChild(thRemover);
 
                 header.appendChild(theadTr);
 
@@ -89,10 +131,12 @@
                     botaoMais.classList.add('aumentar-quantidade');
                     botaoMais.classList.add('btn');
                     botaoMais.classList.add('btn-primary');
+                    botaoMais.classList.add('align-bottom');
 
                     botaoMenos.classList.add('diminuir-quantidade');
                     botaoMenos.classList.add('btn');
                     botaoMenos.classList.add('btn-primary');
+                    botaoMenos.classList.add('align-bottom');
 
                     let plusIcon = document.createElement('i');
                     plusIcon.classList.add('icon');
@@ -112,11 +156,23 @@
                     tdQuantidade.appendChild(spanQuantidade);
                     tdQuantidade.appendChild(botaoMais);
 
+                    let tdRemover = document.createElement('td');
+
+                    let btnRemover = document.createElement('button');
+                    btnRemover.classList.add('btn');
+                    btnRemover.classList.add('btn-danger');
+                    btnRemover.classList.add('align-bottom');
+                    btnRemover.classList.add('remover');
+                    btnRemover.innerHTML = "Remover do Carrinho"
+                    btnRemover.setAttribute('data-id', _data.id);
+
+                    tdRemover.appendChild(btnRemover);
+
                     tr.appendChild(tdImagem);
                     tr.appendChild(tdNome);
                     tr.appendChild(tdPreco);
                     tr.appendChild(tdQuantidade);
-
+                    tr.appendChild(tdRemover);
 
                     document.getElementById('tabela-carrinho').appendChild(tr);
 
