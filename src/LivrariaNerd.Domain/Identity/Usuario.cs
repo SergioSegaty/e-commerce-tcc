@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LivrariaNerd.Domain.Identity
@@ -15,11 +13,5 @@ namespace LivrariaNerd.Domain.Identity
 
         [Column("nome_completo")]
         public string NomeCompleto { get; set; }
-
-        [Column("imagem_caminho_completo")]
-        public string CaminhoImagem { get; set; }
-
-        [Column("imagem_shortcut")]
-        public string ShortcutImagem { get; set; }
     }
 }
