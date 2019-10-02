@@ -8,6 +8,10 @@
                 minlength: 6,
                 maxlength: 40,
             },
+            email: {
+                required: true,
+                email: true
+            },
             password: {
                 required: true,
                 minlength: 6,
@@ -21,6 +25,10 @@
             }
         },
         messages: {
+            email: {
+                required: 'Este campo é obrigatório',
+                email: 'Não é um e-mail válido'
+            },
             name: {
                 required: 'Este campo é obrigatório',
                 minlength: 'Nome deve conter no mínimo 6 caractéres',
