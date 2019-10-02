@@ -1,6 +1,8 @@
 ﻿$(() => {
     $id = -1;
-    $idUsuario = 1;
+    $idUsuario = -1;
+    $senhaUsuario = "";
+
 
     buscarDadosUsuario = function () {
 
@@ -9,18 +11,55 @@
             url: '/usuario/obterusuarioativo',
             method: 'get',
             success: function (data) {
-
                 console.log(data);
+                $idUsuario = data.id;
+                $senhaUsuario = data.senha;
+
+                document.getElementById('titulo-nome-usuario').innerHTML = 'Usuario: ' + data.nomeCompleto;
+                $('#campo-nome').val(data.nomeCompleto);
+                $('#campo-email').val(data.login);
+
 
             }
-
-
         });
-
-
     };
+    
+    $('#btn-alterar-usuario').on("click", function () {
 
-    //Fazer:
+        var senha = $("#campo-senha").val();
+        var login = $('#campo-email').val();
+        var nome = $('#campo-nome').val();
+
+        console.log("senhaTabela: " + $senhaUsuario + ", senhaCampo: " + senha);
+
+        if (senha != $senhaUsuario) {
+            notifyAlert(3, 'Senha errada', 2);
+        }
+        else {
+            $.ajax({
+                url: '/usuario/alterar',
+                method: 'post',
+                data: {
+                    Id: $idUsuario,
+                    Login: login,
+                    Senha: senha,
+                    NomeCompleto: nome
+                },               
+                success: function (data) {
+                    notifyAlert(1, 'Cadastro Alterado com Sucesso', 2);
+                    location.reload();
+                },
+                error: function (data) {
+                    notifyAlert(3, 'Falha ao Alterar', 2);
+                }
+
+            });
+        }
+
+
+    });
+
+     //Fazer:
     //Pegar endereco pelo idusuario e mostrar na view e dps fazer atualizar o endereco ou criar
 
     buscarEnderecoUsuario = function () {
@@ -49,7 +88,6 @@
 
                     document.getElementById('btn-alterar-endereco').innerHTML = "Atualizar Endereço";
                 }
-
             }
         });
     }
@@ -59,6 +97,11 @@
         $idEndereco = $(this).data('id');
     });
 
+    //Fazer alterar o endereco
+    $('#btn-alterar-endereco').on('click', function () {
+        $idEndereco = $(this).data('id');
+    });
+    
     buscarEnderecoUsuario();
 
     // Validação do Form Usuario
@@ -74,15 +117,10 @@
                 usuarioEmail: {
                     required: true,
                     minlength: 10,
-                    maxlegnth: 50,
+                    maxlength: 50,
                 },
                 usuarioDataNascimento: {
                     required: true
-                },
-                usuarioCelular: {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 12
                 },
                 senha: {
                     required: true,
@@ -325,4 +363,7 @@
         PreencherCidades(idEstado);
     });
 
+
+
+    buscarDadosUsuario();
 });

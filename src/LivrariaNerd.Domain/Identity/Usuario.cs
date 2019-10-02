@@ -13,6 +13,6 @@ namespace LivrariaNerd.Domain.Identity
 
         [Column("nome_completo")]
         public string NomeCompleto { get; set; }
-
     }
 }
+
