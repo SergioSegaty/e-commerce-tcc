@@ -1,6 +1,7 @@
 ﻿$(() => {
     $id = -1;
     $idUsuario = -1;
+    $senhaUsuario = "";
 
     buscarDadosUsuario = function () {
 
@@ -8,22 +9,58 @@
 
             url: '/usuario/obterusuarioativo',
             method: 'get',
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
                 $idUsuario = data.id;
+                $senhaUsuario = data.senha;
 
-                $('#campo-nome').val(data.id);
-                $('#campo-email').val(data.email);
-                $('#campo-')
+                document.getElementById('titulo-nome-usuario').innerHTML = 'Usuario: ' + data.nomeCompleto;
+                $('#campo-nome').val(data.nomeCompleto);
+                $('#campo-email').val(data.login);
 
 
             }
-
 
         });
 
 
     };
+
+
+    $('#btn-alterar-usuario').on("click", function () {
+
+        var senha = $("#campo-senha").val();
+        var login = $('#campo-email').val();
+        var nome = $('#campo-nome').val();
+
+        console.log("senhaTabela: " + $senhaUsuario + ", senhaCampo: " + senha);
+
+        if (senha != $senhaUsuario) {
+            notifyAlert(3, 'Senha errada', 2);
+        }
+        else {
+            $.ajax({
+                url: '/usuario/alterar',
+                method: 'post',
+                data: {
+                    Id: $idUsuario,
+                    Login: login,
+                    Senha: senha,
+                    NomeCompleto: nome
+                },               
+                success: function (data) {
+                    notifyAlert(1, 'Cadastro Alterado com Sucesso', 2);
+                    location.reload();
+                },
+                error: function (data) {
+                    notifyAlert(3, 'Falha ao Alterar', 2);
+                }
+
+            });
+        }
+
+
+    });
 
     // Fazer Aqui Gui
 
@@ -42,15 +79,10 @@
                 usuarioEmail: {
                     required: true,
                     minlength: 10,
-                    maxlegnth: 50,
+                    maxlength: 50,
                 },
                 usuarioDataNascimento: {
                     required: true
-                },
-                usuarioCelular: {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 12
                 },
                 senha: {
                     required: true,

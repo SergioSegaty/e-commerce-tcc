@@ -94,6 +94,15 @@ namespace PadawanStore.Web.UI.Controllers
             return Json(enderecoAtivo);
         }
 
+
+        [HttpPost, Route("alterar")]
+        public ActionResult AlterarUsuario(Usuario usuario)
+        {
+            bool alterou = _repo.Alterar(usuario);
+            return Json(new { status = alterou });
+
+        }
+
         [HttpGet, Route("obterusuarioativo")]
         public ActionResult obterUsuarioAtivo()
         {

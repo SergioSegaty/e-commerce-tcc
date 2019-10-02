@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Usuario";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
 }
 
 @section Styles{
@@ -22,11 +22,11 @@
     <div class="panel">
 
         <div class="panel-heading">
-            <h3 class="panel-title">[Nome da Pessoa]</h3>
+            <h3 class="panel-title" id="titulo-nome-usuario">[Nome da Pessoa]</h3>
         </div>
         <div class="panel-body container-fluid">
 
-            <div class="row">
+            @*<div class="row">
                 <div class="offset-xl-4 col-xl-4 col-lg-6 offset-lg-3 col-md-10 offset-md-1 offset-sm-0">
                     <div class="center">
                         <div class="example-wrap">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
 
 
             <div class="row">
@@ -57,15 +57,6 @@
                                 <label for="campo-sobrenome">Email <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="usuarioEmail" id="campo-email" />
                             </div>
-                            <div class="col-xl-6 col-md-12 form-group">
-                                <label for="campo-data-nascimento">Data de Nascimento <span style="color:red">*</span></label>
-                                <input class="form-control" type="date" name="usuarioDataNascimento" id="campo-data-nascimento" />
-                            </div>
-                            <div class="col-xl-6 col-md-12 form-group">
-                                <label for="campo-celular">Número de telefone<span style="color:red">*</span></label>
-                                <input class="form-control" type="text" name="usuarioCelular" id="campo-celular" />
-                            </div>
-
                             <div class="col-xl-6 col-md-12 form-group">
                                 <label for="campo-senha">Senha<span style="color:red">*</span></label>
                                 <input type="text" class="form-control" name="senha" id="campo-senha" value="" />
@@ -102,13 +93,11 @@
                             </div>
                             <div class="col-lg-3 form-group">
                                 <label for="campo-estado">UF <span style="color:red">*</span></label>
-                                <select class="form-control" id="campo-end-estado" name="usuarioEstado">
-                                </select>
+                                <select class="form-control" id="campo-end-estado" name="usuarioEstado"></select>
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label for="campo-cidade">Cidade <span style="color:red">*</span></label>
-                                <select class="form-control" id="campo-end-cidade" name="usuarioCidade">
-                                </select>
+                                <select class="form-control" id="campo-end-cidade" name="usuarioCidade"></select>
                             </div>
                         </div>
                         <div class="form-row">

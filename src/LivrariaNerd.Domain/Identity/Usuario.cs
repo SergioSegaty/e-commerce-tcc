@@ -13,9 +13,6 @@ namespace LivrariaNerd.Domain.Identity
 
         [Column("nome_completo")]
         public string NomeCompleto { get; set; }
-
-        [Column("data_nascimento")]
-        public string DataNascimento { get; set; }
-
     }
 }
+
