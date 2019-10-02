@@ -22,13 +22,15 @@ namespace PadawanStore.Web.UI.Controllers
         private readonly string _caminho;
         private readonly int idUsuarioAtivo;
         private readonly IEnderecoRepository _endRepository;
+        private readonly IHttpContextAccessor _context;
 
-        public ViewUsuarioController(IBaseRepositoryAsync<Usuario> context, IUsuarioRepository usuarioRepository, IHostingEnvironment environment, HttpContextAccessor httpContextAccessor, IEnderecoRepository enderecoRepository)
+        public ViewUsuarioController(IBaseRepositoryAsync<Usuario> context, IUsuarioRepository usuarioRepository, IHostingEnvironment environment, IHttpContextAccessor httpContextAccessor, IEnderecoRepository enderecoRepository)
         {
             _repo = context;
             _userRepository = usuarioRepository;
             _env = environment;
             _endRepository = enderecoRepository;
+            _context = httpContextAccessor;
 
             string wwwroot = environment.WebRootPath;
 
@@ -43,7 +45,6 @@ namespace PadawanStore.Web.UI.Controllers
 
             var claimsIdentity = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
             idUsuarioAtivo = Convert.ToInt32(claimsIdentity.FindFirst("Id").Value);
-
         }
 
 
@@ -83,9 +84,12 @@ namespace PadawanStore.Web.UI.Controllers
         //}
 
         [HttpGet, Route("obterenderecousuario")]
-        public ActionResult obterEnderecoUsuario()
+        public ActionResult ObterEnderecoUsuario()
         {
-            var enderecoAtivo = _endRepository.ObterTodosPeloUsuario(idUsuarioAtivo);
+            var claimsIdentity = (ClaimsIdentity)_context.HttpContext.User.Identity;
+            var idUsuario = Convert.ToInt32(claimsIdentity.FindFirst("Id").Value);
+
+            var enderecoAtivo = _endRepository.ObterTodosPeloUsuario(idUsuario);
 
             if (enderecoAtivo == null)
             {

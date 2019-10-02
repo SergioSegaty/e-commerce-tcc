@@ -1,5 +1,6 @@
 ﻿$(() => {
     $id = -1;
+    $idUsuario = 1;
 
     buscarDadosUsuario = function () {
 
@@ -7,7 +8,7 @@
 
             url: '/usuario/obterusuarioativo',
             method: 'get',
-            success: function(data) {
+            success: function (data) {
 
                 console.log(data);
 
@@ -19,9 +20,46 @@
 
     };
 
+    //Fazer:
+    //Pegar endereco pelo idusuario e mostrar na view e dps fazer atualizar o endereco ou criar
 
+    buscarEnderecoUsuario = function () {
+        $.ajax({
+            url: '/usuario/obterenderecousuario',
+            method: 'get',
+            success: function (data) {
+                console.log(data);
+                let endereco = data[0];
 
+                if (data.length === 0) {
+                    document.getElementById('btn-alterar-endereco').innerHTML = "Cadastrar Endereço";
+                    document.getElementById('btn-alterar-endereco').setAttribute('data-id', -1);
+                } else {
+                    document.getElementById('btn-alterar-endereco').setAttribute('data-id', endereco.id);
+                    $('#campo-end-cep').val(endereco.cep);
+                    $('#campo-end-estado').val(endereco.cidade.idEstado);
+                    PreencherCidades(endereco.cidade.idEstado);
+                    setTimeout(() => {
+                        $("#campo-end-cidade option[value=" + endereco.cidade.id + "]").attr('selected', 'selected');
+                    }, 0100);
+                    $('#campo-end-bairro').val(endereco.bairro);
+                    $('#campo-end-numero').val(endereco.numero);
+                    $('#campo-end-complemento').val(endereco.complemento);
+                    $('#campo-rua').val(endereco.rua);
 
+                    document.getElementById('btn-alterar-endereco').innerHTML = "Atualizar Endereço";
+                }
+
+            }
+        });
+    }
+
+    //fazer criar endereco 
+    $('#btn-alterar-endereco').on('click', function () {
+        $idEndereco = $(this).data('id');
+    });
+
+    buscarEnderecoUsuario();
 
     // Validação do Form Usuario
     $(function () {

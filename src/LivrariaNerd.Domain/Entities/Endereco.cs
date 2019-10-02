@@ -32,5 +32,8 @@ namespace LivrariaNerd.Domain.Entities
 
         [Column("complemento")]
         public string Complemento { get; set; }
+
+        [Column("rua")]
+        public string Rua { get; set; }
     }
 }
