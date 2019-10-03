@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using LivrariaNerd.Domain.Entities;
 using LivrariaNerd.Domain.Identity;
 using LivrariaNerd.Infra.Data.Interface;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PadawanStore.Web.UI.Controllers

@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using LivrariaNerd.Domain.Entities;
 using LivrariaNerd.Domain.Identity;
 using LivrariaNerd.Infra.Data.Interface;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using System.Security.Cryptography;
 using System;
-using System.Text;
 using System.Security.Claims;
 
 namespace PadawanStore.Web.UI.Controllers
@@ -79,7 +76,7 @@ namespace PadawanStore.Web.UI.Controllers
         //        _repo.Alterar(usuario);
 
         //        return RedirectToAction("Index");
-                    
+
         //    }
         //}
 

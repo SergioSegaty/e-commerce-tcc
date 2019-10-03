@@ -8,15 +8,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using LivrariaNerd.Domain.Identity;
 using LivrariaNerd.Infra.Data.Interface;
-using Microsoft.AspNetCore.Identity;
 
 namespace View.Controllers
 {
     [AllowAnonymous]
     [Route("auth")]
     public class AuthController : Controller
-    { 
-
+    {
         private IUsuarioRepository usuarioRepository;
         private IBaseRepositoryAsync<Usuario> repository;
 
@@ -24,8 +22,8 @@ namespace View.Controllers
         {
             this.usuarioRepository = usuarioRepository;
             this.repository = repository;
-          
-            if(User != null)
+
+            if (User != null)
             {
                 var x = ((ClaimsIdentity)User.Identity);
             }
@@ -57,7 +55,7 @@ namespace View.Controllers
 
             if (usuario == null)
                 return RedirectToAction("Index");
-           
+
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, usuario.Login),

@@ -6,19 +6,12 @@ using LivrariaNerd.Infra.Data.Interface;
 
 namespace e_commerce_ws.Controllers
 {
-    /// <summary>
-    /// Controller do Estoque
-    /// </summary>
     [Route("estoque")]
     public class EstoqueController : Controller
     {
         private readonly IBaseRepositoryAsync<Estoque> _repository;
         private readonly IEstoqueRepository _estoqueRepository;
 
-        /// <summary>
-        /// Construtor do controller de Estoque
-        /// </summary>
-        /// <param name="repository"></param>
         public EstoqueController(IBaseRepositoryAsync<Estoque> repository, IEstoqueRepository estoqueRepository)
         {
             this._repository = repository;
@@ -31,10 +24,6 @@ namespace e_commerce_ws.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Metodo que permite obter todos os Estoques
-        /// </summary>
-        /// <returns>Lista de Estoques em JSON</returns>
         [HttpGet, Route("obtertodos")]
         public JsonResult ObterTodos(string status)
         {
@@ -42,11 +31,6 @@ namespace e_commerce_ws.Controllers
             return Json(estoques);
         }
 
-        /// <summary>
-        /// Obter um Estoque por Id
-        /// </summary>
-        /// <param name="id">Id do Estoque</param>
-        /// <returns>Estoque em JSON</returns>
         [HttpGet, Route("obterpeloid")]
         public ActionResult ObterPeloId(int id)
         {
@@ -58,11 +42,6 @@ namespace e_commerce_ws.Controllers
             return Json(estoque);
         }
 
-        /// <summary>
-        /// Adicionar um novo Estoque
-        /// </summary>
-        /// <param name="estoque">Objeto Estoque</param>
-        /// <returns>Id do Estoque registrado</returns>
         [HttpPost, Route("adicionar")]
         public async Task<JsonResult> Adicionar(Estoque estoque)
         {
@@ -70,11 +49,6 @@ namespace e_commerce_ws.Controllers
             return Json(new { id });
         }
 
-        /// <summary>
-        /// Alterar um Estoque
-        /// </summary>
-        /// <param name="estoque">Objeto Estoque</param>
-        /// <returns>Status se alterou com sucesso ou n�o o Estoque</returns>
         [HttpPost, Route("alterar")]
         public JsonResult Alterar(Estoque estoque)
         {
@@ -82,11 +56,6 @@ namespace e_commerce_ws.Controllers
             return Json(new { status = alterou });
         }
 
-        /// <summary>
-        /// Apagar um Estoque
-        /// </summary>
-        /// <param name="id">Id do Estoque</param>
-        /// <returns>Status se apagou com sucesso ou n�o o Estoque</returns>
         [HttpGet, Route("apagar")]
         public JsonResult Apagar(int id)
         {
@@ -101,10 +70,11 @@ namespace e_commerce_ws.Controllers
 
             var result = new List<object>();
 
-            foreach(var estoque in estoques)
+            foreach (var estoque in estoques)
             {
                 result.Add(
-                    new {
+                    new
+                    {
                         id = estoque.Id,
                         nomeProduto = estoque.Produto.Nome,
                         quantidade = estoque.Quantidade,

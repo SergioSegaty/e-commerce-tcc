@@ -17,7 +17,7 @@ namespace PadawanStore.Web.UI.Controllers
             _repository = repository;
         }
 
-        [HttpGet, Route("")]    
+        [HttpGet, Route("")]
         public IActionResult Index()
         {
             return View();
