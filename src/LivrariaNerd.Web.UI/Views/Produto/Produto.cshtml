@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "Produto";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+
+@section Styles{
+    <link href="~/css/customizada/loja.css" rel="stylesheet" />
+    <link href="~/tema/global/fonts/glyphicons/glyphicons.min.css" rel="stylesheet" />
+
+}
+
+
+<div class="page-header">
+    <h1 class="page-title" id="titulo-produto">[Produto]</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index","UsuarioProduto")">Loja</a></li>
+        <li class="breadcrumb-item active">Produtos</li>
+        <li class="breadcrumb-item active" id="bc-titulo-produto">[Produto]</li>
+    </ol>
+</div>
+
+
+<div class="page-content">
+    <!-- Painel -->
+    <div class="panel">
+
+        <!-- Box da Esquerda (Informações do produto)-->
+        <div class="row row-lg">
+            <div class="col-xl-5 offset-xl-2">
+                <img class="img-produto" src="~/img/livro_dnd_manual_monstros.jpg" />
+                <h3>Descrição do Produto:</h3>
+                <div id="desc-box">
+                    <p class="form-control cover-background descricao" style="background-color: rgba(237, 237, 237, 0.59); color: #b4652c" id="descricao">[Descricao do produto]</p>
+                </div>
+                <div class="vl"></div>
+            </div>
+            <!-- Box da Direita (Informações de compra) -->
+            <div class="col-xl-4 ">
+                <div class="col-12">
+                    <div class="card" style="width: 18em">
+                        <div class="card-body">
+                            <div class="row row-lg">
+                                <h3 class="card-title azul-escuro">Nome do produto</h3>
+                                <h4 class="card-subtitle mt-15 laranja">Preço do produto</h4>
+                                <h5 class="ml-5">[categoria produto]</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-lg">
+                    <div style="position: absolute; bottom:20%; right: 40%">
+                        <button class="btn btn-warning align-baseline btn-floating"><i class="icon glyphicon glyphicon-shopping-cart"></i> </button>
+                        <button class="btn btn-danger align-baseline btn-floating"><i class="icon glyphicon glyphicon-heart-empty"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+</style>
+
+@section Scripts {
+
+    <script src="~/js/usuario/pegar-produto.js"></script>
+}
