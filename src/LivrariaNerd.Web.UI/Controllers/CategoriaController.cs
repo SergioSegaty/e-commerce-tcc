@@ -7,7 +7,7 @@ using LivrariaNerd.Infra.Data.Interface;
 
 namespace e_commerce_ws.Controllers
 {
-    [Route("categoria/")]
+    [Route("categoria")]
     public class CategoriaController : Controller
     {
         private readonly IBaseRepositoryAsync<Categoria> _repository;

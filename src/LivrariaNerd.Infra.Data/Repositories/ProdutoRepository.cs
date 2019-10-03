@@ -31,6 +31,15 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Where(x => x.RegistroAtivo).ToList();
         }
 
+        public List<Produto> ObterTodosBusca(string busca)
+        {
+            return _context.Produtos
+                .Include(x => x.Categoria)
+                .OrderBy(x => x.Nome)
+                .Where(x => x.RegistroAtivo && x.Nome.Contains(busca))
+                .ToList();
+        }
+
         public List<Produto> ObterTodosPelaCategoria(int idCategoria)
         {
             return _context.Produtos
