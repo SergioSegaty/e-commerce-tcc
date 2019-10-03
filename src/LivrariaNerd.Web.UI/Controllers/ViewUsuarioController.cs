@@ -113,6 +113,12 @@ namespace PadawanStore.Web.UI.Controllers
             return Json(usuario);
         }
 
+        [HttpGet, Route("produto")]
+        public IActionResult Produto()
+        {
+            return View();
+        }
+
         [HttpGet, Route("")]
         public IActionResult Index()
         {

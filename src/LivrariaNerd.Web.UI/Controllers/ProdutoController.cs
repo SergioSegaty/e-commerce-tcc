@@ -129,5 +129,12 @@ namespace e_commerce_ws.Controllers
             return View();
         }
 
+
+        [HttpGet, Route("produto")]
+        public IActionResult Produto()
+        {
+            return View();
+        }
+
     }
 }
