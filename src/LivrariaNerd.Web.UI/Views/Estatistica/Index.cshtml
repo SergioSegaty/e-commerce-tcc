@@ -1,66 +1,152 @@
 ﻿
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="pt-br">
+<html class="no-js css-menubar" lang="en">
+<head>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/tema/global/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="/tema/global/vendor/chartist/chartist.css">
+    <link rel="stylesheet" href="/tema/global/vendor/aspieprogress/asPieProgress.css">
+    <link rel="stylesheet" href="~/tema/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="/tema/assets/examples/css/dashboard/ecommerce.css">
+    <link rel="stylesheet" href="~/css/customizada/row-quadradinhos-estatistica.css">
+    <link rel="stylesheet" href="~/css/customizada/nav-menu-quadradinhos-estatistica.css">
+    <link rel="stylesheet" href="~/css/customizada/nav-botao-corzinha-diferente.css">
+</head>
 <body class="animsition ecommerce_dashboard">
-
     <!-- Page -->
-    <div>
-        <div class="page-header">
-            <h2 class="page-title">Estatisticas E-Commerce.</h2>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
-                <li class="breadcrumb-item active">Estatistica</li>
-            </ol>
-        </div>
+    <div class="page-header">
+        <h1 class="page-title font-size-26 font-weight-100">Ecommerce Estatistica</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item active">Estatistica</li>
+        </ol>
+    </div>
 
-        <div class="page-content">
-            <div class="row" id="cards-custom-loja">
+    <div class="row">
+        <div class="col-12">
+            <ul class="nav-menu-estatisca nav nav-pills nav-pills-rounded chart-action">
+                <li class="nav-item"><a class="active nav-link" data-toggle="tab" href="#scoreLineToDay">Hoje</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToWeek">Este Semana</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToMonth">Este Mês</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToMonth">Este Ano</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="linha-quadradinhos-estatistica" id="cards-custom-loja">
+        <!--
+        [Pedido]
+        [Rendimento]
+        [Usuarios]
+        [Produtos]
+        Via JavaScript
+        -->
+    </div>
+
+    <div class="col-12" id="ecommerceChartView">
+        <div class="card card-shadow">
+            <div class="card-header card-header-transparent py-20">
+                <ul class="nav nav-pills nav-pills-rounded chart-action">
+                    <li class="nav-item nav-corzinha-laranja"><a class="nav-corzinha-laranja active nav-link " data-toggle="tab" href="#scoreLineToDay">Pedidos</a></li>
+                    <li class="nav-item"><a class="nav-corzinha-vermelha nav-link " data-toggle="tab" href="#scoreLineToWeek">Rendimentos</a></li>
+                    <li class="nav-item"><a class="nav-corzinha-verde nav-link " data-toggle="tab" href="#scoreLineToMonth">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToMonth">Usuarios</a></li>
+                </ul>
+            </div>
+            <div class="widget-content tab-content bg-white p-20">
+                <div class="ct-chart tab-pane active" id="scoreLineToDay"></div>
+                <div class="ct-chart tab-pane" id="scoreLineToWeek"></div>
+                <div class="ct-chart tab-pane" id="scoreLineToMonth"></div>
             </div>
         </div>
+    </div>
 
-        <div class="col-lg-12" id="ecommerceRecentOrder">
-            <div class="card card-shadow table-row">
-                <div class="card-header card-header-transparent py-20">
-                    <div class="btn-group dropdown">
-                        <a href="#" class="text-body dropdown-toggle blue-grey-700" data-toggle="dropdown">RECENT ORDER</a>
-                        <div class="dropdown-menu animate" role="menu">
-                            <a class="dropdown-item" href="#" role="menuitem">Sales</a>
-                            <a class="dropdown-item" href="#" role="menuitem">Total sales</a>
-                            <a class="dropdown-item" href="#" role="menuitem">profit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-block bg-white table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Imagem</th>
-                                <th>Produto</th>
-                                <th>Cliente</th>
-                                <th>Comprado Em</th>
-                                <th>Status</th>
-                                <th>Nº Identificador</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabela-conteudo-estatistica">
-                        </tbody>
-                    </table>
-                </div>
+    <div class="col-lg-12" id="ecommerceRecentOrder">
+        <div class="card card-shadow table-row">
+            <div class="card-header card-header-transparent py-20">
+            </div>
+            <div class="card-block bg-white table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Customer</th>
+                            <th>Purchased On</th>
+                            <th>Status</th>
+                            <th>Tracking No#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="/tema/assets/examples/images/products/imac.png"
+                                     alt="iMac" />
+                            </td>
+                            <td>iMac</td>
+                            <td>Russell</td>
+                            <td>22/08/2018</td>
+                            <td>
+                                <span class="badge badge-success font-weight-100">Paid</span>
+                            </td>
+                            <td>#98BC85SD84</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/tema/assets/examples/images/products/iphone.png"
+                                     alt="iPhone" />
+                            </td>
+                            <td>iPhone</td>
+                            <td>Carol</td>
+                            <td>15/07/2018</td>
+                            <td>
+                                <span class="badge badge-warning font-weight-100">Pending</span>
+                            </td>
+                            <td>#98SA3C9SC</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/tema/assets/examples/images/products/applewatch.png"
+                                     alt="apple_watch" />
+                            </td>
+                            <td>apple Watch</td>
+                            <td>Austin Pena</td>
+                            <td>10/07/2018</td>
+                            <td>
+                                <span class="badge badge-success font-weight-100">Paid</span>
+                            </td>
+                            <td>#98BC85SD84</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/tema/assets/examples/images/products/macmouse.png"
+                                     alt="mac_mouse" />
+                            </td>
+                            <td>mac Mouse</td>
+                            <td>Randy</td>
+                            <td>22/04/2018</td>
+                            <td>
+                                <span class="badge badge-default font-weight-100">Failed</span>
+                            </td>
+                            <td>#98SA3C9SC</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <!-- End Page -->
-    <script src="tema/global/vendor/jquery/jquery.js"></script>
-    <script src="~/tema/global/vendor/slidepanel/jquery-slidePanel.js"></script>
-    <script src="~/tema/assets/examples/js/dashboard/ecommerce.js"></script>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+    </footer>
+    <!-- Core  -->
+    <script src="/tema/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="/tema/global/vendor/jquery/jquery.js"></script>
+    <script src="/tema/global/vendor/chartist/chartist.min.js"></script>
+    <script src="/tema/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+    <script src="/tema/global/js/Plugin/aspieprogress.js"></script>
+    <script src="/tema/assets/examples/js/dashboard/ecommerce.js"></script>
     <script src="~/js/estatistica/index-dados-porcentagem.js"></script>
 </body>
 </html>
-
-
-

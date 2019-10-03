@@ -1,5 +1,4 @@
-﻿var concat;
-$(() => {
+﻿$(() => {
 
     ObterQuantidadeDePedidos = function () {
         $.ajax({
@@ -8,8 +7,6 @@ $(() => {
             async: true,
             success: function (data) {
                 console.log(data);
-
-                let pDesseMes = document.createElement('p');
 
                 let spanQuantidadePedido = document.createElement('span');
 
@@ -26,10 +23,6 @@ $(() => {
                 let terceiraDivQuantidadePedido = document.createElement('div');
 
                 let quartaDivQuantidadePedido = document.createElement('div');
-
-                pDesseMes.classList.add('blue-grey-400');
-                pDesseMes.classList.add('font-weight-100');
-                pDesseMes.classList.add('m-0');
 
                 spanQuantidadePedido.classList.add('font-size-40');
                 spanQuantidadePedido.classList.add('font-weight-100');
@@ -61,17 +54,10 @@ $(() => {
                 quartaDivQuantidadePedido.classList.add('col-md-6');
                 quartaDivQuantidadePedido.classList.add('info-panel');
 
-                let currentDate = new Date();
-                let currentDateString = currentDate.getDate() + '/' + currentDate.getMonth() + '/' + currentDate.getFullYear();
-                let LastMonth = currentDate.getDate() + '/' + (currentDate.getMonth() - 1) + '/' + currentDate.getFullYear();
-                concat = currentDateString + ' Até ' + LastMonth;
-
-                pDesseMes.innerHTML = 'Pedidos Finalizados do Ultimo Mês (' + concat + ')';
                 spanQuantidadePedido.innerHTML = data.quantidade;
                 spanNomePedido.innerHTML = 'Pedidos';
 
                 divQuantidadePedido.appendChild(spanQuantidadePedido);
-                divQuantidadePedido.appendChild(pDesseMes);
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -95,8 +81,6 @@ $(() => {
             success: function (rendimento) {
                 console.log(rendimento);
 
-                let pDesseMes = document.createElement('p');
-
                 let spanQuantiaRendimento = document.createElement('span');
 
                 let divQuantiaRendimento = document.createElement('div');
@@ -112,10 +96,6 @@ $(() => {
                 let terceiraDivQuantiaRendimento = document.createElement('div');
 
                 let quartaDivQuantiaRendimento = document.createElement('div');
-
-                pDesseMes.classList.add('blue-grey-400');
-                pDesseMes.classList.add('font-weight-100');
-                pDesseMes.classList.add('m-0');
 
                 spanQuantiaRendimento.classList.add('font-size-40');
                 spanQuantiaRendimento.classList.add('font-weight-100');
@@ -147,12 +127,10 @@ $(() => {
                 quartaDivQuantiaRendimento.classList.add('col-md-6');
                 quartaDivQuantiaRendimento.classList.add('info-panel');
 
-                pDesseMes.innerHTML = 'Rendimentos do Ultimo Mês (' + concat + ')';
                 spanQuantiaRendimento.innerHTML = 'R$' + rendimento.total;
                 spanNomeRendimento.innerHTML = 'Rendimentos';
 
                 divQuantiaRendimento.appendChild(spanQuantiaRendimento);
-                divQuantiaRendimento.appendChild(pDesseMes);
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -176,8 +154,6 @@ $(() => {
             success: function (produto) {
                 console.log(produto);
 
-                let pDesseMes = document.createElement("p");
-
                 let spanQuantidadeProduto = document.createElement("span");
 
                 let divQuantidadeProduto = document.createElement("div");
@@ -193,10 +169,6 @@ $(() => {
                 let terceiraDivQuantidadeProduto = document.createElement("div");
 
                 let quartaDivQuantidadeProduto = document.createElement("div");
-
-                pDesseMes.classList.add('blue-grey-400');
-                pDesseMes.classList.add('font-weight-100');
-                pDesseMes.classList.add('m-0');
 
                 spanQuantidadeProduto.classList.add("font-size-40");
                 spanQuantidadeProduto.classList.add("font-weight-100");
@@ -228,12 +200,10 @@ $(() => {
                 quartaDivQuantidadeProduto.classList.add("col-md-6");
                 quartaDivQuantidadeProduto.classList.add("info-panel");
 
-                pDesseMes.innerHTML = 'Quantidade de Produtos Que Entraram no Ultimo Mês (' + concat + ')';
                 spanQuantidadeProduto.innerHTML = produto.quantidade;
                 spanNomeProduto.innerHTML = "Produtos";
 
                 divQuantidadeProduto.appendChild(spanQuantidadeProduto);
-                divQuantidadeProduto.appendChild(pDesseMes);
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -257,8 +227,6 @@ $(() => {
             success: function (Usuario) {
                 console.log(Usuario);
 
-                let pDesseMes = document.createElement("p");
-
                 let spanQuantidadeUsuario = document.createElement("span");
 
                 let divQuantidadeUsuario = document.createElement("div");
@@ -274,10 +242,6 @@ $(() => {
                 let terceiraDivQuantidadeUsuario = document.createElement("div");
 
                 let quartaDivQuantidadeUsuario = document.createElement("div");
-
-                pDesseMes.classList.add('blue-grey-400');
-                pDesseMes.classList.add('font-weight-100');
-                pDesseMes.classList.add('m-0');
 
                 spanQuantidadeUsuario.classList.add("font-size-40");
                 spanQuantidadeUsuario.classList.add("font-weight-100");
@@ -309,12 +273,10 @@ $(() => {
                 quartaDivQuantidadeUsuario.classList.add("col-md-6");
                 quartaDivQuantidadeUsuario.classList.add("info-panel");
 
-                pDesseMes.innerHTML = 'Novos Usuarios no Ultimo Mês (' + concat + ')';
                 spanQuantidadeUsuario.innerHTML = Usuario.quantidade;
                 spanNomeUsuario.innerHTML = "Usuarios";
 
                 divQuantidadeUsuario.appendChild(spanQuantidadeUsuario);
-                divQuantidadeUsuario.appendChild(pDesseMes);
 
                 btnIconCart.appendChild(iIconBtn);
 
