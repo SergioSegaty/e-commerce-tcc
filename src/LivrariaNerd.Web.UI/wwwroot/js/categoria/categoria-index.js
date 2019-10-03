@@ -121,9 +121,7 @@ $(function () {
 
         $("#lista-categorias").empty();
 
-
         $.ajax({
-
             url: '/categoria/obtertodos',
             method: 'get',
             data: {
@@ -132,22 +130,24 @@ $(function () {
             success: function (data) {
 
                 for (let i = 0; i < data.length; i++) {
-                    var dado = data[i];
+                    var _data = data[i];
 
                     var linha = document.createElement("tr");
 
                     var colunaCodigo = document.createElement("td");
-                    colunaCodigo.innerHTML = dado.id;
+                    colunaCodigo.innerHTML = _data.id;
 
                     var colunaNome = document.createElement("td");
-                    colunaNome.innerHTML = dado.nome;
+                    colunaNome.innerHTML = _data.nome;
 
                     var colunaAcao = document.createElement("td");
                     var botaoEditar = document.createElement("button");
 
                     botaoEditar.classList.add("btn", "btn-primary", "mr-2", "botao-editar");
                     botaoEditar.innerHTML = "<i class=\"fas fa-edit\"></i>";
-                    botaoEditar.setAttribute("data-id", dado.id);
+                    botaoEditar.setAttribute("data-id", _data.id);
+                    botaoEditar.setAttribute('data-toggle', 'tooltip');
+                    botaoEditar.setAttribute('title', 'Editar Categoria: ' + _data.nome);
 
 
                     var botaoApagar = document.createElement("button");
@@ -156,7 +156,9 @@ $(function () {
 
                     botaoApagar.classList.add("btn", "btn-danger", "mr-2", "botao-apagar");
                     botaoApagar.innerHTML = "<i class=\"fas fa-trash\"></i>";
-                    botaoApagar.setAttribute("data-id", dado.id);
+                    botaoApagar.setAttribute("data-id", _data.id);
+                    botaoApagar.setAttribute('data-toggle', 'tooltip');
+                    botaoApagar.setAttribute('title', 'Apagar Categoria: ' + _data.nome);
 
                     colunaAcao.appendChild(botaoEditar);
                     colunaAcao.appendChild(botaoApagar);

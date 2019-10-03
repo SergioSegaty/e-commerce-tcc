@@ -288,7 +288,7 @@ $(function () {
                         var precoString = _data.preco.toString().substring(0, (index - 2)) + "," + _data.preco.toString().substring((index - 2), index);
                     }
 
-                    tdPreco.innerHTML = "R$: " + precoString;
+                    tdPreco.innerHTML = "R$ " + precoString;
                     index = 0;
 
                     var botaoEditar = document.createElement("button");
@@ -296,6 +296,8 @@ $(function () {
                     botaoEditar.classList.add("btn", "btn-primary", "mr-2", "botao-editar");
                     botaoEditar.innerHTML = "<i class=\"fas fa-edit\"></i>";
                     botaoEditar.setAttribute("data-id", _data.id);
+                    botaoEditar.setAttribute('data-toggle', 'tooltip');
+                    botaoEditar.setAttribute('title', 'Editar Produto: ' + _data.nome);
 
 
                     var botaoApagar = document.createElement("button");
@@ -303,6 +305,8 @@ $(function () {
                     botaoApagar.classList.add('btn', 'btn-danger', 'botao-apagar');
                     botaoApagar.innerHTML = "<i class=\"fas fa-trash\"> </i>";
                     botaoApagar.setAttribute('data-id', _data.id);
+                    botaoApagar.setAttribute('data-toggle', 'tooltip');
+                    botaoApagar.setAttribute('title', 'Apagar Produto: ' + _data.nome);
 
                     var tdAcao = document.createElement('td');
 

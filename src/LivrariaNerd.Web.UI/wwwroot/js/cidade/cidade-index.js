@@ -45,12 +45,15 @@
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
 
+                    let id = data[i].id;
+                    let nome = data[i].nome;
+
                     let option = document.createElement('option');
                     if (idEstado != -1 && _data.id == idEstado) {
                         option.selected = true;
                     }
-                    option.value = _data.id;
-                    option.innerHTML = _data.nome;
+                    option.value = id;
+                    option.innerHTML = nome;
 
                     document.getElementById('campo-estado').appendChild(option);
                 }
@@ -133,6 +136,8 @@
                     botaoEditar.classList.add('btn', 'btn-primary', 'botao-editar');
                     botaoEditar.style = "color: white; margin-right: 5px";
                     botaoEditar.setAttribute('data-id', _data.id);
+                    botaoEditar.setAttribute('data-toggle', 'tooltip');
+                    botaoEditar.setAttribute('title', 'Editar Cidade: ' + _data.nome);
 
                     tdAcao.append(botaoEditar);
 
@@ -141,6 +146,8 @@
                     botaoApagar.classList.add('btn', 'btn-danger', 'botao-apagar');
                     botaoApagar.style = "color: white;margin-left: 5px;";
                     botaoApagar.setAttribute('data-id', _data.id);
+                    botaoApagar.setAttribute('data-toggle', 'tooltip');
+                    botaoApagar.setAttribute('title', 'Apagar Cidade: ' + _data.nome);
 
                     tdAcao.append(botaoApagar);
 

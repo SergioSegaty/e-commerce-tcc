@@ -10,28 +10,28 @@
                 $('#tabela-estados').empty();
 
                 for (let i = 0; i < data.length; i++) {
-                    let id = data[i].id;
-                    let nome = data[i].nome;
-                    let sigla = data[i].sigla;
+                    let _data = data[i];
 
-                    var tr = document.createElement('tr');
+                    let tr = document.createElement('tr');
 
-                    var tdId = document.createElement('td');
-                    tdId.innerHTML = id;
+                    let tdId = document.createElement('td');
+                    tdId.innerHTML = _data.id;
 
-                    var tdSigla = document.createElement('td');
-                    tdSigla.innerHTML = sigla;
+                    let tdSigla = document.createElement('td');
+                    tdSigla.innerHTML = _data.sigla;
 
-                    var tdNome = document.createElement('td');
-                    tdNome.innerHTML = nome;
+                    let tdNome = document.createElement('td');
+                    tdNome.innerHTML = _data.nome;
 
-                    var tdAcao = document.createElement('td');
+                    let tdAcao = document.createElement('td');
 
-                    var botaoEditar = document.createElement('a');
+                    let botaoEditar = document.createElement('a');
                     botaoEditar.innerHTML = '<i class=\"fas fa-edit\"></i>';
                     botaoEditar.classList.add('btn', 'btn-primary', 'botao-editar');
                     botaoEditar.style = "color: white; margin-right: 5px";
-                    botaoEditar.setAttribute('data-id', id);
+                    botaoEditar.setAttribute('data-id', _data.id);
+                    botaoEditar.setAttribute('data-toggle', 'tooltip');
+                    botaoEditar.setAttribute('title', 'Editar Estado: ' + _data.nome);
 
                     tdAcao.append(botaoEditar);
 
@@ -39,17 +39,18 @@
                     botaoApagar.innerHTML = '<i class=\"fas fa-trash\"></i>';
                     botaoApagar.classList.add('btn', 'btn-danger', 'botao-apagar');
                     botaoApagar.style = "color: white;margin-left: 5px;";
-                    botaoApagar.setAttribute('data-id', id);
+                    botaoApagar.setAttribute('data-id', _data.id);
+                    botaoApagar.setAttribute('data-toggle', 'tooltip');
+                    botaoApagar.setAttribute('title', 'Apagar Estado: ' + _data.nome);
 
                     tdAcao.append(botaoApagar);
 
                     tr.append(tdId);
-                    tr.append(tdSigla);
                     tr.append(tdNome);
+                    tr.append(tdSigla);
                     tr.append(tdAcao);
 
                     document.getElementById('tabela-estados').append(tr);
-
                 }
             },
             error: function (err) {
