@@ -52,5 +52,18 @@ namespace PadawanStore.Web.UI.Controllers
 
             return Json(result);
         }
+
+        [HttpGet, Route("produtos")]
+        public IActionResult Produtos()
+        {
+            return View();
+        }
+
+        [HttpGet, Route("obtertodosbusca")]
+        public IActionResult ObterTodosBusca(string busca)
+        {
+            var produtos = _produtoRepository.ObterTodosBusca(busca);
+            return Json(produtos);
+        }
     }
 }
