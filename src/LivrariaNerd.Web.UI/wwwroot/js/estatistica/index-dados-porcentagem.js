@@ -28,7 +28,7 @@
 
                 pDesseMes.classList.add('blue-grey-400');
                 pDesseMes.classList.add('font-weight-100');
-                pDesseMes.classList.add('m-0'); 
+                pDesseMes.classList.add('m-0');
 
                 spanQuantidadePedido.classList.add('font-size-40');
                 spanQuantidadePedido.classList.add('font-weight-100');
@@ -65,7 +65,7 @@
                 spanNomePedido.innerHTML = 'Pedidos';
 
                 divQuantidadePedido.appendChild(spanQuantidadePedido);
-                divQuantidadePedido.appendChild(pDesseMes);    
+                divQuantidadePedido.appendChild(pDesseMes);
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -109,7 +109,7 @@
 
                 pDesseMesRendimento.classList.add('blue-grey-400');
                 pDesseMesRendimento.classList.add('font-weight-100');
-                pDesseMesRendimento.classList.add('m-0'); 
+                pDesseMesRendimento.classList.add('m-0');
 
                 spanQuantiaRendimento.classList.add('font-size-40');
                 spanQuantiaRendimento.classList.add('font-weight-100');
@@ -190,7 +190,7 @@
 
                 pDesseMesProduto.classList.add('blue-grey-400');
                 pDesseMesProduto.classList.add('font-weight-100');
-                pDesseMesProduto.classList.add('m-0'); 
+                pDesseMesProduto.classList.add('m-0');
 
                 spanQuantidadeProduto.classList.add("font-size-40");
                 spanQuantidadeProduto.classList.add("font-weight-100");
@@ -271,7 +271,7 @@
 
                 pDesseMesUsuario.classList.add('blue-grey-400');
                 pDesseMesUsuario.classList.add('font-weight-100');
-                pDesseMesUsuario.classList.add('m-0'); 
+                pDesseMesUsuario.classList.add('m-0');
 
                 spanQuantidadeUsuario.classList.add("font-size-40");
                 spanQuantidadeUsuario.classList.add("font-weight-100");
@@ -325,60 +325,67 @@
     }
 
     ObterProdutosRecentes = function () {
+        $('#tabela-conteudo-estatistica').empty();
+
         $.ajax({
-            url: 'Estatistica/obterpedidorecente',
+            url: '/Estatistica/ObterPedidoRecente',
             method: 'get',
-            async: true,
             success: function (dataPedidos) {
                 console.log(dataPedidos);
-                for (let i = 0; i < dataPedidos.lenght; i++) {
-                    var _dado = dataPedidos[i];
-                     
+                for (let i = 0; i < dataPedidos.length; i++) {
+                    _dado = dataPedidos[i];
                     let linhaTr = document.createElement('tr');
 
-                    let imagemProduto = document.createElement('img');
-                    imagemProduto.setAttribute('src', _dado.imagem);
+                    let tdImagem = document.createElement('td');
 
-                    let colunaImagem = document.createElement('td');
-                    colunaImagem.appendChild(imagemProduto);
+                    let srcImagem = document.createElement('img');
 
-                    let colunaNomeProduto = document.createElement('td');
-                    colunaNomeProduto.innerHTML = _dado.nomeProduto;
+                    let tdNomeProduto = document.createElement('td');
 
-                    let colunaClienteNome = document.createElement('td');
-                    colunaClienteNome.innerHTML = _dado.clienteNome;
+                    let tdNomeCliente = document.createElement('td');
 
-                    let colunaDataCompra = document.createElement('td');
-                    colunaDataCompra.innerHTML = _dado.dataCompra;
+                    let tdDataCompra = document.createElement('td');
 
-                    let spanStatus = document.createElement('span')
-                    spanStatus.classList.add('badge');
+                    let tdBadge = document.createElement('td');
 
-                    if (_dado.status === 'PAGO') {
-                        spanStatus.classList.add('badge-success');
+                    let spanStatus = document.createElement('span');
+
+                    let tdCodigo = document.createElement('td');
+
+                    srcImagem.setAttribute('src', _dado.imagem);
+                    srcImagem.setAttribute('width', '105');
+                    srcImagem.setAttribute('height', '105');
+
+                    tdNomeProduto.innerHTML = _dado.nomeProduto;
+
+                    tdNomeCliente.innerHTML = _dado.clienteNome;
+
+                    tdDataCompra.innerHTML = _dado.dataCompra;
+
+                    tdCodigo.innerHTML = _dado.codigo;
+
+                    if (_dado.status == "PAGO") {
+                        spanStatus.setAttribute('class', 'badge badge-success font-weight-100');
+                    } else if (_dado.status == "PENDENTE") {
+                        spanStatus.setAttribute('class', 'badge badge-warning font-weight-100');
+                    } else {
+                        spanStatus.setAttribute('class', 'badge badge-default font-weight-100');
                     }
-                    else if (_dado.status === 'PENDENTE') {
-                        spanStatus.classList.add('badge-badge-warning');
-                    }
-                    else {
-                        spanStatus.classList.add('badge-default');
-                    }
-                    spanStatus.classList.add('font-weight-100');
+
                     spanStatus.innerHTML = _dado.status;
-                    
 
-                    let colunaStatusPedido = document.createElement('td');
-                    colunaStatusPedido.appendChild(spanStatus);
+                    tdCodigo.setAttribute('data-id', _dado.codigo);
 
-                    let colunaCodigo = document.createElement('td');
-                    colunaCodigo.innerHTML = _dado.codigo;
+                    tdImagem.appendChild(srcImagem);
+                    linhaTr.appendChild(tdImagem);
+                    linhaTr.appendChild(tdNomeProduto);
+                    linhaTr.appendChild(tdNomeCliente);
+                    linhaTr.appendChild(tdDataCompra);
 
-                    linhaTr = appendChild(colunaImagem);
-                    linhaTr = appendChild(colunaNomeProduto);
-                    linhaTr = appendChild(colunaClienteNome);
-                    linhaTr = appendChild(colunaDataCompra);
-                    linhaTr = appendChild(colunaStatusPedido);
-                    linhaTr = appendChild(colunaCodigo);
+                    tdBadge.appendChild(spanStatus);
+
+                    linhaTr.appendChild(tdBadge);
+                    linhaTr.appendChild(tdCodigo);
 
                     document.getElementById('tabela-conteudo-estatistica').append(linhaTr);
                 }

@@ -54,7 +54,7 @@ namespace PadawanStore.Web.UI.Controllers
             decimal rendimentoTotal = 0;
             foreach (var pedido in todosOsPedidos)
             {
-                if (VerificarData(pedido.DataCriacao) && pedido.StatusDoPedido == "PAGO")
+                if (VerificarData(pedido.DataCriacao) && pedido.StatusDoPedido.ToUpper() == "PAGO")
                 {
                     rendimentoTotal += pedido.PrecoTotal;
                 }
@@ -111,7 +111,7 @@ namespace PadawanStore.Web.UI.Controllers
                             Imagem = pp.Produto.ImagemCaminhoWwwroot,
                             NomeProduto = pp.Produto.Nome,
                             ClienteNome = pp.Pedido.Usuario.NomeCompleto,
-                            DataCompra = pp.Pedido.DataCriacao,
+                            DataCompra = pp.Pedido.DataCriacao.ToShortDateString(),
                             Status = pp.Pedido.StatusDoPedido.ToUpper(),
                             Codigo = pp.Pedido.Id
                         }

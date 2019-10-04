@@ -61,6 +61,7 @@ namespace LivrariaNerd.Infra.Data.Repositories
             return _context.PedidoProdutos
                 .Include(x => x.Pedido)
                 .Include(x => x.Produto)
+                .Include(x => x.Pedido.Usuario)
                 .Where(x => x.RegistroAtivo)
                 .OrderBy(x => x.Pedido.DataCriacao)
                 .AsNoTracking()
