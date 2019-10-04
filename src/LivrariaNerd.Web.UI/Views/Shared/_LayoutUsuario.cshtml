@@ -58,7 +58,7 @@
                     data-toggle="collapse">
                 <i class="icon wb-more-horizontal" aria-hidden="true"></i>
             </button>
-            <a class="navbar-brand navbar-brand-center" href="">
+            <a class="navbar-brand navbar-brand-center" href="@Url.Action("Index", "UsuarioProduto")">
                 <img class="navbar-brand-logo navbar-brand-center" src="~/tema/assets/images/Nova-Logo.png"
                      title="LN Store">
                 <span class="navbar-brand-text hidden-xs-down"> Livraria Nerd </span>
@@ -80,10 +80,10 @@
                             <i class="icon wb-user" aria-hidden="true"></i>
                         </a>
                         <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Perfil</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "ViewUsuario")" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Perfil</a>
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Pagamentos</a>
                             <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Sair</a>
+                            <a class="dropdown-item" href="@Url.Action("Logout", "Auth")" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Sair</a>
                         </div>
                     </li>
                     <!--Perfil End-->
