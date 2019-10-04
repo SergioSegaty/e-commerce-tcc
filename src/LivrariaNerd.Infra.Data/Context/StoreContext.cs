@@ -46,7 +46,7 @@ namespace LivrariaNerd.Infra.Data.Context
                    DataCriacao = DateTime.Now
                }
              );
-            
+
             //Seed Estado
             modelBuilder.Entity<Estado>().HasData(
                 new Estado
@@ -89,11 +89,12 @@ namespace LivrariaNerd.Infra.Data.Context
                 {
                     Id = 1,
                     DataCriacao = DateTime.Now,
-                    Nome = "Celular",
+                    Nome = "Salazar Boneco",
                     IdCategoria = 1,
                     Descricao = "descricao top",
                     RegistroAtivo = true,
                     Preco = 1500,
+                    ImagemCaminhoWwwroot = "/img/witcher_action_figure.jpg",
                     Cor = "Preto",
                     Peso = 1,
                 }
@@ -127,6 +128,20 @@ namespace LivrariaNerd.Infra.Data.Context
                     IdUsuario = 1,
                     PrecoTotal = 5000,
                     StatusDoPedido = "PENDENTE"
+                }
+            );
+
+            //Seed PedidoProduto
+            modelBuilder.Entity<PedidoProduto>().HasData(
+                new PedidoProduto
+                {
+                    Id = 1,
+                    IdPedido = 1,
+                    IdProduto = 1,
+                    DataCriacao = DateTime.Now,
+                    PrecoTotal = 5000,
+                    Quantidade = 5,
+                    RegistroAtivo = true
                 }
             );
 
