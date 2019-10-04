@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="~/tema/assets/examples/css/uikit/carousel.css">
     <link rel="stylesheet" href="~/tema/global/fonts/font-awesome/font-awesome.css" />
     <link rel="stylesheet" href="~/css/customizada/loja.css" />
+
+    <link href="~/css/notify/notie.min.css" rel="stylesheet" />
+    <link href="~/css/notify/notify-styles.css" rel="stylesheet" />
+
 }
 
 <!--Carrosel-->
@@ -53,63 +57,62 @@
 
 
 <!-- Galeria Começo -->
-
 @*<div class="page">
-    <div class="page-header page-header-bordered page-header-tabs">
-        <ul class="nav nav-tabs nav-tabs-line" role="tablist" id="exampleFilter">
-            <li class="nav-item" role="presentation">
-                <a class="active nav-link" href="#" aria-controls="exampleList" aria-expanded="true"
-                   role="tab" data-filter="*">All</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link teste-link" href="#" aria-expanded="false" role="tab" data-filter="object">Object</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link teste-link" href="#" aria-expanded="false" role="tab" data-filter="city">City</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link teste-link" href="#" aria-expanded="false" role="tab" data-filter="fruta">Fruta</a>
-            </li>
-        </ul>
-    </div>
+        <div class="page-header page-header-bordered page-header-tabs">
+            <ul class="nav nav-tabs nav-tabs-line" role="tablist" id="exampleFilter">
+                <li class="nav-item" role="presentation">
+                    <a class="active nav-link" href="#" aria-controls="exampleList" aria-expanded="true"
+                       role="tab" data-filter="*">All</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link teste-link" href="#" aria-expanded="false" role="tab" data-filter="object">Object</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link teste-link" href="#" aria-expanded="false" role="tab" data-filter="city">City</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link teste-link" href="#" aria-expanded="false" role="tab" data-filter="fruta">Fruta</a>
+                </li>
+            </ul>
+        </div>
 
-    <div class="page-content">
-        <ul class="blocks blocks-100 blocks-xxl-4 blocks-lg-3 blocks-md-2" data-plugin="filterable"
-            data-filters="#exampleFilter" id="lista-produto"></ul>
-    </div>
-</div>
-<!--Galeria Fim
-<!-- Como foi retirado as duas divs no layout,
-    o render body nao possui elas,
-    entao para que fique bonitinho com as margins
-    precisa-se por o conteudo ali dentro das mesmas -->
-
-<!-- Carrousel da Loja -->
-<div class="page">
-    <div class="page-header page-header-bordered page-header-tabs">
-        <div class="nav nav-tabs nav-tabs-line">
-            <!-- Filtros -->
-            <div class="button-group filter-button-group">
-                <button data-filter="*">Todos</button>
-
-                <button data-filter=".frutas">Frutas</button>
-
-                <button data-filter=".livros">Livros</button>
-
-
-
-            </div>
-            <!-- Fim Filtros -->
-
+        <div class="page-content">
+            <ul class="blocks blocks-100 blocks-xxl-4 blocks-lg-3 blocks-md-2" data-plugin="filterable"
+                data-filters="#exampleFilter" id="lista-produto"></ul>
         </div>
     </div>
+    <!--Galeria Fim
+    <!-- Como foi retirado as duas divs no layout,
+        o render body nao possui elas,
+        entao para que fique bonitinho com as margins
+        precisa-se por o conteudo ali dentro das mesmas -->
 
-    <div class="grid">
-        <div class="element-item"></div>
-    </div>
+    <!-- Carrousel da Loja -->
+    <div class="page">
+        <div class="page-header page-header-bordered page-header-tabs">
+            <div class="nav nav-tabs nav-tabs-line">
+                <!-- Filtros -->
+                <div class="button-group filter-button-group">
+                    <button data-filter="*">Todos</button>
+
+                    <button data-filter=".frutas">Frutas</button>
+
+                    <button data-filter=".livros">Livros</button>
 
 
-</div>*@    
+
+                </div>
+                <!-- Fim Filtros -->
+
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="element-item"></div>
+        </div>
+
+
+    </div>*@
 
 <div class="page">
     <div class="page-content">
@@ -292,6 +295,9 @@
 </div>
 <!-- Fim do Corpo do Painel -->
 @section Scripts {
+
+    <script src="~/js/notie/notie.min.js"></script>
+    <script src="~/js/notie/notify.js"></script>
 
     <script src="~/tema/global/vendor/isotope/isotope.pkgd.min.js"></script>
     <script src="~/tema/global/js/Plugin/filterable.js"></script>

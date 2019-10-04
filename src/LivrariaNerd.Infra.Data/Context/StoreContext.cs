@@ -78,7 +78,14 @@ namespace LivrariaNerd.Infra.Data.Context
                     Id = 1,
                     DataCriacao = DateTime.Now,
                     RegistroAtivo = true,
-                    Nome = "Tech"
+                    Nome = "Action Figure"
+                },
+                new Categoria
+                {
+                    Id = 2,
+                    DataCriacao = DateTime.Now,
+                    RegistroAtivo = true,
+                    Nome = "Livros"
                 }
             );
 
@@ -89,12 +96,57 @@ namespace LivrariaNerd.Infra.Data.Context
                 {
                     Id = 1,
                     DataCriacao = DateTime.Now,
-                    Nome = "Salazar Boneco",
+                    Nome = "Geralt de Rivia",
                     IdCategoria = 1,
                     Descricao = "descricao top",
                     RegistroAtivo = true,
                     Preco = 1500,
                     ImagemCaminhoWwwroot = "/img/witcher_action_figure.jpg",
+                    Cor = "Preto",
+                    Peso = 1,
+                },
+
+
+                new Produto
+                {
+                    Id = 2,
+                    DataCriacao = DateTime.Now,
+                    Nome = "Batman",
+                    IdCategoria = 1,
+                    Descricao = "descricao top",
+                    RegistroAtivo = true,
+                    Preco = 2300,
+                    ImagemCaminhoWwwroot = "/img/Produtos/Batman-Arkham-Knight.png",
+                    Cor = "Preto",
+                    Peso = 1,
+                },
+
+
+                new Produto
+                {
+                    Id = 3,
+                    DataCriacao = DateTime.Now,
+                    Nome = "Poison Ivy",
+                    IdCategoria = 1,
+                    Descricao = "descricao top",
+                    RegistroAtivo = true,
+                    Preco = 1500,
+                    ImagemCaminhoWwwroot = "/img/Produtos/Poison-Ivy.png",
+                    Cor = "Preto",
+                    Peso = 1,
+                },
+
+
+                new Produto
+                {
+                    Id = 4,
+                    DataCriacao = DateTime.Now,
+                    Nome = "Nier Automata",
+                    IdCategoria = 1,
+                    Descricao = "descricao top",
+                    RegistroAtivo = true,
+                    Preco = 1500,
+                    ImagemCaminhoWwwroot = "/img/Produtos/Nier-Automata.png",
                     Cor = "Preto",
                     Peso = 1,
                 }

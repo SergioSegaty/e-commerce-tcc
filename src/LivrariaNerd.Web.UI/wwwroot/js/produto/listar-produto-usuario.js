@@ -54,7 +54,6 @@
                     div.appendChild(divCardBlock);
                     li.appendChild(div);
 
-                    document.getElementById('lista-produto').appendChild(li);
                 }
 
                 $('#exampleFilter').isotope({
@@ -288,8 +287,9 @@
                     url: '/pedido/adicionaraocarrinho',
                     method: 'post',
                     data: data,
-                    success: function(data){
-                        alert('adicionado ao carrinho')
+                    success: function (data) {
+                        notifyAlert(1, 'Produto adicionado ao carrinho', 2);
+                        
                     }
                 });
             }

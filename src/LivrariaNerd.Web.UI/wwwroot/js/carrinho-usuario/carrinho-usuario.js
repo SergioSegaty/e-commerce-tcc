@@ -14,7 +14,6 @@
             url: '/pedido/obtertodospedidospeloidusuario',
             method: 'get',
             success: function (data) {
-                console.log(data);
                 for (var i = 0; i < data.length; i++) {
 
                     _data = data[i];
