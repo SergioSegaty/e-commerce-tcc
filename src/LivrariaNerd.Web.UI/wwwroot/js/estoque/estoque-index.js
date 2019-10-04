@@ -21,9 +21,8 @@ $(function () {
             },
             {
                 "name": "id", "style": { "width": 45, "text-align": "center" }, "title": "Ação",
-                "name": "nomeProduto", "title": "Nome", "type": "text",
                 "formatter": function (id) {
-                    return '<button data-id="' + id + '" class="editar-estoque btn btn-primary mr-2" data-toggle="tooltip" title="Editar Estoque: ' + id + '"> <i class=\"fas fa-edit\"></i> </button>' + '<button data-id="' + id + '" class="apagar-estoque btn btn-danger ml-2" data-toggle="tooltip" title="Apagar Estoque: ' + id + '" > <i class=\"fas fa-trash\"></i> </button>';
+                    return '<button data-id="' + id + '" class="editar-estoque btn btn-primary mr-2"> <i class=\"fas fa-edit\"></i> </button>' + '<button data-id="' + id + '" class="apagar-estoque btn btn-danger ml-2"> <i class=\"fas fa-trash\"></i> </button>';
                 }
             }
         ],
