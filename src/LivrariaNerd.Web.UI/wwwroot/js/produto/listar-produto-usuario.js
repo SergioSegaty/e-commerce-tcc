@@ -32,6 +32,7 @@
                     img.classList.add('overlay-scale');
 
                     img.setAttribute('src', '/tema/global/photos/1.jpg');
+                    img.setAttribute('class', 'img-loja ');
 
                     figure.classList.add('card-img-top');
                     figure.classList.add('overlay-hover');
@@ -127,6 +128,7 @@
 
                     imagem = document.createElement('img');
                     imagem.setAttribute('src', _data.imagemCaminhoWwwroot);
+                    imagem.setAttribute('class', 'img-loja');
 
                     figura.appendChild(titulo);
                     figura.appendChild(imagem);
