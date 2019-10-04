@@ -8,6 +8,8 @@
             success: function (data) {
                 console.log(data);
 
+                let pDesseMes = document.createElement('p');
+
                 let spanQuantidadePedido = document.createElement('span');
 
                 let divQuantidadePedido = document.createElement('div');
@@ -23,6 +25,10 @@
                 let terceiraDivQuantidadePedido = document.createElement('div');
 
                 let quartaDivQuantidadePedido = document.createElement('div');
+
+                pDesseMes.classList.add('blue-grey-400');
+                pDesseMes.classList.add('font-weight-100');
+                pDesseMes.classList.add('m-0'); 
 
                 spanQuantidadePedido.classList.add('font-size-40');
                 spanQuantidadePedido.classList.add('font-weight-100');
@@ -54,10 +60,12 @@
                 quartaDivQuantidadePedido.classList.add('col-md-6');
                 quartaDivQuantidadePedido.classList.add('info-panel');
 
+                pDesseMes.innerHTML = 'Quantidade De Novos Pedidos';
                 spanQuantidadePedido.innerHTML = data.quantidade;
                 spanNomePedido.innerHTML = 'Pedidos';
 
                 divQuantidadePedido.appendChild(spanQuantidadePedido);
+                divQuantidadePedido.appendChild(pDesseMes);    
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -81,6 +89,8 @@
             success: function (rendimento) {
                 console.log(rendimento);
 
+                let pDesseMesRendimento = document.createElement('p');
+
                 let spanQuantiaRendimento = document.createElement('span');
 
                 let divQuantiaRendimento = document.createElement('div');
@@ -96,6 +106,10 @@
                 let terceiraDivQuantiaRendimento = document.createElement('div');
 
                 let quartaDivQuantiaRendimento = document.createElement('div');
+
+                pDesseMesRendimento.classList.add('blue-grey-400');
+                pDesseMesRendimento.classList.add('font-weight-100');
+                pDesseMesRendimento.classList.add('m-0'); 
 
                 spanQuantiaRendimento.classList.add('font-size-40');
                 spanQuantiaRendimento.classList.add('font-weight-100');
@@ -127,10 +141,12 @@
                 quartaDivQuantiaRendimento.classList.add('col-md-6');
                 quartaDivQuantiaRendimento.classList.add('info-panel');
 
+                pDesseMesRendimento.innerHTML = "Rendimentos Do Mês";
                 spanQuantiaRendimento.innerHTML = 'R$' + rendimento.total;
                 spanNomeRendimento.innerHTML = 'Rendimentos';
 
                 divQuantiaRendimento.appendChild(spanQuantiaRendimento);
+                divQuantiaRendimento.appendChild(pDesseMesRendimento);
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -154,6 +170,8 @@
             success: function (produto) {
                 console.log(produto);
 
+                let pDesseMesProduto = document.createElement('p');
+
                 let spanQuantidadeProduto = document.createElement("span");
 
                 let divQuantidadeProduto = document.createElement("div");
@@ -169,6 +187,10 @@
                 let terceiraDivQuantidadeProduto = document.createElement("div");
 
                 let quartaDivQuantidadeProduto = document.createElement("div");
+
+                pDesseMesProduto.classList.add('blue-grey-400');
+                pDesseMesProduto.classList.add('font-weight-100');
+                pDesseMesProduto.classList.add('m-0'); 
 
                 spanQuantidadeProduto.classList.add("font-size-40");
                 spanQuantidadeProduto.classList.add("font-weight-100");
@@ -200,10 +222,12 @@
                 quartaDivQuantidadeProduto.classList.add("col-md-6");
                 quartaDivQuantidadeProduto.classList.add("info-panel");
 
+                pDesseMesProduto.innerHTML = 'Total De Produtos Adicionados Este Mês';
                 spanQuantidadeProduto.innerHTML = produto.quantidade;
                 spanNomeProduto.innerHTML = "Produtos";
 
                 divQuantidadeProduto.appendChild(spanQuantidadeProduto);
+                divQuantidadeProduto.appendChild(pDesseMesProduto);
 
                 btnIconCart.appendChild(iIconBtn);
 
@@ -227,6 +251,8 @@
             success: function (Usuario) {
                 console.log(Usuario);
 
+                let pDesseMesUsuario = document.createElement('p');
+
                 let spanQuantidadeUsuario = document.createElement("span");
 
                 let divQuantidadeUsuario = document.createElement("div");
@@ -242,6 +268,10 @@
                 let terceiraDivQuantidadeUsuario = document.createElement("div");
 
                 let quartaDivQuantidadeUsuario = document.createElement("div");
+
+                pDesseMesUsuario.classList.add('blue-grey-400');
+                pDesseMesUsuario.classList.add('font-weight-100');
+                pDesseMesUsuario.classList.add('m-0'); 
 
                 spanQuantidadeUsuario.classList.add("font-size-40");
                 spanQuantidadeUsuario.classList.add("font-weight-100");
@@ -273,10 +303,12 @@
                 quartaDivQuantidadeUsuario.classList.add("col-md-6");
                 quartaDivQuantidadeUsuario.classList.add("info-panel");
 
+                pDesseMesUsuario.innerHTML = 'Novos Usuarios Cadastrados';
                 spanQuantidadeUsuario.innerHTML = Usuario.quantidade;
                 spanNomeUsuario.innerHTML = "Usuarios";
 
                 divQuantidadeUsuario.appendChild(spanQuantidadeUsuario);
+                divQuantidadeUsuario.appendChild(pDesseMesUsuario);
 
                 btnIconCart.appendChild(iIconBtn);
 

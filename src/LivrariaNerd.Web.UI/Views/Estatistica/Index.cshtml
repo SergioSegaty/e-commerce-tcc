@@ -4,13 +4,11 @@
 <head>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/tema/global/vendor/asscrollable/asScrollable.css">
-    <link rel="stylesheet" href="/tema/global/vendor/chartist/chartist.css">
     <link rel="stylesheet" href="/tema/global/vendor/aspieprogress/asPieProgress.css">
-    <link rel="stylesheet" href="~/tema/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
     <link rel="stylesheet" href="/tema/assets/examples/css/dashboard/ecommerce.css">
-    <link rel="stylesheet" href="~/css/customizada/row-quadradinhos-estatistica.css">
     <link rel="stylesheet" href="~/css/customizada/nav-menu-quadradinhos-estatistica.css">
-    <link rel="stylesheet" href="~/css/customizada/nav-botao-corzinha-diferente.css">
+    <link rel="stylesheet" href="~/css/customizada/row-quadradinhos-estatistica.css">
+
 </head>
 <body class="animsition ecommerce_dashboard">
     <!-- Page -->
@@ -22,17 +20,6 @@
         </ol>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <ul class="nav-menu-estatisca nav nav-pills nav-pills-rounded chart-action">
-                <li class="nav-item"><a class="active nav-link" data-toggle="tab" href="#scoreLineToDay">Hoje</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToWeek">Este Semana</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToMonth">Este Mês</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToMonth">Este Ano</a></li>
-            </ul>
-        </div>
-    </div>
-
     <div class="linha-quadradinhos-estatistica" id="cards-custom-loja">
         <!--
         [Pedido]
@@ -41,24 +28,6 @@
         [Produtos]
         Via JavaScript
         -->
-    </div>
-
-    <div class="col-12" id="ecommerceChartView">
-        <div class="card card-shadow">
-            <div class="card-header card-header-transparent py-20">
-                <ul class="nav nav-pills nav-pills-rounded chart-action">
-                    <li class="nav-item nav-corzinha-laranja"><a class="nav-corzinha-laranja active nav-link " data-toggle="tab" href="#scoreLineToDay">Pedidos</a></li>
-                    <li class="nav-item"><a class="nav-corzinha-vermelha nav-link " data-toggle="tab" href="#scoreLineToWeek">Rendimentos</a></li>
-                    <li class="nav-item"><a class="nav-corzinha-verde nav-link " data-toggle="tab" href="#scoreLineToMonth">Produtos</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scoreLineToMonth">Usuarios</a></li>
-                </ul>
-            </div>
-            <div class="widget-content tab-content bg-white p-20">
-                <div class="ct-chart tab-pane active" id="scoreLineToDay"></div>
-                <div class="ct-chart tab-pane" id="scoreLineToWeek"></div>
-                <div class="ct-chart tab-pane" id="scoreLineToMonth"></div>
-            </div>
-        </div>
     </div>
 
     <div class="col-lg-12" id="ecommerceRecentOrder">

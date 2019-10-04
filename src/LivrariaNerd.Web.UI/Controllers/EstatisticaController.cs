@@ -16,11 +16,14 @@ namespace PadawanStore.Web.UI.Controllers
 
         public EstatisticaController(IBaseRepositoryAsync<Pedido> pedidoRepository,
             IBaseRepositoryAsync<Usuario> usuarioRepository,
-            IPedidoProdutoRepository ppRepository)
+            IPedidoProdutoRepository ppRepository,
+            IBaseRepositoryAsync<Produto> produtoRepository
+            )
         {
             _pedidoRepository = pedidoRepository;
             _usuarioRepository = usuarioRepository;
             _ppRepository = ppRepository;
+            _produtoRepository = produtoRepository;
         }
 
         public IActionResult Index()
@@ -31,14 +34,7 @@ namespace PadawanStore.Web.UI.Controllers
         [HttpGet]
         public JsonResult ObterQuantidadePedidos()
         {
-            Pedido pedido1 = new Pedido();
-            Pedido pedido2 = new Pedido();
-            pedido1.DataCriacao = DateTime.Now;
-            pedido2.DataCriacao = DateTime.Now;
-            List<Pedido> todosOsPedidos = new List<Pedido>();
-            todosOsPedidos.Add(pedido1);
-            todosOsPedidos.Add(pedido2);
-
+            List<Pedido> todosOsPedidos = _pedidoRepository.ObterTodos();
 
             int quantidadeDePedidosDoMes = 0;
             foreach (var pedido in todosOsPedidos)
@@ -54,20 +50,7 @@ namespace PadawanStore.Web.UI.Controllers
         [HttpGet]
         public JsonResult ObterTotalRendimento()
         {
-            List<Pedido> todosOsPedidos = new List<Pedido>();
-            Pedido pedido1 = new Pedido();
-            pedido1.DataCriacao = DateTime.Now;
-            pedido1.StatusDoPedido = "PAGO";
-            pedido1.PrecoTotal = Convert.ToDecimal(50.25);
-
-            Pedido pedido2 = new Pedido();
-            pedido2.DataCriacao = DateTime.Now;
-            pedido2.StatusDoPedido = "PAGO";
-            pedido2.PrecoTotal = Convert.ToDecimal(50.33);
-
-            todosOsPedidos.Add(pedido1);
-            todosOsPedidos.Add(pedido2);
-
+            List<Pedido> todosOsPedidos = _pedidoRepository.ObterTodos();
             decimal rendimentoTotal = 0;
             foreach (var pedido in todosOsPedidos)
             {
@@ -82,51 +65,33 @@ namespace PadawanStore.Web.UI.Controllers
         [HttpGet]
         public JsonResult ObterTotalProduto()
         {
-            List<Produto> produtos = new List<Produto>();
+            List<Produto> produtos = _produtoRepository.ObterTodos();
 
-            Produto produto1 = new Produto();
-            produto1.DataCriacao = DateTime.Now;
-
-            Produto produto2 = new Produto();
-            produto2.DataCriacao = DateTime.Now;
-
-            produtos.Add(produto1);
-            produtos.Add(produto2);
-
-            List<Produto> produtosFiltrados = new List<Produto>();
+            int quantidadeProduto = 0;
             foreach (var produto in produtos)
             {
                 if (VerificarData(produto.DataCriacao))
                 {
-                    produtosFiltrados.Add(produto);
+                    quantidadeProduto++;
                 }
             }
-            return Json(new { quantidade = produtosFiltrados.Count });
+            return Json(new { quantidade = quantidadeProduto });
         }
 
         [HttpGet]
         public JsonResult ObterQuantidadeUsuario()
         {
-            List<Usuario> usuarios = new List<Usuario>();
+            List<Usuario> usuarios = _usuarioRepository.ObterTodos();
 
-            Usuario usuario1 = new Usuario();
-            usuario1.DataCriacao = DateTime.Now;
-
-            Usuario usuario2 = new Usuario();
-            usuario2.DataCriacao = DateTime.Now;
-
-            usuarios.Add(usuario1);
-            usuarios.Add(usuario2);
-
-            List<Usuario> usuariosFiltrados = new List<Usuario>();
+            int quantidadeUsuario = 0;
             foreach (var usuario in usuarios)
             {
                 if (VerificarData(usuario.DataCriacao))
                 {
-                    usuariosFiltrados.Add(usuario);
+                    quantidadeUsuario++;
                 }
             }
-            return Json(new { quantidade = usuariosFiltrados.Count });
+            return Json(new { quantidade = quantidadeUsuario });
         }
 
         [HttpGet]
@@ -159,7 +124,6 @@ namespace PadawanStore.Web.UI.Controllers
         bool VerificarData(DateTime dataCriacao)
         {
             DateTime dataAtual = DateTime.UtcNow;
-            if (dataCriacao == null) return false;
             TimeSpan diferencaEm = dataCriacao - dataAtual;
             return dataCriacao.Year != dataAtual.Year ? false : diferencaEm.Days <= 31;
         }
