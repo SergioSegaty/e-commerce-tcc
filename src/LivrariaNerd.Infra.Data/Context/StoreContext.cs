@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using LivrariaNerd.Domain.Entities;
 using LivrariaNerd.Domain.Identity;
+using System;
 
 namespace LivrariaNerd.Infra.Data.Context
 {
@@ -25,6 +26,7 @@ namespace LivrariaNerd.Infra.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            //Seed Usuario
             modelBuilder.Entity<Usuario>().HasData(
                new Usuario
                {
@@ -33,9 +35,19 @@ namespace LivrariaNerd.Infra.Data.Context
                    Login = "guilherme",
                    Senha = "123",
                    RegistroAtivo = true,
+               },
+               new Usuario
+               {
+                   Id = 2,
+                   NomeCompleto = "Pedro",
+                   Login = "pedro",
+                   Senha = "123",
+                   RegistroAtivo = true,
+                   DataCriacao = DateTime.Now
                }
-            );
-
+             );
+            
+            //Seed Estado
             modelBuilder.Entity<Estado>().HasData(
                 new Estado
                 {
@@ -46,6 +58,7 @@ namespace LivrariaNerd.Infra.Data.Context
                 }
             );
 
+            //Seed Cidade
             modelBuilder.Entity<Cidade>().HasData(
 
                 new Cidade
@@ -54,6 +67,66 @@ namespace LivrariaNerd.Infra.Data.Context
                     IdEstado = 1,
                     Nome = "Blumenau",
                     RegistroAtivo = true,
+                }
+            );
+
+            //Seed Categoria
+            modelBuilder.Entity<Categoria>().HasData(
+
+                new Categoria
+                {
+                    Id = 1,
+                    DataCriacao = DateTime.Now,
+                    RegistroAtivo = true,
+                    Nome = "Tech"
+                }
+            );
+
+            //Seed Produto
+            modelBuilder.Entity<Produto>().HasData(
+
+                new Produto
+                {
+                    Id = 1,
+                    DataCriacao = DateTime.Now,
+                    Nome = "Celular",
+                    IdCategoria = 1,
+                    Descricao = "descricao top",
+                    RegistroAtivo = true,
+                    Preco = 1500,
+                    Cor = "Preto",
+                    Peso = 1,
+                }
+            );
+
+            //Seed Pedido
+            modelBuilder.Entity<Pedido>().HasData(
+
+                new Pedido
+                {
+                    Id = 1,
+                    DataCriacao = DateTime.Now,
+                    RegistroAtivo = true,
+                    IdUsuario = 1,
+                    PrecoTotal = 5250,
+                    StatusDoPedido = "PAGO"
+                },
+                new Pedido
+                {
+                    Id = 2,
+                    DataCriacao = DateTime.Now,
+                    RegistroAtivo = true,
+                    IdUsuario = 1,
+                    PrecoTotal = 5250,
+                    StatusDoPedido = "PAGO"
+                }, new Pedido
+                {
+                    Id = 3,
+                    DataCriacao = DateTime.Now,
+                    RegistroAtivo = true,
+                    IdUsuario = 1,
+                    PrecoTotal = 5000,
+                    StatusDoPedido = "PENDENTE"
                 }
             );
 
