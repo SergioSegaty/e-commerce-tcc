@@ -110,6 +110,8 @@ namespace LivrariaNerd.Web.UI.Controllers
             var pedidosUsuario = _pedidoProdutoRepository.ObterTodosPeloIdUsuario(idUsuario);
             if (pedidoProduto != null)
             {
+                pedidoProduto.PrecoTotal = pedidoProduto.Quantidade * pedidoProduto.PrecoUnidade;
+                pedidoProduto.Pedido.PrecoTotal = pedidoProduto.PrecoTotal;
                 var result = _pedidoProdutoAsyncRepository.Alterar(pedidoProduto);
                 return Json(result);
             }

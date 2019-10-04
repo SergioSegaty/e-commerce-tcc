@@ -1,0 +1,304 @@
+﻿
+@{
+    ViewData["Title"] = "ModalFinalPagamento";
+}
+
+<!-- The Modal -->
+<div class="modal fade" id="modalFinalPagamento">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <!-- Panel Wizard Form Container -->
+                    <div class="panel" id="exampleWizardFormContainer">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Finalizar Pagamento</h3>
+                        </div>
+                        <div class="panel-body">
+                            <!-- Steps -->
+                            <div class="pearls row">
+                                <div class="pearl current col-4">
+                                    <div class="pearl-icon"><i class="icon wb-user" aria-hidden="true"></i></div>
+                                    <span class="pearl-title">Informação de Endereço</span>
+                                </div>
+                                <div class="pearl col-4">
+                                    <div class="pearl-icon"><i class="icon wb-payment" aria-hidden="true"></i></div>
+                                    <span class="pearl-title">Informação do Cartão</span>
+                                </div>
+                                <div class="pearl col-4">
+                                    <div class="pearl-icon"><i class="icon wb-check" aria-hidden="true"></i></div>
+                                    <span class="pearl-title">Confirmação</span>
+                                </div>
+                            </div>
+                            <!-- End Steps -->
+                            <!-- Wizard Content -->
+                            <form id="exampleFormContainer">
+                                <div class="wizard-content">
+                                    <div class="wizard-pane active" id="exampleAccountOne" role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-2 form-group">
+                                                <label class="form-control-label" for="campo-end-cep">Cep</label>
+                                                <input class="form-control" type="text" id="campo-end-cep" name="cep" required="required" />
+                                            </div>
+                                            <div class="col-3 form-group">
+                                                <label class="form-control-label" for="campo-end-estado">Estado</label>
+                                                <select class="form-control" id="campo-end-estado" name="estado"></select>
+                                            </div>
+                                            <div class="col-4 form-group">
+                                                <label class="form-control-label" for="campo-end-cidade">Cidade</label>
+                                                <select class="form-control" id="campo-end-cidade" name="campoCidade" required="required"></select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-8">
+                                                <label class="form-control-label" for="campo-end">Endereço</label>
+                                                <input type="text" class="form-control" id="campo-end" name="endereco" required="required">
+                                            </div>
+                                            <div class="form-group col-4">
+                                                <label class="form-control-label" for="campo-end-numero">Número</label>
+                                                <input type="text" class="form-control" id="campo-end-numero" name="numeroEnd"
+                                                       required="required">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                <label class="form-control-label" for="campo-end-bairro">Bairro</label>
+                                                <input class="form-control" type="text" name="bairro" id="campo-end-bairro" value="" />
+                                            </div>
+                                            <div class="form-group col-8">
+                                                <label class="form-control-label" for="campo-end-complemento">Complemento</label>
+                                                <input class="form-control" type="text" name="complemento" id="campo-end-complemento" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label class="form-control-label">Titular do Cartão</label>
+                                                <input class="form-control" type="text" name="titularCartao" id="campo-titular" required="required" />
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="form-control-label">Cpf do Titular</label>
+                                                <input class="form-control" type="text" name="cpfTitular" id="campo-cpf-titular" value="" required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-6 mb-10">
+                                                <label class="form-control-label" for="inputCardNumberOne">Numero do Cartão</label>
+                                                <input type="text" class="form-control" id="inputCardNumberOne" name="number" placeholder="Numero do Cartão">
+                                            </div>
+                                            <div class="form-group col-2 mb-10">
+                                                <label class="form-control-label" for="inputCVVOne">CVV</label>
+                                                <input type="text" class="form-control" id="inputCVVOne" name="cvv" placeholder="CVV">
+                                            </div>
+                                            <div class="form-group col-4 mb-10">
+                                                <label class="form-control-label" for="campo-vencimento">Vencimento</label>
+                                                <input class="form-control" type="date" name="vencimento" id="campo-vencimento" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wizard-pane" id="exampleGettingOne" role="tabpanel">
+                                        <div class="text-center my-20">
+                                            <h4>Por favor confirma sua compra</h4>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover text-right" id="tabela-final">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-left">Nome</th>
+                                                            <th class="text-center">Quantidade</th>
+                                                            <th class="text-center">Custo por Unidade</th>
+                                                            <th class="text-center">Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="body-tabela-final">
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Wizard Content -->
+                        </div>
+                    </div>
+                    <!-- End Panel Wizard Form Container -->
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*Modal Cadastro Categoria
+
+    <div class="modal fade" id="modalFinalPagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <div class="modal-body">
+                        <div class="col-lg-12">
+                             Panel Wizard Form Container
+                            <div class="panel" id="exampleWizardFormContainer">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Pagamento</h3>
+                                </div>
+                                <div class="panel-body">
+                                     Steps
+                                    <div class="pearls row">
+                                        <div class="pearl current col-4">
+                                            <div class="pearl-icon"><i class="icon wb-user" aria-hidden="true"></i></div>
+                                            <span class="pearl-title">Informação de Endereço</span>
+                                        </div>
+                                        <div class="pearl col-4">
+                                            <div class="pearl-icon"><i class="icon wb-payment" aria-hidden="true"></i></div>
+                                            <span class="pearl-title">Informação do Cartão</span>
+                                        </div>
+                                        <div class="pearl col-4">
+                                            <div class="pearl-icon"><i class="icon wb-check" aria-hidden="true"></i></div>
+                                            <span class="pearl-title">Confirmação</span>
+                                        </div>
+                                    </div>
+                                     End Steps
+                                     Wizard Content
+                                    <form id="exampleFormContainer">
+                                        <div class="wizard-content">
+                                            <div class="wizard-pane active" id="exampleAccountOne" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-2 form-group">
+                                                        <label class="form-control-label" for="campo-end-cep">Cep</label>
+                                                        <input class="form-control" type="text" id="campo-end-cep" name="cep" required="required" />
+                                                    </div>
+                                                    <div class="col-3 form-group">
+                                                        <label class="form-control-label" for="campo-end-estado">Estado</label>
+                                                        <select class="form-control" id="campo-end-estado" name="estado"></select>
+                                                    </div>
+                                                    <div class="col-4 form-group">
+                                                        <label class="form-control-label" for="campo-end-cidade">Cidade</label>
+                                                        <select class="form-control" id="campo-end-cidade" name="campoCidade" required="required"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-8">
+                                                        <label class="form-control-label" for="campo-end">Endereço</label>
+                                                        <input type="text" class="form-control" id="campo-end" name="endereco" required="required">
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                        <label class="form-control-label" for="campo-end-numero">Número</label>
+                                                        <input type="text" class="form-control" id="campo-end-numero" name="numeroEnd"
+                                                               required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-4">
+                                                        <label class="form-control-label" for="campo-end-bairro">Bairro</label>
+                                                        <input class="form-control" type="text" name="bairro" id="campo-end-bairro" value="" />
+                                                    </div>
+                                                    <div class="form-group col-8">
+                                                        <label class="form-control-label" for="campo-end-complemento">Complemento</label>
+                                                        <input class="form-control" type="text" name="complemento" id="campo-end-complemento" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label class="form-control-label">Titular do Cartão</label>
+                                                        <input class="form-control" type="text" name="titularCartao" id="campo-titular" required="required" />
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label class="form-control-label">Cpf do Titular</label>
+                                                        <input class="form-control" type="text" name="cpfTitular" id="campo-cpf-titular" value="" required="required" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-6 mb-10">
+                                                        <label class="form-control-label" for="inputCardNumberOne">Numero do Cartão</label>
+                                                        <input type="text" class="form-control" id="inputCardNumberOne" name="number" placeholder="Numero do Cartão">
+                                                    </div>
+                                                    <div class="form-group col-2 mb-10">
+                                                        <label class="form-control-label" for="inputCVVOne">CVV</label>
+                                                        <input type="text" class="form-control" id="inputCVVOne" name="cvv" placeholder="CVV">
+                                                    </div>
+                                                    <div class="form-group col-4 mb-10">
+                                                        <label class="form-control-label" for="campo-vencimento">Vencimento</label>
+                                                        <input class="form-control" type="date" name="vencimento" id="campo-vencimento" value="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="wizard-pane" id="exampleGettingOne" role="tabpanel">
+                                                <div class="text-center my-20">
+                                                    <h4>Por favor confirma sua compra</h4>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover text-right">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center">#</th>
+                                                                    <th class="text-left">Descrição</th>
+                                                                    <th class="text-right">Quantidade</th>
+                                                                    <th class="text-right">Custo por Unidade</th>
+                                                                    <th class="text-right">Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-center">1</td>
+                                                                    <td class="text-left">Server hardware purchase</td>
+                                                                    <td>32</td>
+                                                                    <td>$75</td>
+                                                                    <td>$2152</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">2</td>
+                                                                    <td class="text-left">Office furniture purchase</td>
+                                                                    <td>15</td>
+                                                                    <td>$169</td>
+                                                                    <td>$4169</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">3</td>
+                                                                    <td class="text-left">Company Anual Dinner Catering</td>
+                                                                    <td>69</td>
+                                                                    <td>$49</td>
+                                                                    <td>$1260</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                     Wizard Content
+                                </div>
+                            </div>
+                             End Panel Wizard Form Container
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+

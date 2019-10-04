@@ -1,5 +1,70 @@
 ﻿$(() => {
 
+
+
+
+    $('.btn-finalizar-pagamento').on('click', function () {
+
+        var totalTotal = 0;
+        $('#body-tabela-final').empty();
+
+
+        $.ajax({
+
+            url: '/pedido/obtertodospedidospeloidusuario',
+            method: 'get',
+            success: function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+
+                    _data = data[i];
+
+                    var linha = document.createElement('tr');
+
+                    // Colunas
+                    var colunaNome = document.createElement('td');
+                    var colunaQuantidade = document.createElement('td');
+                    var colunaPreco = document.createElement('td');
+                    var colunaTotal = document.createElement('td');
+                    //Fim Colunas
+
+                    //Colocando as classes
+                    colunaNome.setAttribute('class', 'text-left');
+                    colunaQuantidade.setAttribute('class', 'text-center');
+                    colunaPreco.setAttribute('class', 'text-center');
+                    colunaTotal.setAttribute('class', 'text-center');
+
+                    //Colocando os Dados
+                    colunaNome.innerHTML = _data.produto.nome;
+                    colunaPreco.innerHTML = _data.produto.preco;
+                    colunaQuantidade.innerHTML = _data.quantidade;
+                    colunaTotal.innerHTML = _data.precoTotal;
+
+                    //Juntando Elementos
+                    linha.appendChild(colunaNome);
+                    linha.appendChild(colunaQuantidade);
+                    linha.appendChild(colunaPreco);
+                    linha.appendChild(colunaTotal);
+
+
+                    // Colocando na Tabela
+                    document.getElementById('tabela-final').appendChild(linha);
+
+
+                    totalTotal += _data.produto.precoTotal;
+                }
+
+
+            }
+        });
+
+
+        $('#modalFinalPagamento').modal("show");
+
+
+    });
+
+
     $('#tabela-carrinho').on('click', '.diminuir-quantidade', function () {
         $id = $(this).data('id');
 
@@ -104,7 +169,6 @@
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
 
-                    console.log(_data);
 
                     let tr = document.createElement('tr');
 
@@ -177,6 +241,9 @@
                     document.getElementById('tabela-carrinho').appendChild(tr);
 
                     precoTotal += _data.quantidade * _data.precoUnidade;
+
+
+
                 }
 
                 //Parte de baixo (tfoot) onde aparece o preco total
