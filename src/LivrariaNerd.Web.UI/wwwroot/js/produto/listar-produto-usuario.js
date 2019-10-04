@@ -55,7 +55,6 @@
                     li.appendChild(div);
 
                     document.getElementById('lista-produto').appendChild(li);
-                    console.log(data);
                 }
 
                 $('#exampleFilter').isotope({

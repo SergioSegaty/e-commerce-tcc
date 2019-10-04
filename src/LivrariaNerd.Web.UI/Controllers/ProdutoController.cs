@@ -68,7 +68,7 @@ namespace e_commerce_ws.Controllers
                 file.CopyTo(stream);
                 //Add The Image to the product object
                 produto.ImagemCaminhoCompleto = caminhoArquivo;
-                produto.ImagemCaminhoWwwroot = caminhoWWWRoot;
+                produto.ImagemCaminhoWwwroot = "/" + caminhoWWWRoot;
                 _repo.Alterar(produto);
             }
 

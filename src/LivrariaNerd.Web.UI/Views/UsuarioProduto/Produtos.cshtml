@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewData["Title"] = "Produtos";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h3 class="text-center">Produtos</h3>
+
+<div class="page">
+    <div class="page-content container-fluid">
+        <div class="panel custom-panel-categorias">
+            <div class="panel-content">
+                <h3>Categorias</h3>
+                <ul id="lista-categoria"></ul>
+            </div>
+        </div>
+        <div class="panel custom-panel-produtos">
+            <div class="panel-content" id="lista-produto">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <style>
+        .custom-panel-categorias {
+            width: 11%;
+            display: inline-block;
+            float: left;
+            margin-left: 140px;
+        }
+
+            .custom-panel-categorias h3 {
+                margin-left: 22px;
+            }
+
+            .custom-panel-categorias ul li p {
+                margin-left: 5px;
+                font-size: 17px;
+            }
+
+        .custom-panel-produtos {
+            width: 70%;
+            display: inline-block;
+            float: right;
+            margin-right: 140px;
+        }
+
+            .custom-panel-produtos figure {
+                cursor: pointer;
+            }
+
+        ul {
+            list-style: none;
+        }
+
+        #lista-produto{
+            padding: 10px 50px 25px 80px;
+        }
+
+        #lista-produto figure img{
+            width: 200px;
+            height: 160px;
+            display: inline-block;
+        }
+        #lista-produto figure{
+            width: 200px;
+            height: 160px;
+            display: inline-block;
+            margin: 10px 30px 10px 0px;
+        }
+    </style>
+}
+@section Scripts{
+    <script>
+        $(() => {
+            $categorias = $('#lista-categoria');
+            $produtos = $('#lista-produto');
+            $filter = -1;
+
+            $categorias.on('click', '.categoria-id', function () {
+                $idCategoria = $(this).data('id');
+                if ($idCategoria !== -1) {
+                    $filter = $idCategoria;
+                } else {
+                    $filter = $idCategoria;
+                }
+                pegarProdutos($filter);
+            });
+
+            pegarTodasCategorias = function () {
+                $categorias.empty();
+
+                //Nenhum filter
+                let li = document.createElement('li');
+
+                let input = document.createElement('input');
+                input.setAttribute('type', 'radio');
+                input.setAttribute('name', 'categoria-id');
+                input.setAttribute('class', 'categoria-id');
+                input.setAttribute('data-id', -1);
+                input.setAttribute('checked', true);
+                li.appendChild(input);
+
+                let p = document.createElement('p');
+                p.innerHTML = 'Nenhum';
+                p.setAttribute('style', 'display:inline-block;');
+                li.appendChild(p);
+
+                $categorias.append(li);
+
+                $.ajax({
+                    url: '/categoria/obtertodos',
+                    method: 'get',
+                    success: function (data) {
+                        for (let i = 0; i < data.length; i++) {
+                            let _data = data[i];
+
+                            let li = document.createElement('li');
+
+                            let input = document.createElement('input');
+                            input.setAttribute('type', 'radio');
+                            input.setAttribute('name', 'categoria-id');
+                            input.setAttribute('class', 'categoria-id');
+                            input.setAttribute('data-id', _data.id);
+
+                            li.appendChild(input);
+
+                            let p = document.createElement('p');
+                            p.innerHTML = _data.nome;
+                            p.setAttribute('style', 'display:inline-block;');
+                            li.appendChild(p);
+
+                            $categorias.append(li);
+                        }
+                    }
+                });
+            }
+
+            pegarProdutos = function (filter) {
+                $produtos.empty();
+                if (filter === -1) {
+                    $.ajax({
+                        url: '/produto/obtertodos',
+                        method: 'get',
+                        success: function (data) {
+                            for (let i = 0; i < data.length; i++) {
+                                _data = data[i];
+
+                                let figure = document.createElement('figure');
+                                figure.setAttribute('class', 'overlay overlay-hover animation-hover');
+                                figure.setAttribute('data-id', _data.id);
+
+                                let img = document.createElement('img');
+                                img.setAttribute('src', _data.imagemCaminhoWwwroot);
+
+                                figure.appendChild(img);
+                                $produtos.append(figure);
+                            }
+                        }
+                    });
+                } else if(filter != -1) {
+                    $.ajax({
+                        url: '/produto/obtertodospelacategoria',
+                        method: 'get',
+                        data: {
+                            id: filter
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            for (let i = 0; i < data.length; i++) {
+                                _data = data[i];
+
+                                let figure = document.createElement('figure');
+                                figure.setAttribute('class', 'overlay overlay-hover animation-hover');
+                                figure.setAttribute('data-id', _data.id);
+
+                                let img = document.createElement('img');
+                                img.setAttribute('src', _data.imagemCaminhoWwwroot);
+
+                                figure.appendChild(img);
+                                $produtos.append(figure);
+                            }
+                        }
+                    });
+                }
+
+            }
+
+            pegarProdutos($filter);
+            pegarTodasCategorias();
+        });
+    </script>
+}
