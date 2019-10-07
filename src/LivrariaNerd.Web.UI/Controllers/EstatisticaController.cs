@@ -112,7 +112,7 @@ namespace PadawanStore.Web.UI.Controllers
                             NomeProduto = pp.Produto.Nome,
                             ClienteNome = pp.Pedido.Usuario.NomeCompleto,
                             DataCompra = pp.Pedido.DataCriacao.ToShortDateString(),
-                            Status = pp.Pedido.StatusDoPedido.ToUpper(),
+                            Status = pp.Pedido.StatusDoPedido,
                             Codigo = pp.Pedido.Id
                         }
                     );
