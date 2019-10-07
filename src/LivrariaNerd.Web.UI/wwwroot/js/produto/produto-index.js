@@ -263,10 +263,19 @@ $(function () {
             url: '/produto/obtertodos',
             method: 'get',
             success: function (data) {
+
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
 
                     var tr = document.createElement('tr');
+
+                    var tdImagem = document.createElement('td');
+                    var img = document.createElement('img');
+                    img.setAttribute('src', _data.imagemCaminhoWwwroot);
+                    img.setAttribute('width', '90');
+                    img.setAttribute('height', '90');
+
+                    tdImagem.appendChild(img);
 
                     var tdId = document.createElement('td');
                     tdId.innerHTML = _data.id;
@@ -313,6 +322,7 @@ $(function () {
                     tdAcao.appendChild(botaoEditar);
                     tdAcao.appendChild(botaoApagar);
 
+                    tr.appendChild(tdImagem);
                     tr.appendChild(tdId);
                     tr.appendChild(tdNome);
                     tr.appendChild(tdPreco);
@@ -320,6 +330,7 @@ $(function () {
                     tr.appendChild(tdAcao);
 
                     document.getElementById('lista-produtos').append(tr);
+                    console.log(_data);
 
                 }
 
