@@ -4,7 +4,6 @@
         $.ajax({
             url: '/Estatistica/obterquantidadepedidos',
             method: 'get',
-            async: true,
             success: function (data) {
                 console.log(data);
 
@@ -85,7 +84,6 @@
         $.ajax({
             url: '/Estatistica/obtertotalrendimento',
             method: 'get',
-            async: true,
             success: function (rendimento) {
                 console.log(rendimento);
 
@@ -166,7 +164,6 @@
         $.ajax({
             url: '/Estatistica/obtertotalproduto',
             method: 'get',
-            async: true,
             success: function (produto) {
                 console.log(produto);
 
@@ -247,7 +244,6 @@
         $.ajax({
             url: '/Estatistica/obterquantidadeusuario',
             method: 'get',
-            async: true,
             success: function (Usuario) {
                 console.log(Usuario);
 
