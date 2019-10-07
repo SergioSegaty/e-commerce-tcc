@@ -65,5 +65,15 @@ namespace PadawanStore.Web.UI.Controllers
             var produtos = _produtoRepository.ObterTodosBusca(busca);
             return Json(produtos);
         }
+
+        [HttpGet, Route("produto")]
+        public IActionResult Produto(int id)
+        {
+            var produto = _produtoRepository.ObterPeloId(id);
+            ViewData["Produto"] = produto;
+
+            return View();
+        }
+
     }
 }

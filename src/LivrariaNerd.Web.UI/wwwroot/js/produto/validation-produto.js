@@ -4,7 +4,7 @@
             nome: {
                 required: true,
                 minlength: 4,
-                maxlength: 20,
+                maxlength: 45,
             },
             categoria: {
                 required: true,
@@ -31,7 +31,7 @@
             nome: {
                 required: 'Este campo é obrigatório',
                 minlength: 'Este campo deve ter no mínimo 4 caractéres',
-                maxlength: 'Este campo deve ter no máximo 20 caractéres'
+                maxlength: 'Este campo deve ter no máximo 45 caractéres'
             },
             categoria: {
                 required: 'Este campo é obrigatório',

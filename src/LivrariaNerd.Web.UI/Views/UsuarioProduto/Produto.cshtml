@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Produto";
     Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+    var produto = (LivrariaNerd.Domain.Entities.Produto)ViewData["Produto"];
 }
 
 
@@ -13,7 +14,7 @@
 
 
 <div class="page-header">
-    <h1 class="page-title" id="titulo-produto">[Produto]</h1>
+    <h1 class="page-title" id="titulo-produto">@produto.Nome</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="@Url.Action("Index","UsuarioProduto")">Loja</a></li>
         <li class="breadcrumb-item active">Produtos</li>
@@ -29,10 +30,10 @@
         <!-- Box da Esquerda (Informações do produto)-->
         <div class="row row-lg">
             <div class="col-xl-5 offset-xl-2">
-                <img class="img-produto" src="~/img/livro_dnd_manual_monstros.jpg" />
+                <img class="img-produto" src="@produto.ImagemCaminhoWwwroot" />
                 <h3>Descrição do Produto:</h3>
                 <div id="desc-box">
-                    <p class="form-control cover-background descricao" style="background-color: rgba(237, 237, 237, 0.59); color: #b4652c" id="descricao">[Descricao do produto]</p>
+                    <p class="form-control cover-background descricao" style="background-color: rgba(237, 237, 237, 0.59); color: #b4652c" id="descricao">@produto.Descricao</p>
                 </div>
                 <div class="vl"></div>
             </div>
@@ -42,9 +43,12 @@
                     <div class="card" style="width: 18em">
                         <div class="card-body">
                             <div class="row row-lg">
-                                <h3 class="card-title azul-escuro">Nome do produto</h3>
-                                <h4 class="card-subtitle mt-15 laranja">Preço do produto</h4>
-                                <h5 class="ml-5">[categoria produto]</h5>
+                                <h3 class="card-title azul-escuro">@produto.Nome -
+                                    <span class="laranja" style="font-size: 70%">@produto.Categoria.Nome</span>
+                                </h3>
+                            </div>
+                            <div class="row row-lg">
+                                <h4 class="card-subtitle mt-15 laranja">R$ @produto.Preco</h4>
                             </div>
                         </div>
                     </div>

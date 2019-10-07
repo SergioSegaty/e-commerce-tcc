@@ -5,6 +5,8 @@
     height: 300px;
     align-content: center;
     clear: both;
+    max-height: 300px;
+    max-width: 300px;
 }
 
 hr {
