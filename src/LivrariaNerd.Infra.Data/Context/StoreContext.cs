@@ -19,7 +19,6 @@ namespace LivrariaNerd.Infra.Data.Context
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoProduto> PedidoProdutos { get; set; }
-
         public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +34,7 @@ namespace LivrariaNerd.Infra.Data.Context
                    Login = "guilherme",
                    Senha = "123",
                    RegistroAtivo = true,
+                   DataCriacao = DateTime.Now
                },
                new Usuario
                {
@@ -45,7 +45,7 @@ namespace LivrariaNerd.Infra.Data.Context
                    RegistroAtivo = true,
                    DataCriacao = DateTime.Now
                }
-             );
+             ); ;
 
             //Seed Estado
             modelBuilder.Entity<Estado>().HasData(
@@ -55,20 +55,21 @@ namespace LivrariaNerd.Infra.Data.Context
                     Nome = "Santa Catarina",
                     Sigla = "SC",
                     RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
                 }
             );
 
             //Seed Cidade
             modelBuilder.Entity<Cidade>().HasData(
-
                 new Cidade
                 {
                     Id = 1,
                     IdEstado = 1,
                     Nome = "Blumenau",
                     RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
                 }
-            );
+            ); ;
 
             //Seed Categoria
             modelBuilder.Entity<Categoria>().HasData(
@@ -154,7 +155,6 @@ namespace LivrariaNerd.Infra.Data.Context
 
             //Seed Pedido
             modelBuilder.Entity<Pedido>().HasData(
-
                 new Pedido
                 {
                     Id = 1,
@@ -162,7 +162,7 @@ namespace LivrariaNerd.Infra.Data.Context
                     RegistroAtivo = true,
                     IdUsuario = 1,
                     PrecoTotal = 5250,
-                    StatusDoPedido = "PAGO"
+                    StatusDoPedido = "PAGO",
                 },
                 new Pedido
                 {
@@ -172,7 +172,8 @@ namespace LivrariaNerd.Infra.Data.Context
                     IdUsuario = 1,
                     PrecoTotal = 5250,
                     StatusDoPedido = "PAGO"
-                }, new Pedido
+                }, 
+                new Pedido
                 {
                     Id = 3,
                     DataCriacao = DateTime.Now,
@@ -193,7 +194,46 @@ namespace LivrariaNerd.Infra.Data.Context
                     DataCriacao = DateTime.Now,
                     PrecoTotal = 5000,
                     Quantidade = 5,
-                    RegistroAtivo = true
+                    RegistroAtivo = true,
+                }
+            );
+
+            //Seed Estoque
+            modelBuilder.Entity<Estoque>().HasData(
+                new Estoque
+                {
+                    Id = 1,
+                    DataCriacao = DateTime.Now,
+                    IdProduto = 1,
+                    Quantidade = 1,
+                    RegistroAtivo = true,
+                    Status = "Em Estoque",
+                },
+                new Estoque
+                {
+                    Id = 2,
+                    DataCriacao = DateTime.Now,
+                    IdProduto = 2,
+                    Quantidade = 1,
+                    RegistroAtivo = true,
+                    Status = "Em Estoque",
+                },
+                new Estoque
+                {
+                    Id = 3,
+                    DataCriacao = DateTime.Now,
+                    IdProduto = 3,
+                    Quantidade = 1,
+                    RegistroAtivo = true,
+                    Status = "Em Estoque",
+                }, new Estoque
+                {
+                    Id = 4,
+                    DataCriacao = DateTime.Now,
+                    IdProduto = 4,
+                    Quantidade = 1,
+                    RegistroAtivo = true,
+                    Status = "Em Estoque",
                 }
             );
 
