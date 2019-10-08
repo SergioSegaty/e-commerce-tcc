@@ -10,7 +10,6 @@
 
 .img-banner {
     object-fit: fill;
-
 }
 
 hr {
@@ -22,6 +21,7 @@ hr {
     height: 450px;
     display: block;
     margin-left: auto;
+    object-fit: contain;
     margin-right: auto;
 }
 
@@ -36,12 +36,12 @@ hr {
 
 .descricao {
     border: #e0680f;
-    
 }
 
 .laranja {
     color: #e0680f;
 }
+
 .azul-escuro {
     color: #081f7a;
 }
