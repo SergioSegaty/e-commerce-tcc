@@ -182,7 +182,7 @@
                     tdNome.innerHTML = _data.produto.nome;
 
                     let tdPreco = document.createElement('td');
-                    tdPreco.innerHTML = _data.precoUnidade;
+                    tdPreco.innerHTML = "R$ " + _data.precoUnidade;
 
                     let tdQuantidade = document.createElement('td');
                     let spanQuantidade = document.createElement('span');
@@ -196,14 +196,14 @@
                     botaoMais.classList.add('btn-sm');
                     botaoMais.classList.add('ml-10');
                     botaoMais.classList.add('btn-primary');
-                    botaoMais.classList.add('align-bottom');
+                    botaoMais.classList.add('ml-5');
 
                     botaoMenos.classList.add('diminuir-quantidade');
                     botaoMenos.classList.add('btn');
                     botaoMenos.classList.add('mr-10');
                     botaoMenos.classList.add('btn-sm');
                     botaoMenos.classList.add('btn-primary');
-                    botaoMenos.classList.add('align-bottom');
+                    botaoMenos.classList.add('mr-5');
 
                     let plusIcon = document.createElement('i');
                     plusIcon.classList.add('icon');
@@ -229,9 +229,14 @@
                     btnRemover.classList.add('btn');
                     btnRemover.classList.add('btn-danger');
                     btnRemover.classList.add('align-bottom');
+                    btnRemover.classList.add('fas');
+                    btnRemover.classList.add('fa-trash');
                     btnRemover.classList.add('remover');
-                    btnRemover.innerHTML = "Remover do Carrinho"
                     btnRemover.setAttribute('data-id', _data.id);
+                    btnRemover.setAttribute('data-toggle', 'tooltip');
+                    btnRemover.setAttribute('title', 'Remover ' + _data.produto.nome +' do Carrinho.');
+
+
 
                     tdRemover.appendChild(btnRemover);
 
@@ -255,20 +260,20 @@
                 let tfootTr = document.createElement('tr');
 
                 let thTotal = document.createElement('th');
-                thTotal.innerHTML = 'Total';
+                thTotal.innerHTML = 'Sub-Total';
 
                 //Sao criadas varias THs aleatorias para preencher espaco
                 let th2 = document.createElement('th');
                 let th3 = document.createElement('th');
                 let thPrecoTotal = document.createElement('th');
-                thPrecoTotal.innerHTML = precoTotal;
+                thPrecoTotal.innerHTML = "R$ " + precoTotal;
                 let th4 = document.createElement('th');
 
-                tfootTr.appendChild(thTotal);
                 tfootTr.appendChild(th2);
                 tfootTr.appendChild(th3);
-                tfootTr.appendChild(thPrecoTotal);
                 tfootTr.appendChild(th4);
+                tfootTr.appendChild(thTotal);
+                tfootTr.appendChild(thPrecoTotal);
 
                 footer.appendChild(tfootTr);
             }
