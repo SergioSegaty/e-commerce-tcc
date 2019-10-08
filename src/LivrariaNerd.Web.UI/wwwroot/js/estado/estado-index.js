@@ -1,10 +1,14 @@
 ﻿$(() => {
     $id = -1;
+    $busca = "";
 
-    ObterTodos = function () {
+    ObterTodos = function (busca) {
         $.ajax({
-            url: '/estado/obtertodos',
+            url: '/estado/obtertodosbusca',
             method: 'get',
+            data: {
+                busca: busca
+            },
             success: function (data) {
 
                 $('#tabela-estados').empty();
@@ -82,7 +86,7 @@
             },
             success: function (data) {
                 limparCampos();
-                ObterTodos();
+                ObterTodos($busca);
                 $id = -1;
                 $('#cadastro-modal-estado').modal('hide');
                 notifyAlert(1, 'Cadastrado com sucesso!', 2);
@@ -104,7 +108,7 @@
             },
             success: function (data) {
                 limparCampos();
-                ObterTodos();
+                ObterTodos($busca);
                 $('#cadastro-modal-estado').modal('hide');
                 $id = -1;
                 notifyAlert(1, 'Alterado com sucesso!', 2);
@@ -114,7 +118,6 @@
             }
         });
     }
-
 
     $('#tabela-estados').on('click', '.botao-apagar', function () {
         $id = $(this).data('id');
@@ -144,7 +147,7 @@
             url: '/estado/apagar?id=' + $id,
             method: 'get',
             success: function (data) {
-                ObterTodos();
+                ObterTodos($busca);
                 $('#alert-apagar-estado').modal('hide');
                 notifyAlert(1, 'Apagado com sucesso!', 2);
                 $id = -1;
@@ -170,5 +173,10 @@
         $id = -1;
     });
 
-    ObterTodos();
+    $('#buscar-produto').on('keyup', function () {
+        $busca = $(this).val();
+        ObterTodos($busca);
+    });
+
+    ObterTodos($busca);
 });

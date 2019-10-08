@@ -13,7 +13,7 @@
 
 
 <div class="page-content">
-    <div class="panel">   
+    <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">Lista de Estados</h3>
         </div>
@@ -21,7 +21,14 @@
             <div class="row">
                 <div class="col-12">
                     <button class="btn btn-primary float-left mb-15" data-toggle="modal" data-target="#cadastro-modal-estado" id="novo-estado">
-                        <i class="fas fa-plus"></i> Novo Estado</button>
+                        <i class="fas fa-plus"></i> Novo Estado
+                    </button>
+                    <div class="offset-10 col-lg-2">
+                        <div class="form-group form-material floating" data-plugin="formMaterial">
+                            <input class="form-control" type="text" id="buscar-produto" />
+                            <label class="floating-label">Busca</label>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -50,6 +57,7 @@
 <partial name="ModalAlertApagarEstado.cshtml" />
 
 @section Scripts{
-<script src="~/js/estado/estado-index.js"></script>
-<script src="~/js/estado/estado.cadastro.modal.js"></script>
+    <script src="~/tema/global/js/Plugin/material.js"></script>
+    <script src="~/js/estado/estado-index.js"></script>
+    <script src="~/js/estado/estado.cadastro.modal.js"></script>
 }
