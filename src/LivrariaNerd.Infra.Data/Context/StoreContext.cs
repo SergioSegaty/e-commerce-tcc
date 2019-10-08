@@ -25,7 +25,7 @@ namespace LivrariaNerd.Infra.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            //Seed Usuario
+            #region Seed Usuario
             modelBuilder.Entity<Usuario>().HasData(
                new Usuario
                {
@@ -45,9 +45,10 @@ namespace LivrariaNerd.Infra.Data.Context
                    RegistroAtivo = true,
                    DataCriacao = DateTime.Now
                }
-             ); ;
+             );
+            #endregion
 
-            //Seed Estado
+            #region Seed Estado
             modelBuilder.Entity<Estado>().HasData(
                 new Estado
                 {
@@ -56,10 +57,27 @@ namespace LivrariaNerd.Infra.Data.Context
                     Sigla = "SC",
                     RegistroAtivo = true,
                     DataCriacao = DateTime.Now
+                },
+                new Estado
+                {
+                    Id = 2  ,
+                    Nome = "São Paulo",
+                    Sigla = "SP",
+                    RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
+                },
+                new Estado
+                {
+                    Id = 3,
+                    Nome = "Rio Grande Do Sul",
+                    Sigla = "RS",
+                    RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
                 }
             );
+            #endregion
 
-            //Seed Cidade
+            #region Seed Cidade
             modelBuilder.Entity<Cidade>().HasData(
                 new Cidade
                 {
@@ -68,10 +86,50 @@ namespace LivrariaNerd.Infra.Data.Context
                     Nome = "Blumenau",
                     RegistroAtivo = true,
                     DataCriacao = DateTime.Now
+                },
+                new Cidade
+                {
+                    Id = 2,
+                    IdEstado = 1,
+                    Nome = "Florianópolis",
+                    RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
+                },
+                new Cidade
+                {
+                    Id = 3,
+                    IdEstado = 2,
+                    Nome = "São Paulo",
+                    RegistroAtivo = true,
+                },
+                new Cidade
+                {
+                    Id = 4,
+                    IdEstado = 2,
+                    Nome = "Osasco",
+                    RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
+                },
+                new Cidade
+                {
+                    Id = 5,
+                    IdEstado = 3,
+                    Nome = "Porto Alegre",
+                    RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
+                },
+                new Cidade
+                {
+                    Id = 6,
+                    IdEstado = 3,
+                    Nome = "Gramado",
+                    RegistroAtivo = true,
+                    DataCriacao = DateTime.Now
                 }
-            ); ;
+            );
+            #endregion
 
-            //Seed Categoria
+            #region Seed Categoria
             modelBuilder.Entity<Categoria>().HasData(
 
                 new Categoria
@@ -89,10 +147,10 @@ namespace LivrariaNerd.Infra.Data.Context
                     Nome = "Livros"
                 }
             );
+            #endregion
 
-            //Seed Produto
+            #region Seed Produto
             modelBuilder.Entity<Produto>().HasData(
-
                 new Produto
                 {
                     Id = 1,
@@ -106,8 +164,6 @@ namespace LivrariaNerd.Infra.Data.Context
                     Cor = "Preto",
                     Peso = 1,
                 },
-
-
                 new Produto
                 {
                     Id = 2,
@@ -121,8 +177,6 @@ namespace LivrariaNerd.Infra.Data.Context
                     Cor = "Preto",
                     Peso = 1,
                 },
-
-
                 new Produto
                 {
                     Id = 3,
@@ -136,8 +190,6 @@ namespace LivrariaNerd.Infra.Data.Context
                     Cor = "Preto",
                     Peso = 1,
                 },
-
-
                 new Produto
                 {
                     Id = 4,
@@ -152,8 +204,9 @@ namespace LivrariaNerd.Infra.Data.Context
                     Peso = 1,
                 }
             );
+            #endregion
 
-            //Seed Pedido
+            #region Seed Pedido
             modelBuilder.Entity<Pedido>().HasData(
                 new Pedido
                 {
@@ -183,8 +236,9 @@ namespace LivrariaNerd.Infra.Data.Context
                     StatusDoPedido = "PENDENTE"
                 }
             );
+            #endregion
 
-            //Seed PedidoProduto
+            #region PedidoProduto
             modelBuilder.Entity<PedidoProduto>().HasData(
                 new PedidoProduto
                 {
@@ -197,8 +251,9 @@ namespace LivrariaNerd.Infra.Data.Context
                     RegistroAtivo = true,
                 }
             );
+            #endregion
 
-            //Seed Estoque
+            #region Seed Estoque
             modelBuilder.Entity<Estoque>().HasData(
                 new Estoque
                 {
@@ -236,6 +291,7 @@ namespace LivrariaNerd.Infra.Data.Context
                     Status = "Em Estoque",
                 }
             );
+            #endregion
 
         }
 
