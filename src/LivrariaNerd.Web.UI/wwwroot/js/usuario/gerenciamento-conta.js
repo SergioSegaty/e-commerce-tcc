@@ -69,17 +69,18 @@
             success: function (data) {
                 console.log(data);
                 let endereco = data[0];
-
                 let i = document.createElement('i');
+
+                document.getElementById('btn-alterar-endereco').setAttribute('onclick', 'this.blur()');
                 if (data.length === 0) {
-                    i.setAttribute('class', 'fas fa-save');
+                    i.setAttribute('class', 'fas fa-save', 'ml-10');
 
                     document.getElementById('btn-alterar-endereco').appendChild(i);
-                    document.getElementById('btn-alterar-endereco').innerHTML = " Cadastrar Endereço";
+                    document.getElementById('btn-alterar-endereco').innerHTML = '<i class="fas fa-save"> Cadastrar Endereço </i>';
                     document.getElementById('btn-alterar-endereco').setAttribute('data-id', -1);
-                } else {
-                    i.setAttribute('class', 'fas fa-refresh');
                     document.getElementById('btn-alterar-endereco').setAttribute('data-id', endereco.id);
+                } else {
+                    i.setAttribute('class', 'fas fa-refresh', 'ml-10');
                     $('#campo-end-cep').val(endereco.cep);
                     $('#campo-end-estado').val(endereco.cidade.idEstado);
                     PreencherCidades(endereco.cidade.idEstado);
@@ -92,7 +93,7 @@
                     $('#campo-rua').val(endereco.rua);
 
                     document.getElementById('btn-alterar-endereco').appendChild(i);
-                    document.getElementById('btn-alterar-endereco').innerHTML = "Atualizar Endereço";
+                    document.getElementById('btn-alterar-endereco').innerHTML = '<i class"fas fa-refresh"> Atualizar Endereço </i>';
                 }
             }
         });
