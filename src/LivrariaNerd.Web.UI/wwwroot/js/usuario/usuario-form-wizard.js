@@ -177,7 +177,7 @@
                 $('.modal').modal('hide');
                 swal({
                     title: "Sucesso!",
-                    text: "A sua compra está sendo analizada!",
+                    text: "A sua compra está sendo analisada!",
                     type: "success",
                     showCancelButton: false,
                     confirmButtonClass: "btn-success",

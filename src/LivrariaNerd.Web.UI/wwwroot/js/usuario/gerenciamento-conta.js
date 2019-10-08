@@ -78,8 +78,9 @@
                     document.getElementById('btn-alterar-endereco').appendChild(i);
                     document.getElementById('btn-alterar-endereco').innerHTML = '<i class="fas fa-save"> Cadastrar Endereço </i>';
                     document.getElementById('btn-alterar-endereco').setAttribute('data-id', -1);
-                    document.getElementById('btn-alterar-endereco').setAttribute('data-id', endereco.id);
+
                 } else {
+                    document.getElementById('btn-alterar-endereco').setAttribute('data-id', endereco.id);
                     i.setAttribute('class', 'fas fa-refresh', 'ml-10');
                     $('#campo-end-cep').val(endereco.cep);
                     $('#campo-end-estado').val(endereco.cidade.idEstado);
@@ -90,7 +91,7 @@
                     $('#campo-end-bairro').val(endereco.bairro);
                     $('#campo-end-numero').val(endereco.numero);
                     $('#campo-end-complemento').val(endereco.complemento);
-                    $('#campo-rua').val(endereco.rua);
+                    $('#campo-end-rua').val(endereco.rua);
 
                     document.getElementById('btn-alterar-endereco').appendChild(i);
                     document.getElementById('btn-alterar-endereco').innerHTML = '<i class"fas fa-refresh"> Atualizar Endereço </i>';
@@ -99,9 +100,59 @@
         });
     }
 
-    //fazer criar endereco 
+
     $('#btn-alterar-endereco').on('click', function () {
-        $idEndereco = $(this).data('id');
+        $enderecoCep = $('#campo-end-cep').val();
+        $enderecoEstado = $('#campo-end-estado').val();
+        $enderecoCidade = $('#campo-end-cidade').val();
+        $enderecoBairro = $('#campo-end-bairro').val();
+        $enderecoNumero = $('#campo-end-numero').val();
+        $enderecoRua = $('#campo-end-rua').val();
+        $enderecoComp = $('#campo-end-complemento').val();
+        $idEndereco_ = $(this).data('id');
+
+        debugger;
+        if ($idEndereco_ === -1) {
+            $.ajax({
+                url: '/endereco/adicionar',
+                method: 'post',
+                data: {
+                    IdCidade: $enderecoCidade,
+                    IdEstado: $enderecoEstado,
+                    IdUsuario: $idUsuario,
+                    CEP: $enderecoCep,
+                    Logradouro: "",
+                    Bairro: $enderecoBairro,
+                    Numero: $enderecoNumero,
+                    Complemento: $enderecoComp,
+                    Rua: $enderecoRua,
+                },
+                success: function (data) {
+                    notifyAlert(1, 'Cadastro de Endereço feito com Sucesso', 2);
+        debugger;       
+                }
+            });
+        }
+        else {
+            $.ajax({
+                url: '/endereco/alterar',
+                method: 'post',
+                data: {
+                    Id: $idEndereco_,
+                    IdCidade: $enderecoCidade,
+                    IdEstado: $enderecoEstado,
+                    IdUsuario: $idUsuario,
+                    CEP: $enderecoCep,
+                    Logradouro: "",
+                    Bairro: $enderecoBairro,
+                    Numero: $enderecoNumero,
+                    Complemento: $enderecoComp
+                },
+                success: function (data) {
+                    notifyAlert(1, 'Endereço Atualizado com Sucesso', 2);
+                }
+            });
+        }
     });
 
     //Fazer alterar o endereco
