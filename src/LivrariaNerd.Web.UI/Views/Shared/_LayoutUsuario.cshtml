@@ -23,8 +23,6 @@
     <link rel="stylesheet" href="~/tema/global/vendor/intro-js/introjs.css">
     <link rel="stylesheet" href="~/tema/global/vendor/slidepanel/slidePanel.css">
     <link rel="stylesheet" href="~/tema/global/vendor/flag-icon-css/flag-icon.css">
-    <link rel="stylesheet" href="~/tema/global/vendor/chartist/chartist.css">
-    <link rel="stylesheet" href="~/tema/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
     <link rel="stylesheet" href="~/tema/global/vendor/aspieprogress/asPieProgress.css">
     <link rel="stylesheet" href="~/tema/global/vendor/jquery-selective/jquery-selective.css">
     <link rel="stylesheet" href="~/tema/global/vendor/bootstrap-datepicker/bootstrap-datepicker.css">
@@ -86,6 +84,12 @@
                             <div class="dropdown-divider" role="presentation"></div>
                             <a class="dropdown-item" href="@Url.Action("Logout", "Auth")" role="menuitem"><i class="icon fa-sign-in" aria-hidden="true"></i> Sair</a>
                         </div>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="@Url.Action("Index","CarrinhoUsuario")" aria-expanded="false"
+                           data-animation="scale-up" role="button">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
                     </li>
                     <!--Perfil End-->
 
@@ -341,8 +345,6 @@
     <script src="~/tema/global/vendor/intro-js/intro.js"></script>
     <script src="~/tema/global/vendor/screenfull/screenfull.js"></script>
     <script src="~/tema/global/vendor/slidepanel/jquery-slidePanel.js"></script>
-    <script src="~/tema/global/vendor/chartist/chartist.js"></script>
-    <script src="~/tema/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
     <script src="~/tema/global/vendor/aspieprogress/jquery-asPieProgress.js"></script>
     <script src="~/tema/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
     <script src="~/tema/global/vendor/jquery-selective/jquery-selective.min.js"></script>
