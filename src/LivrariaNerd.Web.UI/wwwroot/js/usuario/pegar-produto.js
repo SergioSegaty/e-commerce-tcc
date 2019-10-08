@@ -1,39 +1,24 @@
 ﻿$(() => {
-    $id = -1;
-    // Pegando os elementos do DOM para alterar
 
-    $categoriaTituloBC = document.getElementById('bc-titulo-produto');
-    $imagemProduto = document.getElementById('imagem-produto');
-    $nomeProduto = document.getElementById('nome-produto');
-    $precoProduto = document.getElementById('preco-produto');
-    $categoriaProduto = document.getElementById('categoria-produto');
-    $tituloProduto = document.getElementById('titulo-produto');
+    // $('#rating-example').raty();
 
-
-    obterProduto = function () {
+    $('#adicionar-carrinho').on('click', function () {
+        $idProduto = $(this).data('id');
 
         $.ajax({
-            url: 'produto/obterpeloid?=' + $id,
+            url: '/produto/obterpeloid?id=' + $idProduto,
             method: 'get',
-            success: function (data){
-                if (data != null) {
-
-                    $categoriaTituloBC.innerHtml = data.NomeCategoria;
-                    $imagemProduto = "/" + data.imagemCaminhoWwwroot;
-                    $nomeProduto.innerHtml = data.nome;
-                    $precoProduto.innerHtml = data.preco;
-                    $categoriaProduto.innerHtml = data.NomeCategoria;
-                    $tituloProduto.innerHtml = data.nome;
-                    
-                } else {
-                    notiftyAlert(3, 'Produto Não encontrado', 2);
-                }
-            },
-
+            success: function (data) {
+                $.ajax({
+                    url: '/pedido/adicionaraocarrinho',
+                    method: 'post',
+                    data: data,
+                    success: function (data) {
+                        notifyAlert(1, 'Produto adicionado ao carrinho', 2);
+                    }
+                });
+            }
         });
-
-    };
-
-
+    });
 });
 
