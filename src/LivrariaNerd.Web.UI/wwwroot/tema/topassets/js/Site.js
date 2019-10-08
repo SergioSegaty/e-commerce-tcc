@@ -236,17 +236,19 @@
       value: function startLoading() {
         if (typeof _jquery.default.fn.animsition === 'undefined') {
           return false;
-        } // let loadingType = 'default';
+        }  // let loadingType = 'loader-cube-grid';
 
 
         $BODY.animsition({
           inClass: 'fade-in',
-          inDuration: 800,
+          outClass: 'fade-out',
+          inDuration: 1000,
+          outDuration: 800,
           loading: true,
           loadingClass: 'loader-overlay',
           loadingParentElement: 'html',
-          loadingInner: "\n      <div class=\"loader-content\">\n        <div class=\"loader-index\">\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>",
-          onLoadEvent: true
+          loadingInner: "\n      <div class=\"loader-content\">\n        <div class=\"loader loader-cube-grid\">\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>",
+          onLoadEvent: true,
         });
       }
     }, {
