@@ -62,7 +62,8 @@ namespace LivrariaNerd.Web.UI.Controllers
 
             var IdPedido = await _pedidoRepositoryAsync.Adicionar(new Pedido()
             {
-                IdUsuario = idUsuario
+                IdUsuario = idUsuario,
+                StatusDoPedido = "PENDENTE"
             });
 
             var idPedidoProduto = await _pedidoProdutoAsyncRepository.Adicionar(new PedidoProduto()
@@ -71,7 +72,7 @@ namespace LivrariaNerd.Web.UI.Controllers
                 IdProduto = produto.Id,
                 Quantidade = 1,
                 PrecoUnidade = produto.Preco,
-                PrecoTotal = produto.Preco // ou 1 * produto.Preco, sendo 1 a quantidade.
+                PrecoTotal = produto.Preco, // ou 1 * produto.Preco, sendo 1 a quantidade.
             });
 
             var result = idPedidoProduto != 0 ? true : false; // se for diferente de 0 true, caso contrario false ( resultado de deu certo ou nao )
