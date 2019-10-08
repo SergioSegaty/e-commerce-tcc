@@ -193,11 +193,15 @@
 
                     botaoMais.classList.add('aumentar-quantidade');
                     botaoMais.classList.add('btn');
+                    botaoMais.classList.add('btn-sm');
+                    botaoMais.classList.add('ml-10');
                     botaoMais.classList.add('btn-primary');
                     botaoMais.classList.add('align-bottom');
 
                     botaoMenos.classList.add('diminuir-quantidade');
                     botaoMenos.classList.add('btn');
+                    botaoMenos.classList.add('mr-10');
+                    botaoMenos.classList.add('btn-sm');
                     botaoMenos.classList.add('btn-primary');
                     botaoMenos.classList.add('align-bottom');
 
