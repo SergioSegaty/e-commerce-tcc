@@ -109,7 +109,6 @@
                     iconeComprar.classList.add('icon', 'fa-cart-plus');
                     iconeDesejo.classList.add('icon', 'wb-eye');
 
-
                     botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating', 'botao-comprar');
                     botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom', 'btn-floating', 'botao-desejo');
 
@@ -122,6 +121,12 @@
                     a.setAttribute('href', '/loja/produto?id=' + _data.id);
 
                     botaoComprar.setAttribute('data-id', _data.id);
+                    botaoComprar.setAttribute('data-toggle', 'tooltip');
+                    botaoComprar.setAttribute('title', 'Adicionar Produto Ao Carrinho');
+
+                    botaoDesejo.setAttribute('data-toggle', 'tooltip');
+                    botaoDesejo.setAttribute('title', 'Vizualizar Produto');
+
 
                     botaoComprar.appendChild(iconeComprar);
                     botaoDesejo.appendChild(iconeDesejo);
