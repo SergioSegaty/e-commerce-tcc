@@ -2,8 +2,12 @@
     ViewData["Title"] = "Carrinho de Compras";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Styles{
 
-<link rel="stylesheet" href="~/css/wizard/wizar.css" />
+    <link rel="stylesheet" href="~/css/wizard/wizard.css" />
+    <link href="~/tema/global/vendor/bootstrap-sweetalert/sweetalert.min.css" rel="stylesheet" />
+}
+
 
 <div class="page-header">
     <h1 class="page-title">Carrinho de Compras</h1>
@@ -50,6 +54,7 @@
 <partial name="FinalPagamento.cshtml" />
 
 @section Scripts{
+    <script src="~/tema/global/vendor/bootstrap-sweetalert/sweetalert.js"></script>
     <script src="~/tema/global/vendor/formvalidation/formValidation.js"></script>
     <script src="~/tema/global/vendor/formvalidation/framework/bootstrap.js"></script>
     <script src="~/js/wizard/jquery-wizard.js"></script>
