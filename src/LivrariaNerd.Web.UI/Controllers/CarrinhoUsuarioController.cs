@@ -4,7 +4,7 @@ using LivrariaNerd.Infra.Data.Interface;
 
 namespace PadawanStore.Web.UI.Controllers
 {
-    [Route("carrinhousuario")]
+    [Route("loja/carrinho")]
     public class CarrinhoUsuarioController : Controller
     {
         private readonly IBaseRepositoryAsync<Produto> _repository;
