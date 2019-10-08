@@ -62,7 +62,18 @@ namespace PadawanStore.Web.UI.Controllers
         [HttpGet, Route("obtertodosbusca")]
         public IActionResult ObterTodosBusca(string busca)
         {
+            if (busca == null)
+                busca = "";
             var produtos = _produtoRepository.ObterTodosBusca(busca);
+            return Json(produtos);
+        }
+
+        [HttpGet, Route("obtertodosbuscaecategoria")]
+        public IActionResult ObterTodosBuscaECategoria(string busca, int id)
+        {
+            if (busca == null)
+                busca = "";
+            var produtos = _produtoRepository.ObterTodosBuscaECategoria(busca, id);
             return Json(produtos);
         }
 

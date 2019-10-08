@@ -13,5 +13,7 @@ namespace LivrariaNerd.Infra.Data.Interface
         List<Produto> ObterTodos();
 
         List<Produto> ObterTodosBusca(string busca);
+
+        List<Produto> ObterTodosBuscaECategoria(string busca, int idCategoria);
     }
 }

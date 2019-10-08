@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Produtos";
     Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
 }
@@ -8,6 +7,14 @@
 
 <div class="page">
     <div class="page-content container-fluid">
+        <div class="row-lg row">
+            <div class="offset-8 col-lg-3">
+                <div class="form-group form-material floating" data-plugin="formMaterial">
+                    <input class="form-control" type="text" id="buscar-produto" />
+                    <label class="floating-label">Busca</label>
+                </div>
+            </div>
+        </div>
         <div class="panel custom-panel-categorias">
             <div class="panel-content">
                 <h3>Categorias</h3>
@@ -23,6 +30,10 @@
 
 @section Styles{
     <style>
+        #buscar-produto {
+            margin-bottom: 20px;
+        }
+
         .custom-panel-categorias {
             width: 11%;
             display: inline-block;
@@ -54,29 +65,33 @@
             list-style: none;
         }
 
-        #lista-produto{
+        #lista-produto {
             padding: 10px 50px 25px 80px;
         }
 
-        #lista-produto figure img{
-            width: 200px;
-            height: 160px;
-            display: inline-block;
-        }
-        #lista-produto figure{
-            width: 200px;
-            height: 160px;
-            display: inline-block;
-            margin: 10px 30px 10px 0px;
-        }
+            #lista-produto figure img {
+                width: 200px;
+                height: 160px;
+                display: inline-block;
+            }
+
+            #lista-produto figure {
+                width: 200px;
+                height: 160px;
+                display: inline-block;
+                margin: 10px 30px 10px 0px;
+            }
     </style>
 }
 @section Scripts{
+
+    <script src="~/tema/global/js/Plugin/material.js"></script>
     <script>
         $(() => {
             $categorias = $('#lista-categoria');
             $produtos = $('#lista-produto');
             $filter = -1;
+            $filterBusca = "";
 
             $categorias.on('click', '.categoria-id', function () {
                 $idCategoria = $(this).data('id');
@@ -139,59 +154,136 @@
 
             pegarProdutos = function (filter) {
                 $produtos.empty();
+
                 if (filter === -1) {
-                    $.ajax({
-                        url: '/produto/obtertodos',
-                        method: 'get',
-                        success: function (data) {
-                            for (let i = 0; i < data.length; i++) {
-                                _data = data[i];
+                    if ($filterBusca != "" && $filterBusca != null) {
+                        $.ajax({
+                            url: '/loja/obtertodosbusca',
+                            method: 'get',
+                            data: {
+                                busca: $filterBusca
+                            },
+                            success: function (data) {
+                                console.log(data);
+                                for (let i = 0; i < data.length; i++) {
+                                    _data = data[i];
 
-                                let figure = document.createElement('figure');
-                                figure.setAttribute('class', 'overlay overlay-hover animation-hover');
-                                figure.setAttribute('data-id', _data.id);
+                                    let figure = document.createElement('figure');
+                                    figure.setAttribute('class', 'overlay overlay-hover animation-hover');
+                                    figure.setAttribute('data-id', _data.id);
 
-                                let img = document.createElement('img');
-                                img.setAttribute('src', _data.imagemCaminhoWwwroot);
+                                    let img = document.createElement('img');
+                                    img.setAttribute('src', _data.imagemCaminhoWwwroot);
 
-                                let a = document.createElement('a');
-                                a.appendChild(img);
+                                    let a = document.createElement('a');
+                                    a.appendChild(img);
 
-                                a.setAttribute('href', '/loja/produto?id=' + _data.id);
+                                    a.setAttribute('href', '/loja/produto?id=' + _data.id);
 
-                                figure.appendChild(a);
-                                $produtos.append(figure);
+                                    figure.appendChild(a);
+                                    $produtos.append(figure);
+                                }
                             }
-                        }
-                    });
-                } else if(filter != -1) {
-                    $.ajax({
-                        url: '/produto/obtertodospelacategoria',
-                        method: 'get',
-                        data: {
-                            id: filter
-                        },
-                        success: function (data) {
-                            console.log(data);
-                            for (let i = 0; i < data.length; i++) {
-                                _data = data[i];
+                        });
+                    } else {
+                        $.ajax({
+                            url: '/produto/obtertodos',
+                            method: 'get',
+                            success: function (data) {
+                                for (let i = 0; i < data.length; i++) {
+                                    _data = data[i];
 
-                                let figure = document.createElement('figure');
-                                figure.setAttribute('class', 'overlay overlay-hover animation-hover');
-                                figure.setAttribute('data-id', _data.id);
+                                    let figure = document.createElement('figure');
+                                    figure.setAttribute('class', 'overlay overlay-hover animation-hover');
+                                    figure.setAttribute('data-id', _data.id);
 
-                                let img = document.createElement('img');
-                                img.setAttribute('src', _data.imagemCaminhoWwwroot);
+                                    let img = document.createElement('img');
+                                    img.setAttribute('src', _data.imagemCaminhoWwwroot);
 
-                                figure.appendChild(img);
-                                $produtos.append(figure);
+                                    let a = document.createElement('a');
+                                    a.appendChild(img);
+
+                                    a.setAttribute('href', '/loja/produto?id=' + _data.id);
+
+                                    figure.appendChild(a);
+                                    $produtos.append(figure);
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+                } else if (filter != -1) {
+                    if ($filterBusca != "" && $filterBusca != null) {
+                        $.ajax({
+                            url: '/loja/obtertodosbuscaecategoria',
+                            method: 'get',
+                            data: {
+                                busca: $filterBusca,
+                                id: $filter
+                            },
+                            success: function (data) {
+                                console.log(data);
+                                for (let i = 0; i < data.length; i++) {
+                                    _data = data[i];
+
+                                    let figure = document.createElement('figure');
+                                    figure.setAttribute('class', 'overlay overlay-hover animation-hover');
+                                    figure.setAttribute('data-id', _data.id);
+
+                                    let img = document.createElement('img');
+                                    img.setAttribute('src', _data.imagemCaminhoWwwroot);
+
+                                    let a = document.createElement('a');
+                                    a.appendChild(img);
+
+                                    a.setAttribute('href', '/loja/produto?id=' + _data.id);
+
+                                    figure.appendChild(a);
+                                    $produtos.append(figure);
+                                }
+                            }
+                        });
+                    } else {
+
+                        $.ajax({
+                            url: '/produto/obtertodospelacategoria',
+                            method: 'get',
+                            data: {
+                                id: filter
+                            },
+                            success: function (data) {
+                                console.log(data);
+                                for (let i = 0; i < data.length; i++) {
+                                    _data = data[i];
+
+                                    let figure = document.createElement('figure');
+                                    figure.setAttribute('class', 'overlay overlay-hover animation-hover');
+                                    figure.setAttribute('data-id', _data.id);
+
+                                    let img = document.createElement('img');
+                                    img.setAttribute('src', _data.imagemCaminhoWwwroot);
+                                    let a = document.createElement('a');
+                                    a.appendChild(img);
+
+                                    a.setAttribute('href', '/loja/produto?id=' + _data.id);
+
+                                    figure.appendChild(a);
+                                    $produtos.append(figure);
+                                }
+                            }
+                        });
+                    }
+
                 }
+
             }
 
+            $('#buscar-produto').on('keyup', function () {
+                $filterBusca = $(this).val();
+                pegarProdutos($filter);
+            });
+
             pegarProdutos($filter);
+
             pegarTodasCategorias();
         });
     </script>
