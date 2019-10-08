@@ -174,6 +174,17 @@
                 return true;
             },
             onFinish: function onFinish() {// $('#exampleFormContainer').submit();
+                $('.modal').modal('hide');
+                swal({
+                    title: "Sucesso!",
+                    text: "A sua compra está sendo analizada!",
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: 'OK',
+                    closeOnConfirm: false
+                });
+                
             },
             buttonsAppendTo: '.panel-body'
         });
