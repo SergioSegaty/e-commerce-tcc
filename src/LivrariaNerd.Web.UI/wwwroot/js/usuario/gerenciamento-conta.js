@@ -23,7 +23,7 @@
             }
         });
     };
-    
+
     $('#btn-alterar-usuario').on("click", function () {
 
         var senha = $("#campo-senha").val();
@@ -44,7 +44,7 @@
                     Login: login,
                     Senha: senha,
                     NomeCompleto: nome
-                },               
+                },
                 success: function (data) {
                     notifyAlert(1, 'Cadastro Alterado com Sucesso', 2);
                     location.reload();
@@ -59,7 +59,7 @@
 
     });
 
-     //Fazer:
+    //Fazer:
     //Pegar endereco pelo idusuario e mostrar na view e dps fazer atualizar o endereco ou criar
 
     buscarEnderecoUsuario = function () {
@@ -70,10 +70,15 @@
                 console.log(data);
                 let endereco = data[0];
 
+                let i = document.createElement('i');
                 if (data.length === 0) {
-                    document.getElementById('btn-alterar-endereco').innerHTML = "Cadastrar Endereço";
+                    i.setAttribute('class', 'fas fa-save');
+
+                    document.getElementById('btn-alterar-endereco').appendChild(i);
+                    document.getElementById('btn-alterar-endereco').innerHTML = " Cadastrar Endereço";
                     document.getElementById('btn-alterar-endereco').setAttribute('data-id', -1);
                 } else {
+                    i.setAttribute('class', 'fas fa-refresh');
                     document.getElementById('btn-alterar-endereco').setAttribute('data-id', endereco.id);
                     $('#campo-end-cep').val(endereco.cep);
                     $('#campo-end-estado').val(endereco.cidade.idEstado);
@@ -86,6 +91,7 @@
                     $('#campo-end-complemento').val(endereco.complemento);
                     $('#campo-rua').val(endereco.rua);
 
+                    document.getElementById('btn-alterar-endereco').appendChild(i);
                     document.getElementById('btn-alterar-endereco').innerHTML = "Atualizar Endereço";
                 }
             }
@@ -101,7 +107,7 @@
     $('#btn-alterar-endereco').on('click', function () {
         $idEndereco = $(this).data('id');
     });
-    
+
     buscarEnderecoUsuario();
 
     // Validação do Form Usuario

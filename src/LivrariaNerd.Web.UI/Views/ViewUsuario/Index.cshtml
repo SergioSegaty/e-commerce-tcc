@@ -5,13 +5,12 @@
 
 @section Styles{
     <link href="~/tema/global/vendor/dropify/dropify.css" rel="stylesheet" />
-  
 }
 
 <div class="page-header">
-    <h1 class="page-title">Gerenciamento do Usuario</h1>
+    <h1 class="page-title">Sua Conta</h1>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="@Url.Action("Index","UsuarioProduto")">Loja</a></li>
         <li class="breadcrumb-item active">Sua Conta</li>
     </ol>
 </div>
@@ -22,57 +21,47 @@
     <div class="panel">
 
         <div class="panel-heading">
-            <h3 class="panel-title" id="titulo-nome-usuario">[Nome da Pessoa]</h3>
+            <h4 class="panel-title" id="titulo-nome-usuario">[Nome da Pessoa]</h4>
         </div>
         <div class="panel-body container-fluid">
-
-            @*<div class="row">
-                    <div class="offset-xl-4 col-xl-4 col-lg-6 offset-lg-3 col-md-10 offset-md-1 offset-sm-0">
-                        <div class="center">
-                            <div class="example-wrap">
-                                <h4 class="panel-title text-center">Upload da Imagem</h4>
-                                <div class="example">
-                                    <input type="file" id="input-file-now" data-plugin="dropify" data-default-file="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-
-
             <div class="row">
                 <!-- Box da Esquerda-->
+
                 <div class="col-lg-6 col-sm-12">
-                    <h4 class="panel-title">Informações pessoais</h4>
+                    <h4 class="text-center">Informações Pessoais</h4>
                     <form action="javascript:void(0)" id="form-editar-usuario">
 
                         <!-- Começa Row -->
                         <div class="row">
-
-                            <div class="col-xl-10 col-md-12 form-group">
-                                <label for="campo-nome">Nome <span style="color:red">*</span></label>
+                            <div class="col-xl-12 col-md-12 form-group">
+                                <label for="campo-nome">Nome Completo <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="nomeUsuario" id="campo-nome" />
                             </div>
-                            <div class="col-xl-10 col-md-12 form-group">
+
+                            <div class="col-xl-12 col-md-12 form-group">
                                 <label for="campo-sobrenome">Email <span style="color:red">*</span></label>
-                                <input class="form-control" type="text" name="usuarioEmail" id="campo-email" />
+                                <input class="form-control" type="email" name="usuarioEmail" id="campo-email" />
                             </div>
+
                             <div class="col-xl-6 col-md-12 form-group">
-                                <label for="campo-senha">Senha<span style="color:red">*</span></label>
+                                <label for="campo-senha">Senha <span style="color:red">*</span></label>
                                 <input type="text" class="form-control" name="senha" id="campo-senha" value="" />
                             </div>
+
                             <div class="col-xl-6 col-md-12 form-group">
-                                <label for="campo-conf-senha">Confirmar a Senha<span style="color:red">*</span></label>
+                                <label for="campo-conf-senha">Confirmar a Senha <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="confSenha" id="campo-conf-senha" value="" />
                             </div>
+
                             <div class="col-12">
                                 <button class="btn btn-outline-warning float-left btn-sm"
                                         data-target="#usuario-trocar-senha" id="botao-trocar-senha"
                                         data-toggle="modal">
-                                    Trocar a senha
+                                    <i class="fas fa-lock"></i> Trocar a senha
                                 </button>
-                                <button class="btn btn-outline-success float-right btn-sm" type="submit" id="btn-alterar-usuario">
-                                    Atualizar Informações
+
+                                <button class="btn btn-success float-right btn-sm" type="submit" id="btn-alterar-usuario">
+                                    <i class="fas fa-refresh"></i> Atualizar Informações
                                 </button>
                             </div>
                         </div>
@@ -83,13 +72,13 @@
 
                 <!-- Box da direita-->
                 <div class="col-lg-6 col-sm-12">
-                    <h4 class="panel-title">Informações de Endereço</h4>
+                    <h4 class="text-center">Informações de Endereço</h4>
                     <form action="javascript:void(0)" id="form-editar-endereco">
                         <div class="row">
 
                             <div class="col-lg-3 form-group">
                                 <label for="campo-cpf">CEP <span style="color:red">*</span></label>
-                                <input class="form-control" type="text" name="usuarioCep" id="campo-end-cep" />
+                                <input class="form-control" id="usuarioCep" type="text" name="usuarioCep" size="10" maxlength="9" />
                             </div>
                             <div class="col-lg-3 form-group">
                                 <label for="campo-estado">UF <span style="color:red">*</span></label>
@@ -101,7 +90,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-lg-6 col-md-10 form-group">
+                            <div class="col-lg-12 col-md-10 form-group">
                                 <label for="campo-bairro">Bairro <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="usuarioBairro" id="campo-end-bairro" value="" />
                             </div>
@@ -114,16 +103,15 @@
                                 <label for="campo-numero">Número<span style="color:red">*</span></label>
                                 <input class="form-control" type="text" id="campo-end-numero" name="usuarioNumero" />
                             </div>
-                            <div class="col-lg-8 col-md-7 form-group">
+                            <div class="col-lg-12 col-md-7 form-group">
                                 <label for="campo-complemento">Complemento</label>
-                                <input class="form-control" type="text" name="usuarioComplemento" id="campo-end-complemento" value="" placeholder="Apartamento, Número de loja, etc." />
+                                <input class="form-control" type="text" name="usuarioComplemento" id="campo-end-complemento" value="" placeholder="Apartamento, Número de loja, Ponto de Referência, etc." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-
                                 <button class="btn btn-outline-success float-right btn-sm" type="submit" id="btn-alterar-endereco">
-                                    Atualizar Endereço
+                                    
                                 </button>
                             </div>
                         </div>
