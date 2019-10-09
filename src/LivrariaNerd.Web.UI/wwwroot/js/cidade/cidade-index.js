@@ -1,10 +1,12 @@
 ﻿$(() => {
     $id = -1;
-    $busca = "";
+    $busca = "";    
 
     $('.close-modal').on('click', () => {
         limparCampos();
         $id = -1;
+    });
+
     $('.close').on('click', () => {
         limparCampos();
         $id = -1;
@@ -42,8 +44,6 @@
             type: 'get',
             success: function (data) {
                 for (let i = 0; i < data.length; i++) {
-                    console.log(data);
-
                     let _data = data[i];
 
                     let id = data[i].id;
@@ -103,13 +103,15 @@
             }
         });
     }
-    
+
     limparCampos = function () {
         $('#campo-nome-cidade').val("");
         $('#campo-estado').val(-1);
     }
 
     obterTodos = function (busca) {
+        $("#tabela-cidades").empty();
+
         $.ajax({
             url: '/cidade/obtertodos',
             method: 'get',
@@ -117,9 +119,6 @@
                 busca: busca
             },
             success: function (data) {
-                console.log(data);
-                $("#tabela-cidades").empty();
-
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
 
@@ -183,11 +182,6 @@
         });
     });
 
-    $('#buscar-cidade').on('keyup', function () {
-        $busca = $(this).val();
-        obterTodos($busca);
-    });
-
     $('#tabela-cidades').on('click', '.botao-apagar', function () {
         $id = $(this).data('id');
         $('#alert-apagar-cidade').modal('show');
@@ -204,10 +198,16 @@
                 notifyAlert(1, 'Apagou com Sucesso!', 2);
             },
             error: function (err) {
-                console.log(err);   
+                console.log(err);
             }
         });
     });
+
+    $('#buscar-cidade').on('keyup', function () {
+        $busca = $(this).val();
+        obterTodos($busca);
+    });
+
 
     obterTodos($busca);
 });
