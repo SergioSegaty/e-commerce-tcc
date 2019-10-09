@@ -7,7 +7,7 @@ $(function () {
     $imageUplaod = $('.box');
     $busca = "";
 
-
+    $('#campo-preco').maskMoney();
 
     // Image Drag&Drop Detection
 
@@ -65,38 +65,19 @@ $(function () {
 
 
         if ($valido && $('#upload-imagem').get(0).files.length == 1) {
-            if (!$id == -1) {
-                $("#id-produto-hidden").val($id);
-                $("#form-cadastro-produto-upload-imagem").submit();
-            }
-
+           
             if ($id == -1) {
                 inserir();
                 notifyAlert(1, 'Cadastrado com sucesso.', 2);
             } else {
                 alterar();
                 notifyAlert(1, 'Alterado com sucesso', 2);
+
+                $("#id-produto-hidden").val($id);
+                $("#form-cadastro-produto-upload-imagem").submit();
             }
         }
 
-    });
-
-    mascaras = function () {
-
-        $('#campo-preco').mask("#.###,00 R$", { reverse: true });
-        $('#campo-peso').mask("#,00 Kg", { reverse: true });
-
-    }
-
-    // Mascaras
-    $(document).ready(function () {
-        mascaras();
-
-
-    });
-
-    $('#cadastro-modal-produto').on('shown', function () {
-        mascaras();
     });
 
 
@@ -105,17 +86,20 @@ $(function () {
 
         $id = $(this).data('id');
 
+
         $.ajax({
             url: '/produto/obterpeloid?id=' + $id,
             method: 'get',
             success: function (data) {
-                $('#campo-nome').val(data.nome);
                 $('#campo-preco').val(data.preco);
+                $('#campo-preco').maskMoney('mask');
+                $('#campo-nome').val(data.nome);
                 $('#campo-cor').val(data.cor);
                 $('#campo-imagem').val(data.imagem);
                 $('#campo-peso').val(data.peso);
                 $('#campo-descricao').val(data.descricao);
                 $('#cadastro-modal-produto').modal('show');
+
                 PreencherSelect(data.idCategoria);
             }
         });
@@ -171,10 +155,10 @@ $(function () {
 
         $nome = $('#campo-nome').val();
         $idCategoria = $('#campo-select-categoria').val();
-        $preco = $('#campo-preco').cleanVal();
+        $preco = $('#campo-preco').maskMoney('unmasked')[0];
         $cor = $('#campo-cor').val();
         $imagem = $('#box-imagem').val();
-        $peso = $('#campo-peso').cleanVal();
+        $peso = $('#campo-peso').val();
         $descricao = $('#campo-descricao').val();
 
         $.ajax({
@@ -231,10 +215,10 @@ $(function () {
 
         $nome = $('#campo-nome').val();
         $idCategoria = $('#campo-select-categoria').val();
-        $preco = $('#campo-preco').cleanVal();
+        $preco = $('#campo-preco').maskMoney('unmasked')[0];
         $cor = $('#campo-cor').val();
         $imagem = $('#box-imagem').val();
-        $peso = $('#campo-peso').cleanVal();
+        $peso = $('#campo-peso').val();
         $descricao = $('#campo-descricao').val();
 
         $.ajax({

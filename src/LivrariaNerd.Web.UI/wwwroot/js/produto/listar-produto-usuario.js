@@ -195,37 +195,7 @@
                     }]
                 });
                 // Carousel Settings - Para o hardcode // Copiar exemplo para o Programático; 
-                $('#exampleResponsive4').slick({
-                    dots: true,
-                    infinite: false,
-                    speed: 500,
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true,
-                            dots: true
-                        }
-                    }, {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    }, {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        } // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
-
-                    }]
-                });
+               
             }
 
         });
@@ -254,7 +224,7 @@
                         let iconeDesejo = document.createElement('i');
 
                         iconeComprar.classList.add('icon', 'fa-cart-plus');
-                        iconeDesejo.classList.add('icon', 'wb-heart');
+                        iconeDesejo.classList.add('icon', 'wb-eye');
 
 
                         botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating', 'botao-comprar');
@@ -271,8 +241,12 @@
                         botaoComprar.appendChild(iconeComprar);
                         botaoDesejo.appendChild(iconeDesejo);
 
+                        let a = document.createElement('a');
+                        a.setAttribute('href', '/loja/produto?id=' + _data.id);
+
+                        a.appendChild(botaoDesejo);
                         figuraCap.appendChild(botaoComprar);
-                        figuraCap.appendChild(botaoDesejo);
+                        figuraCap.appendChild(a);
 
                         titulo = document.createElement('h4');
                         titulo.innerHTML = _data.nome;
@@ -390,12 +364,14 @@
                         let iconeDesejo = document.createElement('i');
 
                         iconeComprar.classList.add('icon', 'fa-cart-plus');
-                        iconeDesejo.classList.add('icon', 'wb-heart');
+                        iconeDesejo.classList.add('icon', 'wb-eye');
 
 
                         botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating', 'botao-comprar');
                         botaoDesejo.classList.add('btn', 'btn-danger', 'align-bottom', 'btn-floating', 'botao-desejo');
 
+                        let a = document.createElement('a');
+                        a.setAttribute('href', '/loja/produto?id=' + _data.id);
                         // Criando as FigCap e o titulo
                         let figuraCap = document.createElement('figcaption');
 
@@ -406,9 +382,10 @@
 
                         botaoComprar.appendChild(iconeComprar);
                         botaoDesejo.appendChild(iconeDesejo);
+                        a.appendChild(botaoDesejo);
 
                         figuraCap.appendChild(botaoComprar);
-                        figuraCap.appendChild(botaoDesejo);
+                        figuraCap.appendChild(a);
 
                         titulo = document.createElement('h4');
                         titulo.innerHTML = _data.nome;
@@ -513,7 +490,7 @@
             method: 'get',
             success: function (data) {
                 if (data.length > 1) {
-                    $('#exampleResponsive3').empty();
+                    $('#exampleResponsive4').empty();
                     for (let i = 0; i < data.length; i++) {
                         _data = data[i];
 
@@ -526,7 +503,7 @@
                         let iconeDesejo = document.createElement('i');
 
                         iconeComprar.classList.add('icon', 'fa-cart-plus');
-                        iconeDesejo.classList.add('icon', 'wb-heart');
+                        iconeDesejo.classList.add('icon', 'wb-eye');
 
 
                         botaoComprar.classList.add('btn', 'btn-warning', 'align-bottom', 'mr-5', 'btn-floating', 'botao-comprar');
@@ -543,8 +520,14 @@
                         botaoComprar.appendChild(iconeComprar);
                         botaoDesejo.appendChild(iconeDesejo);
 
+
+                        let a = document.createElement('a');
+                        a.setAttribute('href', '/loja/produto?id=' + _data.id);
+
+                        a.appendChild(botaoDesejo);
+
                         figuraCap.appendChild(botaoComprar);
-                        figuraCap.appendChild(botaoDesejo);
+                        figuraCap.appendChild(a);
 
                         titulo = document.createElement('h4');
                         titulo.innerHTML = _data.nome;
@@ -728,52 +711,3 @@
         });
     });
 });
-
-/*
- *
- * // Criando botoes e alterando eles
-                    let botaoComprar = document.createElement('button');
-                    let botaoDesejo = document.createElement('button');
-                    let iconeComprar = document.createElement('i');
-                    let iconeDesejo = document.createElement('i');
-
-                    iconeComprar.classList.add('icon');
-                    iconeComprar.classList.add('fa-cart-plus');
-
-                    botaoComprar.classList.add('btn');
-                    botaoComprar.classList.add('btn-warning');
-                    botaoComprar.classList.add('align-bottom');
-                    botaoComprar.classList.add('mr-5');
-
-                    // Criando as FigCap e o titulo
-                    let figuraCap = document.createElement('figcaption');
-
-                    figuraCap.classList.add('vertical-align');
-                    figuraCap.classList.add('overlay-panel');
-                    figuraCap.classList.add('overlay-background');
-                    figuraCap.classList.add('overlay-fade');
-
-                    figuraCap.appendChild(botaoComprar);
-                    figuraCap.appendChild(botaoDesejo);
-
-                    titulo = document.createElement('h4');
-                    titulo.innerHTML = _data.nome;
-
-                    // Criando as Figuras
-                    let figura = document.createElement('figure');
-
-                    figura.classList.add('overlay');
-                    figura.classList.add('overlay-hover');
-                    figura.classList.add('animation-hover');
-
-
-                    imagem = document.createElement('img');
-                    imagem.setAttribute('src', '/img/witcher_action_figure.jpg');
-
-                    figura.appendChild(titulo);
-                    figura.appendChild(imagem);
-                    figura.appendChild(figuraCap);
-
-                    document.getElementById('exampleResponsive1').appendChild(figura);
- *
- * */
