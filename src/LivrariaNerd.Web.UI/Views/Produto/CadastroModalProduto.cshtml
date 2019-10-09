@@ -29,7 +29,7 @@
                         <div class="col-xl-4 form-group">
                             <label for="campo-preco"><h6>Preço</h6></label>
                             <span class="text-danger">*</span>
-                            <input type="text" class="form-control" name="preco" id="campo-preco" required>
+                            <input type="text" class="form-control" data-affixes-stay="true" data-prefix="R$ " data-thousands="." data-decimal="," name="preco" id="campo-preco" required>
                         </div>
                         <div class="col-xl-4 form-group">
                             <label for="campo-peso"><h6>Peso</h6></label>
@@ -51,10 +51,10 @@
 
             </form>
             <!--Form upload img-->
-            <form id="form-cadastro-produto-upload-imagem"  method="post" enctype="multipart/form-data" action="@Url.Action("Upload", "Produto")">
+            <form id="form-cadastro-produto-upload-imagem" method="post" enctype="multipart/form-data" action="@Url.Action("Upload", "Produto")">
                 <div class="row">
                     <div class="col-12">
-                        <input type="hidden" id="id-produto-hidden" name="id"/>
+                        <input type="hidden" id="id-produto-hidden" name="id" />
                         <span style="margin-left: 25px;">
                             Upload da Imagem
                         </span>
