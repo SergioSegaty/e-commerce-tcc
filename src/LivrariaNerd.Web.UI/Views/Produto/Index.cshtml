@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="~/css/produto.css"/>
+<link rel="stylesheet" href="~/css/produto.css" />
 
 
 <div class="page-header">
@@ -31,14 +31,19 @@
                             type="button">
                         <i class="fa fa-plus"></i> Novo Produto
                     </button>
-
+                    <div class="offset-10 col-lg-2">
+                        <div class="form-group form-material floating" data-plugin="formMaterial">
+                            <input class="form-control" type="text" id="buscar-produto" />
+                            <label class="floating-label">Busca</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-12 mt-20">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="10%">Imagem</th> 
+                                <th width="10%">Imagem</th>
                                 <th width="5%">Código</th>
                                 <th>Nome</th>
                                 <th width="10%">Preço</th>
@@ -58,6 +63,7 @@
 <partial name="ModalDeletarAlerta.cshtml" />
 
 @section Scripts{
+    <script src="~/tema/global/js/Plugin/material.js"></script>
     <script src="~/js/produto/produto-index.js"></script>
     <script src="~/js/produto/validation-produto.js"></script>
     <script src="~/tema/assets/js/Modernizr/modernizr-custom.js"></script>

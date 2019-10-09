@@ -24,12 +24,12 @@ namespace LivrariaNerd.Infra.Data.Repositories
                 .FirstOrDefault(x => x.RegistroAtivo && x.Id == id);
         }
 
-        public List<Cidade> ObterTodos()
+        public List<Cidade> ObterTodos(string busca)
         {
             return _context
                 .Cidades
                 .Include(x => x.Estado)
-                .Where(x => x.RegistroAtivo)
+                .Where(x => x.RegistroAtivo && x.Nome.ToUpper().Contains(busca.ToUpper()) || x.Estado.Sigla.ToUpper().Contains(busca) || x.Estado.Nome.ToUpper().Contains(busca))
                 .ToList();
         }
 

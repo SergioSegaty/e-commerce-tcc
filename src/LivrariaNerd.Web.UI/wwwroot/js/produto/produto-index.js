@@ -5,8 +5,9 @@ $(function () {
     $id = -1;
     $form = $('#form-cadastro-produto');
     $imageUplaod = $('.box');
+    $busca = "";
 
-   
+
 
     // Image Drag&Drop Detection
 
@@ -134,7 +135,7 @@ $(function () {
             url: 'produto/apagar?id=' + $id,
             method: 'get',
             success: function (data) {
-                obterTodos();
+                obterTodos($busca);
                 $id = -1;
                 $('#alert-apagar-produto').modal("hide");
                 notifyAlert(1, 'Apagado com Sucesso', 2);
@@ -147,6 +148,11 @@ $(function () {
 
     });
 
+    //Campo Buscar
+    $('#buscar-produto').on('keyup', function () {
+        $busca = $(this).val();
+        obterTodos($busca);
+    });
 
     //Limpar Campos
     limparCampos = function () {
@@ -205,7 +211,7 @@ $(function () {
                     }
                 });
 
-                obterTodos();
+                obterTodos($busca);
                 $id = -1;
                 $('#cadastro-modal-produto').modal('hide');
                 limparCampos();
@@ -246,7 +252,7 @@ $(function () {
                 Descricao: $descricao
             },
             success: function (data) {
-                obterTodos();
+                obterTodos($busca);
                 $id = -1;
                 $('#cadastro-modal-produto').modal('hide');
                 limparCampos();
@@ -255,18 +261,18 @@ $(function () {
     }
 
     // ObterTodos
-    obterTodos = function () {
-        $('#lista-produtos').empty();
-
+    obterTodos = function (busca) {
         $.ajax({
-
             url: '/produto/obtertodos',
             method: 'get',
+            data: {
+                busca: busca
+            },
             success: function (data) {
+                $('#lista-produtos').empty();
 
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
-
                     var tr = document.createElement('tr');
 
                     var tdImagem = document.createElement('td');
@@ -389,6 +395,6 @@ $(function () {
 
     }
 
-    obterTodos();
+    obterTodos($busca);
 
 });

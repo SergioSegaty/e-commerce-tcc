@@ -1,11 +1,10 @@
 ﻿$(() => {
     $id = -1;
+    $busca = "";
 
     $('.close-modal').on('click', () => {
         limparCampos();
         $id = -1;
-    });
-
     $('.close').on('click', () => {
         limparCampos();
         $id = -1;
@@ -43,6 +42,8 @@
             type: 'get',
             success: function (data) {
                 for (let i = 0; i < data.length; i++) {
+                    console.log(data);
+
                     let _data = data[i];
 
                     let id = data[i].id;
@@ -70,7 +71,7 @@
                 IdEstado: $idEstado
             },
             success: function (data) {
-                obterTodos();
+                obterTodos($busca);
                 limparCampos();
                 $id = -1;
                 $('#cadastro-modal-cidade').modal('hide');
@@ -92,7 +93,7 @@
                 IdEstado: $idEstado
             },
             success: function (data) {
-                obterTodos();
+                obterTodos($busca);
                 limparCampos();
                 $id = -1;
                 $('#cadastro-modal-cidade').modal('hide');
@@ -102,19 +103,23 @@
             }
         });
     }
-
+    
     limparCampos = function () {
         $('#campo-nome-cidade').val("");
         $('#campo-estado').val(-1);
     }
 
-    obterTodos = function () {
-        $("#tabela-cidades").empty();
-
+    obterTodos = function (busca) {
         $.ajax({
             url: '/cidade/obtertodos',
             method: 'get',
+            data: {
+                busca: busca
+            },
             success: function (data) {
+                console.log(data);
+                $("#tabela-cidades").empty();
+
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
 
@@ -178,6 +183,11 @@
         });
     });
 
+    $('#buscar-cidade').on('keyup', function () {
+        $busca = $(this).val();
+        obterTodos($busca);
+    });
+
     $('#tabela-cidades').on('click', '.botao-apagar', function () {
         $id = $(this).data('id');
         $('#alert-apagar-cidade').modal('show');
@@ -188,7 +198,7 @@
             url: '/cidade/apagar?id=' + $id,
             method: 'get',
             success: function (data) {
-                obterTodos();
+                obterTodos($busca);
                 $id = -1;
                 $('#alert-apagar-cidade').modal('hide');
                 notifyAlert(1, 'Apagou com Sucesso!', 2);
@@ -199,5 +209,5 @@
         });
     });
 
-    obterTodos();
+    obterTodos($busca);
 });

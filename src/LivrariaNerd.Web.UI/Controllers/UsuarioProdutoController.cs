@@ -26,14 +26,16 @@ namespace PadawanStore.Web.UI.Controllers
         [HttpGet, Route("obtertodos")]
         public JsonResult ObterTodos()
         {
-            var produtos = _produtoRepository.ObterTodos();
+            string busca = "";
+            var produtos = _produtoRepository.ObterTodos(busca);
             return Json(produtos);
         }
 
         [HttpGet, Route("obtertodosprodutosusuarios")]
         public JsonResult ObterTodosProdutosUsuarios()
         {
-            var produtos = _produtoRepository.ObterTodos();
+            string busca = "";
+            var produtos = _produtoRepository.ObterTodos(busca);
 
             var result = new List<object>();
 

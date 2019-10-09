@@ -23,12 +23,16 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Where(x => x.Id == id && x.RegistroAtivo).FirstOrDefault();
         }
 
-        public List<Produto> ObterTodos()
+        public List<Produto> ObterTodos(string busca)
         {
+            if (busca == null) busca = "";
+
+
             return _context.Produtos
             .Include(x => x.Categoria)
             .OrderByDescending(x => x.Categoria.Nome)
-            .Where(x => x.RegistroAtivo).ToList();
+            .Where(x => x.RegistroAtivo && x.Nome.ToUpper().Contains(busca) || x.Categoria.Nome.ToUpper().Contains(busca))
+            .ToList();
         }
 
         public List<Produto> ObterTodosBusca(string busca)

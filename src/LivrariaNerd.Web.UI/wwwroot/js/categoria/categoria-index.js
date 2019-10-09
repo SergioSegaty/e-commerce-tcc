@@ -3,6 +3,7 @@
 $(function () {
 
     $id = -1;
+    $busca = "";
 
     // Botao Editar
     $(".table").on("click", ".botao-editar", function () {
@@ -35,7 +36,7 @@ $(function () {
             url: '/categoria/apagar?id=' + $id,
             method: 'get',
             success: function (data) {
-                obterTodos();
+                obterTodos($busca);
                 notifyAlert(1, "Apagou com sucesso", 2);
                 $('#alert-apagar-categoria').modal("hide");
 
@@ -78,7 +79,7 @@ $(function () {
                 $("#modalCadastroCategoria").modal("hide");
                 notifyAlert(1, "Alterado com sucesso", 2);
 
-                obterTodos();
+                obterTodos($busca);
                 limparCampos();
             },
             error: function (data) {
@@ -102,7 +103,7 @@ $(function () {
             success: function (data) {
                 $id = -1;
                 $("#modalCadastroCategoria").modal("hide");
-                obterTodos();
+                obterTodos($busca);
                 notifyAlert(1, "Cadastrado com sucesso", 2);
                 limparCampos();
             },
@@ -115,16 +116,14 @@ $(function () {
     }
 
 
-    function obterTodos() {
-
-        $busca = $('#campo-busca').val();
-
+    function obterTodos(busca) {
         $("#lista-categorias").empty();
 
         $.ajax({
-            url: '/categoria/obtertodos',
+            url: '/categoria/obtertodosbusca',
             method: 'get',
             data: {
+                busca: busca
             },
 
             success: function (data) {
@@ -178,6 +177,12 @@ $(function () {
         });
     }
 
+    //Campo Busca
+    $('#buscar-categoria').on('keyup', function () {
+        $busca = $(this).val();
+        obterTodos($busca);
+    });
+
     function limparCampos() {
         $("#campo-nome").val("");
 
@@ -185,5 +190,5 @@ $(function () {
 
 
 
-    obterTodos();
+    obterTodos($busca);
 });

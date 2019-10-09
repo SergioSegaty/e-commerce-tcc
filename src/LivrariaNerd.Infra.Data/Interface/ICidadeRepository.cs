@@ -9,6 +9,6 @@ namespace LivrariaNerd.Infra.Data.Interface
 
         List<Cidade> ObterTodosPeloEstado(int idEstado);
 
-        List<Cidade> ObterTodos();
+        List<Cidade> ObterTodos(string busca);
     }
 }

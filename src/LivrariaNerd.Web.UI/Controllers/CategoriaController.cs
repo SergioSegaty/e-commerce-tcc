@@ -30,6 +30,25 @@ namespace e_commerce_ws.Controllers
             return Json(categorias);
         }
 
+        [HttpGet, Route("obtertodosbusca")]
+        public JsonResult ObterTodosBusca(string busca)
+        {
+            if (busca == null)
+                busca = "";
+            var categorias = _repository.ObterTodos();
+
+            var resultado = new List<object>();
+
+            //Como é generics tem q fazer gambiarra
+            foreach (var categoria in categorias)
+            {
+                if(categoria.Nome.ToUpper().Contains(busca.ToUpper()))
+                    resultado.Add(categoria);
+            }
+
+            return Json(resultado);
+        }
+
         [HttpGet, Route("obterpeloid")]
         public ActionResult ObterPeloId(int id)
         {

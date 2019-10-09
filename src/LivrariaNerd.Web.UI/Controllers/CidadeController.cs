@@ -19,29 +19,12 @@ namespace e_commerce_ws.Controllers
         }
 
         [HttpGet, Route("obtertodos")]
-        public JsonResult ObterTodos()
+        public JsonResult ObterTodos(string busca)
         {
-            var cidades = _cidadeRepository.ObterTodos();
+            if (busca == null) busca = "";
+
+            var cidades = _cidadeRepository.ObterTodos(busca);
             return Json(cidades);
-        }
-
-        [HttpGet, Route("obtertodosbusca")]
-        public JsonResult ObterTodosBusca(string busca)
-        {
-            if (busca == null)
-                busca = "";
-            var cidades = _repository.ObterTodos();
-
-            var resultado = new List<object>();
-
-            //Como é generics tem q fazer gambiarra
-            foreach (var cidade in cidades)
-            {
-                if (cidade.Nome.ToUpper().Contains(busca.ToUpper()) || cidade.Estado.Sigla.ToUpper().Contains(busca.ToUpper()))
-                    resultado.Add(cidade);
-            }
-
-            return Json(resultado);
         }
 
         [HttpGet, Route("obtertodospeloestado")]

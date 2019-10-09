@@ -26,6 +26,12 @@
                         data-target="#modalCadastroCategoria">
                     <i class="fas fa-plus"></i> Nova Categoria
                 </button>
+                <div class="offset-10 col-lg-2">
+                    <div class="form-group form-material floating" data-plugin="formMaterial">
+                        <input class="form-control" type="text" id="buscar-categoria" />
+                        <label class="floating-label">Busca</label>
+                    </div>
+                </div>
             </div>
 
 
@@ -44,12 +50,12 @@
 
 </div>
 <!-- End Panel -->
-</div>
 
 <partial name="ModalCadastroCategoria.cshtml" />
 <partial name="ModalAlertApagarCategoria.cshtml" />
 
 @section Scripts {
-<script src="~/js/categoria/categoria-index.js"></script>
-<script src="~/js/categoria/validation-categoria.js"></script>
+    <script src="~/tema/global/js/Plugin/material.js"></script>
+    <script src="~/js/categoria/categoria-index.js"></script>
+    <script src="~/js/categoria/validation-categoria.js"></script>
 }

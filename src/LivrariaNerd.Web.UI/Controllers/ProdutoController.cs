@@ -76,9 +76,9 @@ namespace e_commerce_ws.Controllers
         }
 
         [HttpGet, Route("obtertodos")]
-        public JsonResult ObterTodos()
+        public JsonResult ObterTodos(string busca)
         {
-            var produtos = _produtoRepository.ObterTodos();
+            var produtos = _produtoRepository.ObterTodos(busca);
             return Json(produtos);
         }
 
