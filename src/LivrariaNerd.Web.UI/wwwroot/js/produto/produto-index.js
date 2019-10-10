@@ -65,7 +65,7 @@ $(function () {
 
 
         if ($valido && $('#upload-imagem').get(0).files.length == 1) {
-           
+
             if ($id == -1) {
                 inserir();
                 notifyAlert(1, 'Cadastrado com sucesso.', 2);
@@ -93,6 +93,7 @@ $(function () {
             success: function (data) {
                 $('#campo-preco').val(data.preco);
                 $('#campo-preco').maskMoney('mask');
+
                 $('#campo-nome').val(data.nome);
                 $('#campo-cor').val(data.cor);
                 $('#campo-imagem').val(data.imagem);
@@ -115,18 +116,31 @@ $(function () {
 
     //Apagar por botao
     $('#btn-apagar-produto').on('click', () => {
+
         $.ajax({
-            url: 'produto/apagar?id=' + $id,
+            url: '/estoque/obterpeloidproduto?idProduto=' + $id,
             method: 'get',
             success: function (data) {
-                obterTodos($busca);
-                $id = -1;
-                $('#alert-apagar-produto').modal("hide");
-                notifyAlert(1, 'Apagado com Sucesso', 2);
-            },
-            error: function (err) {
-                console.log(err);
-                notifyAlert(1, 'Erro ao apagar', 2)
+                let idEstoque = data.id;
+                console.log('Apagou Estoque');
+                $.ajax({
+                    url: '/estoque/apagar?id=' + idEstoque,
+                    method: 'get',
+                    success: function (data) {
+                        console.log('Apagou Produto');
+                        $.ajax({
+                            url: '/produto/apagar?id=' + $id,
+                            method: 'get',
+                            success: function (data) {
+                                notifyAlert(1, "Produto apagado com sucesso!", 1);
+                                $id = -1;
+                                $('#alert-apagar-produto').modal('hide');
+                                obterTodos($busca);
+                                debugger;
+                            }
+                        });
+                    }
+                });
             }
         });
 
@@ -216,6 +230,7 @@ $(function () {
         $nome = $('#campo-nome').val();
         $idCategoria = $('#campo-select-categoria').val();
         $preco = $('#campo-preco').maskMoney('unmasked')[0];
+        debugger;
         $cor = $('#campo-cor').val();
         $imagem = $('#box-imagem').val();
         $peso = $('#campo-peso').val();
@@ -246,6 +261,7 @@ $(function () {
 
     // ObterTodos
     obterTodos = function (busca) {
+        $('#lista-produtos').empty();
         $.ajax({
             url: '/produto/obtertodos',
             method: 'get',
@@ -253,7 +269,6 @@ $(function () {
                 busca: busca
             },
             success: function (data) {
-                $('#lista-produtos').empty();
 
                 for (let i = 0; i < data.length; i++) {
                     let _data = data[i];
@@ -278,16 +293,9 @@ $(function () {
 
                     var tdPreco = document.createElement('td');
                     var index = _data.preco.toString().length;
-                    if (_data.preco.toString().length >= 6) {
-                        var precoString = _data.preco.toString().substring(0, (index - 5)) + ".";
-                        precoString += _data.preco.toString().substring((index - 5), (index - 2)) + ",";
-                        precoString += _data.preco.toString().substring((index - 2), index);
 
-                    } else {
-                        var precoString = _data.preco.toString().substring(0, (index - 2)) + "," + _data.preco.toString().substring((index - 2), index);
-                    }
 
-                    tdPreco.innerHTML = "R$ " + precoString;
+                    tdPreco.innerHTML = "R$ " + _data.precoString.toString();
                     index = 0;
 
                     var botaoEditar = document.createElement("button");

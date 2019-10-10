@@ -49,6 +49,26 @@ $(function () {
     });
 
 
+    $('#tabela-estoque').on('click', '.apagar-estoque', function () {
+
+        $id = $(this).data('id');
+        $.ajax({
+
+            url: '/estoque/apagar?id=' + $id,
+            method: 'get',
+            success: function (data) {
+                notifyAlert(1, 'Estoque deletado com Sucesso');
+                atualizarTabela();
+                console.log($idProduto);
+            },
+            error: function (data) {
+                notifyAlert(2, 'Erro ao Apagar', 2);
+            }
+
+        });
+    });
+
+
     $('#tabela-estoque').on('click', '.editar-estoque', function () {
 
         $id = $(this).data('id');

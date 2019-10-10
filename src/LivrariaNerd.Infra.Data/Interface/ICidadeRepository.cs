@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace LivrariaNerd.Infra.Data.Interface
 {
-    public interface ICidadeRepository
+    public interface ICidadeRepository : IBaseRepositoryAsync<Cidade>
     {
-        Cidade ObterPeloId(int id);
 
         List<Cidade> ObterTodosPeloEstado(int idEstado);
 

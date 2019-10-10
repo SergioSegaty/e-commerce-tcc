@@ -23,10 +23,10 @@ namespace LivrariaNerd.Infra.Data.Repositories
             .Where(x => x.Id == id && x.RegistroAtivo).FirstOrDefault();
         }
 
+        //Tem algum erro aqui
         public List<Produto> ObterTodos(string busca)
         {
             if (busca == null) busca = "";
-
 
             return _context.Produtos
             .Include(x => x.Categoria)
@@ -40,7 +40,8 @@ namespace LivrariaNerd.Infra.Data.Repositories
             return _context.Produtos
                 .Include(x => x.Categoria)
                 .OrderBy(x => x.Nome)
-                .Where(x => x.RegistroAtivo && x.Nome.Contains(busca))
+                .Where(x => x.RegistroAtivo && (x.Nome.ToUpper().Contains(busca.ToUpper()) || x.Categoria.Nome.ToUpper().Contains(busca.ToUpper())
+                || x.Id.ToString().Contains(busca)))
                 .ToList();
         }
 

@@ -9,12 +9,10 @@ namespace e_commerce_ws.Controllers
     [Route("cidade")]
     public class CidadeController : Controller
     {
-        private readonly IBaseRepositoryAsync<Cidade> _repository;
         private readonly ICidadeRepository _cidadeRepository;
 
-        public CidadeController(IBaseRepositoryAsync<Cidade> repository, ICidadeRepository cidadeRepository)
+        public CidadeController(ICidadeRepository cidadeRepository)
         {
-            _repository = repository;
             _cidadeRepository = cidadeRepository;
         }
 
@@ -48,21 +46,21 @@ namespace e_commerce_ws.Controllers
         [HttpPost, Route("adicionar")]
         public async Task<JsonResult> Adicionar(Cidade cidade)
         {
-            int id = await _repository.Adicionar(cidade);
+            int id = await _cidadeRepository.Adicionar(cidade);
             return Json(new { id });
         }
 
         [HttpPost, Route("alterar")]
         public JsonResult Alterar(Cidade cidade)
         {
-            bool alterou = _repository.Alterar(cidade);
+            bool alterou = _cidadeRepository.Alterar(cidade);
             return Json(new { status = alterou });
         }
 
         [HttpGet, Route("apagar")]
         public JsonResult Apagar(int id)
         {
-            bool apagou = _repository.Apagar(id);
+            bool apagou = _cidadeRepository.Apagar(id);
             return Json(new { status = apagou });
         }
 

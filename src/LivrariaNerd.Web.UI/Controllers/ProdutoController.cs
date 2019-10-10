@@ -78,7 +78,10 @@ namespace e_commerce_ws.Controllers
         [HttpGet, Route("obtertodos")]
         public JsonResult ObterTodos(string busca)
         {
-            var produtos = _produtoRepository.ObterTodos(busca);
+            if (busca == null)
+                busca = "";
+                
+            var produtos = _produtoRepository.ObterTodosBusca(busca);
             return Json(produtos);
         }
 
@@ -105,13 +108,38 @@ namespace e_commerce_ws.Controllers
         [HttpPost, Route("adicionar")]
         public async Task<JsonResult> Adicionar(Produto produto)
         {
+            string precoString = Request.Form["preco"];
+            if (precoString.Contains(","))
+            {
+                precoString = precoString.Replace(",", ".");
+            }
+            else if (precoString.Contains("."))
+            {
+                precoString = precoString.Replace(".", ",");
+            }
+
+            produto.Preco = Convert.ToDecimal(precoString);
+
             int id = await _repo.Adicionar(produto);
             return Json(new { id = id });
+
         }
 
         [HttpPost, Route("alterar")]
         public JsonResult Alterar(Produto produto)
         {
+
+            string precoString = Request.Form["preco"];
+            if (precoString.Contains(","))
+            {
+                precoString = precoString.Replace(",", ".");
+            }
+            else if (precoString.Contains("."))
+            {
+                precoString = precoString.Replace(".", ",");
+            }
+
+            produto.Preco = Convert.ToDecimal(precoString);
             bool alterou = _repo.Alterar(produto);
             return Json(new { status = alterou });
         }

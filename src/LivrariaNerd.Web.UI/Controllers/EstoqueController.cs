@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LivrariaNerd.Domain.Entities;
 using LivrariaNerd.Infra.Data.Interface;
+using System.Linq;
 
 namespace e_commerce_ws.Controllers
 {
@@ -42,6 +43,18 @@ namespace e_commerce_ws.Controllers
             return Json(estoque);
         }
 
+        [HttpGet, Route("obterpeloidproduto")]
+        public ActionResult ObterPeloIdProduto(int idProduto)
+        {
+            var estoque = _estoqueRepository.ObterTodosPeloProduto(idProduto)
+                .FirstOrDefault();
+
+            if (estoque == null)
+                return NotFound();
+
+            return Json(estoque);
+        }
+
         [HttpPost, Route("adicionar")]
         public async Task<JsonResult> Adicionar(Estoque estoque)
         {
@@ -54,6 +67,13 @@ namespace e_commerce_ws.Controllers
         {
             bool alterou = _repository.Alterar(estoque);
             return Json(new { status = alterou });
+        }
+
+        [HttpGet, Route("obterpeloproduto")]
+        public JsonResult ObterPeloProduto(int idProduto)
+        {
+            int idEstoque = _estoqueRepository.ObterPeloProduto(idProduto);
+            return Json(new { idEstoque });
         }
 
         [HttpGet, Route("apagar")]

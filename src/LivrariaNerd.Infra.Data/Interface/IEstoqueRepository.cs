@@ -9,6 +9,8 @@ namespace LivrariaNerd.Infra.Data.Interface
 
         List<Estoque> ObterTodosPeloProduto(int idProduto);
 
+        int ObterPeloProduto(int idProduto);
+
         List<Estoque> ObterTodos(string status);
     }
 }

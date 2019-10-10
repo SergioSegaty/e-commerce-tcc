@@ -33,5 +33,14 @@ namespace LivrariaNerd.Domain.Entities
 
         [Column("imagem_caminho_wwwroot")]
         public string ImagemCaminhoWwwroot { get; set; }
+
+        [NotMapped]
+        public string PrecoString
+        {
+            get
+            {
+                return string.Format("{0:N}", Preco);
+            }
+        }
     }
 }

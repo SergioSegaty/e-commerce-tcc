@@ -31,6 +31,15 @@ namespace LivrariaNerd.Infra.Data.Repositories
                 .ToList();
         }
 
+        public int ObterPeloProduto(int id)
+        {
+            var estoque = _context.Estoques
+                .Where(x => x.RegistroAtivo && x.IdProduto == id)
+                .FirstOrDefault();
+
+            return estoque.Id;
+        }
+
         public List<Estoque> ObterTodos(string status)
         {
             var query =  _context.Estoques
@@ -45,6 +54,6 @@ namespace LivrariaNerd.Infra.Data.Repositories
             }
 
             return query.ToList();
-        }
+        }   
     }
 }
