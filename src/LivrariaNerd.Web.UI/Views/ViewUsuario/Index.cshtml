@@ -53,24 +53,20 @@
                                 <label for="campo-conf-senha">Confirmar a Senha <span style="color:red">*</span></label>
                                 <input class="form-control" type="text" name="confSenha" id="campo-conf-senha" value="" />
                             </div>
-
                             <div class="col-12">
-                                <button class="btn btn-outline-warning float-left btn-sm"
-                                        data-target="#usuario-trocar-senha" id="botao-trocar-senha"
-                                        data-toggle="modal">
-                                    <i class="fas fa-lock"></i> Trocar a senha
-                                </button>
-
                                 <button class="btn btn-success float-right btn-sm" type="submit" id="btn-alterar-usuario">
                                     <i class="fas fa-refresh"></i> Atualizar Informações
                                 </button>
+                                <button class="btn btn-outline-warning float-left btn-sm"
+                                        data-target="#modal-trocar-senha" id="botao-trocar-senha"
+                                        data-toggle="modal">
+                                    <i class="fas fa-lock"></i> Trocar a senha
+                                </button>
                             </div>
                         </div>
-
-                        <!-- Termina Row -->
                     </form>
                 </div>
-
+                <!-- Termina Row -->
                 <!-- Box da direita-->
                 <div class="col-lg-6 col-sm-12">
                     <h4 class="text-center">Informações de Endereço</h4>
@@ -79,7 +75,7 @@
 
                             <div class="col-lg-3 form-group">
                                 <label for="campo-cpf">CEP <span style="color:red">*</span></label>
-                                <input class="form-control" id="campo-end-cep" type="text" name="usuarioCep" size="10" maxlength="9"/>
+                                <input class="form-control" id="campo-end-cep" type="text" name="usuarioCep" size="10" maxlength="9" />
                             </div>
                             <div class="col-lg-3 form-group">
                                 <label for="campo-estado">UF <span style="color:red">*</span></label>
@@ -120,24 +116,21 @@
                 <!-- Termina Row -->
             </div>
         </div>
-
-
     </div>
-</div>
 
 
-<partial name="ModalTrocarSenha.cshtml" />
+    <partial name="ModalTrocarSenha.cshtml" />
 
-@section Scripts{
+    @section Scripts{
 
-    <script src="~/tema/global/vendor/dropify/dropify.min.js"></script>
-    <script src="~/js/usuario/gerenciamento-conta.js"></script>
-    <script src="~/js/jquery-validate/jquery.validate.min.js"></script>
-    <script src="~/jquery-mask-plugin/src/jquery.mask.js"></script>
-    <!--Notie Functions-->
-    <script src="~/js/notie/notie.min.js"></script>
+        <script src="~/tema/global/vendor/dropify/dropify.min.js"></script>
+        <script src="~/js/usuario/gerenciamento-conta.js"></script>
+        <script src="~/js/jquery-validate/jquery.validate.min.js"></script>
+        <script src="~/jquery-mask-plugin/src/jquery.mask.js"></script>
+        <!--Notie Functions-->
+        <script src="~/js/notie/notie.min.js"></script>
 
-    <script src="~/Melhor Mascara/inputmask.min.js"></script>
-    <script src="~/Melhor Mascara/jquery.inputmask.min.js"></script>
+        <script src="~/Melhor Mascara/inputmask.min.js"></script>
+        <script src="~/Melhor Mascara/jquery.inputmask.min.js"></script>
 
-}
+    }
