@@ -3,6 +3,9 @@
     $idUsuario = -1;
     $senhaUsuario = "";
 
+                    
+    $('#campo-end-cep').inputmask('99999-999');
+     
 
     buscarDadosUsuario = function () {
 
@@ -18,8 +21,6 @@
                 document.getElementById('titulo-nome-usuario').innerHTML = 'Usuario: ' + data.nomeCompleto;
                 $('#campo-nome').val(data.nomeCompleto);
                 $('#campo-email').val(data.login);
-
-
             }
         });
     };
@@ -94,7 +95,8 @@
                     $('#campo-end-rua').val(endereco.rua);
 
                     document.getElementById('btn-alterar-endereco').appendChild(i);
-                    document.getElementById('btn-alterar-endereco').innerHTML = '<i class"fas fa-refresh"> Atualizar Endereço </i>';
+                    document.getElementById('btn-alterar-endereco').innerHTML = '<i class="fas fa-refresh"> Atualizar Endereço </i>';
+                    
                 }
             }
         });
@@ -102,7 +104,7 @@
 
 
     $('#btn-alterar-endereco').on('click', function () {
-        $enderecoCep = $('#campo-end-cep').val();
+        $enderecoCep = $('#campo-end-cep').inputmask('unmaskedvalue');
         $enderecoEstado = $('#campo-end-estado').val();
         $enderecoCidade = $('#campo-end-cidade').val();
         $enderecoBairro = $('#campo-end-bairro').val();
@@ -111,7 +113,6 @@
         $enderecoComp = $('#campo-end-complemento').val();
         $idEndereco_ = $(this).data('id');
 
-        debugger;
         if ($idEndereco_ === -1) {
             $.ajax({
                 url: '/endereco/adicionar',
@@ -129,7 +130,6 @@
                 },
                 success: function (data) {
                     notifyAlert(1, 'Cadastro de Endereço feito com Sucesso', 2);
-        debugger;       
                 }
             });
         }
@@ -146,7 +146,8 @@
                     Logradouro: "",
                     Bairro: $enderecoBairro,
                     Numero: $enderecoNumero,
-                    Complemento: $enderecoComp
+                    Complemento: $enderecoComp,
+                    Rua: $enderecoRua
                 },
                 success: function (data) {
                     notifyAlert(1, 'Endereço Atualizado com Sucesso', 2);
@@ -255,8 +256,8 @@
             rules: {
                 usuarioCep: {
                     required: true,
-                    minlength: 8,
-                    maxlength: 8
+                    minlength: 9,
+                    maxlength: 9
                 },
                 usuarioEstado: {
                     required: true,

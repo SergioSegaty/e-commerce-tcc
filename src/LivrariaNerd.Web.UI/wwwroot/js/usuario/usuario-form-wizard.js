@@ -51,12 +51,12 @@
                                     message: 'Este campo é obrigatório',
                                 },
                                 stringLength: {
-                                    min: 8,
-                                    max: 8,
+                                    min: 9,
+                                    max: 9,
                                     message: 'O Cep deve ter 8 caractéres',
                                 },
                                 regexp: {
-                                    regexp: /^[0-9]+$/,
+                                    regexp: /^[0-9 -]+$/,
                                     message: 'O Cep só pode conter númericos',
                                 }
                             }
@@ -96,7 +96,7 @@
                                 },
                                 stringLength: {
                                     min: 16,
-                                    max: 16,
+                                    max: 25,
                                     message: 'Cartão invalido'
                                 }
                             }
@@ -139,8 +139,8 @@
                                     message: 'Este campo é obrigatório'
                                 },
                                 stringLength: {
-                                    min: 11,
-                                    max: 11,
+                                    min: 14,
+                                    max: 14,
                                     message: 'Cpf inválido'
                                 }
                             }
@@ -184,7 +184,7 @@
                     confirmButtonText: 'OK',
                     closeOnConfirm: false
                 });
-                
+
             },
             buttonsAppendTo: '.panel-body'
         });
@@ -197,7 +197,75 @@
 
 });
 
+
 $(() => {
+
+    $('#campo-end-cep').inputmask('99999-999');
+    $('#campo-cpf-titular').inputmask('999.999.999-99');
+    $('#campo-cartao-numero').inputmask('9999-9999-9999-9999');
+
+
+
+    buscarEnderecoUsuario = function () {
+
+        $.ajax({
+            url: '/usuario/obterenderecousuario',
+            method: 'get',
+            success: function (d) {
+                data = d[0];
+                console.log(data.numero);
+                $('#campo-end-numero').val(data.numero);
+                $('#campo-end').val(data.rua);
+                $('#campo-end-cep').val(data.cep);
+                $('#campo-end-bairro').val(data.bairro);
+                $('#campo-end-rua').val(data.rua);
+                $('#campo-end-complemento').val(data.complemento);
+                $('#campo-end-estado').val(data.cidade.idEstado);
+                PreencherCidades(data.cidade.idEstado);
+                setTimeout(() => {
+                    $("#campo-end-cidade option[value=" + data.cidade.id + "]").attr('selected', 'selected');
+                }, 0100);
+            }
+
+        });
+
+    }
+
+    PreencherCidades = function (idEstado) {
+        $('#campo-end-cidade').empty();
+        let idCidade = 0;
+        let opcao = document.createElement('option');
+        opcao.disabled;
+        opcao.selected;
+        opcao.value = -1;
+        opcao.innerHTML = 'Selecione uma Cidade';
+
+        document.getElementById('campo-end-cidade').appendChild(opcao);
+
+        $.ajax({
+
+            url: '/cidade/obtertodospeloestado?=' + idEstado,
+            type: 'get',
+            success: function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    let _data = data[i];
+
+                    let opcao = document.createElement('option');
+                    if (idCidade != -1 && idCidade == _data.id) {
+                        opcao.selected = true;
+                    }
+
+                    opcao.value = _data.id;
+                    opcao.innerHTML = _data.nome;
+
+                    document.getElementById('campo-end-cidade').appendChild(opcao);
+                }
+            }
+        });
+
+    }
+
+    buscarEnderecoUsuario();
 
     PreencherEstados = function (idEstado) {
 

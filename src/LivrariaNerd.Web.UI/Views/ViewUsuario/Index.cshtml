@@ -5,6 +5,7 @@
 
 @section Styles{
     <link href="~/tema/global/vendor/dropify/dropify.css" rel="stylesheet" />
+    <link href="~/tema/global/vendor/alertify/alertify.css" />
 }
 
 <div class="page-header">
@@ -78,7 +79,7 @@
 
                             <div class="col-lg-3 form-group">
                                 <label for="campo-cpf">CEP <span style="color:red">*</span></label>
-                                <input class="form-control" id="campo-end-cep" type="text" name="usuarioCep" size="10" maxlength="9" />
+                                <input class="form-control" id="campo-end-cep" type="text" name="usuarioCep" size="10" maxlength="9"/>
                             </div>
                             <div class="col-lg-3 form-group">
                                 <label for="campo-estado">UF <span style="color:red">*</span></label>
@@ -111,7 +112,6 @@
                         <div class="row">
                             <div class="col-12">
                                 <button class="btn btn-success float-right btn-sm" type="submit" id="btn-alterar-endereco">
-                                    
                                 </button>
                             </div>
                         </div>
@@ -132,5 +132,12 @@
 
     <script src="~/tema/global/vendor/dropify/dropify.min.js"></script>
     <script src="~/js/usuario/gerenciamento-conta.js"></script>
+    <script src="~/js/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-mask-plugin/src/jquery.mask.js"></script>
+    <!--Notie Functions-->
+    <script src="~/js/notie/notie.min.js"></script>
+
+    <script src="~/Melhor Mascara/inputmask.min.js"></script>
+    <script src="~/Melhor Mascara/jquery.inputmask.min.js"></script>
 
 }
