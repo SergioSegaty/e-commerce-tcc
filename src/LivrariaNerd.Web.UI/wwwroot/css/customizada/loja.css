@@ -10,6 +10,8 @@
 
 .img-banner {
     object-fit: fill;
+    height: auto;
+    width: 100%;
 }
 
 hr {
